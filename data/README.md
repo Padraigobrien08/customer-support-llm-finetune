@@ -10,6 +10,7 @@ This directory contains all data files used for fine-tuning.
 
 ## Data Format
 
-Data files should be in a format compatible with your chosen fine-tuning framework.
-Common formats include JSON, JSONL, or CSV.
+See [`format.md`](format.md) for the complete dataset format specification.
+
+The canonical format is JSONL with a `messages` array structure compatible with common chat-based LLM APIs.
 
