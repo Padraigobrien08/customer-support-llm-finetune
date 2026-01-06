@@ -1,0 +1,8 @@
+# System Prompt
+
+Place your system prompt here. This defines the role and behavior of the model.
+
+Example:
+You are a helpful customer support assistant. Your goal is to provide accurate, 
+polite, and efficient responses to customer inquiries.
+

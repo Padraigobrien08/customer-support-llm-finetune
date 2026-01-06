@@ -1,0 +1,21 @@
+# Training Configuration
+
+# Model settings
+# model_name: ""
+# model_path: ""
+
+# Training hyperparameters
+# learning_rate: 1e-5
+# batch_size: 4
+# num_epochs: 3
+# max_seq_length: 512
+
+# Data paths
+# train_data: "data/splits/train.jsonl"
+# val_data: "data/splits/val.jsonl"
+
+# Output
+# output_dir: "checkpoints/"
+
+# Add your framework-specific configuration here
+
