@@ -19,12 +19,14 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual environments
 venv/
 env/
 ENV/
 .venv
+.conda/
 
 # IDE
 .vscode/
@@ -32,6 +34,8 @@ ENV/
 *.swp
 *.swo
 *~
+.project
+.pydevproject
 
 # Data files (keep structure, ignore content)
 data/raw/*
@@ -49,19 +53,52 @@ models/
 *.pth
 *.ckpt
 *.safetensors
+*.bin
+*.h5
+*.pb
+*.onnx
+*.tflite
+
+# Training artifacts
+runs/
+wandb/
+mlruns/
+tensorboard_logs/
+*.tfevents.*
 
 # Logs
 logs/
 *.log
+*.log.*
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
 
 # Jupyter
 .ipynb_checkpoints/
+*.ipynb_checkpoints
 
 # Environment variables
 .env
 .env.local
+.env.*.local
 
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+.cache/
+
+# Large files (common ML data formats)
+*.hdf5
+*.h5
+*.parquet
+*.feather

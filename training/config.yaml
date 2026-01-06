@@ -1,21 +1,91 @@
 # Training Configuration
+# This file defines the structure for training configuration.
+# Replace placeholder keys with actual values when implementing the training pipeline.
 
-# Model settings
-# model_name: ""
-# model_path: ""
+# Model Configuration
+# Specify the base model identifier and any model-specific settings
+model:
+  # Base model identifier (e.g., model name or path)
+  base_model: null
+  
+  # Model architecture or variant if applicable
+  variant: null
+  
+  # Any model-specific configuration parameters
+  model_config: null
 
-# Training hyperparameters
-# learning_rate: 1e-5
-# batch_size: 4
-# num_epochs: 3
-# max_seq_length: 512
+# Data Configuration
+# Paths to training and validation datasets
+data:
+  # Path to training dataset file
+  train_path: null
+  
+  # Path to validation dataset file
+  val_path: null
+  
+  # Path to test dataset file (optional)
+  test_path: null
+  
+  # Data preprocessing options
+  preprocessing: null
 
-# Data paths
-# train_data: "data/splits/train.jsonl"
-# val_data: "data/splits/val.jsonl"
+# Training Hyperparameters
+# Learning rate, batch size, and other training parameters
+# Values will depend on chosen framework and model size
+training:
+  # Learning rate schedule configuration
+  learning_rate: null
+  
+  # Batch size settings
+  batch_size: null
+  
+  # Number of training epochs
+  num_epochs: null
+  
+  # Sequence length limits
+  max_sequence_length: null
+  
+  # Gradient accumulation steps (if applicable)
+  gradient_accumulation: null
+  
+  # Optimizer configuration
+  optimizer: null
+  
+  # Learning rate scheduler configuration
+  scheduler: null
 
-# Output
-# output_dir: "checkpoints/"
+# Output Configuration
+# Where to save checkpoints and training artifacts
+output:
+  # Directory for saving model checkpoints
+  checkpoint_dir: null
+  
+  # Checkpoint saving frequency
+  save_frequency: null
+  
+  # Number of checkpoints to keep
+  checkpoint_retention: null
+  
+  # Directory for training logs
+  log_dir: null
 
-# Add your framework-specific configuration here
+# Evaluation Configuration
+# Settings for model evaluation during training
+evaluation:
+  # Evaluation frequency during training
+  eval_frequency: null
+  
+  # Metrics to compute during evaluation
+  metrics: null
+  
+  # Evaluation dataset configuration
+  eval_config: null
 
+# Framework-Specific Configuration
+# Additional settings specific to the chosen fine-tuning framework
+framework:
+  # Framework name or identifier
+  name: null
+  
+  # Framework-specific parameters
+  parameters: null
