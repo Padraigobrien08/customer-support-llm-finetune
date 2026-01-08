@@ -1,6 +1,9 @@
 # Python dependencies for customer support LLM fine-tuning
-# Add your framework-specific packages here
 
+# Core dependencies
+pydantic>=2.0.0
+
+# Add your framework-specific packages here
 # Example (uncomment and modify as needed):
 # torch>=2.0.0
 # transformers>=4.30.0
