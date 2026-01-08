@@ -14,7 +14,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system. Let me connect you with someone who can provide you with accurate hours for your location. Would you like me to transfer you to a specialist?",
-    "timestamp": "2026-01-08T22:30:56.594057Z",
+    "timestamp": "2026-01-08T22:46:10.688779Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   },
   {
@@ -40,7 +40,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "No problem. I can help you locate your order using other information. Do you have the email address or phone number associated with the order? Alternatively, I can connect you with a specialist who has access to additional account lookup tools.",
-    "timestamp": "2026-01-08T22:30:56.594180Z",
+    "timestamp": "2026-01-08T22:46:10.688791Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   },
   {
@@ -58,7 +58,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?",
-    "timestamp": "2026-01-08T22:30:56.594187Z",
+    "timestamp": "2026-01-08T22:46:10.688796Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   },
   {
@@ -76,7 +76,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "I'd be happy to help you understand our return policy. However, return policies can vary based on several factors, and I want to make sure you get the most accurate information for your specific situation. Let me connect you with someone who can provide you with the complete and current policy details.",
-    "timestamp": "2026-01-08T22:30:56.594191Z",
+    "timestamp": "2026-01-08T22:46:10.688800Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   },
   {
@@ -94,7 +94,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?",
-    "timestamp": "2026-01-08T22:30:56.594194Z",
+    "timestamp": "2026-01-08T22:46:10.688803Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   },
   {
@@ -112,7 +112,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "I understand you'd like to check your account balance. For security and privacy reasons, I don't have access to your account information. I can connect you with our account services team who can verify your identity and provide you with that information. Would you like me to transfer you?",
-    "timestamp": "2026-01-08T22:30:56.594198Z",
+    "timestamp": "2026-01-08T22:46:10.688807Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   },
   {
@@ -130,7 +130,7 @@
     ],
     "model_output": "[MOCK] This is a mock response.",
     "ideal_response": "You're very welcome! I'm glad I could help. If you need anything else, please don't hesitate to reach out. Have a great day!",
-    "timestamp": "2026-01-08T22:30:56.594201Z",
+    "timestamp": "2026-01-08T22:46:10.689285Z",
     "provider_name": "MockProvider(response_template='This is a mock response....')"
   }
 ]

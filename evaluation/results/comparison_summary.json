@@ -1,0 +1,52 @@
+{
+  "current_file": "evaluation/results/latest_results.json",
+  "previous_file": "evaluation/results/previous.json",
+  "current_summary": {
+    "num_cases": 7,
+    "provider": "MockProvider(response_template='This is a mock response....')",
+    "timestamp": "2026-01-08T22:46:10.688779Z",
+    "categories": {
+      "information_request": 1,
+      "multi_turn_clarification": 1,
+      "problem_resolution": 1,
+      "policy_question": 1,
+      "emotional_support": 1,
+      "account_access": 1,
+      "simple_acknowledgment": 1
+    }
+  },
+  "previous_summary": {
+    "num_cases": 7,
+    "provider": "MockProvider(response_template='This is a mock response....')",
+    "timestamp": "2026-01-08T22:28:03.945645Z",
+    "categories": {
+      "information_request": 1,
+      "multi_turn_clarification": 1,
+      "problem_resolution": 1,
+      "policy_question": 1,
+      "emotional_support": 1,
+      "account_access": 1,
+      "simple_acknowledgment": 1
+    }
+  },
+  "comparison": {
+    "total_current": 7,
+    "total_previous": 7,
+    "changed_count": 1,
+    "changed": [
+      {
+        "test_case_id": "tc_001",
+        "category": "information_request",
+        "current_length": 31,
+        "previous_length": 27,
+        "current_preview": "[MOCK] This is a mock response.",
+        "previous_preview": "Modified output for testing",
+        "current_output": "[MOCK] This is a mock response.",
+        "previous_output": "Modified output for testing",
+        "changed": true
+      }
+    ],
+    "new": [],
+    "removed": []
+  }
+}

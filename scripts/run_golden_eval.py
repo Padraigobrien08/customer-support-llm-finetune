@@ -23,23 +23,47 @@ from csft.providers import MockProvider, Provider
 from csft.types import ChatMessage, TestCase
 
 
-def create_provider(provider_name: str) -> Provider:
+def create_provider(provider_name: str, **kwargs) -> Provider:
     """
     Create a provider instance based on name.
     
     Args:
-        provider_name: Name of the provider ('mock' for now)
+        provider_name: Name of the provider ('mock' or 'hf_local')
+        **kwargs: Provider-specific arguments (model_id, device, max_new_tokens for 'hf_local')
         
     Returns:
         Provider instance
         
     Raises:
-        ValueError: If provider name is not recognized
+        ValueError: If provider name is not recognized or required args missing
     """
     if provider_name == "mock":
         return MockProvider()
+    elif provider_name == "hf_local":
+        try:
+            from csft.providers.hf_local import HFLocalProvider
+        except ImportError:
+            raise ValueError(
+                "HuggingFace provider requires transformers and torch. "
+                "Install with: pip install transformers torch accelerate"
+            )
+        
+        model_id = kwargs.get("model_id")
+        if not model_id:
+            raise ValueError(
+                "hf_local provider requires --model-id. "
+                "Example: --provider hf_local --model-id gpt2"
+            )
+        
+        return HFLocalProvider(
+            model_id=model_id,
+            device=kwargs.get("device"),
+            dtype=kwargs.get("dtype"),
+            max_new_tokens=kwargs.get("max_new_tokens", 512)
+        )
     else:
-        raise ValueError(f"Unknown provider: {provider_name}. Available: mock")
+        available = "mock, hf_local"
+        raise ValueError(f"Unknown provider: {provider_name}. Available: {available}")
 
 
 def distill_guidelines_summary(guidelines_text: str) -> str:
@@ -129,6 +153,9 @@ def main():
 Examples:
   python scripts/run_golden_eval.py
   python scripts/run_golden_eval.py --provider mock --out evaluation/results/custom_results.json
+  python scripts/run_golden_eval.py --provider hf_local --model-id gpt2
+  python scripts/run_golden_eval.py --provider hf_local --model-id gpt2 --device cpu
+  python scripts/run_golden_eval.py --provider hf_local --model-id gpt2 --device mps --max-new-tokens 256
         """
     )
     
@@ -136,7 +163,28 @@ Examples:
         "--provider",
         type=str,
         default="mock",
-        help="Provider to use (default: mock)"
+        choices=["mock", "hf_local"],
+        help="Provider to use: 'mock' or 'hf_local' (default: mock)"
+    )
+    
+    parser.add_argument(
+        "--model-id",
+        type=str,
+        help="Model ID for hf_local provider (required when --provider is hf_local, e.g., 'gpt2', 'meta-llama/Llama-2-7b-chat-hf')"
+    )
+    
+    parser.add_argument(
+        "--device",
+        type=str,
+        choices=["cuda", "mps", "cpu"],
+        help="Device for hf_local provider (cuda, mps, or cpu; default: auto-detect)"
+    )
+    
+    parser.add_argument(
+        "--max-new-tokens",
+        type=int,
+        default=512,
+        help="Maximum new tokens to generate for hf_local provider (default: 512)"
     )
     
     parser.add_argument(
@@ -172,8 +220,20 @@ Examples:
     else:
         system_prompt = system_prompt_base
     
+    # Validate required arguments
+    if args.provider == "hf_local" and not args.model_id:
+        parser.error("--model-id is required when --provider is hf_local")
+    
     print(f"Creating provider: {args.provider}")
-    provider = create_provider(args.provider)
+    provider_kwargs = {}
+    if args.model_id:
+        provider_kwargs["model_id"] = args.model_id
+    if args.device:
+        provider_kwargs["device"] = args.device
+    if args.max_new_tokens:
+        provider_kwargs["max_new_tokens"] = args.max_new_tokens
+    
+    provider = create_provider(args.provider, **provider_kwargs)
     
     print(f"Running {len(test_cases)} test cases...")
     results = []

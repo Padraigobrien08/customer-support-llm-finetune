@@ -118,6 +118,10 @@ def compare_results(
                 "category": current_result.get("category", "unknown"),
                 "current_length": len(current_output),
                 "previous_length": len(previous_output),
+                "current_preview": current_output[:120] + ("..." if len(current_output) > 120 else ""),
+                "previous_preview": previous_output[:120] + ("..." if len(previous_output) > 120 else ""),
+                "current_output": current_output,
+                "previous_output": previous_output,
                 "changed": True
             })
     
@@ -164,7 +168,11 @@ def print_comparison(comparison: Dict[str, Any]) -> None:
             prev_len = change['previous_length']
             diff = curr_len - prev_len
             diff_str = f"+{diff}" if diff > 0 else str(diff)
+            prev_preview = change.get('previous_preview', '')
+            curr_preview = change.get('current_preview', '')
             print(f"    {test_id} ({cat}): {prev_len} → {curr_len} chars ({diff_str})")
+            print(f"      Previous: {prev_preview}")
+            print(f"      Current:  {curr_preview}")
 
 
 def load_test_cases(test_cases_path: str) -> List[Dict[str, Any]]:
@@ -349,6 +357,12 @@ Examples:
         help="Path to previous results file for comparison"
     )
     
+    parser.add_argument(
+        "--out-summary",
+        type=str,
+        help="Path to save JSON summary file (only used with --compare)"
+    )
+    
     args = parser.parse_args()
     
     # Resolve paths relative to project root
@@ -371,6 +385,27 @@ Examples:
             previous_results = load_results(compare_path)
             comparison = compare_results(current_results, previous_results)
             print_comparison(comparison)
+            
+            # Save summary if requested
+            if args.out_summary:
+                summary_path = project_root / args.out_summary
+                summary_path.parent.mkdir(parents=True, exist_ok=True)
+                
+                # Get previous summary for comparison
+                previous_summary = summarize_results(previous_results)
+                
+                summary_data = {
+                    "current_file": str(results_path.relative_to(project_root)),
+                    "previous_file": str(compare_path.relative_to(project_root)),
+                    "current_summary": summary,
+                    "previous_summary": previous_summary,
+                    "comparison": comparison
+                }
+                
+                with open(summary_path, 'w', encoding='utf-8') as f:
+                    json.dump(summary_data, f, indent=2, ensure_ascii=False)
+                
+                print(f"\nSummary saved to: {summary_path}")
         except FileNotFoundError as e:
             print(f"Error: Cannot compare - {e}")
             return
