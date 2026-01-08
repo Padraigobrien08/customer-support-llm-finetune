@@ -1,91 +1,58 @@
 # Training Configuration
-# This file defines the structure for training configuration.
-# Replace placeholder keys with actual values when implementing the training pipeline.
 
 # Model Configuration
-# Specify the base model identifier and any model-specific settings
 model:
-  # Base model identifier (e.g., model name or path)
-  base_model: null
-  
-  # Model architecture or variant if applicable
-  variant: null
-  
-  # Any model-specific configuration parameters
-  model_config: null
+  # HuggingFace model identifier (required)
+  model_id: null  # e.g., "gpt2", "meta-llama/Llama-2-7b-chat-hf"
 
 # Data Configuration
-# Paths to training and validation datasets
 data:
-  # Path to training dataset file
-  train_path: null
+  # Path to training dataset file (JSONL format)
+  train_file: "data/processed/train_seed.jsonl"
   
-  # Path to validation dataset file
-  val_path: null
+  # Path to validation dataset file (optional)
+  val_file: null
   
-  # Path to test dataset file (optional)
-  test_path: null
+  # Maximum sequence length for tokenization
+  max_seq_length: 512
+
+# LoRA Configuration (PEFT)
+lora:
+  # LoRA rank (controls number of trainable parameters)
+  r: 8
   
-  # Data preprocessing options
-  preprocessing: null
+  # LoRA alpha (scaling factor)
+  alpha: 16
+  
+  # LoRA dropout rate
+  dropout: 0.1
 
 # Training Hyperparameters
-# Learning rate, batch size, and other training parameters
-# Values will depend on chosen framework and model size
 training:
-  # Learning rate schedule configuration
-  learning_rate: null
+  # Per-device batch size
+  batch_size: 2
   
-  # Batch size settings
-  batch_size: null
+  # Gradient accumulation steps (effective batch size = batch_size * gradient_accumulation_steps)
+  gradient_accumulation_steps: 4
   
   # Number of training epochs
-  num_epochs: null
+  num_epochs: 3
   
-  # Sequence length limits
-  max_sequence_length: null
+  # Learning rate
+  learning_rate: 2e-4
   
-  # Gradient accumulation steps (if applicable)
-  gradient_accumulation: null
-  
-  # Optimizer configuration
-  optimizer: null
-  
-  # Learning rate scheduler configuration
-  scheduler: null
+  # Save checkpoint every N steps
+  save_steps: 50
 
 # Output Configuration
-# Where to save checkpoints and training artifacts
 output:
   # Directory for saving model checkpoints
-  checkpoint_dir: null
+  output_dir: "outputs/run_001"
   
-  # Checkpoint saving frequency
-  save_frequency: null
-  
-  # Number of checkpoints to keep
-  checkpoint_retention: null
-  
-  # Directory for training logs
-  log_dir: null
+  # Number of checkpoints to keep (oldest are deleted)
+  save_total_limit: 3
 
-# Evaluation Configuration
-# Settings for model evaluation during training
-evaluation:
-  # Evaluation frequency during training
-  eval_frequency: null
-  
-  # Metrics to compute during evaluation
-  metrics: null
-  
-  # Evaluation dataset configuration
-  eval_config: null
-
-# Framework-Specific Configuration
-# Additional settings specific to the chosen fine-tuning framework
+# Framework Options
 framework:
-  # Framework name or identifier
-  name: null
-  
-  # Framework-specific parameters
-  parameters: null
+  # Use TRL SFTTrainer instead of standard Trainer (requires trl package)
+  use_trl: false
