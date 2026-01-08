@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "customer-support-llm-finetune"
+version = "0.1.0"
+description = "A clean, framework-agnostic repository for fine-tuning language models for customer support applications"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = []
+
+[tool.setuptools]
+packages = ["csft"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.md", "*.yaml", "*.json"]
+
