@@ -18,6 +18,70 @@ sys.path.insert(0, str(project_root))
 from csft.io import load_jsonl, InvalidDataError, FileNotFoundError
 
 
+def load_taxonomy() -> dict[str, Any]:
+    """
+    Load taxonomy from YAML file.
+    
+    Returns:
+        Taxonomy dictionary with categories
+    """
+    taxonomy_path = project_root / "data" / "taxonomy.yaml"
+    if not taxonomy_path.exists():
+        return {}
+    
+    try:
+        import yaml
+        with open(taxonomy_path, 'r') as f:
+            taxonomy = yaml.safe_load(f)
+        return taxonomy or {}
+    except ImportError:
+        return {}
+    except Exception:
+        return {}
+
+
+def check_hard_claims(content: str) -> bool:
+    """
+    Check if content contains hard claims (specific hours, prices, etc.).
+    
+    Args:
+        content: Text content to check
+        
+    Returns:
+        True if hard claims detected, False otherwise
+    """
+    # Patterns that indicate hard claims
+    import re
+    
+    # Specific times/hours (e.g., "9am", "5:00 PM", "24 hours")
+    time_patterns = [
+        r'\d{1,2}\s*(am|pm|AM|PM)',
+        r'\d{1,2}:\d{2}\s*(am|pm|AM|PM)',
+        r'\d+\s*(hours?|days?|weeks?|months?)\s*(for|to|until)',
+    ]
+    
+    # Specific prices/amounts (e.g., "$50", "10%", "free")
+    price_patterns = [
+        r'\$\d+',
+        r'\d+\s*(percent|%)',
+        r'(free|no charge|no cost)',
+    ]
+    
+    # Specific policies (e.g., "30 days", "within 24 hours")
+    policy_patterns = [
+        r'(within|after|before)\s+\d+\s*(hours?|days?|weeks?)',
+        r'\d+\s*(day|hour|week|month)\s+(return|refund|policy)',
+    ]
+    
+    all_patterns = time_patterns + price_patterns + policy_patterns
+    
+    for pattern in all_patterns:
+        if re.search(pattern, content, re.IGNORECASE):
+            return True
+    
+    return False
+
+
 def validate_jsonl_format(data_path: Path) -> tuple[bool, dict[str, Any]]:
     """
     Validate JSONL format and structure.
@@ -49,6 +113,15 @@ def validate_jsonl_format(data_path: Path) -> tuple[bool, dict[str, Any]]:
         return False, {"error": f"Unexpected error loading file: {e}"}
     
     valid_roles = {"system", "user", "assistant"}
+    
+    # Load taxonomy for category validation
+    taxonomy = load_taxonomy()
+    valid_categories = set()
+    if taxonomy and "categories" in taxonomy:
+        valid_categories = {cat.get("name") for cat in taxonomy["categories"] if isinstance(cat, dict) and "name" in cat}
+    
+    # Required metadata keys
+    required_metadata_keys = {"source", "category"}
     
     for idx, record in enumerate(records):
         try:
@@ -127,11 +200,53 @@ def validate_jsonl_format(data_path: Path) -> tuple[bool, dict[str, Any]]:
                     stats["invalid_records"] += 1
                     continue
                 
-                # Check metadata
-                if "metadata" in record:
-                    stats["has_metadata"] += 1
+                # Validate metadata
+                if "metadata" not in record:
+                    stats["errors"].append(f"Record {idx}: missing 'metadata' field")
+                    stats["invalid_records"] += 1
+                    continue
                 
-                stats["valid_records"] += 1
+                metadata = record["metadata"]
+                if not isinstance(metadata, dict):
+                    stats["errors"].append(f"Record {idx}: 'metadata' must be a dict")
+                    stats["invalid_records"] += 1
+                    continue
+                
+                # Check required metadata keys
+                for key in required_metadata_keys:
+                    if key not in metadata:
+                        stats["errors"].append(f"Record {idx}: missing required metadata key '{key}'")
+                        stats["invalid_records"] += 1
+                        break
+                else:
+                    # Validate category if taxonomy is loaded
+                    if valid_categories:
+                        category = metadata.get("category")
+                        if category not in valid_categories:
+                            stats["errors"].append(f"Record {idx}: invalid category '{category}'. Valid categories: {sorted(valid_categories)}")
+                            stats["invalid_records"] += 1
+                            continue
+                    
+                    # Check for hard claims in assistant messages
+                    assistant_messages = [msg for msg in messages if msg.get("role") == "assistant"]
+                    has_hard_claim_error = False
+                    for assistant_msg in assistant_messages:
+                        assistant_content = assistant_msg.get("content", "")
+                        if check_hard_claims(assistant_content):
+                            # Check if metadata explicitly allows policy claims
+                            contains_policy_claims = metadata.get("contains_policy_claims", False)
+                            if not contains_policy_claims:
+                                stats["errors"].append(
+                                    f"Record {idx}: assistant message contains hard claims (specific hours/prices/policies). "
+                                    f"Set metadata.contains_policy_claims=true if intentional."
+                                )
+                                stats["invalid_records"] += 1
+                                has_hard_claim_error = True
+                                break
+                    
+                    if not has_hard_claim_error:
+                        stats["has_metadata"] += 1
+                        stats["valid_records"] += 1
                 
         except Exception as e:
             stats["errors"].append(f"Record {idx}: unexpected error - {e}")

@@ -1,0 +1,134 @@
+# Customer Support Taxonomy
+# Defines categories, escalation reasons, and tone guidelines for training data
+
+categories:
+  - name: information_request
+    description: "Customer asking for general information (hours, policies, procedures)"
+    examples:
+      - "What are your business hours?"
+      - "What's your return policy?"
+      - "How do I track my order?"
+  
+  - name: account_access
+    description: "Issues related to account login, password, or access"
+    examples:
+      - "I can't log into my account"
+      - "Please reset my password"
+      - "My account is locked"
+  
+  - name: order_inquiry
+    description: "Questions about orders (status, tracking, modifications)"
+    examples:
+      - "Where is my order?"
+      - "Can I cancel my order?"
+      - "I need to change my shipping address"
+  
+  - name: billing_payment
+    description: "Issues related to charges, refunds, payment methods"
+    examples:
+      - "I was charged twice"
+      - "How do I get a refund?"
+      - "My payment was declined"
+  
+  - name: product_issue
+    description: "Problems with products (damaged, defective, wrong item)"
+    examples:
+      - "The item I received is damaged"
+      - "I got the wrong product"
+      - "This doesn't work as described"
+  
+  - name: return_refund
+    description: "Requests for returns or refunds"
+    examples:
+      - "I want to return this item"
+      - "How do I process a return?"
+      - "When will I get my refund?"
+  
+  - name: technical_support
+    description: "Technical issues requiring troubleshooting"
+    examples:
+      - "The website isn't loading"
+      - "I can't complete checkout"
+      - "The app keeps crashing"
+  
+  - name: policy_clarification
+    description: "Questions about company policies, terms, or procedures"
+    examples:
+      - "What's your cancellation policy?"
+      - "Can you explain your warranty?"
+      - "What are your shipping options?"
+  
+  - name: complaint
+    description: "Customer complaints or dissatisfaction"
+    examples:
+      - "I'm very frustrated with this experience"
+      - "This is the third time this has happened"
+      - "Your service has been terrible"
+  
+  - name: general_inquiry
+    description: "General questions that don't fit other categories"
+    examples:
+      - "How do I contact customer service?"
+      - "Do you ship internationally?"
+      - "What payment methods do you accept?"
+
+escalation_reasons:
+  - name: account_specific_access
+    description: "Requires access to customer's account information"
+    example: "Need to check order history or account details"
+  
+  - name: policy_interpretation
+    description: "Complex policy questions requiring expert interpretation"
+    example: "Edge cases or exceptions to standard policies"
+  
+  - name: billing_dispute
+    description: "Billing issues requiring financial review"
+    example: "Disputed charges or complex refund scenarios"
+  
+  - name: technical_complexity
+    description: "Technical issues beyond standard troubleshooting"
+    example: "Requires specialized technical knowledge or system access"
+  
+  - name: sensitive_matter
+    description: "Sensitive situations requiring human judgment"
+    example: "Legal concerns, privacy issues, or emotional situations"
+  
+  - name: insufficient_information
+    description: "Cannot provide accurate answer without additional context"
+    example: "Missing information needed to resolve the issue"
+  
+  - name: customer_request
+    description: "Customer explicitly requests human assistance"
+    example: "Customer asks to speak with a person"
+
+tones:
+  - name: professional
+    description: "Formal, business-appropriate language"
+    characteristics:
+      - Uses proper grammar and complete sentences
+      - Avoids slang or overly casual language
+      - Maintains respectful distance
+  
+  - name: empathetic
+    description: "Shows understanding and acknowledges customer feelings"
+    characteristics:
+      - Acknowledges frustration or concern
+      - Uses phrases like "I understand" or "I'm sorry to hear"
+      - Validates customer's experience
+  
+  - name: concise
+    description: "Clear and to the point without unnecessary words"
+    characteristics:
+      - Gets to the solution quickly
+      - Avoids repetition
+      - Uses direct language when appropriate
+  
+  - name: warm
+    description: "Friendly and approachable while remaining professional"
+    characteristics:
+      - Uses friendly but not overly casual language
+      - Shows genuine care
+      - Maintains professional boundaries
+
+# Note: Responses can combine multiple tones (e.g., professional + empathetic)
+

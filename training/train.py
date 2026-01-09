@@ -42,7 +42,7 @@ def format_messages_simple(messages: list[dict[str, Any]], system_prompt: str | 
 
 
 def format_messages_with_template(
-    tokenizer: AutoTokenizer,
+    tokenizer: Any,  # AutoTokenizer - type hint deferred to avoid import-time dependency
     messages: list[dict[str, Any]],
     system_prompt: str | None = None
 ) -> str:
@@ -77,7 +77,7 @@ def format_messages_with_template(
 
 def tokenize_function(
     examples: dict[str, Any],
-    tokenizer: AutoTokenizer,
+    tokenizer: Any,  # AutoTokenizer - type hint deferred to avoid import-time dependency
     max_length: int = 512
 ) -> dict[str, Any]:
     """
@@ -207,7 +207,8 @@ def main():
         epilog="""
 Examples:
   python training/train.py --model_id gpt2
-  python training/train.py --model_id gpt2 --train_file data/processed/train_seed.jsonl --output_dir outputs/run_001
+  python training/train.py --model_id gpt2 --eval_file data/splits/val.jsonl
+  python training/train.py --model_id gpt2 --train_file data/splits/train.jsonl --eval_file data/splits/val.jsonl --output_dir outputs/run_001
         """
     )
     
@@ -221,8 +222,15 @@ Examples:
     parser.add_argument(
         "--train_file",
         type=str,
-        default="data/processed/train_seed.jsonl",
-        help="Path to training JSONL file (default: data/processed/train_seed.jsonl)"
+        default="data/splits/train.jsonl",
+        help="Path to training JSONL file (default: data/splits/train.jsonl)"
+    )
+    
+    parser.add_argument(
+        "--eval_file",
+        type=str,
+        default=None,
+        help="Path to validation JSONL file (default: None, set to data/splits/val.jsonl to enable evaluation)"
     )
     
     parser.add_argument(
@@ -296,6 +304,13 @@ Examples:
     )
     
     parser.add_argument(
+        "--eval_steps",
+        type=int,
+        default=None,
+        help="Evaluate every N steps (default: same as save_steps if eval_file provided)"
+    )
+    
+    parser.add_argument(
         "--use_trl",
         action="store_true",
         help="Use TRL SFTTrainer instead of standard Trainer"
@@ -306,14 +321,21 @@ Examples:
     # Resolve paths
     project_root = Path(__file__).parent.parent
     train_file = project_root / args.train_file
+    eval_file = project_root / args.eval_file if args.eval_file else None
     output_dir = project_root / args.output_dir
     
     if not train_file.exists():
         print(f"Error: Training file not found: {train_file}", file=sys.stderr)
         sys.exit(1)
     
+    if eval_file and not eval_file.exists():
+        print(f"Error: Evaluation file not found: {eval_file}", file=sys.stderr)
+        sys.exit(1)
+    
     print(f"Loading model: {args.model_id}")
     print(f"Training file: {train_file}")
+    if eval_file:
+        print(f"Evaluation file: {eval_file}")
     print(f"Output directory: {output_dir}")
     
     # Detect device (prefer MPS for Apple Silicon)
@@ -398,18 +420,35 @@ Examples:
     model = get_peft_model(model, lora_config)
     print_trainable_parameters(model)
     
-    # Load dataset
-    print(f"\nLoading dataset from: {train_file}")
-    dataset = load_dataset("json", data_files=str(train_file), split="train")
-    print(f"Loaded {len(dataset)} examples")
+    # Load training dataset
+    print(f"\nLoading training dataset from: {train_file}")
+    train_dataset = load_dataset("json", data_files=str(train_file), split="train")
+    print(f"Loaded {len(train_dataset)} training examples")
     
-    # Tokenize dataset
-    print("Tokenizing dataset...")
-    tokenized_dataset = dataset.map(
+    # Load evaluation dataset if provided
+    eval_dataset = None
+    if eval_file:
+        print(f"Loading evaluation dataset from: {eval_file}")
+        eval_dataset = load_dataset("json", data_files=str(eval_file), split="train")
+        print(f"Loaded {len(eval_dataset)} evaluation examples")
+    
+    # Tokenize datasets
+    print("Tokenizing training dataset...")
+    tokenized_train_dataset = train_dataset.map(
         lambda examples: tokenize_function(examples, tokenizer, args.max_seq_length),
         batched=True,
-        remove_columns=dataset.column_names
+        remove_columns=train_dataset.column_names
     )
+    
+    if eval_dataset:
+        print("Tokenizing evaluation dataset...")
+        tokenized_eval_dataset = eval_dataset.map(
+            lambda examples: tokenize_function(examples, tokenizer, args.max_seq_length),
+            batched=True,
+            remove_columns=eval_dataset.column_names
+        )
+    else:
+        tokenized_eval_dataset = None
     
     # Training arguments
     # Determine fp16 setting: use fp16 for CUDA, or MPS if supported; otherwise fp32
@@ -418,6 +457,11 @@ Examples:
         use_fp16 = True
     elif device == "mps" and mps_supports_fp16:
         use_fp16 = True
+    
+    # Set eval_steps if evaluation is enabled
+    eval_steps = args.eval_steps
+    if eval_steps is None and tokenized_eval_dataset is not None:
+        eval_steps = args.save_steps  # Default to same as save_steps
     
     training_args = TrainingArguments(
         output_dir=str(output_dir),
@@ -431,6 +475,10 @@ Examples:
         save_total_limit=3,  # Keep only last 3 checkpoints
         report_to="none",  # Disable wandb/tensorboard by default
         remove_unused_columns=False,
+        # Evaluation settings
+        eval_strategy="steps" if tokenized_eval_dataset is not None else "no",
+        eval_steps=eval_steps,
+        per_device_eval_batch_size=args.batch_size,  # Use same batch size for eval
     )
     
     # Data collator
@@ -445,7 +493,8 @@ Examples:
         trainer = SFTTrainer(
             model=model,
             args=training_args,
-            train_dataset=tokenized_dataset,
+            train_dataset=tokenized_train_dataset,
+            eval_dataset=tokenized_eval_dataset,
             tokenizer=tokenizer,
             data_collator=data_collator,
             max_seq_length=args.max_seq_length,
@@ -455,7 +504,8 @@ Examples:
         trainer = Trainer(
             model=model,
             args=training_args,
-            train_dataset=tokenized_dataset,
+            train_dataset=tokenized_train_dataset,
+            eval_dataset=tokenized_eval_dataset,
             data_collator=data_collator,
         )
     
