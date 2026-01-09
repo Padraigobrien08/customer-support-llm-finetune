@@ -24,22 +24,25 @@ class HFLocalProvider(Provider):
         model_id: str,
         device: str | None = None,
         dtype: str | None = None,
-        max_new_tokens: int = 512
+        max_new_tokens: int = 512,
+        adapter_path: str | None = None
     ):
         """
         Initialize HuggingFace local provider.
         
         Args:
             model_id: HuggingFace model identifier (e.g., "meta-llama/Llama-2-7b-chat-hf")
-            device: Device to use ("cuda", "cpu", or None for auto-detection)
+            device: Device to use ("cuda", "cpu", "mps", or None for auto-detection)
             dtype: Data type for model weights ("float16", "bfloat16", "float32", or None for auto)
             max_new_tokens: Maximum number of tokens to generate
+            adapter_path: Optional path to a PEFT LoRA adapter directory
             
         Raises:
             ProviderError: If model or tokenizer fails to load
         """
         self.model_id = model_id
         self.max_new_tokens = max_new_tokens
+        self.adapter_path = adapter_path
         
         # Auto-detect device if not specified
         if device is None:
@@ -79,13 +82,34 @@ class HFLocalProvider(Provider):
                 device_map="auto" if device == "cuda" else None,
                 trust_remote_code=True
             )
-            if device == "cpu":
+            if device == "cpu" or device == "mps":
                 self.model = self.model.to(device)
             self.model.eval()  # Set to evaluation mode
         except Exception as e:
             raise ProviderError(
                 f"Failed to load model '{model_id}': {str(e)}"
             ) from e
+        
+        # Load LoRA adapter if provided
+        if adapter_path:
+            try:
+                from peft import PeftModel
+                from pathlib import Path
+                
+                adapter_full_path = Path(adapter_path)
+                if not adapter_full_path.exists():
+                    raise ProviderError(f"Adapter directory not found: {adapter_full_path}")
+                
+                print(f"Loading LoRA adapter from: {adapter_full_path}", flush=True)
+                self.model = PeftModel.from_pretrained(self.model, str(adapter_full_path))
+                self.model.eval()  # Ensure eval mode after loading adapter
+                print("✓ Adapter loaded", flush=True)
+            except ImportError:
+                raise ProviderError(
+                    "PEFT is required to load adapters. Install with: pip install peft"
+                )
+            except Exception as e:
+                raise ProviderError(f"Failed to load adapter: {str(e)}") from e
         
         # Check if tokenizer supports chat template
         self.supports_chat_template = hasattr(self.tokenizer, "apply_chat_template") and \
@@ -241,5 +265,6 @@ class HFLocalProvider(Provider):
         )
     
     def __repr__(self) -> str:
-        return f"HFLocalProvider(model_id='{self.model_id}', device='{self.device}', dtype='{self.dtype}')"
+        adapter_info = f", adapter_path='{self.adapter_path}'" if self.adapter_path else ""
+        return f"HFLocalProvider(model_id='{self.model_id}', device='{self.device}', dtype='{self.dtype}'{adapter_info})"
 

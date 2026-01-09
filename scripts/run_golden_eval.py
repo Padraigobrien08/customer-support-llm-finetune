@@ -56,24 +56,10 @@ def create_provider(provider_name: str, **kwargs) -> Provider:
                 "Example: --provider hf_local --model-id gpt2"
             )
         
-        provider = HFLocalProvider(
-            model_id=model_id,
-            device=kwargs.get("device"),
-            dtype=kwargs.get("dtype"),
-            max_new_tokens=kwargs.get("max_new_tokens", 512)
-        )
-        
-        # Load LoRA adapter if provided
+        # Resolve adapter path if provided
         adapter_dir = kwargs.get("adapter_dir")
+        adapter_path = None
         if adapter_dir:
-            try:
-                from peft import PeftModel
-            except ImportError:
-                raise ValueError(
-                    "PEFT is required to load adapters. "
-                    "Install with: pip install peft"
-                )
-            
             adapter_path = Path(adapter_dir)
             if not adapter_path.is_absolute():
                 adapter_path = project_root / adapter_path
@@ -81,11 +67,15 @@ def create_provider(provider_name: str, **kwargs) -> Provider:
             if not adapter_path.exists():
                 raise ValueError(f"Adapter directory not found: {adapter_path}")
             
-            print(f"Loading LoRA adapter from: {adapter_path}")
-            # Load adapter onto the base model
-            provider.model = PeftModel.from_pretrained(provider.model, str(adapter_path))
-            provider.model.eval()
-            print("✓ Adapter loaded")
+            adapter_path = str(adapter_path)
+        
+        provider = HFLocalProvider(
+            model_id=model_id,
+            device=kwargs.get("device"),
+            dtype=kwargs.get("dtype"),
+            max_new_tokens=kwargs.get("max_new_tokens", 512),
+            adapter_path=adapter_path
+        )
         
         return provider
     else:

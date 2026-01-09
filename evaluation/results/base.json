@@ -1,0 +1,730 @@
+[
+  {
+    "test_case_id": "tc_001",
+    "category": "information_request",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are your business hours?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system. Let me connect you with someone who can provide you with accurate hours for your location. Would you like me to transfer you to a specialist?",
+    "timestamp": "2026-01-09T22:04:26.033037Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_002",
+    "category": "information_request",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Do you have a store near me?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you find a store location. To provide you with the most accurate information, could you tell me what city or area you're looking in? Alternatively, I can connect you with our locations team who has access to our complete store directory.",
+    "timestamp": "2026-01-09T22:04:26.033046Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_003",
+    "category": "information_request",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What payment methods do you accept?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details.",
+    "timestamp": "2026-01-09T22:04:26.033052Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_004",
+    "category": "account_access",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't log into my account"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand you're having trouble accessing your account. To help resolve this, I'll need to connect you with our account security team who can verify your identity and assist with account access. Would you like me to transfer you now?",
+    "timestamp": "2026-01-09T22:04:26.033056Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_005",
+    "category": "account_access",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you check my account balance?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand you'd like to check your account balance. For security and privacy reasons, I don't have access to your account information. I can connect you with our account services team who can verify your identity and provide you with that information. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033059Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_006",
+    "category": "account_access",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My account was hacked"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue.",
+    "timestamp": "2026-01-09T22:04:26.033063Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_007",
+    "category": "account_access",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I forgot my password"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033066Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_008",
+    "category": "order_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Where is my order?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information.",
+    "timestamp": "2026-01-09T22:04:26.033073Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_009",
+    "category": "order_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I need help with my order"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with your order. To better assist you, could you please provide your order number?"
+      },
+      {
+        "role": "user",
+        "content": "I don't have it"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "No problem. I can help you locate your order using other information. Do you have the email address or phone number associated with the order? Alternatively, I can connect you with a specialist who has access to additional account lookup tools.",
+    "timestamp": "2026-01-09T22:04:26.033078Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_010",
+    "category": "order_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I cancel my order?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with canceling your order. To determine if cancellation is possible, I'll need to check your order status. Could you provide your order number? If you don't have it, I can connect you with our order team who can assist you.",
+    "timestamp": "2026-01-09T22:04:26.033081Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_011",
+    "category": "order_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I need to change my shipping address"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033084Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_012",
+    "category": "billing_payment",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged twice"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry to hear about the duplicate charge. This is something our billing team needs to investigate and resolve. Let me connect you with them right away so they can review your account and process any necessary refunds.",
+    "timestamp": "2026-01-09T22:04:26.033087Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_013",
+    "category": "billing_payment",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged for something I didn't order"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now.",
+    "timestamp": "2026-01-09T22:04:26.033090Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_014",
+    "category": "billing_payment",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My payment was declined"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with the payment issue. To better understand what happened, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist.",
+    "timestamp": "2026-01-09T22:04:26.033093Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_015",
+    "category": "billing_payment",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "When will I get my refund?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033095Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_016",
+    "category": "product_issue",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The item I received is damaged"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?",
+    "timestamp": "2026-01-09T22:04:26.033098Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_017",
+    "category": "product_issue",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I got the wrong product"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry you received the wrong item. To resolve this, I'll need to connect you with our order support team who can verify your order details and arrange for the correct item. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033101Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_018",
+    "category": "product_issue",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "This doesn't work as described"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry the product isn't working as expected. To better understand the issue and find the right solution, could you describe what's happening? For example, is it not functioning at all, or is it behaving differently than expected?",
+    "timestamp": "2026-01-09T22:04:26.033104Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_019",
+    "category": "product_issue",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The product is missing parts"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry to hear that parts are missing from your order. To help resolve this, I'll need to connect you with our product support team who can verify your order and arrange to send the missing parts. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033107Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_020",
+    "category": "return_refund",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to return this item"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you with a return. To process your return, I'll need to connect you with our returns team who can access your order details and guide you through the return process. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033111Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_021",
+    "category": "return_refund",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I process a return?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with the return process. To provide you with the most accurate steps for your specific situation, could you tell me when you received the item? This will help determine the best process or connect you with the right specialist.",
+    "timestamp": "2026-01-09T22:04:26.033114Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_022",
+    "category": "return_refund",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I return this after 30 days?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details.",
+    "timestamp": "2026-01-09T22:04:26.033117Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_023",
+    "category": "technical_support",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The website isn't loading"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?",
+    "timestamp": "2026-01-09T22:04:26.033120Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_024",
+    "category": "technical_support",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't complete checkout"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?",
+    "timestamp": "2026-01-09T22:04:26.033123Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_025",
+    "category": "technical_support",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The app keeps crashing"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?",
+    "timestamp": "2026-01-09T22:04:26.033125Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_026",
+    "category": "technical_support",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm getting an error code"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with that error. To better assist you, could you share the specific error code or message you're seeing? This will help me determine the best next steps or connect you with the right technical specialist.",
+    "timestamp": "2026-01-09T22:04:26.033128Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_027",
+    "category": "policy_clarification",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's your return policy?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you understand our return policy. However, return policies can vary based on several factors, and I want to make sure you get the most accurate information for your specific situation. Let me connect you with someone who can provide you with the complete and current policy details.",
+    "timestamp": "2026-01-09T22:04:26.033131Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_028",
+    "category": "policy_clarification",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's your cancellation policy?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with cancellation information. Cancellation policies can vary depending on the type of service or product. To ensure you receive the most accurate and relevant information, let me connect you with a policy specialist who can provide complete details.",
+    "timestamp": "2026-01-09T22:04:26.033134Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_029",
+    "category": "policy_clarification",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you explain your warranty?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details.",
+    "timestamp": "2026-01-09T22:04:26.033137Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_030",
+    "category": "policy_clarification",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are your shipping options?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with shipping information. Shipping options can vary based on your location and the items you're ordering. To provide you with the most accurate options and rates, could you tell me your general location or zip code?",
+    "timestamp": "2026-01-09T22:04:26.033140Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_031",
+    "category": "complaint",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "This is the third time I've had this problem and I'm really frustrated"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?",
+    "timestamp": "2026-01-09T22:04:26.033142Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_032",
+    "category": "complaint",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Your service has been terrible"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this.",
+    "timestamp": "2026-01-09T22:04:26.033145Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_033",
+    "category": "complaint",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to speak to a manager"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now.",
+    "timestamp": "2026-01-09T22:04:26.033148Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_034",
+    "category": "complaint",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm very disappointed with my experience"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'm sorry to hear about your disappointment. I want to help make this right. To better understand how we can address your concerns, could you share more details about what happened? This will help me connect you with the right person who can help resolve this.",
+    "timestamp": "2026-01-09T22:04:26.033151Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_035",
+    "category": "general_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I contact customer service?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist.",
+    "timestamp": "2026-01-09T22:04:26.033154Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_036",
+    "category": "general_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Do you ship internationally?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with international shipping information. Shipping options and policies can vary by destination and product type. To provide you with accurate details, could you tell me which country you're shipping to?",
+    "timestamp": "2026-01-09T22:04:26.033157Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_037",
+    "category": "general_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What services do you offer?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services.",
+    "timestamp": "2026-01-09T22:04:26.033159Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_038",
+    "category": "general_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Are you open on holidays?"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I'd like to help you with our holiday hours. Operating hours can vary by location and specific holidays. To provide you with accurate information, could you tell me which holiday you're asking about, or would you prefer I connect you with someone who has access to our complete holiday schedule?",
+    "timestamp": "2026-01-09T22:04:26.033162Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_039",
+    "category": "general_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Thank you for your help"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "You're very welcome! I'm glad I could help. If you need anything else, please don't hesitate to reach out. Have a great day!",
+    "timestamp": "2026-01-09T22:04:26.033165Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  },
+  {
+    "test_case_id": "tc_040",
+    "category": "order_inquiry",
+    "input_messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My order hasn't arrived yet"
+      }
+    ],
+    "model_output": "[MOCK] This is a mock response.",
+    "ideal_response": "I understand your concern about your order not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our order support team who can locate it using other information and check the delivery status.",
+    "timestamp": "2026-01-09T22:04:26.033167Z",
+    "provider_name": "MockProvider(response_template='This is a mock response....')"
+  }
+]
