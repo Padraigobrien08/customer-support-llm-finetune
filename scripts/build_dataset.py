@@ -2,7 +2,7 @@
 """
 Build final dataset from raw data sources.
 
-Merges manual and synthetic cases, deduplicates, and creates train/val/test splits.
+Merges manual and synthetic cases, validates, deduplicates, and creates train/val/test splits.
 """
 
 import argparse
@@ -20,86 +20,238 @@ sys.path.insert(0, str(project_root))
 from csft.io import load_jsonl, save_jsonl
 
 
-def hash_user_message(user_message: str, category: str) -> str:
+def load_taxonomy() -> dict[str, Any]:
+    """Load taxonomy from YAML file."""
+    taxonomy_path = project_root / "data" / "taxonomy.yaml"
+    if not taxonomy_path.exists():
+        return {}
+    
+    try:
+        import yaml
+        with open(taxonomy_path, 'r') as f:
+            taxonomy = yaml.safe_load(f)
+        return taxonomy or {}
+    except ImportError:
+        print("Warning: PyYAML not installed, skipping taxonomy validation", file=sys.stderr)
+        return {}
+    except Exception as e:
+        print(f"Warning: Error loading taxonomy: {e}", file=sys.stderr)
+        return {}
+
+
+def validate_case(case: dict[str, Any], line_num: int, taxonomy: dict[str, Any]) -> tuple[bool, str]:
     """
-    Create a stable hash of user message + category for deduplication.
+    Validate a single case against schema and taxonomy.
     
     Args:
-        user_message: User message text
+        case: Case dictionary
+        line_num: Line number for error reporting
+        taxonomy: Taxonomy dictionary
+        
+    Returns:
+        Tuple of (is_valid, error_message)
+    """
+    # Check required top-level keys
+    if "messages" not in case:
+        return False, f"Line {line_num}: missing 'messages' field"
+    
+    if "metadata" not in case:
+        return False, f"Line {line_num}: missing 'metadata' field"
+    
+    # Validate messages
+    messages = case["messages"]
+    if not isinstance(messages, list):
+        return False, f"Line {line_num}: 'messages' must be a list"
+    
+    if len(messages) == 0:
+        return False, f"Line {line_num}: 'messages' list is empty"
+    
+    # Check for at least one user and one assistant message
+    has_user = False
+    has_assistant = False
+    valid_roles = {"system", "user", "assistant"}
+    
+    for msg in messages:
+        if not isinstance(msg, dict):
+            return False, f"Line {line_num}: message must be a dict"
+        
+        if "role" not in msg or "content" not in msg:
+            return False, f"Line {line_num}: message missing 'role' or 'content'"
+        
+        role = msg["role"]
+        if role not in valid_roles:
+            return False, f"Line {line_num}: invalid role '{role}'"
+        
+        if not isinstance(msg["content"], str) or not msg["content"].strip():
+            return False, f"Line {line_num}: message content must be non-empty string"
+        
+        if role == "user":
+            has_user = True
+        if role == "assistant":
+            has_assistant = True
+    
+    if not has_user:
+        return False, f"Line {line_num}: missing 'user' message"
+    
+    if not has_assistant:
+        return False, f"Line {line_num}: missing 'assistant' message"
+    
+    # Validate metadata
+    metadata = case["metadata"]
+    if not isinstance(metadata, dict):
+        return False, f"Line {line_num}: 'metadata' must be a dict"
+    
+    # Required metadata keys
+    required_keys = {"source", "category", "escalation", "difficulty", "contains_policy_claims", "test_case_id"}
+    for key in required_keys:
+        if key not in metadata:
+            return False, f"Line {line_num}: missing required metadata key '{key}'"
+    
+    # Validate source
+    source = metadata.get("source")
+    if source not in ["manual", "synthetic", "zendesk"]:
+        return False, f"Line {line_num}: invalid source '{source}'. Must be one of: manual, synthetic, zendesk"
+    
+    # Validate category
+    category = metadata.get("category")
+    if taxonomy and "categories" in taxonomy:
+        valid_categories = {cat.get("name") for cat in taxonomy["categories"] if isinstance(cat, dict) and "name" in cat}
+        if valid_categories and category not in valid_categories:
+            return False, f"Line {line_num}: invalid category '{category}'. Valid categories: {sorted(valid_categories)}"
+    
+    # Validate escalation (boolean)
+    escalation = metadata.get("escalation")
+    if not isinstance(escalation, bool):
+        return False, f"Line {line_num}: 'escalation' must be boolean (true/false)"
+    
+    # Validate difficulty (1-3)
+    difficulty = metadata.get("difficulty")
+    if not isinstance(difficulty, int) or difficulty < 1 or difficulty > 3:
+        return False, f"Line {line_num}: 'difficulty' must be integer between 1 and 3"
+    
+    # Validate contains_policy_claims (boolean)
+    contains_policy_claims = metadata.get("contains_policy_claims")
+    if not isinstance(contains_policy_claims, bool):
+        return False, f"Line {line_num}: 'contains_policy_claims' must be boolean (true/false)"
+    
+    # Validate test_case_id (string)
+    test_case_id = metadata.get("test_case_id")
+    if not isinstance(test_case_id, str) or not test_case_id.strip():
+        return False, f"Line {line_num}: 'test_case_id' must be non-empty string"
+    
+    return True, ""
+
+
+def hash_user_message(user_messages: list[str], category: str) -> str:
+    """
+    Create a stable hash of concatenated user messages + category for deduplication.
+    
+    Args:
+        user_messages: List of user message texts
         category: Category string
         
     Returns:
         Hexadecimal hash string
     """
-    combined = f"{user_message}|{category}"
+    # Concatenate all user messages
+    combined_user_text = " ".join(user_messages)
+    combined = f"{combined_user_text}|{category}"
     return hashlib.md5(combined.encode('utf-8')).hexdigest()
 
 
-def extract_user_message(messages: list[dict[str, Any]]) -> str:
+def extract_user_messages(messages: list[dict[str, Any]]) -> list[str]:
     """
-    Extract the first user message from messages list.
+    Extract all user messages from messages list.
     
     Args:
         messages: List of message dictionaries
         
     Returns:
-        User message content, or empty string if not found
+        List of user message contents
     """
+    user_messages = []
     for msg in messages:
         if msg.get("role") == "user":
-            return msg.get("content", "")
-    return ""
+            user_messages.append(msg.get("content", ""))
+    return user_messages
 
 
 def merge_and_deduplicate(
     manual_path: Path,
     synthetic_path: Path,
-    seed: int | None = None
-) -> list[dict[str, Any]]:
+    allow_missing_synthetic: bool = False,
+    taxonomy: dict[str, Any] = None
+) -> tuple[list[dict[str, Any]], list[str]]:
     """
-    Load, merge, and deduplicate cases from manual and synthetic sources.
+    Load, validate, merge, and deduplicate cases from manual and synthetic sources.
     
     Args:
         manual_path: Path to manual cases JSONL
         synthetic_path: Path to synthetic cases JSONL
-        seed: Random seed (not used but kept for consistency)
+        allow_missing_synthetic: If True, don't error if synthetic file is missing
+        taxonomy: Taxonomy dictionary for validation
         
     Returns:
-        List of deduplicated cases
+        Tuple of (deduplicated_cases, validation_errors)
     """
     all_cases = []
     seen_hashes = set()
+    validation_errors = []
     
     # Load manual cases
     if manual_path.exists():
         print(f"Loading manual cases from: {manual_path}")
-        manual_cases = load_jsonl(str(manual_path))
-        print(f"  Loaded {len(manual_cases)} manual cases")
-        all_cases.extend(manual_cases)
+        try:
+            manual_cases = load_jsonl(str(manual_path))
+            print(f"  Loaded {len(manual_cases)} manual cases")
+            
+            # Validate each case
+            for idx, case in enumerate(manual_cases, 1):
+                is_valid, error = validate_case(case, idx, taxonomy or {})
+                if not is_valid:
+                    validation_errors.append(error)
+                else:
+                    all_cases.append(case)
+        except Exception as e:
+            validation_errors.append(f"Error loading manual cases: {e}")
     else:
         print(f"Warning: Manual cases file not found: {manual_path}")
-        manual_cases = []
     
     # Load synthetic cases
     if synthetic_path.exists():
         print(f"Loading synthetic cases from: {synthetic_path}")
-        synthetic_cases = load_jsonl(str(synthetic_path))
-        print(f"  Loaded {len(synthetic_cases)} synthetic cases")
-        all_cases.extend(synthetic_cases)
+        try:
+            synthetic_cases = load_jsonl(str(synthetic_path))
+            print(f"  Loaded {len(synthetic_cases)} synthetic cases")
+            
+            # Validate each case
+            for idx, case in enumerate(synthetic_cases, 1):
+                is_valid, error = validate_case(case, idx, taxonomy or {})
+                if not is_valid:
+                    validation_errors.append(error)
+                else:
+                    all_cases.append(case)
+        except Exception as e:
+            validation_errors.append(f"Error loading synthetic cases: {e}")
     else:
-        print(f"Warning: Synthetic cases file not found: {synthetic_path}")
-        synthetic_cases = []
+        if not allow_missing_synthetic:
+            validation_errors.append(f"Error: Synthetic cases file not found: {synthetic_path}")
+        else:
+            print(f"Warning: Synthetic cases file not found: {synthetic_path} (allowed)")
+    
+    if validation_errors:
+        return [], validation_errors
     
     print(f"\nTotal cases before deduplication: {len(all_cases)}")
     
-    # Deduplicate by user message + category hash
+    # Deduplicate by user messages + category hash
     deduplicated = []
     duplicates = 0
     
     for case in all_cases:
-        user_msg = extract_user_message(case.get("messages", []))
+        user_messages = extract_user_messages(case.get("messages", []))
         category = case.get("metadata", {}).get("category", "unknown")
-        case_hash = hash_user_message(user_msg, category)
+        case_hash = hash_user_message(user_messages, category)
         
         if case_hash not in seen_hashes:
             seen_hashes.add(case_hash)
@@ -110,7 +262,7 @@ def merge_and_deduplicate(
     print(f"Removed {duplicates} duplicate cases")
     print(f"Total cases after deduplication: {len(deduplicated)}")
     
-    return deduplicated
+    return deduplicated, []
 
 
 def stratify_by_category(cases: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
@@ -198,16 +350,16 @@ def main():
         epilog="""
 Examples:
   python scripts/build_dataset.py
-  python scripts/build_dataset.py --seed 42 --train_frac 0.8 --val_frac 0.1
-  python scripts/build_dataset.py --seed 42 --out_dir data/processed
+  python scripts/build_dataset.py --seed 7 --train_frac 0.8 --val_frac 0.1
+  python scripts/build_dataset.py --seed 7 --allow_missing_synthetic
         """
     )
     
     parser.add_argument(
         "--seed",
         type=int,
-        default=42,
-        help="Random seed for reproducible splits (default: 42)"
+        default=7,
+        help="Random seed for reproducible splits (default: 7)"
     )
     
     parser.add_argument(
@@ -227,8 +379,14 @@ Examples:
     parser.add_argument(
         "--out_dir",
         type=str,
-        default="data/processed",
-        help="Output directory for processed data (default: data/processed)"
+        default="data",
+        help="Output directory base (default: data)"
+    )
+    
+    parser.add_argument(
+        "--allow_missing_synthetic",
+        action="store_true",
+        help="Allow missing synthetic cases file (default: False)"
     )
     
     args = parser.parse_args()
@@ -242,11 +400,15 @@ Examples:
         print("Error: train_frac + val_frac must be less than 1.0", file=sys.stderr)
         sys.exit(1)
     
+    # Load taxonomy
+    taxonomy = load_taxonomy()
+    
     # Resolve paths
     manual_path = project_root / "data" / "raw" / "manual_cases.jsonl"
     synthetic_path = project_root / "data" / "raw" / "synthetic_cases.jsonl"
     out_dir = project_root / args.out_dir
-    splits_dir = project_root / "data" / "splits"
+    processed_dir = out_dir / "processed"
+    splits_dir = out_dir / "splits"
     
     # Merge and deduplicate
     print("=" * 70)
@@ -254,16 +416,29 @@ Examples:
     print("=" * 70)
     print()
     
-    all_cases = merge_and_deduplicate(manual_path, synthetic_path, args.seed)
+    all_cases, validation_errors = merge_and_deduplicate(
+        manual_path,
+        synthetic_path,
+        allow_missing_synthetic=args.allow_missing_synthetic,
+        taxonomy=taxonomy
+    )
+    
+    if validation_errors:
+        print("\nValidation errors:", file=sys.stderr)
+        for error in validation_errors[:10]:  # Show first 10 errors
+            print(f"  {error}", file=sys.stderr)
+        if len(validation_errors) > 10:
+            print(f"  ... and {len(validation_errors) - 10} more errors", file=sys.stderr)
+        sys.exit(1)
     
     if len(all_cases) == 0:
         print("Error: No cases found after merging", file=sys.stderr)
         sys.exit(1)
     
     # Save merged dataset
-    all_path = out_dir / "all.jsonl"
+    all_path = processed_dir / "all.jsonl"
     print(f"\nSaving merged dataset to: {all_path}")
-    out_dir.mkdir(parents=True, exist_ok=True)
+    processed_dir.mkdir(parents=True, exist_ok=True)
     save_jsonl(all_cases, all_path)
     print(f"✓ Saved {len(all_cases)} cases")
     
@@ -307,4 +482,3 @@ Examples:
 
 if __name__ == "__main__":
     main()
-

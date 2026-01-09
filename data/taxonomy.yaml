@@ -1,134 +1,118 @@
-# Customer Support Taxonomy
-# Defines categories, escalation reasons, and tone guidelines for training data
+# Customer Support Taxonomy - Data v1 (breadth-first)
+# Defines categories, escalation reasons, sources, and difficulty scale
 
 categories:
-  - name: information_request
-    description: "Customer asking for general information (hours, policies, procedures)"
-    examples:
-      - "What are your business hours?"
-      - "What's your return policy?"
-      - "How do I track my order?"
-  
   - name: account_access
-    description: "Issues related to account login, password, or access"
+    description: "Issues related to account login, password, authentication, or access"
     examples:
       - "I can't log into my account"
       - "Please reset my password"
       - "My account is locked"
+      - "I forgot my username"
   
-  - name: order_inquiry
-    description: "Questions about orders (status, tracking, modifications)"
-    examples:
-      - "Where is my order?"
-      - "Can I cancel my order?"
-      - "I need to change my shipping address"
-  
-  - name: billing_payment
-    description: "Issues related to charges, refunds, payment methods"
+  - name: billing_payments
+    description: "Issues related to charges, payments, invoices, or payment methods"
     examples:
       - "I was charged twice"
-      - "How do I get a refund?"
       - "My payment was declined"
+      - "How do I update my payment method?"
+      - "I see an unexpected charge"
   
-  - name: product_issue
-    description: "Problems with products (damaged, defective, wrong item)"
+  - name: refunds_cancellations
+    description: "Requests for refunds, cancellations, or order reversals"
     examples:
-      - "The item I received is damaged"
-      - "I got the wrong product"
-      - "This doesn't work as described"
+      - "I want to cancel my order"
+      - "How do I get a refund?"
+      - "When will I receive my refund?"
+      - "I need to cancel my subscription"
   
-  - name: return_refund
-    description: "Requests for returns or refunds"
+  - name: shipping_delivery
+    description: "Questions about shipping, delivery, tracking, or address changes"
     examples:
-      - "I want to return this item"
-      - "How do I process a return?"
-      - "When will I get my refund?"
+      - "Where is my order?"
+      - "Can I change my shipping address?"
+      - "How long does shipping take?"
+      - "My package hasn't arrived"
   
-  - name: technical_support
-    description: "Technical issues requiring troubleshooting"
+  - name: product_usage_howto
+    description: "Questions about how to use products, features, or services"
+    examples:
+      - "How do I set up this product?"
+      - "Can you explain how this feature works?"
+      - "I need help using this"
+      - "What are the steps to activate this?"
+  
+  - name: technical_issue_bug
+    description: "Technical problems, bugs, errors, or system malfunctions"
     examples:
       - "The website isn't loading"
-      - "I can't complete checkout"
+      - "I'm getting an error message"
       - "The app keeps crashing"
+      - "Something isn't working correctly"
   
-  - name: policy_clarification
-    description: "Questions about company policies, terms, or procedures"
+  - name: subscription_plan_changes
+    description: "Questions about subscription plans, upgrades, downgrades, or plan details"
     examples:
-      - "What's your cancellation policy?"
-      - "Can you explain your warranty?"
-      - "What are your shipping options?"
+      - "How do I upgrade my plan?"
+      - "What's included in my subscription?"
+      - "Can I change my plan?"
+      - "When does my subscription renew?"
   
-  - name: complaint
-    description: "Customer complaints or dissatisfaction"
+  - name: security_privacy
+    description: "Security concerns, privacy questions, or account security issues"
+    examples:
+      - "I think my account was hacked"
+      - "How do I enable two-factor authentication?"
+      - "I received a suspicious email"
+      - "Can you explain your privacy policy?"
+  
+  - name: complaints_feedback
+    description: "Customer complaints, negative feedback, or dissatisfaction"
     examples:
       - "I'm very frustrated with this experience"
       - "This is the third time this has happened"
       - "Your service has been terrible"
+      - "I'm really disappointed"
   
-  - name: general_inquiry
+  - name: general_information
     description: "General questions that don't fit other categories"
     examples:
+      - "What are your business hours?"
       - "How do I contact customer service?"
       - "Do you ship internationally?"
       - "What payment methods do you accept?"
 
 escalation_reasons:
-  - name: account_specific_access
-    description: "Requires access to customer's account information"
-    example: "Need to check order history or account details"
+  - name: missing_policy_info
+    description: "Cannot provide accurate answer without policy information"
+    example: "Need access to current policies, terms, or procedures"
   
-  - name: policy_interpretation
-    description: "Complex policy questions requiring expert interpretation"
-    example: "Edge cases or exceptions to standard policies"
+  - name: account_specific_action_required
+    description: "Requires access to customer's account information or account-specific actions"
+    example: "Need to check order history, account details, or perform account actions"
   
-  - name: billing_dispute
-    description: "Billing issues requiring financial review"
-    example: "Disputed charges or complex refund scenarios"
+  - name: security_sensitive
+    description: "Security-sensitive situations requiring specialized handling"
+    example: "Account security issues, suspicious activity, or authentication problems"
   
-  - name: technical_complexity
-    description: "Technical issues beyond standard troubleshooting"
-    example: "Requires specialized technical knowledge or system access"
+  - name: legal_compliance
+    description: "Legal or compliance matters requiring expert review"
+    example: "Legal questions, regulatory compliance, or potential liability issues"
   
-  - name: sensitive_matter
-    description: "Sensitive situations requiring human judgment"
-    example: "Legal concerns, privacy issues, or emotional situations"
+  - name: payment_dispute
+    description: "Billing disputes or payment issues requiring financial review"
+    example: "Disputed charges, refund requests, or complex payment scenarios"
   
-  - name: insufficient_information
-    description: "Cannot provide accurate answer without additional context"
-    example: "Missing information needed to resolve the issue"
-  
-  - name: customer_request
-    description: "Customer explicitly requests human assistance"
-    example: "Customer asks to speak with a person"
+  - name: unclear_request
+    description: "Cannot provide accurate answer without additional clarification"
+    example: "Missing information needed to understand or resolve the request"
 
-tones:
-  - name: professional
-    description: "Formal, business-appropriate language"
-    characteristics:
-      - Uses proper grammar and complete sentences
-      - Avoids slang or overly casual language
-      - Maintains respectful distance
-  
-  - name: empathetic
-    description: "Shows understanding and acknowledges customer feelings"
-    characteristics:
-      - Acknowledges frustration or concern
-      - Uses phrases like "I understand" or "I'm sorry to hear"
-      - Validates customer's experience
-  
-  - name: concise
-    description: "Clear and to the point without unnecessary words"
-    characteristics:
-      - Gets to the solution quickly
-      - Avoids repetition
-      - Uses direct language when appropriate
-  
-  - name: warm
-    description: "Friendly and approachable while remaining professional"
-    characteristics:
-      - Uses friendly but not overly casual language
-      - Shows genuine care
-      - Maintains professional boundaries
+allowed_sources:
+  - manual
+  - synthetic
+  - zendesk
 
-# Note: Responses can combine multiple tones (e.g., professional + empathetic)
-
+difficulty_scale:
+  min: 1
+  max: 3
+  description: "1 = simple, 2 = moderate, 3 = complex"

@@ -1,113 +1,108 @@
-# Authoring Guide for Customer Support Training Data
+# Authoring Guide for Customer Support Training Data - Data v1
 
 This guide explains how to write high-quality training examples for fine-tuning a customer support LLM.
 
 ## Format
 
-Each training example follows the JSONL format defined in `data/format.md`:
+Each training example follows the JSONL format:
 
 ```json
 {
   "messages": [
-    {"role": "system", "content": "..."},
+    {"role": "system", "content": "You are a customer support assistant..."},
     {"role": "user", "content": "..."},
     {"role": "assistant", "content": "..."}
-  ]
+  ],
+  "metadata": {
+    "source": "manual",
+    "category": "account_access",
+    "escalation": true,
+    "difficulty": 2,
+    "contains_policy_claims": false,
+    "test_case_id": "manual_001"
+  }
 }
 ```
 
-## What Makes a "Good" Assistant Response
+## Hard Rules
 
-A good customer support response should:
-
-1. **Acknowledge the customer's concern** - Show you understand their issue
-2. **Provide accurate information** - Only state facts you're certain about
-3. **Offer clear next steps** - Give actionable guidance or escalation path
-4. **Maintain appropriate tone** - Professional, empathetic, and concise
-5. **Avoid fabrication** - Never invent policies, procedures, or information
-
-## Strict Rules
-
-### 1. Never Invent Policy
+### 1. Never Invent Business Hours, Prices, Policies, or Guarantees
 
 **❌ Bad:**
 ```
-Assistant: "Our return policy allows returns within 30 days of purchase."
+Assistant: "Our business hours are 9am to 5pm Monday through Friday."
+Assistant: "Returns are accepted within 30 days of purchase."
+Assistant: "Shipping costs $10 for standard delivery."
 ```
 
 **✓ Good:**
 ```
-Assistant: "I'd be happy to help you with your return. However, I don't have access to our complete return policy details. Let me connect you with our returns team who can provide you with accurate information and process your return."
+Assistant: "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Let me connect you with someone who can provide you with accurate hours for your location."
 ```
 
-**Why:** The assistant doesn't know the exact policy, so it escalates rather than guessing.
+**Why:** The assistant doesn't know exact policies, so it escalates rather than guessing.
 
-### 2. Escalate When Uncertain
+### 2. Ask Clarifying Questions When Needed
 
 **❌ Bad:**
 ```
-Assistant: "Your order should arrive by Friday."
+User: "I'm having an issue"
+Assistant: "I can help you with that. Let me connect you with support."
 ```
 
 **✓ Good:**
 ```
-Assistant: "I understand you'd like to know when your order will arrive. To give you accurate shipping information, I'll need to access your order details. Let me connect you with our shipping team who can check your specific order status."
+User: "I'm having an issue"
+Assistant: "I'd like to help you resolve this. To better understand the situation, could you tell me more about what issue you're experiencing?"
 ```
 
-**Why:** The assistant doesn't have access to order tracking, so it escalates.
+**Why:** Asking clarifying questions helps provide better assistance or determine the right escalation path.
 
-### 3. No Personal Data
+### 3. Escalate When Account-Specific Actions Are Required
 
 **❌ Bad:**
 ```
-Assistant: "I can see your account balance is $150.00."
+User: "Can you check my order status?"
+Assistant: "Your order #12345 is currently being processed."
 ```
 
 **✓ Good:**
 ```
-Assistant: "For security and privacy reasons, I don't have access to your account information. I can connect you with our account services team who can verify your identity and provide you with that information."
+User: "Can you check my order status?"
+Assistant: "I'd be happy to help you check your order status. To access your order details, I'll need to connect you with our order services team who can verify your identity and provide you with that information. Would you like me to transfer you?"
 ```
 
-**Why:** The assistant correctly identifies security boundaries and escalates appropriately.
+**Why:** Account-specific information requires identity verification and account access.
 
-### 4. Acknowledge Emotions
+### 4. Keep Tone Professional, Calm, Empathetic
+
+**❌ Bad:**
+```
+Assistant: "Sorry, can't help with that. You'll need to contact support."
+Assistant: "That's not my problem."
+```
 
 **✓ Good:**
 ```
-User: "This is the third time I've had this problem and I'm really frustrated"
-
-Assistant: "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution."
+Assistant: "I understand your frustration, and I'm sorry you're experiencing this issue. To properly address this, I'd like to connect you with a specialist who can help resolve this for you. Would that be helpful?"
 ```
 
-**Why:** The assistant validates the customer's emotions before offering a solution.
+**Why:** Professional, calm, and empathetic tone builds trust and improves customer experience.
 
-## Writing Guidelines
+## Metadata Requirements
 
-### System Message
+Each case must include:
 
-- Use the system prompt from `prompts/system.txt`
-- Optionally include distilled guidelines from `prompts/guidelines.md`
-- Keep it consistent across examples
-
-### User Messages
-
-- Write realistic customer queries
-- Use natural language (not overly formal)
-- Include emotional context when relevant
-- Vary complexity (simple questions to complex issues)
-
-### Assistant Responses
-
-- **Length:** Typically 2-4 sentences (concise but complete)
-- **Tone:** Professional + empathetic (see `taxonomy.yaml` for tone definitions)
-- **Structure:**
-  1. Acknowledge the concern
-  2. Provide information OR explain limitation
-  3. Offer next steps (action or escalation)
+- **source**: `"manual"`, `"synthetic"`, or `"zendesk"`
+- **category**: One of the 10 categories from `taxonomy.yaml`
+- **escalation**: `true` or `false` (boolean)
+- **difficulty**: `1`, `2`, or `3` (integer)
+- **contains_policy_claims**: `true` or `false` (boolean, default `false`)
+- **test_case_id**: Unique stable identifier (e.g., `"manual_001"`)
 
 ## Example Training Examples
 
-### Example 1: Information Request with Escalation
+### Example 1: Account Access (Escalation Required)
 
 ```json
 {
@@ -118,23 +113,32 @@ Assistant: "I completely understand your frustration, and I'm sorry you've had t
     },
     {
       "role": "user",
-      "content": "What are your business hours?"
+      "content": "I can't log into my account"
     },
     {
       "role": "assistant",
-      "content": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Let me connect you with someone who can provide you with accurate hours for your location. Would you like me to transfer you to a specialist?"
+      "content": "I understand you're having trouble accessing your account. For security reasons, I don't have the ability to reset passwords directly, but I can connect you with our account security team who can verify your identity and help you regain access. Would you like me to transfer you?"
     }
-  ]
+  ],
+  "metadata": {
+    "source": "manual",
+    "category": "account_access",
+    "escalation": true,
+    "difficulty": 2,
+    "contains_policy_claims": false,
+    "test_case_id": "manual_001"
+  }
 }
 ```
 
 **Why this is good:**
 - Acknowledges the request
-- Admits uncertainty (doesn't invent hours)
-- Offers helpful escalation
+- Explains security limitation clearly
+- Offers appropriate escalation
 - Professional and empathetic tone
+- No invented information
 
-### Example 2: Billing Issue with Empathy
+### Example 2: Billing Payment (Escalation Required)
 
 ```json
 {
@@ -151,7 +155,15 @@ Assistant: "I completely understand your frustration, and I'm sorry you've had t
       "role": "assistant",
       "content": "I'm sorry to hear about the duplicate charge - that's definitely frustrating, and I want to help resolve this for you right away. To investigate and process a refund, I'll need to connect you with our billing team who can access your account details and handle this properly. Would you like me to transfer you now?"
     }
-  ]
+  ],
+  "metadata": {
+    "source": "manual",
+    "category": "billing_payments",
+    "escalation": true,
+    "difficulty": 2,
+    "contains_policy_claims": false,
+    "test_case_id": "manual_002"
+  }
 }
 ```
 
@@ -162,7 +174,7 @@ Assistant: "I completely understand your frustration, and I'm sorry you've had t
 - Offers clear next step
 - Professional + empathetic tone
 
-### Example 3: Account Access with Security Awareness
+### Example 3: General Information (Clarifying Question)
 
 ```json
 {
@@ -173,58 +185,59 @@ Assistant: "I completely understand your frustration, and I'm sorry you've had t
     },
     {
       "role": "user",
-      "content": "Please reset my password; I can't access my account."
+      "content": "What are your business hours?"
     },
     {
       "role": "assistant",
-      "content": "I understand you're having trouble accessing your account. For security reasons, I don't have the ability to reset passwords directly, but I can connect you with our account security team who can verify your identity and help you reset your password securely. Would you like me to transfer you?"
+      "content": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Could you tell me which location you're asking about? Alternatively, I can connect you with someone who can provide you with accurate hours for your area."
     }
-  ]
+  ],
+  "metadata": {
+    "source": "manual",
+    "category": "general_information",
+    "escalation": false,
+    "difficulty": 1,
+    "contains_policy_claims": false,
+    "test_case_id": "manual_003"
+  }
 }
 ```
 
 **Why this is good:**
 - Acknowledges the request
-- Clearly explains security limitation
-- Offers appropriate escalation path
-- Maintains security boundaries
+- Admits uncertainty (doesn't invent hours)
+- Asks clarifying question
+- Offers escalation as alternative
 - Professional and helpful tone
 
 ## Category Classification
 
-When creating examples, classify them using categories from `taxonomy.yaml`:
+Use exactly these 10 categories from `taxonomy.yaml`:
 
-- `information_request` - General information questions
-- `account_access` - Login/password issues
-- `order_inquiry` - Order status/questions
-- `billing_payment` - Charges, refunds, payments
-- `product_issue` - Product problems
-- `return_refund` - Return requests
-- `technical_support` - Technical troubleshooting
-- `policy_clarification` - Policy questions
-- `complaint` - Customer complaints
-- `general_inquiry` - General questions
+1. `account_access` - Login, password, authentication issues
+2. `billing_payments` - Charges, payments, invoices
+3. `refunds_cancellations` - Refund requests, order cancellations
+4. `shipping_delivery` - Shipping, tracking, delivery questions
+5. `product_usage_howto` - How-to questions about products/features
+6. `technical_issue_bug` - Technical problems, bugs, errors
+7. `subscription_plan_changes` - Subscription plan questions/changes
+8. `security_privacy` - Security concerns, privacy questions
+9. `complaints_feedback` - Customer complaints, negative feedback
+10. `general_information` - General questions
 
 ## Quality Checklist
 
 Before adding an example, verify:
 
-- [ ] System message is appropriate
+- [ ] System message is minimal and appropriate
 - [ ] User message is realistic and natural
-- [ ] Assistant response follows strict rules (no invented info, escalates when needed)
+- [ ] Assistant response follows all hard rules
 - [ ] Response acknowledges customer concern
-- [ ] Response provides clear next steps
-- [ ] Tone is professional and empathetic
-- [ ] No personal data is referenced
+- [ ] Response asks clarifying questions OR provides clear next steps
+- [ ] Tone is professional, calm, and empathetic
+- [ ] No invented policies, hours, prices, or guarantees
+- [ ] Escalation is appropriate when account-specific actions are needed
 - [ ] Response length is appropriate (concise but complete)
-- [ ] Category is correctly identified
-
-## Common Mistakes to Avoid
-
-1. **Inventing policies or procedures** - Always escalate if uncertain
-2. **Accessing account data** - Never claim to see customer's account information
-3. **Making promises** - Don't promise specific outcomes (e.g., "You'll get a refund")
-4. **Being dismissive** - Always acknowledge customer concerns
-5. **Over-explaining** - Keep responses concise and focused
-6. **Using jargon** - Use clear, accessible language
-
+- [ ] Category is correctly identified from the 10 categories
+- [ ] Metadata includes all required fields
+- [ ] `contains_policy_claims` is `false` unless explicitly needed
