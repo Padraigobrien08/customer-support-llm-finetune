@@ -1,17 +1,28 @@
 # Python dependencies for customer support LLM fine-tuning
+#
+# Note: This configuration is optimized for Apple Silicon (MPS).
+# CUDA wheels are not used - PyTorch will use MPS backend on Apple Silicon.
+# For CUDA/GPU setups, you may need to install torch with CUDA extras separately.
 
 # Core dependencies
 pydantic>=2.0.0
 
 # ML/AI framework dependencies
+# torch: CPU/MPS builds (no CUDA extras) - works on Apple Silicon and CPU
 torch>=2.0.0
 transformers>=4.30.0
 accelerate>=0.20.0
 datasets>=2.12.0
 peft>=0.5.0
 
+# Tokenizer dependencies
+sentencepiece>=0.1.99  # Required by some tokenizers (e.g., LLaMA, T5)
+
 # Optional but recommended
-trl>=0.7.0  # Useful for SFT training
-# bitsandbytes>=0.41.0   # For quantized inference/training (optional)
-# sentencepiece>=0.1.99  # Some tokenizers require this
+# trl: Useful for SFT training with SFTTrainer (optional - training script works without it)
+# Uncomment if you want to use TRL SFTTrainer:
+# trl>=0.7.0
+
+# Optional quantization (not needed for basic training)
+# bitsandbytes>=0.41.0   # For 4-bit/8-bit quantized training (requires CUDA)
 

@@ -29,7 +29,8 @@ def create_provider(provider_name: str, **kwargs) -> Provider:
     
     Args:
         provider_name: Name of the provider ('mock' or 'hf_local')
-        **kwargs: Provider-specific arguments (model_id, device, max_new_tokens for 'hf_local')
+        **kwargs: Provider-specific arguments:
+            - For 'hf_local': model_id (required), device, dtype, max_new_tokens, adapter_dir (optional)
         
     Returns:
         Provider instance
@@ -55,12 +56,38 @@ def create_provider(provider_name: str, **kwargs) -> Provider:
                 "Example: --provider hf_local --model-id gpt2"
             )
         
-        return HFLocalProvider(
+        provider = HFLocalProvider(
             model_id=model_id,
             device=kwargs.get("device"),
             dtype=kwargs.get("dtype"),
             max_new_tokens=kwargs.get("max_new_tokens", 512)
         )
+        
+        # Load LoRA adapter if provided
+        adapter_dir = kwargs.get("adapter_dir")
+        if adapter_dir:
+            try:
+                from peft import PeftModel
+            except ImportError:
+                raise ValueError(
+                    "PEFT is required to load adapters. "
+                    "Install with: pip install peft"
+                )
+            
+            adapter_path = Path(adapter_dir)
+            if not adapter_path.is_absolute():
+                adapter_path = project_root / adapter_path
+            
+            if not adapter_path.exists():
+                raise ValueError(f"Adapter directory not found: {adapter_path}")
+            
+            print(f"Loading LoRA adapter from: {adapter_path}")
+            # Load adapter onto the base model
+            provider.model = PeftModel.from_pretrained(provider.model, str(adapter_path))
+            provider.model.eval()
+            print("✓ Adapter loaded")
+        
+        return provider
     else:
         available = "mock, hf_local"
         raise ValueError(f"Unknown provider: {provider_name}. Available: {available}")
@@ -154,7 +181,7 @@ Examples:
   python scripts/run_golden_eval.py
   python scripts/run_golden_eval.py --provider mock --out evaluation/results/custom_results.json
   python scripts/run_golden_eval.py --provider hf_local --model-id gpt2
-  python scripts/run_golden_eval.py --provider hf_local --model-id gpt2 --device cpu
+  python scripts/run_golden_eval.py --provider hf_local --model-id TinyLlama/TinyLlama-1.1B-Chat-v1.0 --adapter-dir outputs/smoke_001
   python scripts/run_golden_eval.py --provider hf_local --model-id gpt2 --device mps --max-new-tokens 256
         """
     )
@@ -170,7 +197,13 @@ Examples:
     parser.add_argument(
         "--model-id",
         type=str,
-        help="Model ID for hf_local provider (required when --provider is hf_local, e.g., 'gpt2', 'meta-llama/Llama-2-7b-chat-hf')"
+        help="Model ID for hf_local provider (required when --provider is hf_local, e.g., 'gpt2', 'TinyLlama/TinyLlama-1.1B-Chat-v1.0')"
+    )
+    
+    parser.add_argument(
+        "--adapter-dir",
+        type=str,
+        help="Directory containing LoRA adapter (optional, e.g., 'outputs/smoke_001')"
     )
     
     parser.add_argument(
@@ -228,6 +261,8 @@ Examples:
     provider_kwargs = {}
     if args.model_id:
         provider_kwargs["model_id"] = args.model_id
+    if args.adapter_dir:
+        provider_kwargs["adapter_dir"] = args.adapter_dir
     if args.device:
         provider_kwargs["device"] = args.device
     if args.max_new_tokens:

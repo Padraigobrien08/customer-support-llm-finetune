@@ -5,39 +5,14 @@ Supervised fine-tuning (SFT) script for customer support LLM.
 Uses PEFT LoRA for efficient training with minimal compute.
 """
 
+from __future__ import annotations
+
 import argparse
 import json
 import os
 import sys
 from pathlib import Path
 from typing import Any
-
-import torch
-from datasets import load_dataset
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    TrainingArguments,
-    Trainer,
-    DataCollatorForLanguageModeling,
-)
-
-# Try to import TRL SFTTrainer (optional but recommended)
-try:
-    from trl import SFTTrainer
-    HAS_TRL = True
-except ImportError:
-    HAS_TRL = False
-    print("Warning: TRL not available. Using standard Trainer. Install with: pip install trl")
-
-# Try to import PEFT
-try:
-    from peft import LoraConfig, get_peft_model, TaskType
-    HAS_PEFT = True
-except ImportError:
-    HAS_PEFT = False
-    print("Error: PEFT is required. Install with: pip install peft")
-    sys.exit(1)
 
 
 def format_messages_simple(messages: list[dict[str, Any]], system_prompt: str | None = None) -> str:
@@ -180,6 +155,52 @@ def print_trainable_parameters(model: torch.nn.Module) -> None:
 
 def main():
     """Main training function."""
+    # Import heavy dependencies inside main() to avoid import-time work
+    try:
+        import torch
+    except ImportError:
+        print("Error: PyTorch (torch) is required but not installed.", file=sys.stderr)
+        print("Run: bash scripts/setup_macos_apple_silicon.sh", file=sys.stderr)
+        sys.exit(1)
+    
+    try:
+        from datasets import load_dataset
+    except ImportError:
+        print("Error: datasets is required but not installed.", file=sys.stderr)
+        print("Run: bash scripts/setup_macos_apple_silicon.sh", file=sys.stderr)
+        sys.exit(1)
+    
+    try:
+        from transformers import (
+            AutoModelForCausalLM,
+            AutoTokenizer,
+            TrainingArguments,
+            Trainer,
+            DataCollatorForLanguageModeling,
+        )
+    except ImportError:
+        print("Error: transformers is required but not installed.", file=sys.stderr)
+        print("Run: bash scripts/setup_macos_apple_silicon.sh", file=sys.stderr)
+        sys.exit(1)
+    
+    # Try to import TRL SFTTrainer (optional but recommended)
+    try:
+        from trl import SFTTrainer
+        HAS_TRL = True
+    except ImportError:
+        HAS_TRL = False
+        print("Warning: TRL not available. Using standard Trainer. Install with: pip install trl")
+    
+    # Try to import PEFT
+    try:
+        from peft import LoraConfig, get_peft_model, TaskType
+        HAS_PEFT = True
+    except ImportError:
+        HAS_PEFT = False
+        print("Error: PEFT is required. Install with: pip install peft", file=sys.stderr)
+        print("Run: bash scripts/setup_macos_apple_silicon.sh", file=sys.stderr)
+        sys.exit(1)
+    
     parser = argparse.ArgumentParser(
         description="Supervised fine-tuning with PEFT LoRA",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -235,22 +256,22 @@ Examples:
     parser.add_argument(
         "--batch_size",
         type=int,
-        default=2,
-        help="Per-device batch size (default: 2)"
+        default=1,
+        help="Per-device batch size (default: 1, smoke-test safe)"
     )
     
     parser.add_argument(
         "--gradient_accumulation_steps",
         type=int,
-        default=4,
-        help="Gradient accumulation steps (default: 4)"
+        default=1,
+        help="Gradient accumulation steps (default: 1, smoke-test safe)"
     )
     
     parser.add_argument(
         "--num_epochs",
         type=int,
-        default=3,
-        help="Number of training epochs (default: 3)"
+        default=1,
+        help="Number of training epochs (default: 1, smoke-test safe)"
     )
     
     parser.add_argument(
@@ -263,8 +284,8 @@ Examples:
     parser.add_argument(
         "--max_seq_length",
         type=int,
-        default=512,
-        help="Maximum sequence length (default: 512)"
+        default=256,
+        help="Maximum sequence length (default: 256, smoke-test safe)"
     )
     
     parser.add_argument(
@@ -295,16 +316,25 @@ Examples:
     print(f"Training file: {train_file}")
     print(f"Output directory: {output_dir}")
     
-    # Detect device
-    if torch.cuda.is_available():
-        device = "cuda"
-        print(f"Using device: CUDA ({torch.cuda.get_device_name(0)})")
-    elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+    # Detect device (prefer MPS for Apple Silicon)
+    if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
         device = "mps"
         print("Using device: MPS (Apple Silicon)")
+        # Check if MPS supports fp16
+        try:
+            # Test if MPS supports fp16 by creating a small tensor
+            test_tensor = torch.zeros(1, dtype=torch.float16, device="mps")
+            mps_supports_fp16 = True
+        except (RuntimeError, TypeError):
+            mps_supports_fp16 = False
+    elif torch.cuda.is_available():
+        device = "cuda"
+        print(f"Using device: CUDA ({torch.cuda.get_device_name(0)})")
+        mps_supports_fp16 = False  # Not relevant for CUDA
     else:
         device = "cpu"
         print("Using device: CPU (training will be slow)")
+        mps_supports_fp16 = False
     
     # Load tokenizer
     print("\nLoading tokenizer...")
@@ -314,9 +344,21 @@ Examples:
     
     # Load model
     print("Loading model...")
+    # Determine dtype: prefer fp16 for MPS/CUDA if supported, otherwise fp32
+    if device == "cpu":
+        model_dtype = torch.float32
+    elif device == "mps" and mps_supports_fp16:
+        model_dtype = torch.float16
+        print("Using fp16 on MPS")
+    elif device == "mps":
+        model_dtype = torch.float32
+        print("Using fp32 on MPS (fp16 not supported)")
+    else:  # CUDA
+        model_dtype = torch.float16
+    
     model = AutoModelForCausalLM.from_pretrained(
         args.model_id,
-        torch_dtype=torch.float32 if device == "cpu" else torch.float16,
+        torch_dtype=model_dtype,
         device_map="auto" if device == "cuda" else None,
         trust_remote_code=True
     )
@@ -370,13 +412,20 @@ Examples:
     )
     
     # Training arguments
+    # Determine fp16 setting: use fp16 for CUDA, or MPS if supported; otherwise fp32
+    use_fp16 = False
+    if device == "cuda":
+        use_fp16 = True
+    elif device == "mps" and mps_supports_fp16:
+        use_fp16 = True
+    
     training_args = TrainingArguments(
         output_dir=str(output_dir),
         per_device_train_batch_size=args.batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         num_train_epochs=args.num_epochs,
         learning_rate=args.learning_rate,
-        fp16=device != "cpu",  # Use FP16 on GPU/MPS, FP32 on CPU
+        fp16=use_fp16,  # Use FP16 if supported, otherwise FP32
         logging_steps=10,
         save_steps=args.save_steps,
         save_total_limit=3,  # Keep only last 3 checkpoints
