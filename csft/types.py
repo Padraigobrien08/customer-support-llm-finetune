@@ -7,7 +7,7 @@ Uses Pydantic for validation and type safety.
 from enum import Enum
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class MessageRole(str, Enum):
@@ -58,12 +58,35 @@ class TestCase(BaseModel):
 
 class ModelResponse(BaseModel):
     """A model-generated response."""
-    content: str = Field(..., description="Generated response text (may be empty if generation failed)")
-    error_type: str | None = Field(None, description="Type of error if generation failed (e.g., 'ValidationError', 'ProviderError')")
-    error_message: str | None = Field(None, description="Error message if generation failed")
+    content: str = Field(default="", description="Generated response text (may be empty if generation failed)")
+    success: bool = Field(default=True, description="Whether generation was successful")
+    error_type: str | None = Field(default=None, description="Type of error if generation failed (e.g., 'ValidationError', 'ProviderError')")
+    error_message: str | None = Field(default=None, description="Error message if generation failed")
     metadata: dict[str, str | int | float | bool] | None = Field(
-        None, description="Optional metadata (tokens, latency, etc.)"
+        default=None, description="Optional metadata (tokens, latency, etc.)"
     )
+    
+    @model_validator(mode='after')
+    def validate_success(self) -> 'ModelResponse':
+        """
+        Validate and set success field based on content and error_type.
+        
+        - If content is empty (after stripping), set success=False and error fields
+        - If error_type is set, set success=False
+        """
+        # If content is empty, mark as failure
+        if not self.content.strip():
+            self.success = False
+            if self.error_type is None:
+                self.error_type = "EmptyOutput"
+            if self.error_message is None:
+                self.error_message = "Model generated empty response"
+        
+        # If error_type is set, mark as failure
+        if self.error_type is not None:
+            self.success = False
+        
+        return self
 
 
 class EvaluationScore(BaseModel):

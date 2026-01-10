@@ -20,7 +20,7 @@ sys.path.insert(0, str(project_root))
 from csft.io import load_test_cases
 from csft.prompts import load_and_assemble_system_message
 from csft.providers import MockProvider, Provider
-from csft.types import ChatMessage, TestCase
+from csft.types import ChatMessage, ModelResponse, TestCase
 
 
 def create_provider(provider_name: str, **kwargs) -> Provider:
@@ -130,6 +130,8 @@ def run_test_case(
     """
     Run a single test case through the provider.
     
+    Never crashes - always returns a result dictionary, even on failure.
+    
     Args:
         provider: Model provider instance
         test_case: Test case to evaluate
@@ -141,12 +143,6 @@ def run_test_case(
     """
     import traceback
     
-    # Convert test case messages to ChatMessage objects (excluding system if present)
-    messages = []
-    for msg in test_case.messages:
-        if msg.role.value != "system":  # System prompt handled separately
-            messages.append(msg)
-    
     # Build base result structure
     base_result = {
         "test_case_id": test_case.id,
@@ -155,23 +151,73 @@ def run_test_case(
         "timestamp": datetime.utcnow().isoformat() + "Z"
     }
     
-    # Try to generate response
+    # Wrap everything in try/except to never crash
+    traceback_str = None  # Store traceback if exception occurs
     try:
-        response = provider.generate(
-            messages=messages,
-            system_prompt=system_prompt
-        )
+        # Convert test case messages to ChatMessage objects (excluding system if present)
+        messages = []
+        for msg in test_case.messages:
+            if msg.role.value != "system":  # System prompt handled separately
+                messages.append(msg)
         
-        # Success - add output_text
+        # Try to generate response
+        try:
+            response = provider.generate(
+                messages=messages,
+                system_prompt=system_prompt
+            )
+        except Exception as e:
+            # Generation failed with exception - create ModelResponse with error
+            error_type = type(e).__name__
+            error_message = str(e)
+            if debug:
+                traceback_str = traceback.format_exc()
+            response = ModelResponse(
+                content="",
+                success=False,
+                error_type=error_type,
+                error_message=error_message
+            )
+        
+        # Check if content is empty/whitespace
+        if not response.content.strip():
+            # Empty or whitespace-only content
+            if response.success:  # Only override if not already marked as failed
+                response.success = False
+                if not response.error_type:
+                    response.error_type = "EmptyOutput"
+                if not response.error_message:
+                    response.error_message = "Model generated empty or whitespace-only response"
+        
+        # Add output_text and success status
         base_result["output_text"] = response.content
+        base_result["success"] = response.success
+        
+        # Add error fields if present
+        if not response.success:
+            if response.error_type:
+                base_result["error_type"] = response.error_type
+            if response.error_message:
+                base_result["error_message"] = response.error_message
+            
+            # Print concise failure line to stderr
+            error_type_str = response.error_type or "UnknownError"
+            error_msg_str = response.error_message or "Unknown error"
+            print(f"FAILED {test_case.id}: {error_type_str}: {error_msg_str}", file=sys.stderr)
+            
+            # Add traceback if debug mode and we captured one
+            if debug and traceback_str:
+                base_result["traceback"] = traceback_str
+        
         return base_result
         
     except Exception as e:
-        # Generation failed - add error fields
+        # Unexpected error during result processing - create error result
         error_type = type(e).__name__
         error_message = str(e)
         
         base_result["output_text"] = ""
+        base_result["success"] = False
         base_result["error_type"] = error_type
         base_result["error_message"] = error_message
         
@@ -303,20 +349,12 @@ Examples:
     
     for idx, test_case in enumerate(test_cases, 1):
         print(f"  [{idx}/{len(test_cases)}] Running test case: {test_case.id}")
+        # run_test_case never crashes, but wrap in try/except just in case
         try:
             result = run_test_case(provider, test_case, system_prompt, debug=args.debug)
-            # Add provider info to result
-            result["provider"] = args.provider
-            result["model_id"] = args.model_id if args.provider == "hf_local" else None
-            result["adapter_dir"] = adapter_dir_for_output
-            
-            # Track failures
-            if "error_type" in result:
-                failed_count += 1
-            
-            results.append(result)
         except Exception as e:
-            # Unexpected error during result processing - still add to results
+            # This should never happen, but handle it just in case
+            import traceback
             failed_count += 1
             error_type = type(e).__name__
             error_message = str(e)
@@ -327,18 +365,24 @@ Examples:
                 "category": test_case.category,
                 "messages": [{"role": msg.role.value, "content": msg.content} for msg in test_case.messages],
                 "output_text": "",
+                "success": False,
                 "timestamp": datetime.utcnow().isoformat() + "Z",
-                "provider": args.provider,
-                "model_id": args.model_id if args.provider == "hf_local" else None,
-                "adapter_dir": adapter_dir_for_output,
                 "error_type": error_type,
                 "error_message": error_message,
             }
             if args.debug:
-                import traceback
                 result["traceback"] = traceback.format_exc()
-            
-            results.append(result)
+        
+        # Add provider info to result (always, even on error)
+        result["provider"] = args.provider
+        result["model_id"] = args.model_id if args.provider == "hf_local" else None
+        result["adapter_dir"] = adapter_dir_for_output
+        
+        # Track failures
+        if not result.get("success", True) or "error_type" in result:
+            failed_count += 1
+        
+        results.append(result)
     
     # Ensure output directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)

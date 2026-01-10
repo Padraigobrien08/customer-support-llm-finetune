@@ -66,18 +66,37 @@ def compare_results(
         if test_id not in previous_by_id:
             continue  # Skip if not in previous results
         
+        previous_result = previous_by_id[test_id]
+        
         # Support both "output_text" and "model_output" for backward compatibility
         current_output = current_result.get("output_text") or current_result.get("model_output", "")
-        previous_output = previous_by_id[test_id].get("output_text") or previous_by_id[test_id].get("model_output", "")
+        previous_output = previous_result.get("output_text") or previous_result.get("model_output", "")
         
-        if current_output != previous_output:
+        # Get success status (default to True for backward compatibility)
+        current_success = current_result.get("success", True)
+        previous_success = previous_result.get("success", True)
+        
+        # Get error_type
+        current_error_type = current_result.get("error_type")
+        previous_error_type = previous_result.get("error_type")
+        
+        # Check if changed: output_text differs, OR success differs, OR error_type differs
+        output_changed = current_output != previous_output
+        success_changed = current_success != previous_success
+        error_type_changed = current_error_type != previous_error_type
+        
+        if output_changed or success_changed or error_type_changed:
             changed.append({
                 "test_case_id": test_id,
                 "category": current_result.get("category", "unknown"),
                 "current_output": current_output,
                 "previous_output": previous_output,
-                "current_length": len(current_output),
-                "previous_length": len(previous_output),
+                "current_success": current_success,
+                "previous_success": previous_success,
+                "current_error_type": current_error_type,
+                "previous_error_type": previous_error_type,
+                "current_error_message": current_result.get("error_message"),
+                "previous_error_message": previous_result.get("error_message"),
             })
     
     # Find new test cases
@@ -162,12 +181,29 @@ def print_comparison(
         for change in comparison['changed']:
             test_id = change['test_case_id']
             category = change['category']
-            current_output = change['current_output']
-            previous_output = change['previous_output']
+            
+            # Build success/error summaries
+            prev_success = change['previous_success']
+            curr_success = change['current_success']
+            prev_error = change['previous_error_type']
+            curr_error = change['current_error_type']
+            
+            prev_summary = "✓ SUCCESS" if prev_success else f"✗ FAILED ({prev_error or 'UnknownError'})"
+            curr_summary = "✓ SUCCESS" if curr_success else f"✗ FAILED ({curr_error or 'UnknownError'})"
             
             print(f"  {test_id} ({category})")
-            print(f"    Old: {truncate_text(previous_output)}")
-            print(f"    New: {truncate_text(current_output)}")
+            print(f"    Old: {prev_summary}")
+            print(f"    New: {curr_summary}")
+            
+            # Show output snippets if present
+            previous_output = change['previous_output']
+            current_output = change['current_output']
+            
+            if previous_output.strip():
+                print(f"    Old output: {truncate_text(previous_output)}")
+            if current_output.strip():
+                print(f"    New output: {truncate_text(current_output)}")
+            
             print()
     else:
         print("No changed outputs found.")
