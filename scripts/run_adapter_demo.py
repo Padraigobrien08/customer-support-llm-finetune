@@ -183,7 +183,7 @@ Examples:
         model_dtype = torch.float32 if device == "cpu" else torch.float16
         base_model = AutoModelForCausalLM.from_pretrained(
             args.model_id,
-            torch_dtype=model_dtype,
+            dtype=model_dtype,
             device_map="auto" if device == "cuda" else None,
             trust_remote_code=True
         )

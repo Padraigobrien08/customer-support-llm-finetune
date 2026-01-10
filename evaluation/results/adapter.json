@@ -12,8 +12,10 @@
         "content": "What are your business hours?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:09:36.697147Z",
+    "timestamp": "2026-01-10T00:00:26.811402Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -31,8 +33,10 @@
         "content": "Do you have a store near me?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:10:11.422235Z",
+    "timestamp": "2026-01-10T00:01:04.741630Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -50,8 +54,10 @@
         "content": "What payment methods do you accept?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:10:45.869248Z",
+    "timestamp": "2026-01-10T00:01:39.991809Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -69,8 +75,10 @@
         "content": "I can't log into my account"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:11:20.399136Z",
+    "timestamp": "2026-01-10T00:02:15.723112Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -88,8 +96,10 @@
         "content": "Can you check my account balance?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:11:55.021796Z",
+    "timestamp": "2026-01-10T00:02:51.489751Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -107,8 +117,10 @@
         "content": "My account was hacked"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:12:29.479851Z",
+    "timestamp": "2026-01-10T00:03:26.378469Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -126,8 +138,10 @@
         "content": "I forgot my password"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:13:04.036079Z",
+    "timestamp": "2026-01-10T00:04:01.650543Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -145,8 +159,10 @@
         "content": "Where is my order?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:13:38.271746Z",
+    "timestamp": "2026-01-10T00:04:36.447257Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -172,8 +188,10 @@
         "content": "I don't have it"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:14:13.879948Z",
+    "timestamp": "2026-01-10T00:05:12.319972Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -191,8 +209,10 @@
         "content": "Can I cancel my order?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:14:48.279738Z",
+    "timestamp": "2026-01-10T00:05:49.080050Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -210,8 +230,10 @@
         "content": "I need to change my shipping address"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:15:22.282914Z",
+    "timestamp": "2026-01-10T00:06:24.678850Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -229,8 +251,10 @@
         "content": "I was charged twice"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:15:56.302561Z",
+    "timestamp": "2026-01-10T00:06:58.740528Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -248,8 +272,10 @@
         "content": "I was charged for something I didn't order"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:16:31.289085Z",
+    "timestamp": "2026-01-10T00:07:32.683896Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -267,8 +293,10 @@
         "content": "My payment was declined"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:17:05.489952Z",
+    "timestamp": "2026-01-10T00:08:06.219183Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -286,8 +314,10 @@
         "content": "When will I get my refund?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:17:39.282169Z",
+    "timestamp": "2026-01-10T00:08:39.719862Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -305,8 +335,10 @@
         "content": "The item I received is damaged"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:18:14.317727Z",
+    "timestamp": "2026-01-10T00:09:13.141214Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -324,8 +356,10 @@
         "content": "I got the wrong product"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:18:48.753132Z",
+    "timestamp": "2026-01-10T00:09:46.464219Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -343,8 +377,10 @@
         "content": "This doesn't work as described"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:19:22.758382Z",
+    "timestamp": "2026-01-10T00:10:20.035840Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -362,8 +398,10 @@
         "content": "The product is missing parts"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:19:57.340606Z",
+    "timestamp": "2026-01-10T00:10:53.371934Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -381,8 +419,10 @@
         "content": "I want to return this item"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:20:31.627318Z",
+    "timestamp": "2026-01-10T00:11:28.333860Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -400,8 +440,10 @@
         "content": "How do I process a return?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:21:05.841212Z",
+    "timestamp": "2026-01-10T00:12:02.062317Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -419,8 +461,10 @@
         "content": "Can I return this after 30 days?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:21:40.403221Z",
+    "timestamp": "2026-01-10T00:12:35.924055Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -438,8 +482,10 @@
         "content": "The website isn't loading"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:22:15.131270Z",
+    "timestamp": "2026-01-10T00:13:09.437807Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -457,8 +503,10 @@
         "content": "I can't complete checkout"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:22:48.951954Z",
+    "timestamp": "2026-01-10T00:13:42.915448Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -476,8 +524,10 @@
         "content": "The app keeps crashing"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:23:22.989566Z",
+    "timestamp": "2026-01-10T00:14:16.334603Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -495,8 +545,10 @@
         "content": "I'm getting an error code"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:23:57.102925Z",
+    "timestamp": "2026-01-10T00:14:50.137817Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -514,8 +566,10 @@
         "content": "What's your return policy?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:24:30.874608Z",
+    "timestamp": "2026-01-10T00:15:24.527620Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -533,8 +587,10 @@
         "content": "What's your cancellation policy?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:25:05.069146Z",
+    "timestamp": "2026-01-10T00:15:58.056050Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -552,8 +608,10 @@
         "content": "Can you explain your warranty?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:25:38.776635Z",
+    "timestamp": "2026-01-10T00:16:31.786766Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -571,8 +629,10 @@
         "content": "What are your shipping options?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:26:12.950404Z",
+    "timestamp": "2026-01-10T00:17:05.493828Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -590,8 +650,10 @@
         "content": "This is the third time I've had this problem and I'm really frustrated"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:26:49.453143Z",
+    "timestamp": "2026-01-10T00:17:39.076484Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -609,8 +671,10 @@
         "content": "Your service has been terrible"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:27:26.509184Z",
+    "timestamp": "2026-01-10T00:18:17.147821Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -628,8 +692,10 @@
         "content": "I want to speak to a manager"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:28:01.090902Z",
+    "timestamp": "2026-01-10T00:18:50.822603Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -647,8 +713,10 @@
         "content": "I'm very disappointed with my experience"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:28:35.639944Z",
+    "timestamp": "2026-01-10T00:19:24.545043Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -666,8 +734,10 @@
         "content": "How do I contact customer service?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:29:10.169689Z",
+    "timestamp": "2026-01-10T00:19:57.988117Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -685,8 +755,10 @@
         "content": "Do you ship internationally?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:29:44.522408Z",
+    "timestamp": "2026-01-10T00:20:31.868692Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -704,8 +776,10 @@
         "content": "What services do you offer?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:30:19.179117Z",
+    "timestamp": "2026-01-10T00:21:05.604317Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -723,8 +797,10 @@
         "content": "Are you open on holidays?"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:30:52.456351Z",
+    "timestamp": "2026-01-10T00:21:39.263479Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -742,8 +818,10 @@
         "content": "Thank you for your help"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:31:26.292886Z",
+    "timestamp": "2026-01-10T00:22:13.140271Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"
@@ -761,8 +839,10 @@
         "content": "My order hasn't arrived yet"
       }
     ],
-    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
-    "timestamp": "2026-01-09T23:31:59.963697Z",
+    "timestamp": "2026-01-10T00:22:46.865266Z",
+    "output_text": "",
+    "error_type": "ValidationError",
+    "error_message": "1 validation error for ModelResponse\ncontent\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_too_short",
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": "outputs/smoke_001"

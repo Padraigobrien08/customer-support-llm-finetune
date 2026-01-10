@@ -366,21 +366,18 @@ Examples:
     
     # Load model
     print("Loading model...")
-    # Determine dtype: prefer fp16 for MPS/CUDA if supported, otherwise fp32
+    # Determine dtype: force float32 for MPS to avoid generation degeneracy
     if device == "cpu":
         model_dtype = torch.float32
-    elif device == "mps" and mps_supports_fp16:
-        model_dtype = torch.float16
-        print("Using fp16 on MPS")
     elif device == "mps":
-        model_dtype = torch.float32
-        print("Using fp32 on MPS (fp16 not supported)")
+        model_dtype = torch.float32  # Force float32 for MPS (fp16 causes NaN logits with adapters)
+        print("Using fp32 on MPS (required for adapter compatibility)")
     else:  # CUDA
         model_dtype = torch.float16
     
     model = AutoModelForCausalLM.from_pretrained(
         args.model_id,
-        torch_dtype=model_dtype,
+        dtype=model_dtype,
         device_map="auto" if device == "cuda" else None,
         trust_remote_code=True
     )
@@ -451,12 +448,11 @@ Examples:
         tokenized_eval_dataset = None
     
     # Training arguments
-    # Determine fp16 setting: use fp16 for CUDA, or MPS if supported; otherwise fp32
+    # Determine fp16 setting: use fp16 for CUDA only; force fp32 for MPS
     use_fp16 = False
     if device == "cuda":
         use_fp16 = True
-    elif device == "mps" and mps_supports_fp16:
-        use_fp16 = True
+    # MPS: Always use fp32 (fp16 causes NaN logits with adapters)
     
     # Set eval_steps if evaluation is enabled
     eval_steps = args.eval_steps
