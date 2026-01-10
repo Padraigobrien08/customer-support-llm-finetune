@@ -20,7 +20,7 @@ sys.path.insert(0, str(project_root))
 from csft.io import load_test_cases
 from csft.prompts import load_and_assemble_system_message
 from csft.providers import MockProvider, Provider
-from csft.types import ChatMessage, ModelResponse, TestCase
+from csft.types import ChatMessage, MessageRole, ModelResponse, TestCase
 
 
 def create_provider(provider_name: str, **kwargs) -> Provider:
@@ -295,12 +295,40 @@ Examples:
     args = parser.parse_args()
     
     # Resolve paths relative to project root (already set above)
-    test_cases_path = project_root / "evaluation" / "test_cases.json"
+    # Load from manual cases (70 cases) instead of test_cases.json (40 cases)
+    manual_cases_path = project_root / "data" / "raw" / "manual_cases.jsonl"
     prompts_dir = project_root / "prompts"
     output_path = project_root / args.out
     
-    print(f"Loading test cases from: {test_cases_path}")
-    test_cases = load_test_cases(str(test_cases_path))
+    print(f"Loading test cases from: {manual_cases_path}")
+    
+    # Load raw JSONL to get metadata and messages
+    import json
+    with open(manual_cases_path, 'r', encoding='utf-8') as f:
+        raw_cases = [json.loads(line) for line in f if line.strip()]
+    
+    # Convert to TestCase format
+    test_cases = []
+    for raw_case in raw_cases:
+        # Filter out system messages (system prompt handled separately)
+        messages = [ChatMessage(role=MessageRole(msg["role"]), content=msg["content"]) 
+                   for msg in raw_case["messages"] if msg["role"] != "system"]
+        
+        # Extract assistant response as ideal_response
+        assistant_msg = next((msg for msg in raw_case["messages"] if msg["role"] == "assistant"), None)
+        ideal_response = assistant_msg["content"] if assistant_msg else ""
+        
+        # Create test case
+        metadata = raw_case.get("metadata", {})
+        test_case = TestCase(
+            id=metadata.get("test_case_id", f"manual_{len(test_cases)+1:03d}"),
+            category=metadata.get("category", "unknown"),
+            messages=messages,
+            ideal_response=ideal_response,
+            notes=f"Source: {metadata.get('source', 'manual')}, Difficulty: {metadata.get('difficulty', 'unknown')}"
+        )
+        test_cases.append(test_case)
+    
     print(f"Loaded {len(test_cases)} test cases")
     
     print(f"Loading system prompt and guidelines from: {prompts_dir}")
