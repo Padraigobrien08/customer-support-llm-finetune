@@ -1,54 +1,6 @@
 [
   {
     "id": "tc_001",
-    "category": "information_request",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "What are your business hours?"
-      }
-    ],
-    "ideal_response": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system. Let me connect you with someone who can provide you with accurate hours for your location. Would you like me to transfer you to a specialist?",
-    "notes": "Good example of acknowledging the request, admitting uncertainty, and offering escalation. Avoids making up hours and frames escalation positively."
-  },
-  {
-    "id": "tc_002",
-    "category": "information_request",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Do you have a store near me?"
-      }
-    ],
-    "ideal_response": "I'd like to help you find a store location. To provide you with the most accurate information, could you tell me what city or area you're looking in? Alternatively, I can connect you with our locations team who has access to our complete store directory.",
-    "notes": "Uncertainty case - needs clarification on location. Offers to escalate if needed."
-  },
-  {
-    "id": "tc_003",
-    "category": "information_request",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "What payment methods do you accept?"
-      }
-    ],
-    "ideal_response": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details.",
-    "notes": "Escalation case - payment methods may vary, requires accurate information."
-  },
-  {
-    "id": "tc_004",
     "category": "account_access",
     "messages": [
       {
@@ -58,14 +10,78 @@
       {
         "role": "user",
         "content": "I can't log into my account"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're having trouble accessing your account. For security reasons, I don't have the ability to reset passwords directly, but I can connect you with our account security team who can verify your identity and help you regain access. Would you like me to transfer you?"
       }
     ],
-    "ideal_response": "I understand you're having trouble accessing your account. To help resolve this, I'll need to connect you with our account security team who can verify your identity and assist with account access. Would you like me to transfer you now?",
-    "notes": "Escalation case - account access requires security verification."
+    "ideal_response": "I understand you're having trouble accessing your account. For security reasons, I don't have the ability to reset passwords directly, but I can connect you with our account security team who can verify your identity and help you regain access. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_001"
+  },
+  {
+    "id": "tc_002",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My account is locked"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear your account is locked. For security and privacy reasons, I need to connect you with our account services team who can verify your identity and help unlock your account. Would you like me to transfer you now?"
+      }
+    ],
+    "ideal_response": "I'm sorry to hear your account is locked. For security and privacy reasons, I need to connect you with our account services team who can verify your identity and help unlock your account. Would you like me to transfer you now?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_002"
+  },
+  {
+    "id": "tc_003",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged twice for the same order"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about the duplicate charge - that's definitely frustrating, and I want to help resolve this for you right away. To investigate and process a refund, I'll need to connect you with our billing team who can access your account details and handle this properly. Would you like me to transfer you now?"
+      }
+    ],
+    "ideal_response": "I'm sorry to hear about the duplicate charge - that's definitely frustrating, and I want to help resolve this for you right away. To investigate and process a refund, I'll need to connect you with our billing team who can access your account details and handle this properly. Would you like me to transfer you now?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_003"
+  },
+  {
+    "id": "tc_004",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My payment was declined"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your payment was declined. To help diagnose the issue, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist."
+      }
+    ],
+    "ideal_response": "I understand your payment was declined. To help diagnose the issue, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_004"
   },
   {
     "id": "tc_005",
-    "category": "account_access",
+    "category": "refunds_cancellations",
     "messages": [
       {
         "role": "system",
@@ -73,15 +89,19 @@
       },
       {
         "role": "user",
-        "content": "Can you check my account balance?"
+        "content": "I want to cancel my order"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you cancel your order. To process the cancellation, I'll need to connect you with our order services team who can access your order details and handle this for you. Would you like me to transfer you?"
       }
     ],
-    "ideal_response": "I understand you'd like to check your account balance. For security and privacy reasons, I don't have access to your account information. I can connect you with our account services team who can verify your identity and provide you with that information. Would you like me to transfer you?",
-    "notes": "Escalation case - account information requires security verification."
+    "ideal_response": "I'd be happy to help you cancel your order. To process the cancellation, I'll need to connect you with our order services team who can access your order details and handle this for you. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_005"
   },
   {
     "id": "tc_006",
-    "category": "account_access",
+    "category": "refunds_cancellations",
     "messages": [
       {
         "role": "system",
@@ -89,14 +109,298 @@
       },
       {
         "role": "user",
-        "content": "My account was hacked"
+        "content": "How do I get a refund?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with your refund request. To provide you with the most accurate steps for your specific situation, could you tell me when you made the purchase? This will help determine the best process or connect you with the right specialist."
       }
     ],
-    "ideal_response": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue.",
-    "notes": "Escalation case - security issue requires specialized team."
+    "ideal_response": "I'd like to help you with your refund request. To provide you with the most accurate steps for your specific situation, could you tell me when you made the purchase? This will help determine the best process or connect you with the right specialist.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_006"
   },
   {
     "id": "tc_007",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Where is my order?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_007"
+  },
+  {
+    "id": "tc_008",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I change my shipping address?"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_008"
+  },
+  {
+    "id": "tc_009",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I set up this product?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you set up your product. To provide you with the most accurate setup instructions, could you tell me which product model you have? This will help me guide you through the right steps or connect you with our product support team."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you set up your product. To provide you with the most accurate setup instructions, could you tell me which product model you have? This will help me guide you through the right steps or connect you with our product support team.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_009"
+  },
+  {
+    "id": "tc_010",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you explain how this feature works?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you understand how that feature works. To provide you with accurate and complete information, could you tell me which specific feature you're asking about? This will help me connect you with the right resources or specialist who can explain it in detail."
+      }
+    ],
+    "ideal_response": "I'd like to help you understand how that feature works. To provide you with accurate and complete information, could you tell me which specific feature you're asking about? This will help me connect you with the right resources or specialist who can explain it in detail.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_010"
+  },
+  {
+    "id": "tc_011",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The website isn't loading"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?"
+      }
+    ],
+    "ideal_response": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_011"
+  },
+  {
+    "id": "tc_012",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The app keeps crashing"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_012"
+  },
+  {
+    "id": "tc_013",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I upgrade my subscription plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you upgrade your subscription. To process the upgrade and ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the process. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you upgrade your subscription. To process the upgrade and ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the process. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_013"
+  },
+  {
+    "id": "tc_014",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's included in my current subscription?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you understand what's included in your subscription. To provide you with accurate details about your specific plan, I'll need to connect you with our subscription team who can access your account information. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd like to help you understand what's included in your subscription. To provide you with accurate details about your specific plan, I'll need to connect you with our subscription team who can access your account information. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_014"
+  },
+  {
+    "id": "tc_015",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I think my account was hacked"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue."
+      }
+    ],
+    "ideal_response": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue.",
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_015"
+  },
+  {
+    "id": "tc_016",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I enable two-factor authentication?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you set up two-factor authentication. To guide you through the process securely, I'll need to connect you with our security team who can verify your identity and walk you through the setup steps. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you set up two-factor authentication. To guide you through the process securely, I'll need to connect you with our security team who can verify your identity and walk you through the setup steps. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_016"
+  },
+  {
+    "id": "tc_017",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "This is the third time I've had this problem and I'm really frustrated"
+      },
+      {
+        "role": "assistant",
+        "content": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?"
+      }
+    ],
+    "ideal_response": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?",
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_017"
+  },
+  {
+    "id": "tc_018",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Your service has been terrible"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this."
+      }
+    ],
+    "ideal_response": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_018"
+  },
+  {
+    "id": "tc_019",
+    "category": "general_information",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are your business hours?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Could you tell me which location you're asking about? Alternatively, I can connect you with someone who can provide you with accurate hours for your area."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Could you tell me which location you're asking about? Alternatively, I can connect you with someone who can provide you with accurate hours for your area.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_019"
+  },
+  {
+    "id": "tc_020",
+    "category": "general_information",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I contact customer service?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_020"
+  },
+  {
+    "id": "tc_021",
     "category": "account_access",
     "messages": [
       {
@@ -106,246 +410,18 @@
       {
         "role": "user",
         "content": "I forgot my password"
-      }
-    ],
-    "ideal_response": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?",
-    "notes": "Escalation case - password reset requires identity verification."
-  },
-  {
-    "id": "tc_008",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Where is my order?"
-      }
-    ],
-    "ideal_response": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information.",
-    "notes": "Uncertainty case - needs order number to proceed."
-  },
-  {
-    "id": "tc_009",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I need help with my order"
       },
       {
         "role": "assistant",
-        "content": "I'd be happy to help you with your order. To better assist you, could you please provide your order number?"
-      },
-      {
-        "role": "user",
-        "content": "I don't have it"
+        "content": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?"
       }
     ],
-    "ideal_response": "No problem. I can help you locate your order using other information. Do you have the email address or phone number associated with the order? Alternatively, I can connect you with a specialist who has access to additional account lookup tools.",
-    "notes": "Uncertainty case - multi-turn clarification needed. Offers alternatives and escalation."
-  },
-  {
-    "id": "tc_010",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Can I cancel my order?"
-      }
-    ],
-    "ideal_response": "I'd like to help you with canceling your order. To determine if cancellation is possible, I'll need to check your order status. Could you provide your order number? If you don't have it, I can connect you with our order team who can assist you.",
-    "notes": "Uncertainty case - needs order details to determine cancellation eligibility."
-  },
-  {
-    "id": "tc_011",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I need to change my shipping address"
-      }
-    ],
-    "ideal_response": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?",
-    "notes": "Escalation case - order modifications require account access."
-  },
-  {
-    "id": "tc_012",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I was charged twice"
-      }
-    ],
-    "ideal_response": "I'm sorry to hear about the duplicate charge. This is something our billing team needs to investigate and resolve. Let me connect you with them right away so they can review your account and process any necessary refunds.",
-    "notes": "Escalation case - billing dispute requires financial review."
-  },
-  {
-    "id": "tc_013",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I was charged for something I didn't order"
-      }
-    ],
-    "ideal_response": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now.",
-    "notes": "Escalation case - unauthorized charge requires financial investigation."
-  },
-  {
-    "id": "tc_014",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "My payment was declined"
-      }
-    ],
-    "ideal_response": "I'd like to help you with the payment issue. To better understand what happened, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist.",
-    "notes": "Uncertainty case - needs clarification on payment method to diagnose issue."
-  },
-  {
-    "id": "tc_015",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "When will I get my refund?"
-      }
-    ],
-    "ideal_response": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?",
-    "notes": "Escalation case - refund status requires account access."
-  },
-  {
-    "id": "tc_016",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "The item I received is damaged"
-      }
-    ],
-    "ideal_response": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?",
-    "notes": "Escalation case - damaged product requires returns team with order access."
-  },
-  {
-    "id": "tc_017",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I got the wrong product"
-      }
-    ],
-    "ideal_response": "I'm sorry you received the wrong item. To resolve this, I'll need to connect you with our order support team who can verify your order details and arrange for the correct item. Would you like me to transfer you?",
-    "notes": "Escalation case - wrong item requires order verification and correction."
-  },
-  {
-    "id": "tc_018",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "This doesn't work as described"
-      }
-    ],
-    "ideal_response": "I'm sorry the product isn't working as expected. To better understand the issue and find the right solution, could you describe what's happening? For example, is it not functioning at all, or is it behaving differently than expected?",
-    "notes": "Uncertainty case - needs clarification on the specific problem."
-  },
-  {
-    "id": "tc_019",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "The product is missing parts"
-      }
-    ],
-    "ideal_response": "I'm sorry to hear that parts are missing from your order. To help resolve this, I'll need to connect you with our product support team who can verify your order and arrange to send the missing parts. Would you like me to transfer you?",
-    "notes": "Escalation case - missing parts requires order verification."
-  },
-  {
-    "id": "tc_020",
-    "category": "return_refund",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I want to return this item"
-      }
-    ],
-    "ideal_response": "I'd be happy to help you with a return. To process your return, I'll need to connect you with our returns team who can access your order details and guide you through the return process. Would you like me to transfer you?",
-    "notes": "Escalation case - returns require order access and processing."
-  },
-  {
-    "id": "tc_021",
-    "category": "return_refund",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "How do I process a return?"
-      }
-    ],
-    "ideal_response": "I'd like to help you with the return process. To provide you with the most accurate steps for your specific situation, could you tell me when you received the item? This will help determine the best process or connect you with the right specialist.",
-    "notes": "Uncertainty case - needs clarification on timing to determine return eligibility."
+    "ideal_response": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_021"
   },
   {
     "id": "tc_022",
-    "category": "return_refund",
+    "category": "billing_payments",
     "messages": [
       {
         "role": "system",
@@ -353,15 +429,19 @@
       },
       {
         "role": "user",
-        "content": "Can I return this after 30 days?"
+        "content": "I see an unexpected charge on my card"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about the unexpected charge. To properly investigate this, I need to connect you with our billing department who can review your account and help resolve this. Would you like me to transfer you?"
       }
     ],
-    "ideal_response": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details.",
-    "notes": "Escalation case - policy interpretation needed for edge cases."
+    "ideal_response": "I understand your concern about the unexpected charge. To properly investigate this, I need to connect you with our billing department who can review your account and help resolve this. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_022"
   },
   {
     "id": "tc_023",
-    "category": "technical_support",
+    "category": "refunds_cancellations",
     "messages": [
       {
         "role": "system",
@@ -369,15 +449,19 @@
       },
       {
         "role": "user",
-        "content": "The website isn't loading"
+        "content": "I need to cancel my subscription"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to cancel your subscription. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?"
       }
     ],
-    "ideal_response": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?",
-    "notes": "Uncertainty case - needs clarification on the specific technical issue."
+    "ideal_response": "I understand you'd like to cancel your subscription. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_023"
   },
   {
     "id": "tc_024",
-    "category": "technical_support",
+    "category": "shipping_delivery",
     "messages": [
       {
         "role": "system",
@@ -385,15 +469,19 @@
       },
       {
         "role": "user",
-        "content": "I can't complete checkout"
+        "content": "My package hasn't arrived yet"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about your package not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our shipping support team who can locate it using other information and check the delivery status."
       }
     ],
-    "ideal_response": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?",
-    "notes": "Uncertainty case - needs clarification on where checkout fails."
+    "ideal_response": "I understand your concern about your package not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our shipping support team who can locate it using other information and check the delivery status.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_024"
   },
   {
     "id": "tc_025",
-    "category": "technical_support",
+    "category": "product_usage_howto",
     "messages": [
       {
         "role": "system",
@@ -401,15 +489,19 @@
       },
       {
         "role": "user",
-        "content": "The app keeps crashing"
+        "content": "I need help using this feature"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with that feature. To provide you with the most accurate guidance, could you tell me which specific feature you're trying to use? This will help me connect you with the right resources or specialist."
       }
     ],
-    "ideal_response": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?",
-    "notes": "Escalation case - complex technical issue requires specialized support."
+    "ideal_response": "I'd be happy to help you with that feature. To provide you with the most accurate guidance, could you tell me which specific feature you're trying to use? This will help me connect you with the right resources or specialist.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_025"
   },
   {
     "id": "tc_026",
-    "category": "technical_support",
+    "category": "technical_issue_bug",
     "messages": [
       {
         "role": "system",
@@ -417,15 +509,19 @@
       },
       {
         "role": "user",
-        "content": "I'm getting an error code"
+        "content": "I'm getting an error message"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with that error. To better assist you, could you share the specific error code or message you're seeing? This will help me determine the best next steps or connect you with the right technical specialist."
       }
     ],
     "ideal_response": "I'd like to help you with that error. To better assist you, could you share the specific error code or message you're seeing? This will help me determine the best next steps or connect you with the right technical specialist.",
-    "notes": "Uncertainty case - needs clarification on specific error details."
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_026"
   },
   {
     "id": "tc_027",
-    "category": "policy_clarification",
+    "category": "subscription_plan_changes",
     "messages": [
       {
         "role": "system",
@@ -433,15 +529,19 @@
       },
       {
         "role": "user",
-        "content": "What's your return policy?"
+        "content": "Can I change my subscription plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you change your subscription plan. To ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?"
       }
     ],
-    "ideal_response": "I'd be happy to help you understand our return policy. However, return policies can vary based on several factors, and I want to make sure you get the most accurate information for your specific situation. Let me connect you with someone who can provide you with the complete and current policy details.",
-    "notes": "Escalation case - policy questions require accurate, up-to-date information."
+    "ideal_response": "I'd be happy to help you change your subscription plan. To ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_027"
   },
   {
     "id": "tc_028",
-    "category": "policy_clarification",
+    "category": "security_privacy",
     "messages": [
       {
         "role": "system",
@@ -449,15 +549,19 @@
       },
       {
         "role": "user",
-        "content": "What's your cancellation policy?"
+        "content": "I received a suspicious email"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear you received a suspicious email. This is important to address. To help investigate this security concern, I'll need to connect you with our security team who can review the email and provide guidance. Would you like me to transfer you?"
       }
     ],
-    "ideal_response": "I'd like to help you with cancellation information. Cancellation policies can vary depending on the type of service or product. To ensure you receive the most accurate and relevant information, let me connect you with a policy specialist who can provide complete details.",
-    "notes": "Escalation case - policy varies by product/service type."
+    "ideal_response": "I'm sorry to hear you received a suspicious email. This is important to address. To help investigate this security concern, I'll need to connect you with our security team who can review the email and provide guidance. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_028"
   },
   {
     "id": "tc_029",
-    "category": "policy_clarification",
+    "category": "complaints_feedback",
     "messages": [
       {
         "role": "system",
@@ -465,111 +569,19 @@
       },
       {
         "role": "user",
-        "content": "Can you explain your warranty?"
-      }
-    ],
-    "ideal_response": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details.",
-    "notes": "Escalation case - warranty terms vary by product."
-  },
-  {
-    "id": "tc_030",
-    "category": "policy_clarification",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+        "content": "I'm really disappointed with my experience"
       },
       {
-        "role": "user",
-        "content": "What are your shipping options?"
-      }
-    ],
-    "ideal_response": "I'd like to help you with shipping information. Shipping options can vary based on your location and the items you're ordering. To provide you with the most accurate options and rates, could you tell me your general location or zip code?",
-    "notes": "Uncertainty case - needs location information to provide accurate shipping options."
-  },
-  {
-    "id": "tc_031",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "This is the third time I've had this problem and I'm really frustrated"
-      }
-    ],
-    "ideal_response": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?",
-    "notes": "Escalation case - recurring issue requires specialized attention and account review."
-  },
-  {
-    "id": "tc_032",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Your service has been terrible"
-      }
-    ],
-    "ideal_response": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this.",
-    "notes": "Uncertainty case - needs clarification on specific issues to address complaint."
-  },
-  {
-    "id": "tc_033",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I want to speak to a manager"
-      }
-    ],
-    "ideal_response": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now.",
-    "notes": "Escalation case - customer explicitly requests human manager."
-  },
-  {
-    "id": "tc_034",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I'm very disappointed with my experience"
+        "role": "assistant",
+        "content": "I'm sorry to hear about your disappointment. I want to help make this right. To better understand how we can address your concerns, could you share more details about what happened? This will help me connect you with the right person who can help resolve this."
       }
     ],
     "ideal_response": "I'm sorry to hear about your disappointment. I want to help make this right. To better understand how we can address your concerns, could you share more details about what happened? This will help me connect you with the right person who can help resolve this.",
-    "notes": "Uncertainty case - needs clarification on specific issues to address disappointment."
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_029"
   },
   {
-    "id": "tc_035",
-    "category": "general_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "How do I contact customer service?"
-      }
-    ],
-    "ideal_response": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist.",
-    "notes": "Uncertainty case - needs clarification on inquiry type to provide appropriate contact info."
-  },
-  {
-    "id": "tc_036",
-    "category": "general_inquiry",
+    "id": "tc_030",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -578,14 +590,18 @@
       {
         "role": "user",
         "content": "Do you ship internationally?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with international shipping information. Shipping options and policies can vary by destination and product type. To provide you with accurate details, could you tell me which country you're shipping to?"
       }
     ],
     "ideal_response": "I'd like to help you with international shipping information. Shipping options and policies can vary by destination and product type. To provide you with accurate details, could you tell me which country you're shipping to?",
-    "notes": "Uncertainty case - needs destination country to provide accurate shipping information."
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_030"
   },
   {
-    "id": "tc_037",
-    "category": "general_inquiry",
+    "id": "tc_031",
+    "category": "account_access",
     "messages": [
       {
         "role": "system",
@@ -593,15 +609,739 @@
       },
       {
         "role": "user",
-        "content": "What services do you offer?"
+        "content": "I can't remember my username"
+      },
+      {
+        "role": "assistant",
+        "content": "I can help you recover your username. To ensure we're helping the right person, could you tell me which email address you used when creating your account? This will help me connect you with our account services team who can verify your identity and help you recover your username."
       }
     ],
-    "ideal_response": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services.",
-    "notes": "Escalation case - comprehensive service information requires specialized knowledge."
+    "ideal_response": "I can help you recover your username. To ensure we're helping the right person, could you tell me which email address you used when creating your account? This will help me connect you with our account services team who can verify your identity and help you recover your username.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_031"
+  },
+  {
+    "id": "tc_032",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My password reset link isn't working"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand the password reset link isn't working. To help troubleshoot this, could you tell me how long ago you requested the reset? Also, are you clicking the link from the same device where you received the email? This information will help me determine the best next steps or connect you with our account security team."
+      }
+    ],
+    "ideal_response": "I understand the password reset link isn't working. To help troubleshoot this, could you tell me how long ago you requested the reset? Also, are you clicking the link from the same device where you received the email? This information will help me determine the best next steps or connect you with our account security team.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_032"
+  },
+  {
+    "id": "tc_033",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm getting a message that my account has been suspended"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear your account has been suspended. To help resolve this, I'll need to connect you with our account services team who can review your account status and explain the reason for the suspension. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'm sorry to hear your account has been suspended. To help resolve this, I'll need to connect you with our account services team who can review your account status and explain the reason for the suspension. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_033"
+  },
+  {
+    "id": "tc_034",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you check if my account is active?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you check your account status. For security reasons, I don't have access to your account information directly. I can connect you with our account services team who can verify your identity and provide you with your account status. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd like to help you check your account status. For security reasons, I don't have access to your account information directly. I can connect you with our account services team who can verify your identity and provide you with your account status. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_034"
+  },
+  {
+    "id": "tc_035",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I update my payment method?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you update your payment method. To ensure this is done securely and correctly, I'll need to connect you with our billing team who can access your account and guide you through updating your payment information. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you update your payment method. To ensure this is done securely and correctly, I'll need to connect you with our billing team who can access your account and guide you through updating your payment information. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_035"
+  },
+  {
+    "id": "tc_036",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged for something I didn't order"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now."
+      }
+    ],
+    "ideal_response": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_036"
+  },
+  {
+    "id": "tc_037",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My credit card expired, will my subscription renew?"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're concerned about your subscription renewal with an expired card. To provide you with accurate information about your subscription status and help update your payment method, I'll need to connect you with our billing team who can access your account details. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I understand you're concerned about your subscription renewal with an expired card. To provide you with accurate information about your subscription status and help update your payment method, I'll need to connect you with our billing team who can access your account details. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_037"
   },
   {
     "id": "tc_038",
-    "category": "general_inquiry",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to use a different payment method for my next purchase"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you set up a different payment method. To ensure this is configured correctly for your account, I'll need to connect you with our billing team who can access your account and help you add or update your payment method. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you set up a different payment method. To ensure this is configured correctly for your account, I'll need to connect you with our billing team who can access your account and help you add or update your payment method. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_038"
+  },
+  {
+    "id": "tc_039",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I return this after 30 days?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details."
+      }
+    ],
+    "ideal_response": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_039"
+  },
+  {
+    "id": "tc_040",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I need to cancel because I'm moving"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you need to cancel due to your move. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I understand you need to cancel due to your move. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_040"
+  },
+  {
+    "id": "tc_041",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The item I received is damaged, can I get a refund?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?"
+      }
+    ],
+    "ideal_response": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_041"
+  },
+  {
+    "id": "tc_042",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How long does it take to process a refund?"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_042"
+  },
+  {
+    "id": "tc_043",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How long does shipping usually take?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with shipping information. Shipping times can vary based on your location, the shipping method selected, and the product type. To provide you with the most accurate estimate, could you tell me which shipping option you're considering or which product you're ordering?"
+      }
+    ],
+    "ideal_response": "I'd like to help you with shipping information. Shipping times can vary based on your location, the shipping method selected, and the product type. To provide you with the most accurate estimate, could you tell me which shipping option you're considering or which product you're ordering?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_043"
+  },
+  {
+    "id": "tc_044",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The tracking says delivered but I didn't receive it"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about the package showing as delivered when you haven't received it. To help investigate this, I'll need your order number. I can then connect you with our shipping support team who can check the delivery details and help locate your package. Do you have your order number available?"
+      }
+    ],
+    "ideal_response": "I understand your concern about the package showing as delivered when you haven't received it. To help investigate this, I'll need your order number. I can then connect you with our shipping support team who can check the delivery details and help locate your package. Do you have your order number available?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_044"
+  },
+  {
+    "id": "tc_045",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I get expedited shipping for my order?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with expedited shipping options. To provide you with accurate shipping options and rates for your order, I'll need to connect you with our order support team who can access your order details and available shipping methods. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you with expedited shipping options. To provide you with accurate shipping options and rates for your order, I'll need to connect you with our order support team who can access your order details and available shipping methods. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_045"
+  },
+  {
+    "id": "tc_046",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My package was left at the wrong address"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear your package was delivered to the wrong address. To help resolve this, I'll need your order number so I can connect you with our shipping support team who can investigate the delivery and help retrieve or redirect your package. Do you have your order number?"
+      }
+    ],
+    "ideal_response": "I'm sorry to hear your package was delivered to the wrong address. To help resolve this, I'll need your order number so I can connect you with our shipping support team who can investigate the delivery and help retrieve or redirect your package. Do you have your order number?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_046"
+  },
+  {
+    "id": "tc_047",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are the steps to activate this service?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you activate your service. To provide you with the most accurate activation steps, could you tell me which service you're trying to activate? This will help me connect you with the right specialist who can guide you through the activation process."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you activate your service. To provide you with the most accurate activation steps, could you tell me which service you're trying to activate? This will help me connect you with the right specialist who can guide you through the activation process.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_047"
+  },
+  {
+    "id": "tc_048",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't figure out how to use this tool"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with that tool. To provide you with the most accurate guidance, could you tell me which specific tool you're working with and what you're trying to accomplish? This will help me connect you with the right resources or specialist."
+      }
+    ],
+    "ideal_response": "I'd like to help you with that tool. To provide you with the most accurate guidance, could you tell me which specific tool you're working with and what you're trying to accomplish? This will help me connect you with the right resources or specialist.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_048"
+  },
+  {
+    "id": "tc_049",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Is there a tutorial for this feature?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you find resources for that feature. To direct you to the most relevant tutorial or guide, could you tell me which specific feature you're interested in learning about? This will help me connect you with the right resources or specialist."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you find resources for that feature. To direct you to the most relevant tutorial or guide, could you tell me which specific feature you're interested in learning about? This will help me connect you with the right resources or specialist.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_049"
+  },
+  {
+    "id": "tc_050",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm not sure how to configure this setting"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you configure that setting. To provide you with accurate configuration steps, could you tell me which setting you're trying to configure and what you're hoping to achieve? This will help me connect you with the right guidance or specialist."
+      }
+    ],
+    "ideal_response": "I'd like to help you configure that setting. To provide you with accurate configuration steps, could you tell me which setting you're trying to configure and what you're hoping to achieve? This will help me connect you with the right guidance or specialist.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_050"
+  },
+  {
+    "id": "tc_051",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't complete checkout"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?"
+      }
+    ],
+    "ideal_response": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_051"
+  },
+  {
+    "id": "tc_052",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Something isn't working correctly"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry something isn't working correctly. To better diagnose the problem, could you describe what's happening? For example, what were you trying to do, and what error or unexpected behavior are you seeing? This will help me determine the best next steps or connect you with the right technical specialist."
+      }
+    ],
+    "ideal_response": "I'm sorry something isn't working correctly. To better diagnose the problem, could you describe what's happening? For example, what were you trying to do, and what error or unexpected behavior are you seeing? This will help me determine the best next steps or connect you with the right technical specialist.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_052"
+  },
+  {
+    "id": "tc_053",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The page keeps freezing"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry the page keeps freezing. To help troubleshoot this, could you tell me which browser you're using and whether this happens on a specific page or across the site? This information will help me determine if there are any quick fixes to try or if I should connect you with our technical support team."
+      }
+    ],
+    "ideal_response": "I'm sorry the page keeps freezing. To help troubleshoot this, could you tell me which browser you're using and whether this happens on a specific page or across the site? This information will help me determine if there are any quick fixes to try or if I should connect you with our technical support team.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_053"
+  },
+  {
+    "id": "tc_054",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm seeing a blank screen when I try to log in"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you're seeing a blank screen when trying to log in. To help diagnose this, could you tell me if this happens immediately after clicking the login button, or does the page start to load first? Also, are you using a mobile device or computer? This will help me determine the best troubleshooting steps or connect you with technical support."
+      }
+    ],
+    "ideal_response": "I'm sorry you're seeing a blank screen when trying to log in. To help diagnose this, could you tell me if this happens immediately after clicking the login button, or does the page start to load first? Also, are you using a mobile device or computer? This will help me determine the best troubleshooting steps or connect you with technical support.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_054"
+  },
+  {
+    "id": "tc_055",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "When does my subscription renew?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you find out when your subscription renews. To provide you with accurate renewal information, I'll need to connect you with our subscription team who can access your account and tell you your specific renewal date. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd like to help you find out when your subscription renews. To provide you with accurate renewal information, I'll need to connect you with our subscription team who can access your account and tell you your specific renewal date. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_055"
+  },
+  {
+    "id": "tc_056",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I downgrade my plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with downgrading your plan. To ensure you understand how the change will affect your account and to process it correctly, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you with downgrading your plan. To ensure you understand how the change will affect your account and to process it correctly, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_056"
+  },
+  {
+    "id": "tc_057",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's the difference between the plans?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you understand the differences between plans. To provide you with accurate and current information about available plans and their features, I'll need to connect you with our subscription team who can access the latest plan details. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd like to help you understand the differences between plans. To provide you with accurate and current information about available plans and their features, I'll need to connect you with our subscription team who can access the latest plan details. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_057"
+  },
+  {
+    "id": "tc_058",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to pause my subscription temporarily"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to pause your subscription temporarily. To see if this option is available and to process it correctly, I'll need to connect you with our subscription services team who can access your account and explain the available options. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I understand you'd like to pause your subscription temporarily. To see if this option is available and to process it correctly, I'll need to connect you with our subscription services team who can access your account and explain the available options. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_058"
+  },
+  {
+    "id": "tc_059",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you explain your privacy policy?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you understand our privacy policy. To provide you with the most accurate and current information, I can direct you to our official privacy policy page, or I can connect you with our privacy team who can answer specific questions. Which would you prefer?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you understand our privacy policy. To provide you with the most accurate and current information, I can direct you to our official privacy policy page, or I can connect you with our privacy team who can answer specific questions. Which would you prefer?",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_059"
+  },
+  {
+    "id": "tc_060",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I noticed some unusual activity on my account"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about the unusual activity. This is important to address right away. To help investigate and secure your account, I'll need to connect you with our security team who can review the activity and take appropriate action. Would you like me to transfer you now?"
+      }
+    ],
+    "ideal_response": "I'm sorry to hear about the unusual activity. This is important to address right away. To help investigate and secure your account, I'll need to connect you with our security team who can review the activity and take appropriate action. Would you like me to transfer you now?",
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_060"
+  },
+  {
+    "id": "tc_061",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I make my account more secure?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you improve your account security. To provide you with personalized security recommendations based on your current account settings, I'll need to connect you with our security team who can review your account and suggest the best security options for you. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I'd be happy to help you improve your account security. To provide you with personalized security recommendations based on your current account settings, I'll need to connect you with our security team who can review your account and suggest the best security options for you. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_061"
+  },
+  {
+    "id": "tc_062",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to delete my account and all my data"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to delete your account and data. This is an important decision that requires careful handling. To ensure this is processed correctly and securely, I'll need to connect you with our account services team who can verify your identity and guide you through the account deletion process. Would you like me to transfer you?"
+      }
+    ],
+    "ideal_response": "I understand you'd like to delete your account and data. This is an important decision that requires careful handling. To ensure this is processed correctly and securely, I'll need to connect you with our account services team who can verify your identity and guide you through the account deletion process. Would you like me to transfer you?",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_062"
+  },
+  {
+    "id": "tc_063",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to speak to a manager"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now."
+      }
+    ],
+    "ideal_response": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_063"
+  },
+  {
+    "id": "tc_064",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I've been waiting for a response for days"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you've been waiting for a response. That's frustrating, and I want to help address this. To better understand the situation and ensure you get a timely resolution, could you tell me what you were waiting for a response about? This will help me connect you with the right person who can follow up immediately."
+      }
+    ],
+    "ideal_response": "I'm sorry you've been waiting for a response. That's frustrating, and I want to help address this. To better understand the situation and ensure you get a timely resolution, could you tell me what you were waiting for a response about? This will help me connect you with the right person who can follow up immediately.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_064"
+  },
+  {
+    "id": "tc_065",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The quality of service has really declined"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear you feel the quality of service has declined. I want to understand your concerns better so we can address them. Could you tell me more about the specific issues you've experienced? This will help me connect you with the right specialist who can work on improving your experience."
+      }
+    ],
+    "ideal_response": "I'm sorry to hear you feel the quality of service has declined. I want to understand your concerns better so we can address them. Could you tell me more about the specific issues you've experienced? This will help me connect you with the right specialist who can work on improving your experience.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_065"
+  },
+  {
+    "id": "tc_066",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm not satisfied with how my issue was handled"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you're not satisfied with how your issue was handled. I want to help make this right. To better understand what happened and ensure it's properly addressed, could you share more details about the issue and how it was handled? This will help me connect you with the right person who can review the situation and work on a resolution."
+      }
+    ],
+    "ideal_response": "I'm sorry you're not satisfied with how your issue was handled. I want to help make this right. To better understand what happened and ensure it's properly addressed, could you share more details about the issue and how it was handled? This will help me connect you with the right person who can review the situation and work on a resolution.",
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_066"
+  },
+  {
+    "id": "tc_067",
+    "category": "general_information",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What payment methods do you accept?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details."
+      }
+    ],
+    "ideal_response": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_067"
+  },
+  {
+    "id": "tc_068",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -610,14 +1350,18 @@
       {
         "role": "user",
         "content": "Are you open on holidays?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with our holiday hours. Operating hours can vary by location and specific holidays. To provide you with accurate information, could you tell me which holiday you're asking about, or would you prefer I connect you with someone who has access to our complete holiday schedule?"
       }
     ],
     "ideal_response": "I'd like to help you with our holiday hours. Operating hours can vary by location and specific holidays. To provide you with accurate information, could you tell me which holiday you're asking about, or would you prefer I connect you with someone who has access to our complete holiday schedule?",
-    "notes": "Uncertainty case - needs clarification on specific holiday or can escalate for complete schedule."
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_068"
   },
   {
-    "id": "tc_039",
-    "category": "general_inquiry",
+    "id": "tc_069",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -625,15 +1369,19 @@
       },
       {
         "role": "user",
-        "content": "Thank you for your help"
+        "content": "What services do you offer?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services."
       }
     ],
-    "ideal_response": "You're very welcome! I'm glad I could help. If you need anything else, please don't hesitate to reach out. Have a great day!",
-    "notes": "Simple acknowledgment - appropriate response to gratitude. Warm, professional, and concise."
+    "ideal_response": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_069"
   },
   {
-    "id": "tc_040",
-    "category": "order_inquiry",
+    "id": "tc_070",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -641,10 +1389,14 @@
       },
       {
         "role": "user",
-        "content": "My order hasn't arrived yet"
+        "content": "Can you explain your warranty?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details."
       }
     ],
-    "ideal_response": "I understand your concern about your order not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our order support team who can locate it using other information and check the delivery status.",
-    "notes": "Uncertainty case - needs order number to track delivery, offers escalation alternative."
+    "ideal_response": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details.",
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_070"
   }
 ]

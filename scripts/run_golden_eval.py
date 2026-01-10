@@ -242,6 +242,7 @@ Examples:
   python scripts/run_golden_eval.py --provider hf_local --model-id gpt2
   python scripts/run_golden_eval.py --provider hf_local --model-id TinyLlama/TinyLlama-1.1B-Chat-v1.0 --adapter-dir outputs/smoke_001
   python scripts/run_golden_eval.py --provider hf_local --model-id gpt2 --device mps --max-new-tokens 256
+  python scripts/run_golden_eval.py --test-cases-file evaluation/dataset_spotcheck.json
         """
     )
     
@@ -292,44 +293,47 @@ Examples:
         help="Include full traceback in error metadata when generation fails (default: False)"
     )
     
+    parser.add_argument(
+        "--test-cases-file",
+        type=str,
+        default="evaluation/test_cases.json",
+        help="Path to test cases JSON file (default: evaluation/test_cases.json)"
+    )
+    
     args = parser.parse_args()
     
     # Resolve paths relative to project root (already set above)
-    # Load from manual cases (70 cases) instead of test_cases.json (40 cases)
-    manual_cases_path = project_root / "data" / "raw" / "manual_cases.jsonl"
+    test_cases_path = project_root / args.test_cases_file
     prompts_dir = project_root / "prompts"
     output_path = project_root / args.out
     
-    print(f"Loading test cases from: {manual_cases_path}")
+    # Resolve absolute path and print
+    test_cases_path_abs = test_cases_path.resolve()
+    print(f"Loading test cases from: {test_cases_path_abs}")
     
-    # Load raw JSONL to get metadata and messages
-    import json
-    with open(manual_cases_path, 'r', encoding='utf-8') as f:
-        raw_cases = [json.loads(line) for line in f if line.strip()]
-    
-    # Convert to TestCase format
-    test_cases = []
-    for raw_case in raw_cases:
-        # Filter out system messages (system prompt handled separately)
-        messages = [ChatMessage(role=MessageRole(msg["role"]), content=msg["content"]) 
-                   for msg in raw_case["messages"] if msg["role"] != "system"]
+    # Safety check: if loading the default golden suite, ensure IDs start with tc_
+    if args.test_cases_file == "evaluation/test_cases.json" or str(test_cases_path_abs).endswith("evaluation/test_cases.json"):
+        # Load and check IDs before processing
+        import json
+        with open(test_cases_path_abs, 'r', encoding='utf-8') as f:
+            raw_data = json.load(f)
         
-        # Extract assistant response as ideal_response
-        assistant_msg = next((msg for msg in raw_case["messages"] if msg["role"] == "assistant"), None)
-        ideal_response = assistant_msg["content"] if assistant_msg else ""
-        
-        # Create test case
-        metadata = raw_case.get("metadata", {})
-        test_case = TestCase(
-            id=metadata.get("test_case_id", f"manual_{len(test_cases)+1:03d}"),
-            category=metadata.get("category", "unknown"),
-            messages=messages,
-            ideal_response=ideal_response,
-            notes=f"Source: {metadata.get('source', 'manual')}, Difficulty: {metadata.get('difficulty', 'unknown')}"
-        )
-        test_cases.append(test_case)
+        if isinstance(raw_data, list) and len(raw_data) > 0:
+            first_id = raw_data[0].get("id", "")
+            if not first_id.startswith("tc_"):
+                print(f"ERROR: Safety check failed!", file=sys.stderr)
+                print(f"  Expected golden suite IDs to start with 'tc_', but found: '{first_id}'", file=sys.stderr)
+                print(f"  File: {test_cases_path_abs}", file=sys.stderr)
+                print(f"  This may indicate accidental overwrite of the golden suite.", file=sys.stderr)
+                sys.exit(1)
     
+    # Load test cases using the standard loader
+    test_cases = load_test_cases(str(test_cases_path_abs))
     print(f"Loaded {len(test_cases)} test cases")
+    
+    # Verify IDs are preserved from the file
+    if test_cases:
+        print(f"  Sample IDs: {[tc.id for tc in test_cases[:3]]}")
     
     print(f"Loading system prompt and guidelines from: {prompts_dir}")
     # Load full guidelines to distill
