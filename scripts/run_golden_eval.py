@@ -11,7 +11,7 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict
 
 # Add project root to path for csft package
 project_root = Path(__file__).parent.parent
@@ -124,8 +124,9 @@ def distill_guidelines_summary(guidelines_text: str) -> str:
 def run_test_case(
     provider: Provider,
     test_case: TestCase,
-    system_prompt: str
-) -> dict[str, Any]:
+    system_prompt: str,
+    debug: bool = False
+) -> Dict[str, Any]:
     """
     Run a single test case through the provider.
     
@@ -133,32 +134,54 @@ def run_test_case(
         provider: Model provider instance
         test_case: Test case to evaluate
         system_prompt: Assembled system prompt
+        debug: If True, include full traceback in error metadata
         
     Returns:
-        Dictionary with test case results
+        Dictionary with test case results (includes error fields if generation failed)
     """
+    import traceback
+    
     # Convert test case messages to ChatMessage objects (excluding system if present)
     messages = []
     for msg in test_case.messages:
         if msg.role.value != "system":  # System prompt handled separately
             messages.append(msg)
     
-    # Generate response
-    response = provider.generate(
-        messages=messages,
-        system_prompt=system_prompt
-    )
-    
-    # Build result
-    return {
+    # Build base result structure
+    base_result = {
         "test_case_id": test_case.id,
         "category": test_case.category,
-        "input_messages": [{"role": msg.role.value, "content": msg.content} for msg in test_case.messages],
-        "model_output": response.content,
-        "ideal_response": test_case.ideal_response,
-        "timestamp": datetime.utcnow().isoformat() + "Z",
-        "provider_name": repr(provider)
+        "messages": [{"role": msg.role.value, "content": msg.content} for msg in test_case.messages],
+        "timestamp": datetime.utcnow().isoformat() + "Z"
     }
+    
+    # Try to generate response
+    try:
+        response = provider.generate(
+            messages=messages,
+            system_prompt=system_prompt
+        )
+        
+        # Success - add output_text
+        base_result["output_text"] = response.content
+        return base_result
+        
+    except Exception as e:
+        # Generation failed - add error fields
+        error_type = type(e).__name__
+        error_message = str(e)
+        
+        base_result["output_text"] = ""
+        base_result["error_type"] = error_type
+        base_result["error_message"] = error_message
+        
+        if debug:
+            base_result["traceback"] = traceback.format_exc()
+        
+        # Print error to stderr
+        print(f"FAILED {test_case.id}: {error_type}: {error_message}", file=sys.stderr)
+        
+        return base_result
 
 
 def main():
@@ -217,6 +240,12 @@ Examples:
         help="Output path for results JSON (default: evaluation/results/latest_results.json)"
     )
     
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Include full traceback in error metadata when generation fails (default: False)"
+    )
+    
     args = parser.parse_args()
     
     # Resolve paths relative to project root (already set above)
@@ -260,22 +289,73 @@ Examples:
     
     provider = create_provider(args.provider, **provider_kwargs)
     
+    # Store adapter_dir for output (resolve path)
+    adapter_dir_for_output = None
+    if args.adapter_dir:
+        adapter_path = Path(args.adapter_dir)
+        if not adapter_path.is_absolute():
+            adapter_path = project_root / adapter_path
+        adapter_dir_for_output = str(adapter_path.relative_to(project_root)) if adapter_path.exists() else args.adapter_dir
+    
     print(f"Running {len(test_cases)} test cases...")
     results = []
+    failed_count = 0
+    
     for idx, test_case in enumerate(test_cases, 1):
         print(f"  [{idx}/{len(test_cases)}] Running test case: {test_case.id}")
-        result = run_test_case(provider, test_case, system_prompt)
-        results.append(result)
+        try:
+            result = run_test_case(provider, test_case, system_prompt, debug=args.debug)
+            # Add provider info to result
+            result["provider"] = args.provider
+            result["model_id"] = args.model_id if args.provider == "hf_local" else None
+            result["adapter_dir"] = adapter_dir_for_output
+            
+            # Track failures
+            if "error_type" in result:
+                failed_count += 1
+            
+            results.append(result)
+        except Exception as e:
+            # Unexpected error during result processing - still add to results
+            failed_count += 1
+            error_type = type(e).__name__
+            error_message = str(e)
+            print(f"FAILED {test_case.id}: {error_type}: {error_message}", file=sys.stderr)
+            
+            result = {
+                "test_case_id": test_case.id,
+                "category": test_case.category,
+                "messages": [{"role": msg.role.value, "content": msg.content} for msg in test_case.messages],
+                "output_text": "",
+                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "provider": args.provider,
+                "model_id": args.model_id if args.provider == "hf_local" else None,
+                "adapter_dir": adapter_dir_for_output,
+                "error_type": error_type,
+                "error_message": error_message,
+            }
+            if args.debug:
+                import traceback
+                result["traceback"] = traceback.format_exc()
+            
+            results.append(result)
     
     # Ensure output directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # Save results
+    # Save results (always write, even if some cases failed)
     print(f"Saving results to: {output_path}")
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     
+    # Print summary
+    success_count = len(results) - failed_count
     print(f"✓ Evaluation complete. {len(results)} results saved.")
+    if failed_count > 0:
+        print(f"  Successful: {success_count}")
+        print(f"  Failed: {failed_count}", file=sys.stderr)
+    else:
+        print(f"  All {len(results)} test cases completed successfully.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,770 @@
+[
+  {
+    "test_case_id": "tc_001",
+    "category": "information_request",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are your business hours?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:09:36.697147Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_002",
+    "category": "information_request",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Do you have a store near me?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:10:11.422235Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_003",
+    "category": "information_request",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What payment methods do you accept?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:10:45.869248Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_004",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't log into my account"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:11:20.399136Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_005",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you check my account balance?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:11:55.021796Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_006",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My account was hacked"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:12:29.479851Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_007",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I forgot my password"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:13:04.036079Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_008",
+    "category": "order_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Where is my order?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:13:38.271746Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_009",
+    "category": "order_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I need help with my order"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with your order. To better assist you, could you please provide your order number?"
+      },
+      {
+        "role": "user",
+        "content": "I don't have it"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:14:13.879948Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_010",
+    "category": "order_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I cancel my order?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:14:48.279738Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_011",
+    "category": "order_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I need to change my shipping address"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:15:22.282914Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_012",
+    "category": "billing_payment",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged twice"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:15:56.302561Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_013",
+    "category": "billing_payment",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged for something I didn't order"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:16:31.289085Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_014",
+    "category": "billing_payment",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My payment was declined"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:17:05.489952Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_015",
+    "category": "billing_payment",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "When will I get my refund?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:17:39.282169Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_016",
+    "category": "product_issue",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The item I received is damaged"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:18:14.317727Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_017",
+    "category": "product_issue",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I got the wrong product"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:18:48.753132Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_018",
+    "category": "product_issue",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "This doesn't work as described"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:19:22.758382Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_019",
+    "category": "product_issue",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The product is missing parts"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:19:57.340606Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_020",
+    "category": "return_refund",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to return this item"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:20:31.627318Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_021",
+    "category": "return_refund",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I process a return?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:21:05.841212Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_022",
+    "category": "return_refund",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I return this after 30 days?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:21:40.403221Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_023",
+    "category": "technical_support",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The website isn't loading"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:22:15.131270Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_024",
+    "category": "technical_support",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't complete checkout"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:22:48.951954Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_025",
+    "category": "technical_support",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The app keeps crashing"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:23:22.989566Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_026",
+    "category": "technical_support",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm getting an error code"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:23:57.102925Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_027",
+    "category": "policy_clarification",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's your return policy?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:24:30.874608Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_028",
+    "category": "policy_clarification",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's your cancellation policy?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:25:05.069146Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_029",
+    "category": "policy_clarification",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you explain your warranty?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:25:38.776635Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_030",
+    "category": "policy_clarification",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are your shipping options?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:26:12.950404Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_031",
+    "category": "complaint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "This is the third time I've had this problem and I'm really frustrated"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:26:49.453143Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_032",
+    "category": "complaint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Your service has been terrible"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:27:26.509184Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_033",
+    "category": "complaint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to speak to a manager"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:28:01.090902Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_034",
+    "category": "complaint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm very disappointed with my experience"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:28:35.639944Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_035",
+    "category": "general_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I contact customer service?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:29:10.169689Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_036",
+    "category": "general_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Do you ship internationally?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:29:44.522408Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_037",
+    "category": "general_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What services do you offer?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:30:19.179117Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_038",
+    "category": "general_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Are you open on holidays?"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:30:52.456351Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_039",
+    "category": "general_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Thank you for your help"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:31:26.292886Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  },
+  {
+    "test_case_id": "tc_040",
+    "category": "order_inquiry",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My order hasn't arrived yet"
+      }
+    ],
+    "output_text": "I apologize, but I'm unable to generate a response at this time. Please try again or contact support for assistance.",
+    "timestamp": "2026-01-09T23:31:59.963697Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": "outputs/smoke_001"
+  }
+]

@@ -2,7 +2,7 @@
   {
     "test_case_id": "tc_001",
     "category": "information_request",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -12,15 +12,16 @@
         "content": "What are your business hours?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system. Let me connect you with someone who can provide you with accurate hours for your location. Would you like me to transfer you to a specialist?",
-    "timestamp": "2026-01-09T22:04:26.033037Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I do not have access to your business's specific hours. However, generally, businesses have a standard working schedule that varies depending on the industry and location. It's best to check with your company's human resources department or contact them directly for their specific hours of operation.",
+    "timestamp": "2026-01-09T22:46:52.873807Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_002",
     "category": "information_request",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -30,15 +31,16 @@
         "content": "Do you have a store near me?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you find a store location. To provide you with the most accurate information, could you tell me what city or area you're looking in? Alternatively, I can connect you with our locations team who has access to our complete store directory.",
-    "timestamp": "2026-01-09T22:04:26.033046Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I do not have access to real-time information about stores near you. However, you can search for stores near you using a map or search engine. You can also check with your local mall or shopping center for their store directory or contact them directly for assistance.",
+    "timestamp": "2026-01-09T22:46:56.623463Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_003",
     "category": "information_request",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -48,15 +50,16 @@
         "content": "What payment methods do you accept?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details.",
-    "timestamp": "2026-01-09T22:04:26.033052Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I do not have access to your company's specific payment methods. However, in general, most customer support assistants accept payment methods such as credit/debit cards, online bank transfers, and paypal. It's best to check with your company's payment policies to see which methods they accept.",
+    "timestamp": "2026-01-09T22:47:00.986719Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_004",
     "category": "account_access",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -66,15 +69,16 @@
         "content": "I can't log into my account"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand you're having trouble accessing your account. To help resolve this, I'll need to connect you with our account security team who can verify your identity and assist with account access. Would you like me to transfer you now?",
-    "timestamp": "2026-01-09T22:04:26.033056Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, I can help you with that. Please provide me with your email address so I can send you a link to reset your password. Here's the link: https://yourdomain.com/reset-password\n\nOnce you click on the link, you will be prompted to enter your email address and a new password. Please follow the instructions to reset your password. If you have any issues, please let me know and I'll help you out. Have a great day!",
+    "timestamp": "2026-01-09T22:47:07.710919Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_005",
     "category": "account_access",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -84,15 +88,16 @@
         "content": "Can you check my account balance?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand you'd like to check your account balance. For security and privacy reasons, I don't have access to your account information. I can connect you with our account services team who can verify your identity and provide you with that information. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033059Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, I'd be happy to check your account balance for you. Please provide your account number and any relevant information, such as your name or account type, so I can get started.",
+    "timestamp": "2026-01-09T22:47:10.534639Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_006",
     "category": "account_access",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -102,15 +107,16 @@
         "content": "My account was hacked"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue.",
-    "timestamp": "2026-01-09T22:04:26.033063Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, I can provide you with a draft for your account was hacked email. Here's a sample email that you can use as a starting point:\n\nSubject: Account Was Hacked\n\nDear [Customer Name],\n\nWe are deeply sorry to inform you that your account has been hacked. We have taken immediate action to secure your account and prevent any further unauthorized access.\n\nWe have identified the source of the breach and have taken steps to prevent it from happening again. However, we understand that this may cause some inconvenience and frustration.\n\nWe have taken the necessary steps to restore your account and ensure that your personal and financial information is secure. We will be in touch with you shortly to provide you with further instructions on how to proceed.\n\nIn the meantime, please do not share your login credentials with anyone. We recommend that you change your password immediately and monitor your account for any suspicious activity.\n\nWe understand that this situation may be stressful, and we are here to support you through this difficult time. If you have any questions or concerns, please do not hesitate to contact our customer support team.\n\nThank you for your understanding and cooperation. We appreciate your trust in our company and our commitment to your security.\n\nBest regards,\n\n[Your Name]\n\n[Your Company Name]\n\n[Your Company Logo]\n\n[Your Company Website]\n\n[Your Company Phone Number]\n\n[Your Company Email Address]\n\n[Your Company Address]\n\n[Your Company City, State, ZIP Code]\n\n[Your Company Phone Number]\n\n[Your Company Website]\n\n[Your Company Email Address]\n\n[Your Company Address]\n\n[Your Company City, State, ZIP Code]\n\n[Your Company Phone Number]\n\n[Your Company Website]\n\n[Your Company Email Address]\n\n[Your Company Address]\n\n[Your Company City, State, ZIP Code]\n\n[Your Company Phone Number]\n\n[Your Company Website]\n\n[Your Company Email Address]\n\n[Your Company Address]\n\n[Your Company City, State, ZIP Code]\n\n[Your Company Phone Number]\n\n[Your Company Website]\n\n[Your Company Email Address]\n\n[Your Company Address]\n\n[Your Company City, State, ZIP Code]",
+    "timestamp": "2026-01-09T22:47:47.583851Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_007",
     "category": "account_access",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -120,15 +126,16 @@
         "content": "I forgot my password"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033066Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, here's an updated version of the system prompt that includes a password reset feature:\n\nSystem Prompt (DRAFT)\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions\n\n## Password Reset Guidelines\n\n- If you forget your password, you can reset it by clicking on the \"Forgot Password\" link on the login page\n- Follow the prompts to create a new password and confirm it\n- Once you have reset your password, log in to your account using the new password\n\n## Key Guidelines\n\n- **Provide clear instructions**: Include clear instructions on how to reset your",
+    "timestamp": "2026-01-09T22:49:04.788995Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_008",
     "category": "order_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -138,15 +145,16 @@
         "content": "Where is my order?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information.",
-    "timestamp": "2026-01-09T22:04:26.033073Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I don't have access to your specific order information. However, you can check your order status on the company's website or contact their customer support team for more information. You can usually find your order number or tracking information on the company's website or in your order confirmation email. If you're having trouble finding your order, you can also contact the company's customer support team for assistance.",
+    "timestamp": "2026-01-09T22:49:15.618349Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_009",
     "category": "order_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -164,15 +172,16 @@
         "content": "I don't have it"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "No problem. I can help you locate your order using other information. Do you have the email address or phone number associated with the order? Alternatively, I can connect you with a specialist who has access to additional account lookup tools.",
-    "timestamp": "2026-01-09T22:04:26.033078Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, I'd be happy to help you with your order. Please provide me with your order number so I can assist you better. You can find your order number on your confirmation email or invoice. Let me know if you need any further assistance.",
+    "timestamp": "2026-01-09T22:49:21.309128Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_010",
     "category": "order_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -182,15 +191,16 @@
         "content": "Can I cancel my order?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with canceling your order. To determine if cancellation is possible, I'll need to check your order status. Could you provide your order number? If you don't have it, I can connect you with our order team who can assist you.",
-    "timestamp": "2026-01-09T22:04:26.033081Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Yes, you can cancel your order at any time before it is shipped. Please follow these steps to cancel your order:\n\n1. Go to the order confirmation page on our website.\n2. Click on the \"My Account\" or \"My Orders\" link.\n3. Click on the order number that you want to cancel.\n4. Click on the \"Cancel Order\" button.\n5. Enter your billing and shipping information.\n6. Review your order details and click on the \"Cancel Order\" button.\n7. Our team will process your cancellation and refund your payment.\n\nNote: If you have any questions or concerns about your order, please contact our customer support team.",
+    "timestamp": "2026-01-09T22:49:34.034741Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_011",
     "category": "order_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -200,15 +210,16 @@
         "content": "I need to change my shipping address"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033084Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, here's a revised version of the system prompt that includes a change to the shipping address:\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions\n\n## Shipping Address Changes\n\n- If you need to make a shipping address change, please provide the new address in the following format:\n  - Street address: _Street Name_ _Street Number_ _City, State ZIP Code_\n  - P.O. Box: _P.O. Box Number_\n  - Country: _Country Code_ _Country Name_\n\n- Please ensure that the new address is accurate and up-to-date. If you are unable to provide the correct address, please let us know and we will make the necessary changes.",
+    "timestamp": "2026-01-09T22:50:43.769754Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_012",
     "category": "billing_payment",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -218,15 +229,16 @@
         "content": "I was charged twice"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry to hear about the duplicate charge. This is something our billing team needs to investigate and resolve. Let me connect you with them right away so they can review your account and process any necessary refunds.",
-    "timestamp": "2026-01-09T22:04:26.033087Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I apologize for the confusion. The system prompt you to input the charge twice. Please try again with the correct charge.",
+    "timestamp": "2026-01-09T22:50:47.432317Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_013",
     "category": "billing_payment",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -236,15 +248,16 @@
         "content": "I was charged for something I didn't order"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now.",
-    "timestamp": "2026-01-09T22:04:26.033090Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I apologize for the confusion. Please provide me with more information about the charge. Can you please provide me with the details of the charge, such as the date, time, and location where the charge was made? This will help me better understand the situation and provide you with the necessary information to resolve the issue. Thank you for your patience and understanding.",
+    "timestamp": "2026-01-09T22:50:55.021820Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_014",
     "category": "billing_payment",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -254,15 +267,16 @@
         "content": "My payment was declined"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with the payment issue. To better understand what happened, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist.",
-    "timestamp": "2026-01-09T22:04:26.033093Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, here's an updated version of the prompt that includes the payment decline:\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions",
+    "timestamp": "2026-01-09T22:51:45.655078Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_015",
     "category": "billing_payment",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -272,15 +286,16 @@
         "content": "When will I get my refund?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033095Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I do not have access to your specific company policies or procedures. However, generally, refunds are processed within 1-2 business days after the customer has submitted their request for a refund. It's best to check with your company's customer support team or contact customer service directly to confirm the refund process and any specific timelines.",
+    "timestamp": "2026-01-09T22:51:53.437986Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_016",
     "category": "product_issue",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -290,15 +305,16 @@
         "content": "The item I received is damaged"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?",
-    "timestamp": "2026-01-09T22:04:26.033098Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, I can provide you with a revised version of the item description that includes the damaged condition. Here it is:\n\nItem Description:\n\n- Brand: XYZ Company\n- Model: ABC Product\n- Color: Yellow\n- Size: XXL\n- Material: High-quality fabric\n- Condition: Damaged\n\nDamage Details:\n\n- The product has been damaged during shipping. The packaging has been damaged, and the product is now scratched and damaged.\n- The product is no longer in good condition and is no longer usable.\n\nPlease let us know if you need any additional information or if you have any questions. We are happy to assist you in any way we can.\n\nBest regards,\n\n[Your Name]\n[Your Title]\n[Your Company]",
+    "timestamp": "2026-01-09T22:52:12.693355Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_017",
     "category": "product_issue",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -308,15 +324,16 @@
         "content": "I got the wrong product"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry you received the wrong item. To resolve this, I'll need to connect you with our order support team who can verify your order details and arrange for the correct item. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033101Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sorry for the confusion. The system prompt you to provide feedback on the product you received. Please provide your feedback on the product you received, including any issues you encountered, the quality of the product, and any suggestions for improvement. Your feedback will help us improve our products and services. Thank you for your time and consideration. Best regards,\n[Your Name]",
+    "timestamp": "2026-01-09T22:52:17.852325Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_018",
     "category": "product_issue",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -326,15 +343,16 @@
         "content": "This doesn't work as described"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry the product isn't working as expected. To better understand the issue and find the right solution, could you describe what's happening? For example, is it not functioning at all, or is it behaving differently than expected?",
-    "timestamp": "2026-01-09T22:04:26.033104Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sorry for the confusion. Here's a revised version of the system prompt that better describes the guidelines for providing accurate, clear, and helpful responses to customer inquiries:\n\nCustomer Support Assistant:\n\nWelcome to our customer support system! Our goal is to provide accurate, clear, and helpful responses to all customer inquiries. Here are some core principles that we follow:\n\n1. Maintain a professional, calm, and empathetic tone in all interactions.\n2. Prioritize accuracy and clarity in your responses.\n3. Acknowledge customer concerns and work toward resolution.\n\nHere are some additional guidelines to help you provide accurate, clear, and helpful responses:\n\n1. Only provide information you are certain about.\n2. Do not invent, guess, or fabricate details, policies, or procedures.\n3. If you are uncertain about any information, explicitly state your uncertainty.\n4. When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent.\n5. Always frame escalation as a positive step toward better service, not as a limitation.\n6. Use clear, concise language.\n7. Break down complex topics into understandable steps.\n8. Ask clarifying questions when needed to better understand the customer's needs.\n9. Express empathy and understanding for customer concerns.\n10. Use professional yet approachable language.\n11. Empathetic approach: Acknowledge customer emotions and concerns before addressing technical issues.\n12. Consistent voice: Maintain the same personality and communication style across all interactions.\n\nRemember, our goal is to provide the best possible customer experience. If you have any questions or concerns, please don't hesitate to reach out to a human agent.",
+    "timestamp": "2026-01-09T22:53:02.545643Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_019",
     "category": "product_issue",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -344,15 +362,16 @@
         "content": "The product is missing parts"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry to hear that parts are missing from your order. To help resolve this, I'll need to connect you with our product support team who can verify your order and arrange to send the missing parts. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033107Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, here's an updated version of the product description with additional information on the key guidelines:\n\nProduct Name: Customer Support Assistant\n\nProduct Description:\n\nThe Customer Support Assistant is a customer support assistant that helps customers by providing accurate, clear, and helpful responses to their inquiries. The assistant is a professional, calm, and empathetic voice that maintains a professional, calm, and empathetic tone in all interactions.\n\nThe assistant's primary responsibility is to provide accurate, clear, and helpful responses to customers' inquiries. The assistant follows the core principles of accuracy, clarity, and empathy, and follows escalation guidelines when necessary.\n\nThe assistant's communication style is clear, concise, and empathetic. The assistant uses professional yet approachable language, and expresses empathy and understanding for customer concerns. The assistant also follows key guidelines, such as maintaining a professional, calm, and empathetic tone in all interactions, prioritizing accuracy and clarity in responses, acknowledging customer concerns and working toward resolution, and always framing escalation as a positive step toward better service, not as a limitation.\n\nThe assistant's key guidelines are:\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\nThe assistant's product features include:\n\n- A professional, calm, and empathetic voice that maintains a professional, calm, and empathetic tone in all interactions\n- Accuracy requirements that prioritize accuracy and clarity in your responses\n- Escalation guidelines that suggest human assistance when a customer's request requires information beyond your knowledge\n- Communication style that uses clear, concise, and empathetic language\n- Key guidelines that emphasize maintaining a professional, calm, and empathetic tone in all interactions, prioritizing accuracy and clarity in your responses, acknowledging customer concerns, and working toward resolution, and always framing escalation as a positive step toward better service, not as a limitation.",
+    "timestamp": "2026-01-09T22:54:19.483701Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_020",
     "category": "return_refund",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -362,15 +381,16 @@
         "content": "I want to return this item"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you with a return. To process your return, I'll need to connect you with our returns team who can access your order details and guide you through the return process. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033111Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, I'd be happy to provide you with a revised version of the system prompt that includes additional guidelines for returning items. Here's a revised version:\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions\n\n## Return Guidelines\n\n- Return items within the specified timeframe\n- Provide a clear and concise explanation for any delay or non-delivery\n- Follow up with the customer to ensure the return is successful\n- Provide a tracking number or other means of tracking the return\n- Ensure the item is returned in the same condition as when it was received\n- Follow up with the customer to ensure the return is successful and to address any issues that arose during the return process.",
+    "timestamp": "2026-01-09T22:55:34.161552Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_021",
     "category": "return_refund",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -380,15 +400,16 @@
         "content": "How do I process a return?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with the return process. To provide you with the most accurate steps for your specific situation, could you tell me when you received the item? This will help determine the best process or connect you with the right specialist.",
-    "timestamp": "2026-01-09T22:04:26.033114Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "To process a return, you will need to follow these steps:\n\n1. Identify the return: Once you receive a return, you will need to identify the product or service that needs to be returned. This will help you to determine the steps you need to take to process the return.\n\n2. Collect the product: Once you have identified the return, you will need to collect the product. This may involve taking the product to a store or picking it up from the customer's location.\n\n3. Assess the product: Before you process the return, you will need to assess the product. This will help you to determine if the product is in good condition and if it meets the return policy.\n\n4. Determine the return process: Depending on the return policy, you may need to follow different steps to process the return. For example, some policies may require you to return the product to the store where it was purchased, while others may require you to return the product to the manufacturer.\n\n5. Process the return: Once you have identified the return and determined the return process, you will need to process the return. This may involve sending the product back to the manufacturer or store, or providing a refund or exchange.\n\n6. Communicate the return: Once you have processed the return, you will need to communicate the return to the customer. This may involve sending a notification or email, or providing a refund or exchange.\n\n7. Follow up: After processing the return, you will need to follow up with the customer to ensure that they are satisfied with the return process and any refund or exchange.\n\nBy following these steps, you can process a return and ensure that the customer is satisfied with the return process and any refund or exchange.",
+    "timestamp": "2026-01-09T22:56:30.185939Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_022",
     "category": "return_refund",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -398,15 +419,16 @@
         "content": "Can I return this after 30 days?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details.",
-    "timestamp": "2026-01-09T22:04:26.033117Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I do not have the ability to return or refund items. However, you can return this document within 30 days of receiving it for a full refund. If you have any questions or concerns about the return process, please contact the seller or manufacturer directly.",
+    "timestamp": "2026-01-09T22:56:36.466826Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_023",
     "category": "technical_support",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -416,15 +438,16 @@
         "content": "The website isn't loading"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?",
-    "timestamp": "2026-01-09T22:04:26.033120Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I apologize for any inconvenience caused. The website you were trying to access may have been experiencing technical difficulties. Please try refreshing the page or contacting our support team for assistance. If the issue persists, please let us know and we will do our best to resolve it as soon as possible. Thank you for your patience and understanding.",
+    "timestamp": "2026-01-09T22:56:42.238500Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_024",
     "category": "technical_support",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -434,15 +457,16 @@
         "content": "I can't complete checkout"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?",
-    "timestamp": "2026-01-09T22:04:26.033123Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, here's a revised version of the system prompt that includes additional guidelines for completing the checkout process:\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions\n\n## Completion Guidelines\n\n- Provide a clear and concise summary of the issue or solution\n- Follow up with the customer to confirm that the issue has been resolved\n- Follow up with the customer to ensure that they are satisfied with the resolution\n- Follow up with the customer to address any follow-up questions or concerns\n\nI hope this revised system prompt helps you better complete the checkout process for your customers. Let me know if you have any further",
+    "timestamp": "2026-01-09T22:57:55.213266Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_025",
     "category": "technical_support",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -452,15 +476,16 @@
         "content": "The app keeps crashing"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?",
-    "timestamp": "2026-01-09T22:04:26.033125Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I'm sorry to hear that the app is crashing. Here are some steps you can take to troubleshoot the issue:\n\n1. Make sure you're using the latest version of the app. You can check the app store or google play store for the latest version.\n\n2. Close all other apps on your device and try the app again.\n\n3. If the issue persists, try restarting your device.\n\n4. If the issue persists after restarting your device, try uninstalling and reinstalling the app.\n\n5. If the issue persists after uninstalling and reinstalling the app, try deleting the app data and reinstalling it.\n\n6. If the issue persists after deleting and reinstalling the app data, try clearing the app cache and data.\n\n7. If the issue persists after clearing the app cache and data, try uninstalling the app and reinstalling it from the app store.\n\nif none of these steps work, you may need to contact the app's developer for further assistance.",
+    "timestamp": "2026-01-09T22:58:27.988012Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_026",
     "category": "technical_support",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -470,15 +495,16 @@
         "content": "I'm getting an error code"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with that error. To better assist you, could you share the specific error code or message you're seeing? This will help me determine the best next steps or connect you with the right technical specialist.",
-    "timestamp": "2026-01-09T22:04:26.033128Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sorry for the error code. Please try again with the updated prompt. Here's the updated version:\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions",
+    "timestamp": "2026-01-09T22:59:09.844381Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_027",
     "category": "policy_clarification",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -488,15 +514,16 @@
         "content": "What's your return policy?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you understand our return policy. However, return policies can vary based on several factors, and I want to make sure you get the most accurate information for your specific situation. Let me connect you with someone who can provide you with the complete and current policy details.",
-    "timestamp": "2026-01-09T22:04:26.033131Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I don't have a physical product to return. However, in general, a customer support assistant's return policy may vary depending on the company or product. Here are some common return policies:\n\n1. Return policy:\n- 30 days: customers have 30 days to return the product for a refund or exchange.\n- 14 days: customers have 14 days to return the product for a refund or exchange.\n- 7 days: customers have 7 days to return the product for a refund or exchange.\n\n2. Return address:\n- customers should provide their physical address when returning the product.\n- some companies may require a return shipping label or proof of purchase.\n\n3. Refund or exchange:\n- refunds: if the product is defective or damaged, customers may receive a refund.\n- exchanges: if the product is not what they expected, customers may receive a refund or exchange for a different product.\n\nit's always a good idea to check the return policy of the company or product you're returning beforehand to avoid any confusion or issues.",
+    "timestamp": "2026-01-09T22:59:40.026712Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_028",
     "category": "policy_clarification",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -506,15 +533,16 @@
         "content": "What's your cancellation policy?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with cancellation information. Cancellation policies can vary depending on the type of service or product. To ensure you receive the most accurate and relevant information, let me connect you with a policy specialist who can provide complete details.",
-    "timestamp": "2026-01-09T22:04:26.033134Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I don't have a specific company or product to provide a cancellation policy. However, in general, cancellation policies vary depending on the product or service being offered. Some common cancellation policies include:\n\n1. Free cancellation: customers may cancel their purchase without any fees or penalties.\n\n2. Refund policy: if a product or service is not what the customer expected, they may be entitled to a refund.\n\n3. Exchange policy: if a product or service is defective or does not meet the customer's expectations, they may be entitled to an exchange or a refund.\n\n4. Time limit: some companies may have a specific time limit for cancelling or returning products or services.\n\n5. Exceptions: some companies may have exceptions for certain products or services, such as medical or dental care, where cancellation policies may not apply.\n\nit's best to check the specific cancellation policy for your product or service to understand your rights and responsibilities.",
+    "timestamp": "2026-01-09T22:59:54.333104Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_029",
     "category": "policy_clarification",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -524,15 +552,16 @@
         "content": "Can you explain your warranty?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details.",
-    "timestamp": "2026-01-09T22:04:26.033137Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure! Our warranty is designed to provide customers with peace of mind and assurance that they are getting a high-quality product that will last for a certain period of time. Here's a breakdown of our warranty:\n\n1. Product Warranty: Our product warranty covers defects in materials and workmanship for a period of 12 months from the date of purchase. This means that if you encounter any issues with the product within this time frame, we will repair or replace it at no cost to you.\n\n2. Labor Warranty: Our labor warranty covers any defects in workmanship or materials for a period of 90 days from the date of installation. This means that if you encounter any issues with the installation or repair of the product, we will repair or replace it at no cost to you.\n\n3. Extended Warranty: If you need additional protection beyond the standard warranty, we offer an extended warranty that covers defects in materials and workmanship for an additional 12 months. This means that if you encounter any issues with the product within this time frame, we will repair or replace it at no cost to you.\n\nOur warranty is designed to provide customers with peace of mind and assurance that they are getting a high-quality product that will last for a certain period of time. If you encounter any issues with the product, we will work with you to resolve the issue and provide you with the necessary support.",
+    "timestamp": "2026-01-09T23:00:21.173939Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_030",
     "category": "policy_clarification",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -542,15 +571,16 @@
         "content": "What are your shipping options?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with shipping information. Shipping options can vary based on your location and the items you're ordering. To provide you with the most accurate options and rates, could you tell me your general location or zip code?",
-    "timestamp": "2026-01-09T22:04:26.033140Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I don't have access to your specific company's shipping options. However, here are some common shipping options that you can consider:\n\n1. Standard shipping: this is the most common shipping option and is free for most products. It usually takes 2-7 business days to arrive at your doorstep.\n\n2. Express shipping: this is a faster shipping option that usually takes 1-2 business days to arrive at your doorstep. It's available for most products and is usually more expensive than standard shipping.\n\n3. International shipping: if you're shipping to a country that requires customs clearance, you may need to choose international shipping. This option can be more expensive and may take longer to arrive at your doorstep.\n\n4. 2nd-day shipping: this is a faster shipping option that usually takes 1-2 business days to arrive at your doorstep. It's available for most products and is usually more expensive than standard shipping.\n\n5. Overnight shipping: this is a faster shipping option that usually takes 1-2 business days to arrive at your doorstep. It's available for most products and is usually more expensive than standard shipping.\n\nit's always a good idea to check with your specific company's shipping policies and options to determine which option is best for your needs.",
+    "timestamp": "2026-01-09T23:00:49.742460Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_031",
     "category": "complaint",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -560,15 +590,16 @@
         "content": "This is the third time I've had this problem and I'm really frustrated"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?",
-    "timestamp": "2026-01-09T22:04:26.033142Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I understand your frustration. I apologize for the inconvenience and hope that this updated version of the system prompt will be more helpful. Please let me know if you have any further feedback or suggestions. Best regards,\n\n[Your Name]\nCustomer Support Assistant",
+    "timestamp": "2026-01-09T23:00:54.326805Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_032",
     "category": "complaint",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -578,15 +609,16 @@
         "content": "Your service has been terrible"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this.",
-    "timestamp": "2026-01-09T22:04:26.033145Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Customer: Hi, I'm calling to inquire about your service.\n\nService Provider: Thank you for reaching out. How may I assist you today?\n\nCustomer: I'm having trouble with my internet connection. It's been intermittent, and I'm experiencing slow speeds.\n\nService Provider: I'm sorry to hear that. Can you provide me with more information about your internet connection? What type of device are you using? Are you experiencing any issues with your router or modem?\n\nCustomer: Yes, I'm using a router and a modem. I've tried resetting them, but it hasn't helped.\n\nService Provider: That's understandable. Can you provide me with your internet provider's contact information? I'll reach out to them to see if they can assist you.\n\nCustomer: Sure, I'll provide them with your information.\n\nService Provider: Thank you for your cooperation. I'll be in touch with you shortly.\n\nCustomer: You're welcome. I appreciate your help.\n\nService Provider: You're welcome. If you have any other questions or concerns, please don't hesitate to reach out.\n\nCustomer: No, thank you. I'll be in touch soon.\n\nService Provider: You're welcome. Have a great day.",
+    "timestamp": "2026-01-09T23:01:13.751316Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_033",
     "category": "complaint",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -596,15 +628,16 @@
         "content": "I want to speak to a manager"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now.",
-    "timestamp": "2026-01-09T22:04:26.033148Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Sure, here's a revised version of the system prompt that includes a request for a manager's assistance:\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a manager\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a manager\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions with the manager.",
+    "timestamp": "2026-01-09T23:02:01.943258Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_034",
     "category": "complaint",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -614,15 +647,16 @@
         "content": "I'm very disappointed with my experience"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'm sorry to hear about your disappointment. I want to help make this right. To better understand how we can address your concerns, could you share more details about what happened? This will help me connect you with the right person who can help resolve this.",
-    "timestamp": "2026-01-09T22:04:26.033151Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I apologize for the poor customer experience you experienced. I understand that it may have been frustrating and disappointing.\n\nto improve our customer support, I would like to provide you with some additional guidelines and best practices that we have implemented in our organization.\n\nfirstly, we have a dedicated team of customer support professionals who are trained to provide accurate, clear, and helpful responses to all customer inquiries. They are equipped with the latest technology and tools to handle complex issues quickly and efficiently.\n\nour team follows a standardized process for handling customer inquiries, which includes:\n\n1. Identifying the customer's problem: we ask open-ended questions to understand the customer's issue and gather as much information as possible.\n\n2. Prioritizing the issue: we prioritize the most critical issues based on their impact on the customer's business.\n\n3. Providing accurate and clear information: we provide accurate and clear information about the issue, its root cause, and potential solutions.\n\n4. Acknowledging the customer's concerns: we acknowledge the customer's concerns and work towards resolving their issue.\n\n5. Escalating the issue: if the customer's issue requires more complex or sensitive information, we recommend escalating the inquiry to a human agent.\n\n6. Communicating empathetically: we communicate empathetically and understandably to the customer, acknowledging their emotions and concerns.\n\n7. Consistently using a professional and approachable voice: we use a professional and approachable voice throughout all interactions, avoiding any unnecessary verbosity.\n\n8. Consistently using clear and concise language: we use clear and concise language throughout all interactions, avoiding any unnecessary jargon or technical terms.\n\n9. Focusing on solutions and next steps: we focus on providing solutions and next steps rather than limitations or technical issues.\n\n10. Providing positive framing: we provide positive framing and avoid any negative language or rhetoric.\n\nwe believe that these guidelines and best practices will help us provide better customer support and improve our overall customer experience. If you have any further questions or concerns, please do not hesitate to reach out to us.\n\nthank you for your time and feedback.\n\nbest regards,\n\n[Your Name]",
+    "timestamp": "2026-01-09T23:03:22.495224Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_035",
     "category": "general_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -632,15 +666,16 @@
         "content": "How do I contact customer service?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist.",
-    "timestamp": "2026-01-09T22:04:26.033154Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "To contact customer service, you can use the following methods:\n\n1. Online:\n- Go to the company's website and click on the \"Contact Us\" or \"Support\" page.\n- Fill out the contact form with your name, email address, and a brief description of your issue.\n- You can also use the \"Live Chat\" feature to chat with a representative.\n\n2. Phone:\n- Call the company's customer service number or contact center.\n- Provide your name, phone number, and a brief description of your issue.\n\n3. Email:\n- Send an email to the company's customer service email address.\n- In the email, provide your name, phone number, and a brief description of your issue.\n\n4. Social Media:\n- Follow the company's social media accounts and send a message using the company's social media handles.\n- In the message, provide your name, phone number, and a brief description of your issue.\n\nRemember to provide as much information as possible to help the customer service representative understand your issue and provide the best possible solution.",
+    "timestamp": "2026-01-09T23:03:54.034446Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_036",
     "category": "general_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -650,15 +685,16 @@
         "content": "Do you ship internationally?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with international shipping information. Shipping options and policies can vary by destination and product type. To provide you with accurate details, could you tell me which country you're shipping to?",
-    "timestamp": "2026-01-09T22:04:26.033157Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "Yes, we ship internationally. Our products are designed to be used in a variety of locations around the world, and we have a global network of shipping partners to ensure timely and efficient delivery. We offer free shipping on all orders over $50 within the United States, and we also offer expedited shipping options for orders placed before 12:00 PM EST. Our shipping policies and rates are subject to change without notice, so please check our website for the most up-to-date information.",
+    "timestamp": "2026-01-09T23:04:01.289807Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_037",
     "category": "general_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -668,15 +704,16 @@
         "content": "What services do you offer?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services.",
-    "timestamp": "2026-01-09T22:04:26.033159Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I do not have access to your company's specific services or offerings. However, based on the prompt, I can provide you with some general information about customer support services.\n\ncustomer support services typically provide assistance to customers in resolving technical issues, answering questions, and providing information. Some common services include:\n\n1. Technical support: this service provides assistance with installing, configuring, and troubleshooting software and hardware.\n\n2. Help desk: this service provides 24/7 support for common issues, such as login problems, software updates, and system crashes.\n\n3. Knowledge base: this service provides a centralized repository of frequently asked questions and solutions for common issues.\n\n4. Customer service: this service provides a direct line of communication between customers and the company, allowing for quick and efficient resolution of issues.\n\n5. Training and education: this service provides training and education to customers on how to use the company's products and services.\n\n6. Support tickets: this service provides a centralized platform for tracking and managing support requests.\n\n7. Customer feedback: this service allows customers to provide feedback on the company's products and services, which can be used to improve future offerings.\n\nthese are just a few examples of the services that customer support services may offer. The specific services offered will depend on the company's specific needs and goals.",
+    "timestamp": "2026-01-09T23:04:25.487662Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_038",
     "category": "general_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -686,15 +723,16 @@
         "content": "Are you open on holidays?"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I'd like to help you with our holiday hours. Operating hours can vary by location and specific holidays. To provide you with accurate information, could you tell me which holiday you're asking about, or would you prefer I connect you with someone who has access to our complete holiday schedule?",
-    "timestamp": "2026-01-09T22:04:26.033162Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I am not capable of being open on holidays. However, I can provide you with information on how to reach out to customer support during holidays.\n\nif you have a holiday that falls on a business day, you can reach out to customer support during that day by calling the phone number provided on the company's website or by visiting their website and navigating to the contact page. If you have a holiday that falls on a non-business day, you can reach out to customer support by sending an email to the company's email address provided on their website.\n\nif you have a holiday that falls on a non-business day, you can still reach out to customer support by calling the phone number provided on the company's website or by visiting their website and navigating to the contact page. However, you may need to wait for a response during the holiday period.\n\nif you have a holiday that falls on a non-business day, you can still reach out to customer support by sending an email to the company's email address provided on their website. However, you may need to wait for a response during the holiday period.",
+    "timestamp": "2026-01-09T23:04:42.200349Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_039",
     "category": "general_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -704,15 +742,16 @@
         "content": "Thank you for your help"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "You're very welcome! I'm glad I could help. If you need anything else, please don't hesitate to reach out. Have a great day!",
-    "timestamp": "2026-01-09T22:04:26.033165Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I'm glad I could help. If you have any further questions or concerns, please don't hesitate to ask. Best of luck with your customer support role!",
+    "timestamp": "2026-01-09T23:04:44.799243Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   },
   {
     "test_case_id": "tc_040",
     "category": "order_inquiry",
-    "input_messages": [
+    "messages": [
       {
         "role": "system",
         "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
@@ -722,9 +761,10 @@
         "content": "My order hasn't arrived yet"
       }
     ],
-    "model_output": "[MOCK] This is a mock response.",
-    "ideal_response": "I understand your concern about your order not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our order support team who can locate it using other information and check the delivery status.",
-    "timestamp": "2026-01-09T22:04:26.033167Z",
-    "provider_name": "MockProvider(response_template='This is a mock response....')"
+    "output_text": "I apologize for the delay in responding. Unfortunately, we do not have access to your order information. Please provide us with your order number or email address so that we can assist you further. If you have any further questions or concerns, please do not hesitate to reach out to our customer support team. Thank you for your understanding. Best regards,\n\n[Your Name]\n[Your Company]",
+    "timestamp": "2026-01-09T23:04:50.266243Z",
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
   }
 ]

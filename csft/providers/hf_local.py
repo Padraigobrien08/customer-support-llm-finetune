@@ -24,7 +24,7 @@ class HFLocalProvider(Provider):
         model_id: str,
         device: str | None = None,
         dtype: str | None = None,
-        max_new_tokens: int = 512,
+        max_new_tokens: int = 128,
         adapter_path: str | None = None
     ):
         """
@@ -66,8 +66,12 @@ class HFLocalProvider(Provider):
         # Load tokenizer
         try:
             self.tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+            # Ensure pad_token is set (use eos_token if pad_token is None)
             if self.tokenizer.pad_token is None:
                 self.tokenizer.pad_token = self.tokenizer.eos_token
+            # Ensure pad_token_id is set
+            if self.tokenizer.pad_token_id is None:
+                self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
         except Exception as e:
             raise ProviderError(
                 f"Failed to load tokenizer for model '{model_id}': {str(e)}"
@@ -184,6 +188,7 @@ class HFLocalProvider(Provider):
         self,
         messages: list[ChatMessage],
         system_prompt: str | None = None,
+        debug: bool = False,
         **kwargs
     ) -> ModelResponse:
         """
@@ -192,7 +197,8 @@ class HFLocalProvider(Provider):
         Args:
             messages: List of conversation messages (excluding system prompt)
             system_prompt: Optional system prompt to prepend
-            **kwargs: Additional generation parameters (temperature, etc.)
+            debug: If True, include detailed debug information in metadata
+            **kwargs: Additional generation parameters (temperature, max_new_tokens, etc.)
             
         Returns:
             ModelResponse with generated content and optional metadata
@@ -203,7 +209,7 @@ class HFLocalProvider(Provider):
         if not messages:
             raise ProviderError("Cannot generate response: messages list is empty")
         
-        # Format prompt
+        # Format prompt - use apply_chat_template with add_generation_prompt=True if available
         if self.supports_chat_template:
             prompt = self._format_messages_with_template(messages, system_prompt)
         else:
@@ -215,11 +221,18 @@ class HFLocalProvider(Provider):
         except Exception as e:
             raise ProviderError(f"Failed to tokenize input: {str(e)}") from e
         
+        input_length = inputs["input_ids"].shape[1]
+        
         # Generation parameters
+        # Ensure pad_token_id is set (use eos_token_id if pad_token_id is None)
+        pad_token_id = self.tokenizer.pad_token_id
+        if pad_token_id is None:
+            pad_token_id = self.tokenizer.eos_token_id
+        
         generation_kwargs = {
             "max_new_tokens": kwargs.get("max_new_tokens", self.max_new_tokens),
             "do_sample": kwargs.get("do_sample", False),  # Deterministic by default
-            "pad_token_id": self.tokenizer.pad_token_id,
+            "pad_token_id": pad_token_id,
             "eos_token_id": self.tokenizer.eos_token_id,
         }
         
@@ -230,37 +243,88 @@ class HFLocalProvider(Provider):
         # Generate
         try:
             with torch.no_grad():
-                outputs = self.model.generate(
+                generated_ids = self.model.generate(
                     **inputs,
                     **generation_kwargs
                 )
         except Exception as e:
             raise ProviderError(f"Model generation failed: {str(e)}") from e
         
-        # Decode only the new tokens (assistant response)
-        input_length = inputs["input_ids"].shape[1]
-        generated_tokens = outputs[0][input_length:]
-        
+        # Decode the full output (prompt + generated tokens)
         try:
-            response_text = self.tokenizer.decode(
-                generated_tokens,
+            decoded_full = self.tokenizer.decode(
+                generated_ids[0],
                 skip_special_tokens=True
-            ).strip()
+            )
         except Exception as e:
-            raise ProviderError(f"Failed to decode model output: {str(e)}") from e
+            raise ProviderError(f"Failed to decode full model output: {str(e)}") from e
         
-        # Extract metadata
+        # Decode the prompt portion to extract only the new text
+        try:
+            decoded_prompt = self.tokenizer.decode(
+                inputs["input_ids"][0],
+                skip_special_tokens=True
+            )
+        except Exception as e:
+            raise ProviderError(f"Failed to decode prompt: {str(e)}") from e
+        
+        # Extract new text by removing prompt from full output
+        debug_info = {}
+        if decoded_full.startswith(decoded_prompt):
+            new_text = decoded_full[len(decoded_prompt):].strip()
+            if not new_text:
+                # Generated text was empty after removing prompt - use full output as fallback
+                new_text = decoded_full.strip()
+                debug_info["empty_generation_fallback"] = True
+                debug_info["fallback_reason"] = "Generated text was empty after removing prompt, using full decoded output"
+        else:
+            # Prompt doesn't match start - use full output
+            new_text = decoded_full.strip()
+            debug_info["prompt_mismatch_fallback"] = True
+            debug_info["fallback_reason"] = "Prompt does not match start of decoded output, using full decoded output"
+        
+        # If still empty, this is an error condition - never silently return empty string
+        if not new_text:
+            error_msg = (
+                "Model generated empty response. "
+                f"Input tokens: {input_length}, "
+                f"Generated tokens: {len(generated_ids[0]) - input_length}, "
+                f"Decoded full length: {len(decoded_full)}"
+            )
+            if debug:
+                error_msg += f", Decoded full (first 200): {decoded_full[:200]}, Decoded prompt (first 200): {decoded_prompt[:200]}"
+            raise ProviderError(error_msg)
+        
+        # Calculate generated token count
+        generated_token_count = len(generated_ids[0]) - input_length
+        
+        # Build metadata
         metadata = {
             "provider": "hf_local",
             "model_id": self.model_id,
             "device": self.device,
             "dtype": self.dtype,
             "num_input_tokens": input_length,
-            "num_generated_tokens": len(generated_tokens),
+            "num_generated_tokens": generated_token_count,
         }
         
+        # Add debug information if requested
+        if debug:
+            metadata["debug"] = {
+                "input_token_length": input_length,
+                "generated_token_length": generated_token_count,
+                "decoded_full_preview": decoded_full[:200],
+                "decoded_prompt_preview": decoded_prompt[:200],
+                "new_text_length": len(new_text),
+            }
+            # Merge any fallback debug info
+            metadata["debug"].update(debug_info)
+        elif debug_info:
+            # Include minimal debug info even if debug=False when fallback occurred
+            metadata["debug"] = debug_info
+        
         return ModelResponse(
-            content=response_text,
+            content=new_text,
             metadata=metadata
         )
     

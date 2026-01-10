@@ -58,7 +58,9 @@ class TestCase(BaseModel):
 
 class ModelResponse(BaseModel):
     """A model-generated response."""
-    content: str = Field(..., min_length=1, description="Generated response text")
+    content: str = Field(..., description="Generated response text (may be empty if generation failed)")
+    error_type: str | None = Field(None, description="Type of error if generation failed (e.g., 'ValidationError', 'ProviderError')")
+    error_message: str | None = Field(None, description="Error message if generation failed")
     metadata: dict[str, str | int | float | bool] | None = Field(
         None, description="Optional metadata (tokens, latency, etc.)"
     )

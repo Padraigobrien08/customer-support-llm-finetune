@@ -16,12 +16,12 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 
-def load_results(results_path: Path) -> list[dict[str, Any]]:
+def load_results(results_path: str | Path) -> list[dict[str, Any]]:
     """
     Load evaluation results from JSON file.
     
     Args:
-        results_path: Path to results JSON file
+        results_path: Path to results JSON file (string or Path)
         
     Returns:
         List of result dictionaries
@@ -30,14 +30,16 @@ def load_results(results_path: Path) -> list[dict[str, Any]]:
         FileNotFoundError: If file doesn't exist
         ValueError: If file is invalid JSON
     """
-    if not results_path.exists():
-        raise FileNotFoundError(f"Results file not found: {results_path}")
+    path = Path(results_path) if isinstance(results_path, str) else results_path
+    
+    if not path.exists():
+        raise FileNotFoundError(f"Results file not found: {path}")
     
     try:
-        with open(results_path, 'r', encoding='utf-8') as f:
+        with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except json.JSONDecodeError as e:
-        raise ValueError(f"Invalid JSON in {results_path}: {e}") from e
+        raise ValueError(f"Invalid JSON in {path}: {e}") from e
 
 
 def compare_results(
@@ -64,8 +66,9 @@ def compare_results(
         if test_id not in previous_by_id:
             continue  # Skip if not in previous results
         
-        current_output = current_result.get("model_output", "")
-        previous_output = previous_by_id[test_id].get("model_output", "")
+        # Support both "output_text" and "model_output" for backward compatibility
+        current_output = current_result.get("output_text") or current_result.get("model_output", "")
+        previous_output = previous_by_id[test_id].get("output_text") or previous_by_id[test_id].get("model_output", "")
         
         if current_output != previous_output:
             changed.append({
@@ -93,7 +96,7 @@ def compare_results(
     }
 
 
-def truncate_text(text: str, max_length: int = 120) -> str:
+def truncate_text(text: str, max_length: int = 160) -> str:
     """
     Truncate text to max_length with ellipsis if needed.
     
@@ -122,6 +125,11 @@ def print_comparison(
         current_file: Path to current results file
         previous_file: Path to previous results file
     """
+    total_current = comparison['total_current']
+    total_previous = comparison['total_previous']
+    changed_count = comparison['changed_count']
+    unchanged_count = total_current - changed_count - len(comparison.get('new', []))
+    
     print("=" * 70)
     print("Comparison Results")
     print("=" * 70)
@@ -129,9 +137,10 @@ def print_comparison(
     print(f"Current file:  {current_file.name}")
     print(f"Previous file: {previous_file.name}")
     print()
-    print(f"Total cases:")
-    print(f"  Current:  {comparison['total_current']}")
-    print(f"  Previous: {comparison['total_previous']}")
+    print(f"Summary:")
+    print(f"  Total cases: {total_current}")
+    print(f"  Changed: {changed_count}")
+    print(f"  Unchanged: {unchanged_count}")
     print()
     
     if comparison['new']:
@@ -155,16 +164,10 @@ def print_comparison(
             category = change['category']
             current_output = change['current_output']
             previous_output = change['previous_output']
-            current_len = change['current_length']
-            previous_len = change['previous_length']
-            
-            length_diff = current_len - previous_len
-            length_diff_str = f"+{length_diff}" if length_diff > 0 else str(length_diff)
             
             print(f"  {test_id} ({category})")
-            print(f"    Length: {previous_len} → {current_len} ({length_diff_str} chars)")
-            print(f"    Previous: {truncate_text(previous_output)}")
-            print(f"    Current:  {truncate_text(current_output)}")
+            print(f"    Old: {truncate_text(previous_output)}")
+            print(f"    New: {truncate_text(current_output)}")
             print()
     else:
         print("No changed outputs found.")
@@ -230,6 +233,9 @@ Examples:
     
     # Print comparison
     print_comparison(comparison, current_path, previous_path)
+    
+    # Always exit with code 0 (for now)
+    sys.exit(0)
 
 
 if __name__ == "__main__":
