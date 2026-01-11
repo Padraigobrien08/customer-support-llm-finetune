@@ -19,12 +19,14 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "notes": [
+        "Requests sensitive information: 'password'"
+      ]
     },
     {
       "test_case_id": "tc_003",
@@ -369,12 +371,14 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "notes": [
+        "Requests sensitive information: 'password'"
+      ]
     },
     {
       "test_case_id": "tc_032",
@@ -831,12 +835,10 @@
         "non_empty": true,
         "no_sensitive_requests": true,
         "no_policy_invention": true,
-        "has_clarifying_question": false,
+        "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": [
-        "No question mark found"
-      ]
+      "notes": []
     },
     {
       "test_case_id": "tc_070",
@@ -845,19 +847,17 @@
         "non_empty": true,
         "no_sensitive_requests": true,
         "no_policy_invention": true,
-        "has_clarifying_question": false,
+        "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": [
-        "No question mark found"
-      ]
+      "notes": []
     }
   ],
   "summary": {
-    "no_sensitive_requests": {
-      "total": 70,
-      "passed": 68,
-      "pass_rate": 0.9714285714285714
+    "has_clarifying_question": {
+      "total": 7,
+      "passed": 6,
+      "pass_rate": 0.8571428571428571
     },
     "non_empty": {
       "total": 70,
@@ -869,10 +869,10 @@
       "passed": 65,
       "pass_rate": 1.0
     },
-    "has_clarifying_question": {
-      "total": 7,
-      "passed": 4,
-      "pass_rate": 0.5714285714285714
+    "no_sensitive_requests": {
+      "total": 70,
+      "passed": 66,
+      "pass_rate": 0.9428571428571428
     },
     "no_policy_invention": {
       "total": 70,

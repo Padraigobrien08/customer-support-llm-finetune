@@ -176,19 +176,90 @@ def extract_user_messages(messages: list[dict[str, Any]]) -> list[str]:
     return user_messages
 
 
+def load_and_validate_file(
+    file_path: Path,
+    file_name: str,
+    taxonomy: dict[str, Any] = None
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """
+    Load and validate cases from a single file.
+    
+    Args:
+        file_path: Path to JSONL file
+        file_name: Display name for the file
+        taxonomy: Taxonomy dictionary for validation
+        
+    Returns:
+        Tuple of (cases, validation_errors)
+    """
+    cases = []
+    validation_errors = []
+    
+    if not file_path.exists():
+        return cases, validation_errors
+    
+    try:
+        loaded_cases = load_jsonl(str(file_path))
+        case_word = "case" if len(loaded_cases) == 1 else "cases"
+        print(f"  {file_name}: {len(loaded_cases)} {case_word}")
+        
+        # Validate each case
+        for idx, case in enumerate(loaded_cases, 1):
+            is_valid, error = validate_case(case, idx, taxonomy or {})
+            if not is_valid:
+                validation_errors.append(f"{file_name}: {error}")
+            else:
+                cases.append(case)
+    except Exception as e:
+        validation_errors.append(f"Error loading {file_name}: {e}")
+    
+    return cases, validation_errors
+
+
+def check_unique_ids(cases: list[dict[str, Any]]) -> tuple[bool, list[str]]:
+    """
+    Check that all test_case_ids are unique across all cases.
+    
+    Args:
+        cases: List of case dictionaries
+        
+    Returns:
+        Tuple of (all_unique, duplicate_ids)
+    """
+    seen_ids = {}
+    duplicates = []
+    
+    for case in cases:
+        test_case_id = case.get("metadata", {}).get("test_case_id")
+        if not test_case_id:
+            continue
+        
+        if test_case_id in seen_ids:
+            if test_case_id not in duplicates:
+                duplicates.append(test_case_id)
+        else:
+            seen_ids[test_case_id] = case
+    
+    return len(duplicates) == 0, duplicates
+
+
 def merge_and_deduplicate(
     manual_path: Path,
+    manual_v2_path: Path,
     synthetic_path: Path,
+    synthetic_v2_path: Path,
     allow_missing_synthetic: bool = False,
     taxonomy: dict[str, Any] = None
 ) -> tuple[list[dict[str, Any]], list[str]]:
     """
-    Load, validate, merge, and deduplicate cases from manual and synthetic sources.
+    Load, validate, merge, and deduplicate cases from all data sources.
     
     Args:
-        manual_path: Path to manual cases JSONL
-        synthetic_path: Path to synthetic cases JSONL
-        allow_missing_synthetic: If True, don't error if synthetic file is missing
+        manual_path: Path to manual cases JSONL (v1)
+        manual_v2_path: Path to manual cases JSONL (v2)
+        synthetic_path: Path to synthetic cases JSONL (v1)
+        synthetic_v2_path: Path to synthetic cases JSONL (v2, optional)
+        allow_missing_synthetic: If True, don't error if synthetic files are missing
         taxonomy: Taxonomy dictionary for validation
         
     Returns:
@@ -197,50 +268,54 @@ def merge_and_deduplicate(
     all_cases = []
     seen_hashes = set()
     validation_errors = []
+    source_counts = {}
     
-    # Load manual cases
-    if manual_path.exists():
-        print(f"Loading manual cases from: {manual_path}")
-        try:
-            manual_cases = load_jsonl(str(manual_path))
-            print(f"  Loaded {len(manual_cases)} manual cases")
-            
-            # Validate each case
-            for idx, case in enumerate(manual_cases, 1):
-                is_valid, error = validate_case(case, idx, taxonomy or {})
-                if not is_valid:
-                    validation_errors.append(error)
-                else:
-                    all_cases.append(case)
-        except Exception as e:
-            validation_errors.append(f"Error loading manual cases: {e}")
-    else:
-        print(f"Warning: Manual cases file not found: {manual_path}")
+    # Load manual cases v1
+    print(f"Loading data sources:")
+    manual_cases, errors = load_and_validate_file(manual_path, "manual_cases.jsonl", taxonomy)
+    all_cases.extend(manual_cases)
+    validation_errors.extend(errors)
+    if manual_cases:
+        source_counts["manual_cases.jsonl"] = len(manual_cases)
     
-    # Load synthetic cases
-    if synthetic_path.exists():
-        print(f"Loading synthetic cases from: {synthetic_path}")
-        try:
-            synthetic_cases = load_jsonl(str(synthetic_path))
-            print(f"  Loaded {len(synthetic_cases)} synthetic cases")
-            
-            # Validate each case
-            for idx, case in enumerate(synthetic_cases, 1):
-                is_valid, error = validate_case(case, idx, taxonomy or {})
-                if not is_valid:
-                    validation_errors.append(error)
-                else:
-                    all_cases.append(case)
-        except Exception as e:
-            validation_errors.append(f"Error loading synthetic cases: {e}")
-    else:
-        if not allow_missing_synthetic:
-            validation_errors.append(f"Error: Synthetic cases file not found: {synthetic_path}")
-        else:
-            print(f"Warning: Synthetic cases file not found: {synthetic_path} (allowed)")
+    # Load manual cases v2
+    manual_v2_cases, errors = load_and_validate_file(manual_v2_path, "manual_cases_v2.jsonl", taxonomy)
+    all_cases.extend(manual_v2_cases)
+    validation_errors.extend(errors)
+    if manual_v2_cases:
+        source_counts["manual_cases_v2.jsonl"] = len(manual_v2_cases)
+    
+    # Load synthetic cases v1
+    synthetic_cases, errors = load_and_validate_file(synthetic_path, "synthetic_cases.jsonl", taxonomy)
+    all_cases.extend(synthetic_cases)
+    validation_errors.extend(errors)
+    if synthetic_cases:
+        source_counts["synthetic_cases.jsonl"] = len(synthetic_cases)
+    elif not allow_missing_synthetic:
+        validation_errors.append(f"Error: Synthetic cases file not found: {synthetic_path}")
+    
+    # Load synthetic cases v2 (optional)
+    synthetic_v2_cases, errors = load_and_validate_file(synthetic_v2_path, "synthetic_cases_v2.jsonl", taxonomy)
+    all_cases.extend(synthetic_v2_cases)
+    validation_errors.extend(errors)
+    if synthetic_v2_cases:
+        source_counts["synthetic_cases_v2.jsonl"] = len(synthetic_v2_cases)
     
     if validation_errors:
         return [], validation_errors
+    
+    # Check for unique IDs
+    all_unique, duplicate_ids = check_unique_ids(all_cases)
+    if not all_unique:
+        validation_errors.append(f"Error: Duplicate test_case_ids found: {', '.join(duplicate_ids)}")
+        return [], validation_errors
+    
+    # Print source counts
+    if source_counts:
+        print(f"\nSource file counts:")
+        for source, count in sorted(source_counts.items()):
+            case_word = "case" if count == 1 else "cases"
+            print(f"  {source}: {count} {case_word}")
     
     print(f"\nTotal cases before deduplication: {len(all_cases)}")
     
@@ -405,7 +480,9 @@ Examples:
     
     # Resolve paths
     manual_path = project_root / "data" / "raw" / "manual_cases.jsonl"
+    manual_v2_path = project_root / "data" / "raw" / "manual_cases_v2.jsonl"
     synthetic_path = project_root / "data" / "raw" / "synthetic_cases.jsonl"
+    synthetic_v2_path = project_root / "data" / "raw" / "synthetic_cases_v2.jsonl"
     out_dir = project_root / args.out_dir
     processed_dir = out_dir / "processed"
     splits_dir = out_dir / "splits"
@@ -418,7 +495,9 @@ Examples:
     
     all_cases, validation_errors = merge_and_deduplicate(
         manual_path,
+        manual_v2_path,
         synthetic_path,
+        synthetic_v2_path,
         allow_missing_synthetic=args.allow_missing_synthetic,
         taxonomy=taxonomy
     )

@@ -20,21 +20,26 @@ install-deps:
 	@echo "Installing LLM-specific dependencies..."
 	pip install -e ".[llm]"
 
-# Build dataset: generate synthetic cases, build dataset, and run sanity checks
+# Build dataset: generate synthetic cases (v1 and v2), build dataset, and run sanity checks
 build-data:
 	@echo "=========================================="
-	@echo "Building dataset (Data v1)"
+	@echo "Building dataset (Data v1 + v2)"
 	@echo "=========================================="
 	@echo ""
-	@echo "1. Generating synthetic cases..."
-	@$(PYTHON) scripts/generate_synthetic_cases.py --n_per_category 30 --seed 7
+	@echo "1. Generating synthetic cases (v1)..."
+	@$(PYTHON) scripts/generate_synthetic_cases.py --mode v1 --n_per_category 30 --seed 7
 	@echo ""
-	@echo "2. Building dataset with splits..."
+	@echo "2. Generating synthetic cases (v2)..."
+	@$(PYTHON) scripts/generate_synthetic_cases.py --mode v2 --n_per_category 30 --seed 7
+	@echo ""
+	@echo "3. Building dataset with splits..."
 	@$(PYTHON) scripts/build_dataset.py --seed 7
 	@echo ""
-	@echo "3. Running sanity checks..."
+	@echo "4. Running sanity checks..."
 	@$(PYTHON) scripts/sanity_check.py data/raw/manual_cases.jsonl
+	@$(PYTHON) scripts/sanity_check.py data/raw/manual_cases_v2.jsonl || echo "Warning: manual_cases_v2.jsonl not found (optional)"
 	@$(PYTHON) scripts/sanity_check.py data/raw/synthetic_cases.jsonl
+	@$(PYTHON) scripts/sanity_check.py data/raw/synthetic_cases_v2.jsonl
 	@$(PYTHON) scripts/sanity_check.py data/processed/all.jsonl
 	@echo ""
 	@echo "✓ Dataset build complete!"
@@ -229,5 +234,6 @@ clean:
 	rm -rf data/processed/*
 	rm -rf data/splits/*
 	rm -rf data/raw/synthetic_cases.jsonl
+	rm -rf data/raw/synthetic_cases_v2.jsonl
 	rm -rf evaluation/results/*
 	@echo "Clean up complete."

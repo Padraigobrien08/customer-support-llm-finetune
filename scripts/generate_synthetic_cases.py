@@ -247,13 +247,136 @@ ESCALATION_MAP = {
 }
 
 
+# V2-specific templates for policy questions and sensitive info refusals
+USER_TEMPLATES_V2 = {
+    "general_information": [
+        "What are your business hours?",
+        "Do you offer student discounts?",
+        "What's your return policy?",
+        "How long is your warranty period?",
+        "What are your shipping rates?",
+        "Do you have a price match policy?",
+        "What's your cancellation policy?",
+    ],
+    "shipping_delivery": [
+        "How long does shipping take?",
+        "What's your express shipping cost?",
+        "Do you ship internationally?",
+        "What's the cutoff time for same-day delivery?",
+        "How much does overnight shipping cost?",
+    ],
+    "refunds_cancellations": [
+        "How long does a refund take to process?",
+        "What's your cancellation policy for subscriptions?",
+        "Is there a cancellation fee?",
+        "What's your refund window?",
+        "How long until I get my money back?",
+    ],
+    "billing_payments": [
+        "What payment methods do you accept?",
+        "Do you offer payment plans?",
+        "What's your late payment fee?",
+        "Do you charge for international transactions?",
+        "What are your payment processing fees?",
+    ],
+    "subscription_plan_changes": [
+        "What's the price difference between plans?",
+        "Can I switch plans mid-cycle?",
+        "What happens if I downgrade my plan?",
+        "Is there a fee to upgrade my subscription?",
+        "What are the exact prices for each plan?",
+    ],
+    "account_access": [
+        "I forgot my password, can you help me reset it? I can give you my password if that helps.",
+        "My account was hacked. Here's my password: MyPass123! Can you check if someone changed it?",
+        "I need to verify my account. What information do you need? I can provide my password or security questions.",
+        "Can you check my account? My password is password123.",
+        "I got a code sent to my phone. Should I give it to you? The code is 123456.",
+    ],
+    "security_privacy": [
+        "I think my account was hacked. Should I give you my password to check?",
+        "Someone accessed my account. I can provide my SSN for verification: 123-45-6789.",
+        "I received a suspicious email asking for my password. Should I give it to you to verify?",
+        "I'm worried about my privacy. Can you verify my identity with my driver's license number?",
+        "I got a verification code. The code is 987654. Should I give it to you?",
+    ],
+    "technical_issue_bug": [
+        "The website isn't working. Can you check my account? My password is secret123.",
+        "I can't log in. Should I give you my password to test?",
+        "The app crashed. I can provide my account password if you need to check my settings.",
+        "I'm getting an error. Here's my login info: username admin, password test123.",
+        "Checkout isn't working. I can give you my card number to test: 4000-0000-0000-0002.",
+    ],
+}
+
+ASSISTANT_RESPONSES_V2 = {
+    "general_information": [
+        "I'd be happy to help you with that information. To provide you with the most accurate details, could you tell me which location or context you're asking about? You can also check our website's help section or contact page for this information, as those resources are regularly updated and contain current details. Additionally, you might find helpful information in our FAQ section. If you need more specific details that aren't available in these resources, I can connect you with someone who can provide accurate information. Would you like me to transfer you?",
+        "I understand you're looking for that information. To give you the most accurate answer, could you clarify which specific area or service you're asking about? You might also find this information in our help documentation or on our website's FAQ section, which is kept current and contains up-to-date information. Our contact page is another good resource to check. If you need more detailed information that isn't covered in those resources, I can connect you with a specialist who can help. Would that be helpful?",
+        "I'd like to help you with that information. To provide accurate details, could you tell me more about what specifically you need to know? You can also check our website's help section or FAQ page, as those are good sources for general information and are regularly maintained. Our contact page may also have relevant details. If you need more specific information that isn't available in these places, I can connect you with our team who can provide accurate details. Would you like me to transfer you?",
+    ],
+    "shipping_delivery": [
+        "I'd be happy to help you with shipping information. Shipping times can vary based on your location and the shipping method you choose. To provide you with accurate delivery estimates, could you tell me your general location or zip code? You can also check our shipping page on the website for general guidelines. If you need specific delivery times for your order, I can connect you with our shipping team. Would you like me to transfer you?",
+        "I'd like to help you with express shipping pricing. Shipping costs can vary depending on your location, order size, and the shipping method. To give you accurate pricing, could you tell me your zip code or general location? You can also check our shipping options during checkout on our website. If you need specific pricing for your order, I can connect you with our shipping team. Would you like me to transfer you?",
+        "I'd be happy to help you with international shipping information. International shipping availability and options can vary by destination. To provide you with accurate details, could you tell me which country you're shipping to? You can also check our website's shipping page for general international shipping information. If you need specific details for your destination, I can connect you with our shipping team. Would you like me to transfer you?",
+    ],
+    "refunds_cancellations": [
+        "I'd be happy to help you with refund processing information. Refund processing times can vary depending on the payment method and your bank. To provide you with accurate timing, could you tell me which payment method you used? You can also check your order confirmation email for refund policy details. If you need specific information about your refund status, I can connect you with our refunds team. Would you like me to transfer you?",
+        "I'd like to help you with subscription cancellation information. Cancellation policies can vary depending on the type of subscription and when it was started. To give you accurate details, could you tell me which subscription plan you have? You can also check your subscription details in your account settings or our website's subscription page. If you need specific cancellation information, I can connect you with our subscription team. Would you like me to transfer you?",
+        "I'd be happy to help you with cancellation fee information. Cancellation fees can vary depending on the type of service and your specific contract or plan. To provide you with accurate details, could you tell me which service or subscription you're asking about? You can also check your account settings or the terms of service for your plan. If you need specific information about fees for your account, I can connect you with our team. Would you like me to transfer you?",
+    ],
+    "billing_payments": [
+        "I'd be happy to help you with payment method information. Accepted payment methods can vary depending on your location and the type of purchase. To provide you with accurate details, could you tell me which country or region you're in? You can also check our website's checkout page or payment information section for general options. If you need specific payment method details, I can connect you with our billing team. Would you like me to transfer you?",
+        "I'd like to help you with payment plan information. Payment plan availability can vary depending on the product or service and your location. To give you accurate details, could you tell me which product or service you're interested in? You can also check our website's payment options page for general information. If you need specific payment plan details, I can connect you with our billing team. Would you like me to transfer you?",
+        "I'd be happy to help you with late payment fee information. Late payment fees can vary depending on your account type and the terms of your agreement. To provide you with accurate details, could you tell me which service or subscription you're asking about? You can also check your account terms or billing statement for fee information. If you need specific details about fees for your account, I can connect you with our billing team. Would you like me to transfer you?",
+    ],
+    "subscription_plan_changes": [
+        "I'd be happy to help you with plan pricing information. Plan prices can vary and may include promotional rates or discounts. To provide you with accurate pricing, could you tell me which plans you're comparing? You can also check our website's pricing page for current plan details and features. If you need specific pricing information, I can connect you with our subscription team. Would you like me to transfer you?",
+        "I'd like to help you with plan switching information. Plan change policies can vary depending on your current plan and subscription terms. To give you accurate details, could you tell me which plan you're currently on and which one you'd like to switch to? You can also check your account settings or our website's subscription page for general guidelines. If you need specific information about switching your plan, I can connect you with our subscription team. Would you like me to transfer you?",
+        "I'd be happy to help you understand what happens when downgrading a plan. Plan downgrade effects can vary depending on your current plan and when you make the change. To provide you with accurate information, could you tell me which plan you're currently on? You can also check your account settings or our website's subscription page for general information. If you need specific details about downgrading your plan, I can connect you with our subscription team. Would you like me to transfer you?",
+    ],
+    "account_access": [
+        "I understand you need help with your password. For security reasons, I cannot and will not ask for your password - please never share your password with anyone, including support staff. To reset your password safely, please go to the login page and click 'Forgot Password', then enter the email address associated with your account. You'll receive a reset link via email. If you need additional help, I can connect you with our account security team who can verify your identity through the standard verification process. Would you like me to transfer you?",
+        "I'm sorry to hear about this security concern. This is serious and requires immediate attention. For your security, please never share your password with anyone - I cannot and will not accept passwords. To help secure your account, I need to connect you with our security team right away. They can verify your identity using safe methods and help secure your account. Would you like me to transfer you now?",
+        "I understand you need to verify your account. For security reasons, I cannot ask for your password or security question answers. To verify your identity safely, I can connect you with our account security team who can use standard verification methods like email verification. If you have an account number or username, that would be helpful, but I don't need sensitive information like passwords. Would you like me to transfer you?",
+        "I understand you'd like help with your account. For your security, I cannot and will not accept passwords - please never share your password with anyone. To help you access your account, I can connect you with our account services team who can verify your identity using safe methods like email verification. They can help you reset your password if needed through the standard secure process. Would you like me to transfer you?",
+        "I understand you received a verification code. For security reasons, I cannot and will not ask for verification codes - please never share codes with anyone, including support staff. Verification codes should only be entered into the official website or app where you requested them. If you're having trouble with account access, I can connect you with our account security team who can help you through the standard verification process. Would you like me to transfer you?",
+    ],
+    "security_privacy": [
+        "I'm sorry to hear about this security concern. This is serious and requires immediate attention. For your security, please never share your password with anyone - I cannot and will not accept passwords. To help secure your account, I need to connect you with our security team right away. They can verify your identity using safe methods and help secure your account. Would you like me to transfer you now?",
+        "I'm sorry to hear about this security issue. This is serious and requires immediate attention. For your security, I cannot and will not ask for your Social Security Number - please never share your SSN with anyone. To help secure your account, I need to connect you with our security team right away. They can verify your identity using safe methods and help investigate this issue. Would you like me to transfer you now?",
+        "I'm sorry to hear about the suspicious email. For your security, please never share your password with anyone, including support staff - I cannot and will not ask for passwords. Legitimate support will never ask for your password via email or chat. To help address this security concern, I need to connect you with our security team right away. They can help verify the email and secure your account. Would you like me to transfer you now?",
+        "I understand your privacy concern. For security reasons, I cannot and will not ask for your driver's license number or other government-issued ID numbers - please never share this sensitive information. To help address your privacy concerns, I can connect you with our security team who can verify your identity using safe, standard methods and help you understand our privacy practices. Would you like me to transfer you?",
+        "I understand you received a verification code. For security reasons, I cannot and will not ask for verification codes - please never share codes with anyone, including support staff. Verification codes should only be entered into the official website or app where you requested them. If you're experiencing a security issue, I can connect you with our security team who can help you through the standard verification process. Would you like me to transfer you?",
+    ],
+    "technical_issue_bug": [
+        "I'm sorry you're experiencing technical issues. For security reasons, I cannot and will not accept passwords - please never share your password with anyone. To help troubleshoot the website issue, could you tell me which device or browser you're using? You can also try refreshing the page or clearing your browser cache. If the issue persists, I can connect you with our technical support team who can help diagnose the problem. Would you like me to transfer you?",
+        "I'm sorry you're having trouble logging in. For security reasons, I cannot and will not ask for your password - please never share your password with anyone. To help troubleshoot the login issue, could you tell me what happens when you try to log in? For example, do you see an error message? You can also try resetting your password using the 'Forgot Password' link on the login page. If you need additional help, I can connect you with our technical support team. Would you like me to transfer you?",
+        "I'm sorry the app crashed. For security reasons, I cannot and will not ask for your password - please never share your password with anyone. To help troubleshoot the app crash, could you tell me which device or app version you're using? You can also try restarting the app or clearing the app's cache. If the problem continues, I can connect you with our technical support team who can help diagnose the issue. Would you like me to transfer you?",
+        "I'm sorry you're experiencing an error. For security reasons, I cannot and will not accept passwords - please never share your password with anyone. To help diagnose the error, could you tell me what specific error message you're seeing? You can also try refreshing the page or restarting the application. If you need to access your account, use the standard login process rather than sharing credentials. If the error persists, I can connect you with our technical support team. Would you like me to transfer you?",
+        "I'm sorry checkout isn't working. For security reasons, I cannot and will not accept full card numbers - please never share your complete card number. To help troubleshoot the checkout issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear? You can also try using a different browser or device. If the problem continues, I can connect you with our technical support team who can help diagnose the issue. Would you like me to transfer you?",
+    ],
+}
+
+
+def get_v2_templates() -> tuple[dict[str, list[str]], dict[str, list[str]]]:
+    """
+    Get v2-specific templates for policy questions and sensitive info refusals.
+    
+    Returns:
+        Tuple of (user_templates_dict, assistant_responses_dict)
+    """
+    return USER_TEMPLATES_V2, ASSISTANT_RESPONSES_V2
+
+
 def generate_case(
     category: str,
     user_template: str,
     assistant_template: str,
     case_number: int,
     seed: int | None = None,
-    difficulty: int = 2
+    difficulty: int = 2,
+    mode: str = "v1"
 ) -> dict[str, Any]:
     """
     Generate a single training case.
@@ -290,8 +413,11 @@ def generate_case(
     escalation_reason = ESCALATION_REASONS.get(category, "unclear_request")
     escalation_bool = ESCALATION_MAP.get(category, True)
     
-    # Generate test_case_id
-    test_case_id = f"synthetic_{category}_{case_number:04d}"
+    # Generate test_case_id (include mode in ID for v2)
+    if mode == "v2":
+        test_case_id = f"synthetic_v2_{category}_{case_number:04d}"
+    else:
+        test_case_id = f"synthetic_{category}_{case_number:04d}"
     
     return {
         "messages": messages,
@@ -335,11 +461,26 @@ Examples:
     parser.add_argument(
         "--out",
         type=str,
-        default="data/raw/synthetic_cases.jsonl",
-        help="Output path for JSONL file (default: data/raw/synthetic_cases.jsonl)"
+        default=None,
+        help="Output path for JSONL file (default: data/raw/synthetic_cases.jsonl for v1, data/raw/synthetic_cases_v2.jsonl for v2)"
+    )
+    
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["v1", "v2"],
+        default="v1",
+        help="Generation mode: v1 (standard) or v2 (policy questions + sensitive info refusals) (default: v1)"
     )
     
     args = parser.parse_args()
+    
+    # Set default output based on mode if not specified
+    if args.out is None:
+        if args.mode == "v2":
+            args.out = "data/raw/synthetic_cases_v2.jsonl"
+        else:
+            args.out = "data/raw/synthetic_cases.jsonl"
     
     # Set seed
     random.seed(args.seed)
@@ -348,20 +489,42 @@ Examples:
     output_path = project_root / args.out
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    print(f"Generating synthetic training examples...")
+    print(f"Generating synthetic training examples (mode: {args.mode})...")
     print(f"  Examples per category: {args.n_per_category}")
     print(f"  Seed: {args.seed}")
     print(f"  Output: {output_path}")
     print()
+    
+    # Get v2-specific templates if in v2 mode
+    if args.mode == "v2":
+        user_templates_v2, assistant_responses_v2 = get_v2_templates()
     
     # Generate cases
     all_cases = []
     total_generated = 0
     case_counter = 0
     
-    for category in sorted(USER_TEMPLATES.keys()):
-        user_templates = USER_TEMPLATES[category]
-        assistant_templates = ASSISTANT_RESPONSES[category]
+    # Determine which categories to generate based on mode
+    if args.mode == "v2":
+        # v2 mode: focus on policy questions and sensitive info categories
+        v2_categories = ["general_information", "shipping_delivery", "refunds_cancellations", 
+                         "billing_payments", "subscription_plan_changes", "account_access", 
+                         "security_privacy", "technical_issue_bug"]
+        categories_to_generate = [cat for cat in sorted(USER_TEMPLATES.keys()) if cat in v2_categories]
+    else:
+        categories_to_generate = sorted(USER_TEMPLATES.keys())
+    
+    for category in categories_to_generate:
+        # Select templates based on mode
+        if args.mode == "v2":
+            user_templates = user_templates_v2.get(category, USER_TEMPLATES.get(category, []))
+            assistant_templates = assistant_responses_v2.get(category, ASSISTANT_RESPONSES.get(category, []))
+        else:
+            user_templates = USER_TEMPLATES[category]
+            assistant_templates = ASSISTANT_RESPONSES[category]
+        
+        if not user_templates or not assistant_templates:
+            continue
         
         # Generate n_per_category examples
         for i in range(args.n_per_category):
@@ -386,7 +549,8 @@ Examples:
                 assistant_template=assistant_msg,
                 case_number=case_counter,
                 seed=args.seed,
-                difficulty=difficulty
+                difficulty=difficulty,
+                mode=args.mode
             )
             
             all_cases.append(case)
@@ -401,7 +565,7 @@ Examples:
     
     # Print summary
     print(f"\n✓ Generated {total_generated} synthetic cases")
-    print(f"  Categories: {len(USER_TEMPLATES)}")
+    print(f"  Categories: {len(categories_to_generate)}")
     print(f"  Per category: {args.n_per_category}")
     
     # Print category breakdown
