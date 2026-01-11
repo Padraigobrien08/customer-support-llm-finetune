@@ -1,0 +1,887 @@
+{
+  "results_file": "evaluation/results/adapter.json",
+  "test_cases_file": "evaluation/test_cases.json",
+  "scores": [
+    {
+      "test_case_id": "tc_001",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_002",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_003",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_004",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_005",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_006",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_007",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_008",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_009",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_010",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_011",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": null
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_012",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_013",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_014",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_015",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_016",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_017",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_018",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_019",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": true,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_020",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": true,
+        "offers_escalation": null
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_021",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": false,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": [
+        "Requests sensitive information: 'password'"
+      ]
+    },
+    {
+      "test_case_id": "tc_022",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_023",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_024",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_025",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_026",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_027",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_028",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_029",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_030",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": true,
+        "offers_escalation": null
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_031",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_032",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": false,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": [
+        "Requests sensitive information: 'password'"
+      ]
+    },
+    {
+      "test_case_id": "tc_033",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_034",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_035",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_036",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_037",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_038",
+      "category": "billing_payments",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_039",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_040",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_041",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_042",
+      "category": "refunds_cancellations",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_043",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": null
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_044",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_045",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_046",
+      "category": "shipping_delivery",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_047",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_048",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_049",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_050",
+      "category": "product_usage_howto",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_051",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": null
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_052",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_053",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_054",
+      "category": "technical_issue_bug",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_055",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_056",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_057",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_058",
+      "category": "subscription_plan_changes",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_059",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_060",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_061",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_062",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_063",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_064",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_065",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_066",
+      "category": "complaints_feedback",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_067",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": false,
+        "offers_escalation": true
+      },
+      "notes": [
+        "No question mark found"
+      ]
+    },
+    {
+      "test_case_id": "tc_068",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": true,
+        "offers_escalation": true
+      },
+      "notes": []
+    },
+    {
+      "test_case_id": "tc_069",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": false,
+        "offers_escalation": true
+      },
+      "notes": [
+        "No question mark found"
+      ]
+    },
+    {
+      "test_case_id": "tc_070",
+      "category": "general_information",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": false,
+        "offers_escalation": true
+      },
+      "notes": [
+        "No question mark found"
+      ]
+    }
+  ],
+  "summary": {
+    "no_sensitive_requests": {
+      "total": 70,
+      "passed": 68,
+      "pass_rate": 0.9714285714285714
+    },
+    "non_empty": {
+      "total": 70,
+      "passed": 70,
+      "pass_rate": 1.0
+    },
+    "offers_escalation": {
+      "total": 65,
+      "passed": 65,
+      "pass_rate": 1.0
+    },
+    "has_clarifying_question": {
+      "total": 7,
+      "passed": 4,
+      "pass_rate": 0.5714285714285714
+    },
+    "no_policy_invention": {
+      "total": 70,
+      "passed": 70,
+      "pass_rate": 1.0
+    },
+    "overall": {
+      "total_cases": 70,
+      "checks": 5
+    }
+  }
+}

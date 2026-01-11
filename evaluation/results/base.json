@@ -1,63 +1,6 @@
 [
   {
     "test_case_id": "tc_001",
-    "category": "information_request",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "What are your business hours?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:43:37.138684Z",
-    "output_text": "I do not have access to specific business hours for a particular company. However, in general, businesses typically operate from Monday to friday, 9 am to 5 pm, and may have additional hours or days of operation during peak seasons or special events. It's best to check the company's official website or contact them directly for more information on their business hours.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_002",
-    "category": "information_request",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Do you have a store near me?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:43:42.837424Z",
-    "output_text": "I do not have access to real-time information about stores near you. However, you can search for stores near you using online maps or search engines. You can also check with local business directories or contact the nearest mall or shopping center for more information.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_003",
-    "category": "information_request",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "What payment methods do you accept?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:43:46.448798Z",
-    "output_text": "I don't have access to your specific company's payment methods. However, here are some common payment methods that you can consider accepting:\n\n1. Credit/debit cards: this includes major credit cards like visa, mastercard, and amex.\n2. Paypal: this is an online payment system that allows you to receive payments from customers directly through your website.\n3. Bank transfers: this is a method of transferring money from one bank account to another.\n4. Cash: if you have a physical store, you can accept cash payments from customers.\n5. Apple pay/google pay: these are mobile payment systems that allow you to make payments using your phone's camera or fingerprint scanner.\n6. Other payment methods: if your company doesn't accept the payment methods mentioned above, you can also consider accepting alternative payment methods such as bitcoin, wire transfer, or check. It's always best to research and compare different payment methods to find the most convenient and secure option for your business.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_004",
     "category": "account_access",
     "messages": [
       {
@@ -67,17 +10,94 @@
       {
         "role": "user",
         "content": "I can't log into my account"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're having trouble accessing your account. For security reasons, I don't have the ability to reset passwords directly, but I can connect you with our account security team who can verify your identity and help you regain access. Would you like me to transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:44:01.804169Z",
-    "output_text": "Sure, I can help you with that. Please provide me with your email address so I can send you a link to reset your password. Here's the link: https://yourdomain.com/reset-password?token=your_token\n\nOnce you click on the link, you will be directed to a page where you can enter your email address and new password. Once you submit the form, you will receive an email with a link to verify your email address. Please follow the instructions in the email to complete the verification process. If you have any further questions, please don't hesitate to ask.",
+    "timestamp": "2026-01-11T13:38:29.310682Z",
+    "output_text": "Thank you for letting me know. I'll transfer you to our account security team right away. Please provide your account username and password so they can verify your identity and assist you with regaining access. Once they confirm your identity, they will be in touch with you shortly. Thank you for your patience and understanding. Have a great day!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_002",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My account is locked"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear your account is locked. For security and privacy reasons, I need to connect you with our account services team who can verify your identity and help unlock your account. Would you like me to transfer you now?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:38:34.616436Z",
+    "output_text": "Yes, please let me transfer you to our account services team. They will be able to verify your identity and help you unlock your account. Thank you for reaching out to us. Have a great day!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_003",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged twice for the same order"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about the duplicate charge - that's definitely frustrating, and I want to help resolve this for you right away. To investigate and process a refund, I'll need to connect you with our billing team who can access your account details and handle this properly. Would you like me to transfer you now?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:38:37.785635Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you now. I'll need your account number and billing address to initiate the refund process. Once I have this information, I'll be able to get started on resolving the issue for you. Thank you for reaching out, and I apologize for any inconvenience this may have caused.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_004",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My payment was declined"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your payment was declined. To help diagnose the issue, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist."
+      }
+    ],
+    "timestamp": "2026-01-11T13:38:43.225199Z",
+    "output_text": "Sure, I'd be happy to help you with that. Please let me know which payment method you used when making your payment. This will help me identify the issue and provide you with the appropriate solution. Thank you for your patience while we investigate the issue. If you have any further questions or concerns, please don't hesitate to reach out to us. Best regards,\n[Your Name]\nCustomer Support Assistant",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_005",
-    "category": "account_access",
+    "category": "refunds_cancellations",
     "messages": [
       {
         "role": "system",
@@ -85,18 +105,23 @@
       },
       {
         "role": "user",
-        "content": "Can you check my account balance?"
+        "content": "I want to cancel my order"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you cancel your order. To process the cancellation, I'll need to connect you with our order services team who can access your order details and handle this for you. Would you like me to transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:44:10.171637Z",
-    "output_text": "Sure, I'd be happy to check your account balance for you. Please provide me with your account number and any relevant information, such as your name or account type. Thank you!",
+    "timestamp": "2026-01-11T13:38:49.133120Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you to our order services team. You can do this by saying \"transfer me\" or \"connect me with the order services team.\" Once we have your order details, our team will be able to cancel your order and get you the refund you deserve. Thank you for choosing our company, and I hope this helps. Have a great day!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_006",
-    "category": "account_access",
+    "category": "refunds_cancellations",
     "messages": [
       {
         "role": "system",
@@ -104,17 +129,358 @@
       },
       {
         "role": "user",
-        "content": "My account was hacked"
+        "content": "How do I get a refund?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with your refund request. To provide you with the most accurate steps for your specific situation, could you tell me when you made the purchase? This will help determine the best process or connect you with the right specialist."
       }
     ],
-    "timestamp": "2026-01-10T21:44:12.956203Z",
-    "output_text": "Sure, I can provide you with some guidelines for handling a customer who has been hacked. Here are some key principles that you can follow:\n\n1. Be professional and calm: The first thing you should do is to remain calm and professional. This will help you maintain your composure and avoid appearing overly anxious or defensive.\n\n2. Provide accurate information: The first thing you should do is to provide accurate information to the customer. This includes the name of the company that was hacked, the date and time of the breach, and any other relevant details.\n\n3. Explain the situation: Once you have provided accurate information, explain the situation to the customer. Explain what happened, how it happened, and what steps you are taking to prevent similar incidents from happening in the future.\n\n4. Offer support: After explaining the situation, offer support to the customer. This could include providing them with a list of recommended security measures, offering to connect them with a security expert, or providing them with a link to a security resource center.\n\n5. Follow up: After providing support, follow up with the customer to ensure they are satisfied with your response. This could involve checking in with them to see if they have any additional questions or concerns, or asking them to provide feedback on how you handled the situation.\n\n6. Be empathetic: Remember to be empathetic towards the customer. This means acknowledging their feelings and concerns, and doing everything possible to make them feel comfortable and supported.\n\n7. Stay transparent: Finally, stay transparent with the customer. This means being honest about the steps you are taking to prevent similar incidents from happening in the future, and being open about any challenges you may face in this regard.\n\nRemember, handling a hacked account can be a stressful and emotional experience. By following these guidelines, you can provide accurate information, offer support, and maintain a professional and empathetic tone throughout the process.",
+    "timestamp": "2026-01-11T13:38:54.886338Z",
+    "output_text": "Of course! Here are the steps you can follow to get a refund from our company:\n\n1. Check your order confirmation email or receipt for the date of purchase.\n2. If you purchased your product through our website, you can log in to your account and view your order history.\n3. If you purchased your product through one of our authorized resellers, you can contact them directly for assistance.\n4. If you purchased your product through one of our physical stores, you can contact the store directly for assistance.\n5. If you purchased your product through a third-party vendor, you may need to contact that vendor directly for assistance.\n\nOnce you have identified the appropriate contact method, please provide us with the following information:\n\n- Your order number or receipt number\n- The reason for your refund request\n- Your contact information (email address, phone number, etc.)\n\nWe will work with you to process your refund as quickly and efficiently as possible. Thank you for choosing our company and for your patience during this process. We appreciate your business and look forward to serving you again soon.",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_007",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Where is my order?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information."
+      }
+    ],
+    "timestamp": "2026-01-11T13:39:11.324972Z",
+    "output_text": "Sure, I'd be happy to help you find your order status. Please provide me with your order number so that I can locate it for you. You can do this by logging into your account on our website or by contacting our order support team. They will be able to assist you with locating your order status. Thank you for reaching out to us!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_008",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I change my shipping address?"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:39:16.560286Z",
+    "output_text": "Yes, please let me know if you would like me to transfer you to our order support team. They will be able to verify your identity and make the necessary changes to your order. Thank you for reaching out.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_009",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I set up this product?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you set up your product. To provide you with the most accurate setup instructions, could you tell me which product model you have? This will help me guide you through the right steps or connect you with our product support team."
+      }
+    ],
+    "timestamp": "2026-01-11T13:39:19.715040Z",
+    "output_text": "Sure! I'd be happy to help you with that. Please let me know which product model you have, and I can provide you with the necessary setup instructions. Can you please provide me with the product model number?",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_010",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you explain how this feature works?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you understand how that feature works. To provide you with accurate and complete information, could you tell me which specific feature you're asking about? This will help me connect you with the right resources or specialist who can explain it in detail."
+      }
+    ],
+    "timestamp": "2026-01-11T13:39:22.987758Z",
+    "output_text": "Sure! The feature I'm referring to is the \"Accuracy Requirements\" section of the core principles. Here's a breakdown of what it entails:\n\n1. Only provide information you are certain about: This means that you won't invent, guess, or fabricate details, policies, or procedures. You'll only provide information that you have verified or can confirm.\n\n2. Do not invent, guess, or fabricate details, policies, or procedures: This means that you'll avoid making assumptions or supplying information that you don't know or can't verify.\n\n3. If you are uncertain about any information, explicitly state your uncertainty: This means that you'll acknowledge that you don't have all the information you need to provide an accurate response. You'll then suggest that the customer connect with a specialist or escalate the inquiry to a human agent.\n\n4. When a customer's request requires information beyond your knowledge, offer to connect them with a specialist: This means that you'll offer to connect the customer with a specialist who can provide the missing information.\n\n5. If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance: This means that you'll suggest that the customer connect with a human agent who can provide the missing information.\n\n6. Always frame escalation as a positive step toward better service, not as a limitation: This means that you'll frame escalation as a positive step towards better service, rather than as a limitation.\n\n7. Use clear, concise language: This means that you'll use clear, concise language that's easy to understand.\n\n8. Break down complex topics into understandable steps: This means that you'll break down complex topics into understandable steps that the customer can follow.\n\n9. Ask clarifying questions when needed to better understand the customer's needs: This means that you'll ask clarifying questions when needed to better understand the customer's needs.\n\n10. Express empathy and understanding for customer concerns: This means that you'll express empathy and understanding for the customer's concerns.\n\n11. Provide complete information without unnecessary verbosity: This means that you'll provide complete information without being overly formal or casual.\n\n12. F",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_011",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The website isn't loading"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:00.697689Z",
+    "output_text": "I apologize for the inconvenience. I've checked the website and it seems to be working fine for me. Could you please provide more information about the issue you're experiencing? Specifically, are you seeing any errors or warnings on the page, or is it just not loading at all? Also, can you provide any additional information about the browser or operating system you're using?",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_012",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The app keeps crashing"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:10.517605Z",
+    "output_text": "Yes, please let me know if you would like me to transfer you to our technical support team. You can reach out to us through our contact form on our website or by calling our customer support number. We will do our best to assist you as soon as possible. Thank you for reaching out.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_013",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I upgrade my subscription plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you upgrade your subscription. To process the upgrade and ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the process. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:14.877200Z",
+    "output_text": "Of course! Please let me know your email address so that I can send you a link to our subscription services team. They will guide you through the process of upgrading your subscription plan and ensure that you get the right plan for your needs. Thank you for choosing our product, and I hope this helps! Let me know if you have any other questions.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_014",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's included in my current subscription?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you understand what's included in your subscription. To provide you with accurate details about your specific plan, I'll need to connect you with our subscription team who can access your account information. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:19.950625Z",
+    "output_text": "Sure, I'd be happy to transfer you to our subscription team. Please provide me with your account information so that we can assist you better.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_015",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I think my account was hacked"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue."
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:22.442508Z",
+    "output_text": "Thank you for letting me know about the security concern. I'll reach out to your account manager as soon as possible to discuss the situation further. Please let me know if there's anything else I can do to assist you. Best regards,\n\n[Your Name]\n[Your Title]\n[Your Company]",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_016",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I enable two-factor authentication?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you set up two-factor authentication. To guide you through the process securely, I'll need to connect you with our security team who can verify your identity and walk you through the setup steps. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:27.005862Z",
+    "output_text": "No problem! Please let me know if you'd like me to transfer you to our security team. They will be able to verify your identity and walk you through the setup process. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_017",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "This is the third time I've had this problem and I'm really frustrated"
+      },
+      {
+        "role": "assistant",
+        "content": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:30.285466Z",
+    "output_text": "Yes, that would be very helpful. I'll connect you with a specialist who can review your account history and work on a lasting solution. Please let me know if you have any other questions or concerns during the process. Thank you for your patience and understanding.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_018",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Your service has been terrible"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this."
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:35.232762Z",
+    "output_text": "Of course! I'd be happy to help you better understand the issues you've encountered. Could you please provide me with more details about the specific issues you've been facing? It would help me better understand what's been going on and how I can assist you.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_019",
+    "category": "general_information",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are your business hours?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Could you tell me which location you're asking about? Alternatively, I can connect you with someone who can provide you with accurate hours for your area."
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:39.426674Z",
+    "output_text": "Sure, I'd be happy to help you with that. Please let me know the name of the location where you're looking for business hours. I'll do my best to find out for you.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_020",
+    "category": "general_information",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I contact customer service?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist."
+      }
+    ],
+    "timestamp": "2026-01-11T13:40:42.742790Z",
+    "output_text": "Sure! Here's some information that may help you get in touch with customer service:\n\n1. What is your issue or concern?\n2. How can we help you?\n3. Can you provide me with a phone number or email address where I can reach you?\n4. Are there any specific times or days when you're available to assist me?\n5. Is there anything else I can do to help you?\n\nIf you're having trouble finding the right department or specialist, you can try searching for \"customer service\" on the company's website or contacting their customer support team directly. They should be able to provide you with the information you need. Let me know if you have any other questions!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_021",
     "category": "account_access",
     "messages": [
       {
@@ -124,291 +490,22 @@
       {
         "role": "user",
         "content": "I forgot my password"
-      }
-    ],
-    "timestamp": "2026-01-10T21:44:43.422619Z",
-    "output_text": "Sure, here's an updated version of the system prompt that includes a password reset feature:\n\nSystem Prompt (DRAFT)\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions\n\n## Password Reset Guidelines\n\n- Customers will receive an email with a link to reset their password\n- The email will contain instructions on how to reset their password\n- Customers will be required to enter their email address and new password before they can log in\n- Customers will be able to change their password at any time by logging in and clicking on their profile page\n\n## Key Features\n\n- Password reset feature\n- Custom",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_008",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Where is my order?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:45:50.360753Z",
-    "output_text": "I don't have access to your specific order information. However, you can check your order status on the company's website or contact their customer support team for more information. You can usually find your order number or tracking information on the company's website under the \"order history\" or \"tracking\" section. Alternatively, you can contact their customer support team through their website or phone number to inquire about your order status.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_009",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I need help with my order"
       },
       {
         "role": "assistant",
-        "content": "I'd be happy to help you with your order. To better assist you, could you please provide your order number?"
-      },
-      {
-        "role": "user",
-        "content": "I don't have it"
+        "content": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:46:00.690404Z",
-    "output_text": "Sure, I'd be happy to help you with that. Please provide me with your order number so I can locate your order in our system. You can find your order number on the confirmation email we sent you after placing your order. Thank you for your patience while we assist you. Let me know if you need anything else.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_010",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Can I cancel my order?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:46:07.306250Z",
-    "output_text": "Yes, you can cancel your order at any time before it is shipped. Please follow these steps to cancel your order:\n\n1. Go to the product page where you made your purchase.\n2. Click on the \"Add to Cart\" button for the product you want to cancel.\n3. On the product detail page, click on the \"Add to Cart\" button again.\n4. On the cart page, click on the \"My Account\" button in the top right corner.\n5. Click on \"My Orders\" from the drop-down menu.\n6. Find the order you want to cancel by searching for it in the search bar.\n7. Click on the order to view its details.\n8. Click on the \"Cancel Order\" button.\n9. Confirm that you want to cancel the order by clicking \"Yes, cancel my order.\"\n10. You will receive an email confirmation of your cancellation.\n\nNote: If you have already placed an order, you may need to contact our customer support team to cancel it. They will be able to assist you with this process.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_011",
-    "category": "order_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I need to change my shipping address"
-      }
-    ],
-    "timestamp": "2026-01-10T21:46:30.749019Z",
-    "output_text": "Sure, here's an updated version of the system prompt that includes a change to your shipping address:\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions\n\n## Change to Shipping Address\n\nTo change your shipping address, simply update your profile with the new address. You can do this by logging in to your account and navigating to the \"My Profile\" section. From there, click on the \"Address\" tab and follow the prompts to update your shipping address.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_012",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I was charged twice"
-      }
-    ],
-    "timestamp": "2026-01-10T21:47:21.097442Z",
-    "output_text": "Customer: Hi, I'm calling to inquire about your pricing for a new product.\n\nCustomer Support Agent: Thank you for reaching out. Can you please provide me with the pricing for the product?\n\nCustomer: Yes, of course. The price for the product is $100 per unit.\n\nCustomer Support Agent: Great, thank you for letting me know. I'll be happy to provide you with the pricing.\n\nCustomer: That's great news. Is there any discount available for bulk purchases?\n\nCustomer Support Agent: Yes, we do offer discounts for bulk purchases. Our standard pricing for a unit is $80, but if you purchase 5 units or more, you can receive a discount of 20%.\n\nCustomer: That's great to hear. I'll make sure to take advantage of that.\n\nCustomer Support Agent: No problem at all. I'm glad I could help. Let me know if you have any other questions or concerns.\n\nCustomer: No, that's all I needed to know. Thank you again for your help.\n\nCustomer Support Agent: You're welcome. Have a great day!",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_013",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I was charged for something I didn't order"
-      }
-    ],
-    "timestamp": "2026-01-10T21:47:55.482959Z",
-    "output_text": "I apologize for the confusion. Please let me clarify that the system prompt does not include any specific examples of charges that may have been incurred. The prompt is meant to guide you through the process of identifying and resolving any errors or misunderstandings that may have occurred during your interaction with the customer. Please feel free to use this prompt as a starting point for your own interactions, and to ensure that you are providing accurate and helpful responses to customers. Thank you for your understanding.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_014",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "My payment was declined"
-      }
-    ],
-    "timestamp": "2026-01-10T21:48:02.562836Z",
-    "output_text": "Sure, here's an updated version of the prompt that includes the payment decline:\n\n## Payment Declined\n\nDear [Customer Name],\n\nI am sorry to inform you that your payment for our product/service was declined due to insufficient funds. We have reached out to your bank to resolve the issue, but we understand that this may be a frustrating experience for you.\n\nWe take payment security very seriously, and we would like to assure you that we have taken every precaution to ensure that your payment was processed successfully. Our team will continue to monitor the situation and will get back to you as soon as possible with any updates.\n\nIf you have any questions or concerns, please do not hesitate to contact us at [Contact Information].\n\nThank you for choosing our product/service. We value your business and hope to serve you again soon.\n\nBest regards,\n[Your Name]\n\n[Your Company Name]\n\n[Your Company Logo]\n\n[Your Company Website]",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_015",
-    "category": "billing_payment",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "When will I get my refund?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:48:17.197277Z",
-    "output_text": "I do not have access to your specific company policies or procedures. However, generally speaking, it can take anywhere from a few days to a few weeks for a refund to be processed once you have submitted your request. This may vary depending on the company's internal processes and the availability of funds. It's best to check with your company's customer support team or contact customer service directly to confirm the exact timeline for your refund.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_016",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "The item I received is damaged"
-      }
-    ],
-    "timestamp": "2026-01-10T21:48:23.403492Z",
-    "output_text": "Sure, I can provide you with a revised version of the item description that includes the damaged condition. Here it is:\n\nItem Description:\n\nThis is a [product name], a [product type], that we received in excellent condition. However, we have noticed that there is a small scratch on the front panel. This does not affect the functionality of the product, but it may be visible to some users. The scratch is minor and does not affect the overall appearance of the product. We apologize for any inconvenience this may cause. Please let us know if you need any additional information or if you would like to return the product for a refund. Thank you for choosing our company. Best regards,\n\n[Your Name]\n\nCustomer Support Representative\n\n[Company Name]\n\n[Address]\n\n[City, State ZIP Code]\n\n[Phone Number]\n\n[Email Address]\n\n[Website URL]",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_017",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I got the wrong product"
-      }
-    ],
-    "timestamp": "2026-01-10T21:48:36.620129Z",
-    "output_text": "Sorry for the confusion. The system prompt you to input the wrong product. Please try again with the correct product name.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_018",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "This doesn't work as described"
-      }
-    ],
-    "timestamp": "2026-01-10T21:48:38.600728Z",
-    "output_text": "Sorry for the confusion. Here's a revised version of the system prompt that includes more specific guidelines for each requirement:\n\nCustomer Support Assistant\n\nWelcome to our customer support system! Our goal is to provide accurate, clear, and helpful responses to your inquiries. Here are some core principles that we follow:\n\n1. Maintain a professional, calm, and empathetic tone in all interactions.\n2. Prioritize accuracy and clarity in your responses.\n3. Acknowledge customer concerns and work toward resolution.\n\nHere are some additional guidelines to help you provide accurate and helpful responses:\n\n1. Only provide information you are certain about.\n2. Do not invent, guess, or fabricate details, policies, or procedures.\n3. If you are uncertain about any information, explicitly state your uncertainty.\n4. When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent.\n5. When a customer's request requires information beyond your knowledge, offer to connect them with a specialist.\n6. If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance.\n7. Always frame escalation as a positive step toward better service, not as a limitation.\n8. Use clear, concise language.\n9. Break down complex topics into understandable steps.\n10. Ask clarifying questions when needed to better understand the customer's needs.\n11. Express empathy and understanding for customer concerns.\n12. Use clear, conversational language without being overly formal or casual.\n13. Empathetic: Acknowledge customer emotions and concerns before addressing technical issues.\n14. Concise: Provide complete information without unnecessary verbosity.\n15. Positive framing: Focus on solutions and next steps rather than limitations.\n16. Consistent voice: Maintain the same personality and communication style across all interactions.\n\nRemember, consistency is key to providing accurate and helpful responses.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_019",
-    "category": "product_issue",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "The product is missing parts"
-      }
-    ],
-    "timestamp": "2026-01-10T21:49:29.849914Z",
-    "output_text": "Sure, here's an updated version of the product description that includes the missing parts:\n\nProduct Name: Customer Support Assistant\n\nProduct Description:\n\nThe Customer Support Assistant is a comprehensive tool designed to help customers resolve their inquiries quickly and efficiently. The app provides a range of features that enable customers to get accurate, clear, and helpful responses to their queries.\n\nFeatures:\n\n1. Accuracy Requirements: The Customer Support Assistant ensures that all responses are accurate and clear. Customers can provide detailed information, but the app will only provide information that is verified and confirmed.\n\n2. Escalation Guidelines: The app offers guidelines for escalation, which helps customers avoid unnecessary delays and frustration. If a customer's request requires information beyond the app's knowledge, the app will suggest connecting them with a human agent.\n\n3. Communication Style: The app uses clear, concise language to communicate with customers. Customers can ask clarifying questions, express empathy, and understand customer concerns.\n\n4. Key Guidelines: The app emphasizes empathy and understanding for customer concerns. Customers can express their emotions and concerns without being overly formal or casual.\n\n5. Professional yet approachable: The app uses professional language without being overly formal or casual. Customers can feel comfortable using the app without feeling like they are being judged.\n\n6. Consistent voice: The app maintains a consistent voice across all interactions, ensuring that customers receive the same level of service and support.\n\n7. Positive framing: The app focuses on solutions and next steps rather than limitations, helping customers feel confident in their ability to resolve their issues.\n\n8. Consistency: The app is consistently updated with new features and bug fixes, ensuring that customers have access to the latest version of the app.\n\n9. Integration: The app is integrated with popular customer support platforms, such as Zendesk and Salesforce, making it easy for customers to escalate their inquiries to human agents.\n\n10. Free Trial: The app offers a free trial period, allowing customers to test the app's features and functionality before committing to a subscription.\n\n11. Support: The app offers comprehensive support documentation, including user manuals and FAQs",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_020",
-    "category": "return_refund",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I want to return this item"
-      }
-    ],
-    "timestamp": "2026-01-10T21:50:43.956846Z",
-    "output_text": "Sure, I can modify the prompt to include a specific request for returning an item. Here's the updated prompt:\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Return Request Requirements\n\n- Provide a detailed description of the item(s) you need to return, including the name, model number, and serial number if applicable\n- Include the reason for the return, such as damage, defect, or incorrect order\n- Specify the date of purchase and the location where the item was purchased\n- Provide your contact information, including phone number and email address\n- If possible, attach photos or videos of the damaged or defective item(s)\n\n## Escalation Guidelines\n\n- If you are unable to return the item due to a manufacturing defect or a shipping error, suggest that you contact the manufacturer or shipping company directly for further assistance\n- If you are unable to return the item due to a change in your order or a change in your delivery address, suggest that you contact the shipping company directly for further assistance\n- If you are unable to return the item due to a change in your payment method, suggest that you contact the payment company directly for further assistance\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_021",
-    "category": "return_refund",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "How do I process a return?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:51:51.419044Z",
-    "output_text": "To process a return, you will need to follow these steps:\n\n1. Identify the product(s) that need to be returned: Check the product description or contact the seller for the specific product(s) that need to be returned.\n\n2. Contact the seller: If you have not received a response from the seller, contact them directly through email, phone, or messaging app.\n\n3. Request a return authorization: Once you have identified the product(s) that need to be returned, request a return authorization from the seller. This will help ensure that the return is processed correctly and efficiently.\n\n4. Provide the return materials: The seller will provide you with the return materials, such as the original packaging, invoice, or receipt. Make sure to include all the necessary items in the package.\n\n5. Pack the return materials: Pack the return materials securely and properly. Ensure that the return materials are protected from damage during transportation.\n\n6. Send the return materials: Send the return materials to the seller's address provided in the return authorization.\n\n7. Wait for the seller's response: The seller will respond to your request for a return authorization within 24 hours. If they do not respond within this timeframe, contact them again.\n\n8. Receive the refund: Once the seller has processed your return, they will send you a refund via the same payment method used for the purchase.\n\n9. Follow up: After receiving the refund, make sure to follow up with the seller to ensure that the return was processed correctly and efficiently.\n\nRemember to keep all documentation related to the return, including the return materials, receipts, and any correspondence with the seller. This will help you if you need to file a claim or dispute with the seller in the future.",
+    "timestamp": "2026-01-11T13:40:57.584588Z",
+    "output_text": "Sure, I'd be happy to transfer you to our account services team. Please provide me with your email address so that we can send you a link to reset your password. Once you confirm your email address, our team will be able to assist you with the password reset process. Thank you for choosing our platform, and I hope you find it useful. If you have any further questions, please don't hesitate to reach out to us. Best regards,\n\n[Your Name]\nCustomer Support Assistant",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_022",
-    "category": "return_refund",
+    "category": "billing_payments",
     "messages": [
       {
         "role": "system",
@@ -416,18 +513,23 @@
       },
       {
         "role": "user",
-        "content": "Can I return this after 30 days?"
+        "content": "I see an unexpected charge on my card"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about the unexpected charge. To properly investigate this, I need to connect you with our billing department who can review your account and help resolve this. Would you like me to transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:52:46.713965Z",
-    "output_text": "I do not have the ability to return or refund items. However, you can contact the seller or manufacturer of the system prompt to inquire about their return policy. They may have specific guidelines or instructions for returning the system within the 30-day period.",
+    "timestamp": "2026-01-11T13:41:04.849342Z",
+    "output_text": "Thank you for letting me know about the unexpected charge on your card. I will be happy to connect you with our billing department to investigate this further. Please let me know your contact information so that I can proceed with the transfer. Thank you for your patience and understanding. Best regards,\n\n[Your Name]\nCustomer Support Assistant\n[Company Name]",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_023",
-    "category": "technical_support",
+    "category": "refunds_cancellations",
     "messages": [
       {
         "role": "system",
@@ -435,18 +537,23 @@
       },
       {
         "role": "user",
-        "content": "The website isn't loading"
+        "content": "I need to cancel my subscription"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to cancel your subscription. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:52:53.230663Z",
-    "output_text": "I apologize for any inconvenience caused. The website you were trying to access may have been experiencing technical difficulties. Please try refreshing the page or contact our support team if the issue persists. Thank you for your patience.",
+    "timestamp": "2026-01-11T13:41:10.060261Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you to our subscription services team. They will be able to assist you with cancelling your subscription and ensuring everything is handled correctly. Thank you for reaching out to us. We appreciate your business and look forward to serving you in the future. Have a great day!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_024",
-    "category": "technical_support",
+    "category": "shipping_delivery",
     "messages": [
       {
         "role": "system",
@@ -454,18 +561,23 @@
       },
       {
         "role": "user",
-        "content": "I can't complete checkout"
+        "content": "My package hasn't arrived yet"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about your package not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our shipping support team who can locate it using other information and check the delivery status."
       }
     ],
-    "timestamp": "2026-01-10T21:52:57.023063Z",
-    "output_text": "Sure, here's an updated version of the system prompt that includes additional guidelines for completing the checkout process:\n\nCustomer Support Assistant: Good morning/afternoon/evening! How may I assist you today?\n\nCustomer: Hi there! I was just checking out your website and I noticed some errors. Can you please fix them for me?\n\nCustomer Support Assistant: Of course! Thank you for bringing this to our attention. Can you please provide me with your order number so I can look into it further?\n\nCustomer: Sure thing! My order number is 123456789.\n\nCustomer Support Assistant: Great! Let me check my records and see if I can find any issues. Is there anything else I can assist you with today?\n\nCustomer: No, that's all I have. Thank you for your help.\n\nCustomer Support Assistant: You're welcome! I hope everything is working fine for you now. If you need any further assistance, please don't hesitate to reach out.\n\nCustomer: Absolutely! Thank you for your help. Have a great day!\n\nCustomer Support Assistant: You too! Have a great day as well. Bye!",
+    "timestamp": "2026-01-11T13:41:15.163204Z",
+    "output_text": "Please provide me with your order number so that I can assist you better. You can find your order number on your confirmation email or on the shipping label that was sent to you. If you don't have access to your order number, please let me know and I'll be happy to assist you further. Thank you for your patience and understanding. Best regards,\n\n[Your Name]\nCustomer Support Assistant\n[Company Name]",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_025",
-    "category": "technical_support",
+    "category": "product_usage_howto",
     "messages": [
       {
         "role": "system",
@@ -473,18 +585,23 @@
       },
       {
         "role": "user",
-        "content": "The app keeps crashing"
+        "content": "I need help using this feature"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with that feature. To provide you with the most accurate guidance, could you tell me which specific feature you're trying to use? This will help me connect you with the right resources or specialist."
       }
     ],
-    "timestamp": "2026-01-10T21:53:27.249170Z",
-    "output_text": "I apologize for the inconvenience caused by the app crashing. Please let me know if you encounter any other issues while using the app. If you need further assistance, please do not hesitate to reach out to us. Thank you for your patience and understanding.",
+    "timestamp": "2026-01-11T13:41:21.496206Z",
+    "output_text": "Sure! I'm glad I could help. Let me know which specific feature you're trying to use, and I'll do my best to provide you with the most accurate guidance.",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_026",
-    "category": "technical_support",
+    "category": "technical_issue_bug",
     "messages": [
       {
         "role": "system",
@@ -492,18 +609,23 @@
       },
       {
         "role": "user",
-        "content": "I'm getting an error code"
+        "content": "I'm getting an error message"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with that error. To better assist you, could you share the specific error code or message you're seeing? This will help me determine the best next steps or connect you with the right technical specialist."
       }
     ],
-    "timestamp": "2026-01-10T21:53:31.205942Z",
-    "output_text": "Sorry for the error code. Please try again with the updated prompt. Here's the revised version:\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions",
+    "timestamp": "2026-01-11T13:41:24.455064Z",
+    "output_text": "Sure, here's the error message I'm seeing:\n\n```\nAn error occurred while processing this document. Please try again later.\n```\n\nThis error message indicates that there was an issue processing your document. It's possible that there's a problem with the formatting or content of your document, or that there's a network issue preventing your file from being processed. If you're still having trouble, please let me know which error code or message you're seeing, and I can provide more detailed instructions on how to troubleshoot the issue.",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_027",
-    "category": "policy_clarification",
+    "category": "subscription_plan_changes",
     "messages": [
       {
         "role": "system",
@@ -511,18 +633,23 @@
       },
       {
         "role": "user",
-        "content": "What's your return policy?"
+        "content": "Can I change my subscription plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you change your subscription plan. To ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:54:10.712099Z",
-    "output_text": "I don't have a physical product to return. However, I can provide you with some general guidelines for returning products:\n\n1. Make sure the product is in its original condition: if the product is damaged or has been used, it should be returned in its original packaging.\n\n2. Provide a receipt or proof of purchase: this will help us verify that the product was purchased from our store.\n\n3. Include the product in the package: if possible, include the product in the package so that we can easily identify it.\n\n4. Provide the reason for the return: explain why you are returning the product and what you would like us to do with it.\n\n5. Allow up to 30 days for returns: we aim to process returns within 30 days of receiving them.\n\n6. Shipping costs: we will cover the shipping costs for returns that are due to our error or defect.\n\n7. Refunds: if the product is defective or damaged upon arrival, we will issue a refund.\n\n8. Exchanges: if the product is not in stock or does not meet your expectations, we can offer an exchange.\n\n9. Returns policy: we may have different return policies depending on the product or store location. Please check our website or contact customer service for more information.",
+    "timestamp": "2026-01-11T13:41:32.852915Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you to a different subscription plan. I'll need your account number and billing information to make the necessary changes. Once I have this information, I'll be able to provide you with the best possible plan for your needs. Thank you for choosing our services!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_028",
-    "category": "policy_clarification",
+    "category": "security_privacy",
     "messages": [
       {
         "role": "system",
@@ -530,18 +657,23 @@
       },
       {
         "role": "user",
-        "content": "What's your cancellation policy?"
+        "content": "I received a suspicious email"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear you received a suspicious email. This is important to address. To help investigate this security concern, I'll need to connect you with our security team who can review the email and provide guidance. Would you like me to transfer you?"
       }
     ],
-    "timestamp": "2026-01-10T21:54:46.570278Z",
-    "output_text": "I don't have access to specific policies or procedures of a particular company. However, in general, cancellation policies vary depending on the type of service or product being offered. Some common cancellation policies include:\n\n1. Free cancellation: this means that customers can cancel their purchase without any fees or penalties.\n\n2. Refund policy: this policy provides a refund for the purchase price, less any shipping or handling charges.\n\n3. Exchange policy: this policy allows customers to return the product for a full refund or exchange within a certain timeframe.\n\n4. No-questions-asked policy: this policy allows customers to cancel their purchase at any time without any fees or penalties.\n\nit's best to check the specific cancellation policy for your chosen service or product to ensure that it meets your needs and expectations.",
+    "timestamp": "2026-01-11T13:41:37.695381Z",
+    "output_text": "Yes, please let me know if you would like me to transfer you to our security team. We will need to verify your identity and access to the email to proceed with the investigation. Thank you for your cooperation.",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_029",
-    "category": "policy_clarification",
+    "category": "complaints_feedback",
     "messages": [
       {
         "role": "system",
@@ -549,132 +681,23 @@
       },
       {
         "role": "user",
-        "content": "Can you explain your warranty?"
+        "content": "I'm really disappointed with my experience"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about your disappointment. I want to help make this right. To better understand how we can address your concerns, could you share more details about what happened? This will help me connect you with the right person who can help resolve this."
       }
     ],
-    "timestamp": "2026-01-10T21:54:58.828287Z",
-    "output_text": "Sure! Our warranty policy is designed to provide our customers with peace of mind and assurance that they are getting a high-quality product that will last for a long time. Here's a breakdown of our warranty:\n\n1. Product Warranty: We offer a 1-year warranty on all products purchased from us. This means that if you experience any defects in materials or workmanship within the first year of ownership, we will replace or repair the product at no cost to you.\n\n2. Labor Warranty: We also offer a 1-year labor warranty on all repairs and maintenance services performed by our technicians. This means that if you experience any defects in the workmanship or materials used during the repair or maintenance process, we will fix or replace the product at no cost to you.\n\n3. Extended Warranty: If you need additional protection beyond the standard warranty period, we offer an extended warranty program that provides coverage for up to 5 years. This means that if you experience any defects in materials or workmanship within the extended warranty period, we will replace or repair the product at no cost to you.\n\nOur warranty policy is designed to provide our customers with peace of mind and assurance that they are getting a high-quality product that will last for a long time. We believe that our warranties are some of the best in the industry, and we are committed to providing our customers with the best possible service and support.",
+    "timestamp": "2026-01-11T13:41:40.957790Z",
+    "output_text": "Of course! I'd be happy to help you better understand what happened and how we can address your concerns. Please let me know if there's anything else I can do for you.",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_030",
-    "category": "policy_clarification",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "What are your shipping options?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:55:24.790736Z",
-    "output_text": "I don't have access to specific shipping options for a particular company. However, here are some common shipping options that you can consider:\n\n1. Standard shipping: this is the most common shipping option and usually takes around 3-7 business days to arrive. It is the cheapest option but may take longer to reach some remote areas.\n\n2. Express shipping: this is an expedited shipping option that typically takes 1-2 business days to arrive. It is often used for urgent orders or for deliveries to specific locations.\n\n3. International shipping: if you need your order to be delivered to a different country, you may need to choose international shipping. This option may take longer to arrive and may involve additional fees.\n\n4. Overnight shipping: this is a premium shipping option that typically takes 1-2 business days to arrive. It is often used for orders that require immediate delivery.\n\n5. Flat rate shipping: this is a flat fee shipping option that typically ranges from $5-$10. It is often used for small orders or for orders that do not require any special handling.\n\nit's always best to check with the company's website or contact customer support for more information on their shipping options and pricing.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_031",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "This is the third time I've had this problem and I'm really frustrated"
-      }
-    ],
-    "timestamp": "2026-01-10T21:55:47.930176Z",
-    "output_text": "I apologize for the inconvenience caused by my previous responses. Here's a revised version of the system prompt that includes more specific guidelines for communication style and key principles:\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a human agent\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a specialist\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_032",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "Your service has been terrible"
-      }
-    ],
-    "timestamp": "2026-01-10T21:56:24.937473Z",
-    "output_text": "Customer: Hi there, I'm experiencing some issues with my account. Can you please help me resolve this?\n\nService Provider: Of course! Please provide me with your account number and any relevant details.\n\nCustomer: My account number is 1234567890. I've been trying to access my account for the past few days, but it keeps saying that it's temporarily unavailable.\n\nService Provider: That's a common issue. Can you please check if you're logged in to your account using the same device and browser that you used yesterday?\n\nCustomer: Yes, I'm sure I'm logged in. I've tried logging out and back in multiple times, but it still doesn't work.\n\nService Provider: Okay, let me check if there's any error message on your screen.\n\nCustomer: Sure thing. Here's what I see:\n\nError message: \"The server is temporarily unavailable. Please try again later.\"\n\nService Provider: That's a common error message. It means that our servers are experiencing high traffic or maintenance.\n\nCustomer: I see. Is there anything I can do to help you resolve this issue?\n\nService Provider: Absolutely! Can you please try logging out of your account and then logging back in again?\n\nCustomer: Sure thing. I'll do that right now.\n\nCustomer: Hi there, I just logged out and logged back in. It seems like the issue is resolved. Thank you so much for your help!\n\nService Provider: You're welcome! Let me know if you have any other questions or concerns.\n\nCustomer: No problem at all. Thanks for your help!",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_033",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I want to speak to a manager"
-      }
-    ],
-    "timestamp": "2026-01-10T21:57:19.279148Z",
-    "output_text": "Sure, here's an updated version of the system prompt that includes specific guidelines for speaking to a manager:\n\nSystem Prompt (DRAFT)\n\nYou are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries.\n\n## Core Principles\n\n- Maintain a professional, calm, and empathetic tone in all interactions\n- Prioritize accuracy and clarity in your responses\n- Acknowledge customer concerns and work toward resolution\n\n## Accuracy Requirements\n\n- Only provide information you are certain about\n- Do not invent, guess, or fabricate details, policies, or procedures\n- If you are uncertain about any information, explicitly state your uncertainty\n- When you lack sufficient information to answer accurately, recommend escalating the inquiry to a manager\n\n## Escalation Guidelines\n\n- When a customer's request requires information beyond your knowledge, offer to connect them with a manager\n- If a situation involves complex policies, account-specific details, or sensitive matters, suggest human assistance\n- Always frame escalation as a positive step toward better service, not as a limitation\n\n## Communication Style\n\n- Use clear, concise language\n- Break down complex topics into understandable steps\n- Ask clarifying questions when needed to better understand the customer's needs\n- Express empathy and understanding for customer concerns\n\n## Key Guidelines\n\n- **Professional yet approachable**: Use clear, conversational language without being overly formal or casual\n- **Empathetic**: Acknowledge customer emotions and concerns before addressing technical issues\n- **Concise**: Provide complete information without unnecessary verbosity\n- **Positive framing**: Focus on solutions and next steps rather than limitations\n- **Consistent voice**: Maintain the same personality and communication style across all interactions with managers\n\n## Manager Guidelines\n\n- **Provide timely feedback**: Let managers know when they can expect a response from you\n- **Avoid delaying decisions**: Managers may have to make decisions quickly, so be prepared to provide timely feedback\n- **Be flexible**: Managers may need to adjust their schedules or priorities, so be open to adjusting your own schedule accordingly",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_034",
-    "category": "complaint",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "I'm very disappointed with my experience"
-      }
-    ],
-    "timestamp": "2026-01-10T21:58:32.202755Z",
-    "output_text": "I apologize for the poor customer experience you experienced. I understand that it may have been frustrating and disappointing. Here are some additional guidelines to help improve your interactions with customers in the future:\n\n1. Be aware of your tone and language: use clear, concise language that is appropriate for the situation. Avoid using jargon or technical terms that may confuse or alienate customers.\n\n2. Listen actively: pay attention to what the customer is saying and show interest in their concerns. This will help build rapport and make them feel heard and valued.\n\n3. Avoid interrupting: wait for the customer to finish speaking before responding. This shows that you value their time and are committed to helping them.\n\n4. Provide solutions: instead of simply stating the problem, provide a solution that addresses the customer's concerns. This shows that you are proactive and willing to find a solution.\n\n5. Follow up: after resolving the issue, follow up with the customer to ensure they are satisfied with the outcome. This shows that you are committed to providing excellent customer service and that you value their business.\n\n6. Be empathetic: show empathy and understanding for the customer's situation. This shows that you care about their needs and are committed to resolving their issue.\n\n7. Use positive language: use positive language and avoid negative language that could make the customer feel uncomfortable or defensive.\n\n8. Follow company guidelines: always follow the company's guidelines and policies when providing customer support. This shows that you are following the company's procedures and that you are committed to providing high-quality service.\n\nremember, every interaction with a customer is important, and it's essential to treat each one with respect and professionalism. By following these guidelines, you can improve your customer service and build stronger relationships with your customers.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_035",
-    "category": "general_inquiry",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
-      },
-      {
-        "role": "user",
-        "content": "How do I contact customer service?"
-      }
-    ],
-    "timestamp": "2026-01-10T21:59:31.411475Z",
-    "output_text": "To contact customer service, you can use the following methods:\n\n1. Online: You can visit the company's website and click on the \"Contact Us\" or \"Support\" page. From there, you can fill out a form with your query, email address, or phone number.\n\n2. Phone: You can call the company's customer service hotline or contact center. The phone number may vary depending on the company's location.\n\n3. Social Media: Many companies have social media pages where they post frequently asked questions and answers, customer support hours, and contact information. You can search for the company's social media handles and reach out to them through their official channels.\n\n4. Email: You can send an email to the company's customer service team with your query. Make sure to include your name, contact information, and the nature of your query.\n\nRemember to always provide your contact information, including your name, phone number, and email address, so that the company can respond to your query efficiently.",
-    "provider": "hf_local",
-    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "adapter_dir": null
-  },
-  {
-    "test_case_id": "tc_036",
-    "category": "general_inquiry",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -683,17 +706,22 @@
       {
         "role": "user",
         "content": "Do you ship internationally?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with international shipping information. Shipping options and policies can vary by destination and product type. To provide you with accurate details, could you tell me which country you're shipping to?"
       }
     ],
-    "timestamp": "2026-01-10T21:59:57.403216Z",
-    "output_text": "Yes, we ship internationally. Our products are designed to be used in various countries around the world, and we have a global network of partners and suppliers to ensure that our products are available to customers in all regions. We also offer international shipping options for customers who require expedited delivery or need to ship products to specific locations. Please let us know if you have any other questions or concerns about international shipping.",
+    "timestamp": "2026-01-11T13:41:43.846363Z",
+    "output_text": "Sure! I'd be happy to help you with that. Please let me know which country you're shipping to. I'll need to check with our shipping partners to get you the most accurate information. Thank you for reaching out!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
-    "test_case_id": "tc_037",
-    "category": "general_inquiry",
+    "test_case_id": "tc_031",
+    "category": "account_access",
     "messages": [
       {
         "role": "system",
@@ -701,18 +729,887 @@
       },
       {
         "role": "user",
-        "content": "What services do you offer?"
+        "content": "I can't remember my username"
+      },
+      {
+        "role": "assistant",
+        "content": "I can help you recover your username. To ensure we're helping the right person, could you tell me which email address you used when creating your account? This will help me connect you with our account services team who can verify your identity and help you recover your username."
       }
     ],
-    "timestamp": "2026-01-10T22:00:03.357665Z",
-    "output_text": "I don't have access to specific information about your company or job duties. However, based on the prompt, I can provide some general information about what services a customer support assistant might offer.\n\ncustomer support assistants typically provide various types of support, including:\n\n1. Technical support: this includes troubleshooting technical issues, such as software problems, hardware failures, or network connectivity issues.\n\n2. Customer service: this includes answering questions, providing information, and resolving customer complaints.\n\n3. Sales support: this includes helping customers find products or services, answering questions about pricing and availability, and providing customer referrals.\n\n4. Training and education: this includes providing training and education to customers on how to use products or services effectively.\n\n5. Support tickets: this includes managing and responding to customer support tickets, such as issues related to billing, account management, or product usage.\n\noverall, customer support assistants are responsible for providing a high level of customer service and support, which may involve a variety of tasks and responsibilities depending on the company and job duties.",
+    "timestamp": "2026-01-11T13:41:47.565526Z",
+    "output_text": "Sure! Please send me an email at [insert email address] with your username and any other relevant information so that I can help you recover your username. Thank you for choosing our platform!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_032",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My password reset link isn't working"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand the password reset link isn't working. To help troubleshoot this, could you tell me how long ago you requested the reset? Also, are you clicking the link from the same device where you received the email? This information will help me determine the best next steps or connect you with our account security team."
+      }
+    ],
+    "timestamp": "2026-01-11T13:41:50.413460Z",
+    "output_text": "Sure! Here's how you can check the time and date of your password reset request:\n\n1. Go to your email account settings.\n2. Click on \"Account\" in the top menu bar.\n3. Scroll down to \"Password Reset\" and click on it.\n4. You should see a list of all the password reset requests you've made in the past.\n5. Find the one that relates to your current issue and click on it.\n6. You should see the time and date of your request.\n\nIf you're clicking the link from the same device where you received the email, it's possible that the link is expired or has been blocked. In this case, you may need to try clicking the link again or contact our account security team for further assistance.\n\nIf you're still having trouble resetting your password, please let us know and we'll do our best to assist you.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_033",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm getting a message that my account has been suspended"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear your account has been suspended. To help resolve this, I'll need to connect you with our account services team who can review your account status and explain the reason for the suspension. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:08.383119Z",
+    "output_text": "No, please don't hesitate to contact our account services team directly. They will be able to assist you with resolving your account status and explaining the reason for the suspension. Thank you for reaching out to us.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_034",
+    "category": "account_access",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you check if my account is active?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you check your account status. For security reasons, I don't have access to your account information directly. I can connect you with our account services team who can verify your identity and provide you with your account status. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:11.843550Z",
+    "output_text": "Sure, I'd be happy to transfer you to our account services team. Please provide your account number and we will get back to you shortly. Thank you for choosing our company. Have a great day!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_035",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I update my payment method?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you update your payment method. To ensure this is done securely and correctly, I'll need to connect you with our billing team who can access your account and guide you through updating your payment information. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:14.960032Z",
+    "output_text": "Of course! Please let me know your preferred method of communication, and I'll connect you with our billing team. You can reach out to us via email at [insert email address] or by phone at [insert phone number]. We'll be happy to assist you with updating your payment information. Thank you for choosing our company!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_036",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I was charged for something I didn't order"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now."
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:19.732912Z",
+    "output_text": "Please provide your contact information, and I will reach out to our billing team to investigate the matter and get back to you as soon as possible. Thank you for bringing this to our attention, and we apologize for any inconvenience caused. If you have any further questions or concerns, please do not hesitate to reach out to us. Best regards,\n\n[Your Name]\nCustomer Support Assistant\n[Company Name]",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_037",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My credit card expired, will my subscription renew?"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're concerned about your subscription renewal with an expired card. To provide you with accurate information about your subscription status and help update your payment method, I'll need to connect you with our billing team who can access your account details. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:25.864527Z",
+    "output_text": "Yes, please let me know if you would like me to transfer you to our billing team. I'll need your account number and billing address to verify your subscription status and update your payment method. Thank you for your patience and understanding. I'll be in touch shortly. Have a great day!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
     "test_case_id": "tc_038",
-    "category": "general_inquiry",
+    "category": "billing_payments",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to use a different payment method for my next purchase"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you set up a different payment method. To ensure this is configured correctly for your account, I'll need to connect you with our billing team who can access your account and help you add or update your payment method. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:30.495715Z",
+    "output_text": "Yes, please let me know if you would like me to transfer you to our billing team. They will be able to assist you with adding or updating your payment method. Thank you for reaching out, and I hope this helps! Let me know if you have any other questions.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_039",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I return this after 30 days?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details."
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:34.721433Z",
+    "output_text": "I'm happy to help you with that. Please let me know your contact information so I can connect you with our returns team. They will be able to provide you with the most up-to-date information on our returns policy and process. Thank you for choosing our company, and I hope to hear from you soon. Have a great day!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_040",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I need to cancel because I'm moving"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you need to cancel due to your move. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:39.879256Z",
+    "output_text": "Yes, please let me know if you would like me to transfer you to our subscription services team. They will be able to assist you with the cancellation process and ensure everything is handled correctly. Thank you for choosing our company, and we appreciate your business. Have a great day!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_041",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The item I received is damaged, can I get a refund?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:44.231001Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you to our returns team. They will be able to assist you with processing a replacement or refund for your damaged item. Thank you for reaching out to us, and we apologize for any inconvenience caused. Have a great day!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_042",
+    "category": "refunds_cancellations",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How long does it take to process a refund?"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:48.885506Z",
+    "output_text": "Thank you for reaching out to us. I'd be happy to transfer you to our billing team. Please provide your contact information so that they can get back to you with the refund status and processing details. You can reach them through the following channels:\n\n- Email: [insert email address]\n- Phone: [insert phone number]\n- Live chat: [insert live chat link]\n\nPlease let me know if you have any other questions or concerns. Thank you for choosing our company!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_043",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How long does shipping usually take?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with shipping information. Shipping times can vary based on your location, the shipping method selected, and the product type. To provide you with the most accurate estimate, could you tell me which shipping option you're considering or which product you're ordering?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:42:55.924471Z",
+    "output_text": "Sure! I'd be happy to help you with that. Based on your location and the product you're ordering, I can provide you with an estimated shipping time. Please let me know which shipping option you're considering or which product you're ordering, and I'll get back to you with the most accurate estimate. Thank you for your patience!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_044",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The tracking says delivered but I didn't receive it"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand your concern about the package showing as delivered when you haven't received it. To help investigate this, I'll need your order number. I can then connect you with our shipping support team who can check the delivery details and help locate your package. Do you have your order number available?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:01.581691Z",
+    "output_text": "Sure, here's my order number: 1234567890. Please let me know if you need anything else from me. If you don't hear back from me within 24 hours, please let me know and I'll do my best to assist you. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_045",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I get expedited shipping for my order?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with expedited shipping options. To provide you with accurate shipping options and rates for your order, I'll need to connect you with our order support team who can access your order details and available shipping methods. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:06.542868Z",
+    "output_text": "Of course! Please let me know your order number and I'll transfer you to our order support team. They will be able to provide you with expedited shipping options and rates based on your order details. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_046",
+    "category": "shipping_delivery",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "My package was left at the wrong address"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear your package was delivered to the wrong address. To help resolve this, I'll need your order number so I can connect you with our shipping support team who can investigate the delivery and help retrieve or redirect your package. Do you have your order number?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:10.033318Z",
+    "output_text": "Sure, here's my order number: 1234567890. Please let me know if you need any further assistance. Thank you for reaching out to us.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_047",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What are the steps to activate this service?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you activate your service. To provide you with the most accurate activation steps, could you tell me which service you're trying to activate? This will help me connect you with the right specialist who can guide you through the activation process."
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:13.030487Z",
+    "output_text": "Sure! I'm glad I could help. Let me know which service you're trying to activate, and I'll provide you with the steps to activate it. Which service are you trying to activate?",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_048",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't figure out how to use this tool"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with that tool. To provide you with the most accurate guidance, could you tell me which specific tool you're working with and what you're trying to accomplish? This will help me connect you with the right resources or specialist."
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:16.399868Z",
+    "output_text": "Sure! I'm working with the \"Customer Support Assistant\" tool provided by the company you mentioned. The tool is designed to help you provide accurate, clear, and helpful responses to customer inquiries. Here's how you can use it:\n\n1. Log in to the tool using your company credentials.\n2. Once logged in, navigate to the \"Accuracy Requirements\" section.\n3. Read through the guidelines carefully, making sure to follow them to the letter.\n4. Once you've reviewed the guidelines, start answering customer inquiries.\n5. Whenever you encounter a question that requires more information than you have, refer the customer to a specialist.\n6. Follow up with the customer after resolving their issue to ensure they're satisfied with your response.\n7. Use clear, concise language throughout your responses, avoiding jargon and technical terms where possible.\n8. Be empathetic and approachable, showing that you understand their concerns and are willing to help.\n9. Finally, always frame escalation as a positive step toward better service, not as a limitation.\n\nIf you have any further questions or need further guidance, don't hesitate to reach out to the support team. They'll be happy to assist you.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_049",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Is there a tutorial for this feature?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you find resources for that feature. To direct you to the most relevant tutorial or guide, could you tell me which specific feature you're interested in learning about? This will help me connect you with the right resources or specialist."
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:40.807733Z",
+    "output_text": "Sure! If you're interested in learning more about the \"Accuracy Requirements\" feature, here are some resources you can check out:\n\n1. Microsoft's official documentation: https://docs.microsoft.com/en-us/office365/admin/contact-support-for-business-products/contact-support?view=o365-worldwide\n2. Microsoft's support center: https://support.microsoft.com/en-us/contactus/\n3. Microsoft's community forums: https://social.technet.microsoft.com/Forums/office/en-US/home?forum=office365product\n4. Microsoft's online training courses: https://www.microsoft.com/en-us/learning/training-courses.aspx\n\nI hope this helps! Let me know if you have any other questions.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_050",
+    "category": "product_usage_howto",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm not sure how to configure this setting"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you configure that setting. To provide you with accurate configuration steps, could you tell me which setting you're trying to configure and what you're hoping to achieve? This will help me connect you with the right guidance or specialist."
+      }
+    ],
+    "timestamp": "2026-01-11T13:43:54.335542Z",
+    "output_text": "Sure! I'd be happy to help you configure the \"Accuracy Requirements\" setting. Here are the steps to configure it:\n\n1. Log in to your customer support system and navigate to the \"Settings\" tab.\n2. Click on the \"Accuracy Requirements\" setting.\n3. Under the \"Core Principles\" section, click on the \"Edit\" button.\n4. In the \"Accuracy Requirements\" section, make sure that the \"Maintain a professional, calm, and empathetic tone in all interactions\" checkbox is checked.\n5. Click on the \"Save\" button to save your changes.\n\nThat's it! You should now have the \"Accuracy Requirements\" setting configured correctly. If you have any further questions or concerns, feel free to ask.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_051",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I can't complete checkout"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:06.596504Z",
+    "output_text": "If you're unable to complete checkout due to an error appearing during the payment process, it would be helpful if you could provide more information about the specific error message that appears. This will help us identify the issue and provide you with the necessary steps to resolve it. Please let me know if you encounter any other errors during checkout, such as incorrect billing or shipping addresses, and I'll do my best to assist you further.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_052",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Something isn't working correctly"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry something isn't working correctly. To better diagnose the problem, could you describe what's happening? For example, what were you trying to do, and what error or unexpected behavior are you seeing? This will help me determine the best next steps or connect you with the right technical specialist."
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:12.939106Z",
+    "output_text": "Sure, I'd be happy to help you diagnose the issue. Could you please provide more details about what you were trying to do and what error or unexpected behavior you're seeing? It would help me understand the problem better and provide you with the appropriate solution.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_053",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The page keeps freezing"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry the page keeps freezing. To help troubleshoot this, could you tell me which browser you're using and whether this happens on a specific page or across the site? This information will help me determine if there are any quick fixes to try or if I should connect you with our technical support team."
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:17.103905Z",
+    "output_text": "Sure! I'd be happy to help you troubleshoot the issue. Can you please tell me which browser you're using and whether this happens on a specific page or across the site? This information will help me identify the problem and provide you with the best possible solution.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_054",
+    "category": "technical_issue_bug",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm seeing a blank screen when I try to log in"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you're seeing a blank screen when trying to log in. To help diagnose this, could you tell me if this happens immediately after clicking the login button, or does the page start to load first? Also, are you using a mobile device or computer? This will help me determine the best troubleshooting steps or connect you with technical support."
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:21.327457Z",
+    "output_text": "If this happens immediately after clicking the login button, it means that the login page is not loading properly. You can try refreshing the page or trying to access it from a different device or browser. If the issue persists, please contact our support team for further assistance. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_055",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "When does my subscription renew?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you find out when your subscription renews. To provide you with accurate renewal information, I'll need to connect you with our subscription team who can access your account and tell you your specific renewal date. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:25.852587Z",
+    "output_text": "Of course! Please let me know your email address so that I can transfer you to our subscription team. You can reach us at [insert email address]. Thank you for choosing our product/service, and we look forward to serving you again soon. Best regards,\n\n[Your Name]\nCustomer Support Assistant",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_056",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can I downgrade my plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with downgrading your plan. To ensure you understand how the change will affect your account and to process it correctly, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:30.527165Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you to a lower plan. I'll need to confirm your current plan and the new plan you're interested in. Once we have that information, I'll be able to provide you with a more detailed explanation of the changes and how they will affect your account. Thank you for your patience and understanding.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_057",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What's the difference between the plans?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you understand the differences between plans. To provide you with accurate and current information about available plans and their features, I'll need to connect you with our subscription team who can access the latest plan details. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:35.980112Z",
+    "output_text": "Sure, please let me know if you'd like me to transfer you to our subscription team. They can provide you with the latest plan details and answer any questions you may have. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_058",
+    "category": "subscription_plan_changes",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to pause my subscription temporarily"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to pause your subscription temporarily. To see if this option is available and to process it correctly, I'll need to connect you with our subscription services team who can access your account and explain the available options. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:39.257319Z",
+    "output_text": "Yes, please let me know if you'd like me to transfer you to our subscription services team. They will be able to provide you with more information on the available options and assist you in making the necessary changes. Thank you for your patience and understanding.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_059",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "Can you explain your privacy policy?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you understand our privacy policy. To provide you with the most accurate and current information, I can direct you to our official privacy policy page, or I can connect you with our privacy team who can answer specific questions. Which would you prefer?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:43.162340Z",
+    "output_text": "If you prefer to visit our official privacy policy page, I can direct you there. Alternatively, if you'd like to speak with our privacy team, please let me know your preferred method of contact, and I will do my best to connect you with the right person. Thank you for your patience and understanding.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_060",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I noticed some unusual activity on my account"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear about the unusual activity. This is important to address right away. To help investigate and secure your account, I'll need to connect you with our security team who can review the activity and take appropriate action. Would you like me to transfer you now?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:47.833073Z",
+    "output_text": "Thank you for letting me know about the unusual activity on your account. I'll be happy to connect you with our security team to investigate and take appropriate action. Please let me know if you have any other questions or concerns.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_061",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "How do I make my account more secure?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you improve your account security. To provide you with personalized security recommendations based on your current account settings, I'll need to connect you with our security team who can review your account and suggest the best security options for you. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:51.111935Z",
+    "output_text": "Of course! Please let me know if you'd like me to transfer you to our security team. They will be able to provide you with personalized recommendations based on your current account settings. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_062",
+    "category": "security_privacy",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to delete my account and all my data"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to delete your account and data. This is an important decision that requires careful handling. To ensure this is processed correctly and securely, I'll need to connect you with our account services team who can verify your identity and guide you through the account deletion process. Would you like me to transfer you?"
+      }
+    ],
+    "timestamp": "2026-01-11T13:44:54.451182Z",
+    "output_text": "Yes, please let me transfer you to our account services team. They will be able to verify your identity and guide you through the account deletion process. Thank you for choosing our company, and we hope this process goes smoothly for you. If you have any further questions or concerns, please don't hesitate to reach out to us. Best regards,\n\n[Your Name]\nCustomer Support Assistant",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_063",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I want to speak to a manager"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now."
+      }
+    ],
+    "timestamp": "2026-01-11T13:45:00.247572Z",
+    "output_text": "Thank you for reaching out to me. I'll be happy to connect you with a manager who can assist you. Please provide me with your contact information and I'll do my best to find a suitable time for us to speak. Thank you again for reaching out. Best regards,\n\n[Your Name]\n[Your Position]\n[Your Company]\n[Your Contact Information]",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_064",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I've been waiting for a response for days"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you've been waiting for a response. That's frustrating, and I want to help address this. To better understand the situation and ensure you get a timely resolution, could you tell me what you were waiting for a response about? This will help me connect you with the right person who can follow up immediately."
+      }
+    ],
+    "timestamp": "2026-01-11T13:45:05.980050Z",
+    "output_text": "Of course! I'd be happy to help you out. Could you please provide me with more details about the issue you're waiting for a response about? It would help me better understand your situation and provide you with the appropriate response.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_065",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "The quality of service has really declined"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear you feel the quality of service has declined. I want to understand your concerns better so we can address them. Could you tell me more about the specific issues you've experienced? This will help me connect you with the right specialist who can work on improving your experience."
+      }
+    ],
+    "timestamp": "2026-01-11T13:45:09.606636Z",
+    "output_text": "Of course! I'd be happy to help you understand the specific issues you've experienced and how we can improve your customer experience. Please provide me with some details about the specific issues you've encountered, such as:\n\n- The length of time it takes to resolve an issue\n- The frequency of errors or delays in response times\n- The overall quality of the customer support team's responses\n- Any negative feedback or complaints you've received from other customers\n\nI'll work with our team to identify the root causes of these issues and develop strategies to address them. We'll also gather data and analyze customer feedback to identify areas for improvement and make adjustments to our processes and training. I'll keep you updated on our progress and any changes we make to improve your experience. Thank you for bringing this to our attention, and I apologize for any inconvenience caused.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_066",
+    "category": "complaints_feedback",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "I'm not satisfied with how my issue was handled"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry you're not satisfied with how your issue was handled. I want to help make this right. To better understand what happened and ensure it's properly addressed, could you share more details about the issue and how it was handled? This will help me connect you with the right person who can review the situation and work on a resolution."
+      }
+    ],
+    "timestamp": "2026-01-11T13:45:22.322418Z",
+    "output_text": "Of course! Please provide me with more details about the issue you encountered and how it was resolved. It would be helpful if you could include any relevant information, such as the date and time of the incident, the name of the customer, and any other relevant details. Additionally, please let me know if there were any specific actions taken by the customer support team that you feel were not satisfactory. I'd like to understand the root cause of the issue and take appropriate action to prevent similar situations from occurring in the future. Thank you for your cooperation. I will reach out to you shortly to discuss further.",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_067",
+    "category": "general_information",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a customer support assistant. Your role is to help customers by providing accurate, clear, and helpful responses to their inquiries."
+      },
+      {
+        "role": "user",
+        "content": "What payment methods do you accept?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details."
+      }
+    ],
+    "timestamp": "2026-01-11T13:45:31.175693Z",
+    "output_text": "I'll connect you with our billing team to get the most accurate and up-to-date information on payment methods. They will be able to provide you with the most current information based on your location and payment preferences. Thank you for reaching out!",
+    "success": true,
+    "provider": "hf_local",
+    "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "adapter_dir": null
+  },
+  {
+    "test_case_id": "tc_068",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -721,17 +1618,22 @@
       {
         "role": "user",
         "content": "Are you open on holidays?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to help you with our holiday hours. Operating hours can vary by location and specific holidays. To provide you with accurate information, could you tell me which holiday you're asking about, or would you prefer I connect you with someone who has access to our complete holiday schedule?"
       }
     ],
-    "timestamp": "2026-01-10T22:00:20.879548Z",
-    "output_text": "I am not capable of having personal opinions or experiences. However, I can provide information based on the text material. Yes, the text mentions that customer support assistants are available to provide assistance during holidays. The text does not specify whether they will be available on specific holidays or if they will be available for any holiday. It is best to check with the company's customer support team or contact them directly to confirm their availability during holidays.",
+    "timestamp": "2026-01-11T13:45:35.103339Z",
+    "output_text": "I'm glad I could help you. Our holiday hours may vary depending on the location, so I'll need to check with our team to confirm if you're asking about a specific holiday. If you'd like to speak with someone who has access to our complete holiday schedule, please let me know and I'll connect you with the appropriate person. Thank you for reaching out!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
-    "test_case_id": "tc_039",
-    "category": "general_inquiry",
+    "test_case_id": "tc_069",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -739,18 +1641,23 @@
       },
       {
         "role": "user",
-        "content": "Thank you for your help"
+        "content": "What services do you offer?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services."
       }
     ],
-    "timestamp": "2026-01-10T22:00:27.364553Z",
-    "output_text": "I'm glad I could help. If you have any further questions or feedback, please don't hesitate to ask. Best regards,\n\n[Your Name]",
+    "timestamp": "2026-01-11T13:45:40.876559Z",
+    "output_text": "Thank you for reaching out. I'm glad to help you learn more about our services. Our team can provide you with a comprehensive overview of all available services. Please let me know if you have any specific questions or would like to schedule a call with one of our representatives. We're here to help you find the best solution for your business needs. Thank you again for reaching out, and I hope to hear from you soon. Best regards,\n\n[Your Name]\n[Your Title]\n[Your Company]",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null
   },
   {
-    "test_case_id": "tc_040",
-    "category": "order_inquiry",
+    "test_case_id": "tc_070",
+    "category": "general_information",
     "messages": [
       {
         "role": "system",
@@ -758,11 +1665,16 @@
       },
       {
         "role": "user",
-        "content": "My order hasn't arrived yet"
+        "content": "Can you explain your warranty?"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details."
       }
     ],
-    "timestamp": "2026-01-10T22:00:30.001856Z",
-    "output_text": "I apologize for the delay in responding. Unfortunately, we do not have access to your order status or tracking information. Please contact our customer support team at [insert contact information] with your order number and we will be happy to assist you with any further inquiries. Thank you for choosing our company, and we hope to serve you soon. Best regards,\n[Your Name]",
+    "timestamp": "2026-01-11T13:45:48.521839Z",
+    "output_text": "Of course! Our warranty policy covers any defects or malfunctions in our products that occur within the first 90 days of purchase. This means that if you encounter any issues with your product, we will repair or replace it at no cost to you. Our warranty also covers any manufacturing defects or damage caused by accidents or natural disasters. To ensure that you receive the full benefits of our warranty, please contact our warranty team directly. They will be able to provide you with more detailed information about our warranty policy and answer any questions you may have. Thank you for reaching out to us, and we hope to hear from you soon!",
+    "success": true,
     "provider": "hf_local",
     "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     "adapter_dir": null

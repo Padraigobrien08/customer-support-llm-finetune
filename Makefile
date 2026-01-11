@@ -1,4 +1,4 @@
-.PHONY: all eval lint install install-deps build-data train-smoke eval-base eval-adapter diff clean help
+.PHONY: all eval lint install install-deps build-data train-smoke eval-base eval-adapter diff score-adapter score-base export-review clean help
 
 PYTHON := python3
 MODEL_ID := TinyLlama/TinyLlama-1.1B-Chat-v1.0
@@ -73,6 +73,7 @@ eval-base:
 	@$(PYTHON) scripts/run_golden_eval.py \
 		--provider hf_local \
 		--model-id $(MODEL_ID) \
+		--test-cases-file evaluation/test_cases.json \
 		--out $(RESULTS_BASE)
 	@echo ""
 	@echo "✓ Base evaluation complete: $(RESULTS_BASE)"
@@ -97,6 +98,7 @@ eval-adapter:
 		--provider hf_local \
 		--model-id $(MODEL_ID) \
 		--adapter-dir $(ADAPTER_DIR) \
+		--test-cases-file evaluation/test_cases.json \
 		--out $(RESULTS_ADAPTER)
 	@echo ""
 	@echo "✓ Adapter evaluation complete: $(RESULTS_ADAPTER)"
@@ -118,6 +120,57 @@ diff:
 		exit 1; \
 	fi
 	@$(PYTHON) scripts/compare_runs.py $(RESULTS_ADAPTER) $(RESULTS_BASE)
+
+# Score adapter evaluation results
+score-adapter:
+	@echo "=========================================="
+	@echo "Scoring Adapter Evaluation Results"
+	@echo "=========================================="
+	@echo ""
+	@if [ ! -f $(RESULTS_ADAPTER) ]; then \
+		echo "Error: Adapter results not found: $(RESULTS_ADAPTER)"; \
+		echo "Run 'make eval-adapter' first."; \
+		exit 1; \
+	fi
+	@$(PYTHON) evaluation/score_results.py \
+		$(RESULTS_ADAPTER) \
+		evaluation/test_cases.json
+	@echo ""
+	@echo "✓ Scoring complete. Results: evaluation/results/scored_adapter.json"
+
+# Score base evaluation results
+score-base:
+	@echo "=========================================="
+	@echo "Scoring Base Evaluation Results"
+	@echo "=========================================="
+	@echo ""
+	@if [ ! -f $(RESULTS_BASE) ]; then \
+		echo "Error: Base results not found: $(RESULTS_BASE)"; \
+		echo "Run 'make eval-base' first."; \
+		exit 1; \
+	fi
+	@$(PYTHON) evaluation/score_results.py \
+		$(RESULTS_BASE) \
+		evaluation/test_cases.json
+	@echo ""
+	@echo "✓ Scoring complete. Results: evaluation/results/scored_base.json"
+
+# Export scored results to CSV for review
+export-review:
+	@echo "=========================================="
+	@echo "Exporting Scored Results to CSV"
+	@echo "=========================================="
+	@echo ""
+	@if [ ! -f evaluation/results/scored_adapter.json ]; then \
+		echo "Error: Scored adapter results not found."; \
+		echo "Run 'make score-adapter' first."; \
+		exit 1; \
+	fi
+	@$(PYTHON) evaluation/export_review_csv.py \
+		evaluation/results/scored_adapter.json
+	@echo ""
+	@echo "✓ CSV exported: evaluation/results/scored_adapter.csv"
+	@echo "  Ready to open in Google Sheets!"
 
 # Run golden evaluation and print summary (legacy)
 eval: install-deps
@@ -149,6 +202,11 @@ help:
 	@echo "  make eval-base            - Run golden evaluation with base model"
 	@echo "  make eval-adapter         - Run golden evaluation with fine-tuned adapter"
 	@echo "  make diff                 - Compare base vs adapter results"
+	@echo ""
+	@echo "Scoring & Review:"
+	@echo "  make score-base           - Score base evaluation results"
+	@echo "  make score-adapter        - Score adapter evaluation results"
+	@echo "  make export-review        - Export scored results to CSV for review"
 	@echo ""
 	@echo "Customization:"
 	@echo "  make train-smoke MODEL_ID=your-model ADAPTER_DIR=outputs/custom"
