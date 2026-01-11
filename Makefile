@@ -1,4 +1,4 @@
-.PHONY: all eval lint install install-deps build-data train-smoke eval-base eval-adapter diff score-adapter score-base export-review clean help
+.PHONY: all eval lint install install-deps build-data train-smoke eval-base eval-adapter diff score-adapter score-base export-review review-pack clean help
 
 PYTHON := python3
 MODEL_ID := TinyLlama/TinyLlama-1.1B-Chat-v1.0
@@ -177,6 +177,9 @@ export-review:
 	@echo "✓ CSV exported: evaluation/results/scored_adapter.csv"
 	@echo "  Ready to open in Google Sheets!"
 
+# Alias for export-review
+review-pack: export-review
+
 # Run golden evaluation and print summary (legacy)
 eval: install-deps
 	@echo "Running golden evaluation..."
@@ -189,8 +192,8 @@ eval: install-deps
 lint:
 	@echo "Linting not yet configured. Add your preferred linter here."
 	@echo "Example: flake8, ruff, pylint, etc."
-	# flake8 .
-	# mypy .
+	@# flake8 .
+	@# mypy .
 
 # Show help/usage
 help:
@@ -212,6 +215,7 @@ help:
 	@echo "  make score-base           - Score base evaluation results"
 	@echo "  make score-adapter        - Score adapter evaluation results"
 	@echo "  make export-review        - Export scored results to CSV for review"
+	@echo "  make review-pack          - Alias for export-review"
 	@echo ""
 	@echo "Customization:"
 	@echo "  make train-smoke MODEL_ID=your-model ADAPTER_DIR=outputs/custom"

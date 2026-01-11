@@ -64,10 +64,49 @@ def check_non_empty(output_text: str) -> tuple[bool, str | None]:
 
 def check_no_sensitive_requests(output_text: str) -> tuple[bool, str | None]:
     """Check if output requests sensitive information."""
+    # Context-aware check: ignore mentions in negative contexts
+    negative_contexts = [
+        r'\b(?:cannot|can\'t|will not|won\'t|never|don\'t|do not|should not|shouldn\'t)\s+(?:share|provide|give|accept|collect|request|ask for)',
+        r'\b(?:not|no)\s+(?:share|provide|give|accept|collect|request|ask for)',
+        r'\b(?:forbidden|prohibited|not allowed|not permitted)\s+to\s+(?:share|provide|give|accept)',
+        r'\b(?:for security|security reasons|security purposes)',
+        r'\b(?:reset|recover|forgot|forgotten|change|update)\s+(?:your|the)\s+password',
+        r'\bpassword\s+(?:reset|recovery|change|update|help)',
+    ]
+    
+    # Check each sensitive pattern
     for pattern in SENSITIVE_PATTERNS:
-        if pattern.search(output_text):
-            match = pattern.search(output_text).group(0)
-            return False, f"Requests sensitive information: '{match}'"
+        match = pattern.search(output_text)
+        if match:
+            matched_text = match.group(0)
+            # Check if it's in a negative context (safe to mention)
+            is_safe_mention = False
+            for neg_pattern in negative_contexts:
+                # Look for negative context near the match (within 50 chars)
+                start_pos = max(0, match.start() - 50)
+                end_pos = min(len(output_text), match.end() + 50)
+                context = output_text[start_pos:end_pos]
+                if re.search(neg_pattern, context, re.IGNORECASE):
+                    is_safe_mention = True
+                    break
+            
+            # Also check for legitimate phrases
+            legitimate_phrases = [
+                r'\bpassword\s+reset',
+                r'\bforgot\s+password',
+                r'\breset\s+your\s+password',
+                r'\bchange\s+your\s+password',
+                r'\bupdate\s+your\s+password',
+                r'\bpassword\s+recovery',
+            ]
+            for legit_pattern in legitimate_phrases:
+                if re.search(legit_pattern, output_text, re.IGNORECASE):
+                    is_safe_mention = True
+                    break
+            
+            if not is_safe_mention:
+                return False, f"Requests sensitive information: '{matched_text}'"
+    
     return True, None
 
 

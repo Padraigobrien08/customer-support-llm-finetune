@@ -7,26 +7,26 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
-        "no_policy_invention": true,
-        "has_clarifying_question": null,
-        "offers_escalation": true
-      },
-      "notes": []
-    },
-    {
-      "test_case_id": "tc_002",
-      "category": "account_access",
-      "checks": {
-        "non_empty": true,
         "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
       "notes": [
-        "Requests sensitive information: 'password'"
+        "Requests sensitive information: 'security code'"
       ]
+    },
+    {
+      "test_case_id": "tc_002",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": []
     },
     {
       "test_case_id": "tc_003",
@@ -36,9 +36,11 @@
         "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
-        "offers_escalation": true
+        "offers_escalation": false
       },
-      "notes": []
+      "notes": [
+        "No escalation offer detected"
+      ]
     },
     {
       "test_case_id": "tc_004",
@@ -249,14 +251,12 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": [
-        "Requests sensitive information: 'password'"
-      ]
+      "notes": []
     },
     {
       "test_case_id": "tc_022",
@@ -347,12 +347,14 @@
       "category": "complaints_feedback",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "notes": [
+        "Requests sensitive information: 'Security Code'"
+      ]
     },
     {
       "test_case_id": "tc_030",
@@ -371,31 +373,15 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": [
-        "Requests sensitive information: 'password'"
-      ]
+      "notes": []
     },
     {
       "test_case_id": "tc_032",
-      "category": "account_access",
-      "checks": {
-        "non_empty": true,
-        "no_sensitive_requests": false,
-        "no_policy_invention": true,
-        "has_clarifying_question": null,
-        "offers_escalation": true
-      },
-      "notes": [
-        "Requests sensitive information: 'password'"
-      ]
-    },
-    {
-      "test_case_id": "tc_033",
       "category": "account_access",
       "checks": {
         "non_empty": true,
@@ -405,6 +391,20 @@
         "offers_escalation": true
       },
       "notes": []
+    },
+    {
+      "test_case_id": "tc_033",
+      "category": "account_access",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": false,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "notes": [
+        "Requests sensitive information: 'security code'"
+      ]
     },
     {
       "test_case_id": "tc_034",
@@ -809,12 +809,10 @@
         "non_empty": true,
         "no_sensitive_requests": true,
         "no_policy_invention": true,
-        "has_clarifying_question": false,
+        "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": [
-        "No question mark found"
-      ]
+      "notes": []
     },
     {
       "test_case_id": "tc_068",
@@ -854,11 +852,6 @@
     }
   ],
   "summary": {
-    "has_clarifying_question": {
-      "total": 7,
-      "passed": 6,
-      "pass_rate": 0.8571428571428571
-    },
     "non_empty": {
       "total": 70,
       "passed": 70,
@@ -866,18 +859,23 @@
     },
     "offers_escalation": {
       "total": 65,
-      "passed": 65,
-      "pass_rate": 1.0
-    },
-    "no_sensitive_requests": {
-      "total": 70,
-      "passed": 66,
-      "pass_rate": 0.9428571428571428
+      "passed": 64,
+      "pass_rate": 0.9846153846153847
     },
     "no_policy_invention": {
       "total": 70,
       "passed": 70,
       "pass_rate": 1.0
+    },
+    "has_clarifying_question": {
+      "total": 7,
+      "passed": 7,
+      "pass_rate": 1.0
+    },
+    "no_sensitive_requests": {
+      "total": 70,
+      "passed": 67,
+      "pass_rate": 0.9571428571428572
     },
     "overall": {
       "total_cases": 70,
