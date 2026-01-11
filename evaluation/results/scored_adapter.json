@@ -7,13 +7,20 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
       "notes": [
-        "Requests sensitive information: 'security code'"
+        "Expected clarifying question: False, got: True"
       ]
     },
     {
@@ -21,12 +28,23 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": false,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Requests sensitive information: 'security code'",
+        "Expected clarifying question: False, got: True",
+        "Expected no sensitive info requests: True, got: True"
+      ]
     },
     {
       "test_case_id": "tc_003",
@@ -36,10 +54,17 @@
         "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
-        "offers_escalation": false
+        "offers_escalation": true
+      },
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
       },
       "notes": [
-        "No escalation offer detected"
+        "Expected clarifying question: False, got: True"
       ]
     },
     {
@@ -52,7 +77,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_005",
@@ -64,7 +98,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_006",
@@ -76,7 +119,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_007",
@@ -88,7 +140,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_008",
@@ -100,7 +161,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_009",
@@ -112,7 +182,17 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True",
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_010",
@@ -124,7 +204,17 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True",
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_011",
@@ -136,7 +226,16 @@
         "has_clarifying_question": null,
         "offers_escalation": null
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_012",
@@ -148,7 +247,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_013",
@@ -159,6 +267,13 @@
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
+      },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
       },
       "notes": []
     },
@@ -172,6 +287,13 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
       "notes": []
     },
     {
@@ -184,19 +306,41 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": false,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True",
+        "Expected next steps: True, got: False"
+      ]
     },
     {
       "test_case_id": "tc_016",
       "category": "security_privacy",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": false,
+        "must_offer_next_steps": false,
+        "must_escalate": true
+      },
+      "notes": [
+        "Requests sensitive information: 'security code'",
+        "Expected clarifying question: False, got: True",
+        "Expected no sensitive info requests: True, got: True",
+        "Expected next steps: True, got: False"
+      ]
     },
     {
       "test_case_id": "tc_017",
@@ -208,7 +352,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_018",
@@ -220,7 +373,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_019",
@@ -232,7 +394,16 @@
         "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_020",
@@ -242,9 +413,18 @@
         "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": true,
-        "offers_escalation": null
+        "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_021",
@@ -256,7 +436,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_022",
@@ -268,7 +457,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_023",
@@ -280,7 +478,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_024",
@@ -292,7 +499,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_025",
@@ -304,7 +520,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_026",
@@ -316,7 +541,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_027",
@@ -327,6 +561,13 @@
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
+      },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
       },
       "notes": []
     },
@@ -340,20 +581,36 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_029",
       "category": "complaints_feedback",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
       "notes": [
-        "Requests sensitive information: 'Security Code'"
+        "Expected clarifying question: False, got: True"
       ]
     },
     {
@@ -366,7 +623,17 @@
         "has_clarifying_question": true,
         "offers_escalation": null
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": false,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected next steps: True, got: False",
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_031",
@@ -378,7 +645,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_032",
@@ -390,20 +666,36 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_033",
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
       "notes": [
-        "Requests sensitive information: 'security code'"
+        "Expected clarifying question: False, got: True"
       ]
     },
     {
@@ -416,7 +708,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_035",
@@ -428,7 +729,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_036",
@@ -440,7 +750,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_037",
@@ -452,7 +771,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_038",
@@ -464,7 +792,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_039",
@@ -476,7 +813,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_040",
@@ -488,7 +834,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_041",
@@ -500,7 +855,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_042",
@@ -512,7 +876,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_043",
@@ -524,7 +897,16 @@
         "has_clarifying_question": null,
         "offers_escalation": null
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_044",
@@ -536,7 +918,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_045",
@@ -548,7 +939,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_046",
@@ -560,7 +960,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_047",
@@ -572,7 +981,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_048",
@@ -584,7 +1002,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_049",
@@ -596,7 +1023,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_050",
@@ -608,7 +1044,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_051",
@@ -620,7 +1065,17 @@
         "has_clarifying_question": null,
         "offers_escalation": null
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": false,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected next steps: True, got: False",
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_052",
@@ -632,7 +1087,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_053",
@@ -644,7 +1108,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_054",
@@ -656,7 +1129,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_055",
@@ -667,6 +1149,13 @@
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
+      },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
       },
       "notes": []
     },
@@ -680,6 +1169,13 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
       "notes": []
     },
     {
@@ -691,6 +1187,13 @@
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
+      },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
       },
       "notes": []
     },
@@ -704,6 +1207,13 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
       "notes": []
     },
     {
@@ -716,7 +1226,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_060",
@@ -728,19 +1247,39 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_061",
       "category": "security_privacy",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": false,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Requests sensitive information: 'password'",
+        "Expected clarifying question: False, got: True",
+        "Expected no sensitive info requests: True, got: True"
+      ]
     },
     {
       "test_case_id": "tc_062",
@@ -752,7 +1291,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_063",
@@ -764,7 +1312,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_064",
@@ -776,7 +1333,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_065",
@@ -788,7 +1354,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_066",
@@ -800,7 +1375,16 @@
         "has_clarifying_question": null,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": false,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": true
+      },
+      "notes": [
+        "Expected clarifying question: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_067",
@@ -812,7 +1396,16 @@
         "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_068",
@@ -824,7 +1417,16 @@
         "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_069",
@@ -836,7 +1438,16 @@
         "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     },
     {
       "test_case_id": "tc_070",
@@ -848,38 +1459,78 @@
         "has_clarifying_question": true,
         "offers_escalation": true
       },
-      "notes": []
+      "expectations": {
+        "must_ask_clarifying_question": true,
+        "must_not_claim_specific_policy": true,
+        "must_not_request_sensitive_info": true,
+        "must_offer_next_steps": true,
+        "must_escalate": false
+      },
+      "notes": [
+        "Expected escalation: False, got: True"
+      ]
     }
   ],
   "summary": {
-    "non_empty": {
-      "total": 70,
-      "passed": 70,
-      "pass_rate": 1.0
+    "rule_pass_rates": {
+      "no_sensitive_requests": {
+        "total": 70,
+        "passed": 67,
+        "pass_rate": 95.7
+      },
+      "offers_escalation": {
+        "total": 66,
+        "passed": 66,
+        "pass_rate": 100.0
+      },
+      "no_policy_invention": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
+      },
+      "non_empty": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
+      },
+      "has_clarifying_question": {
+        "total": 7,
+        "passed": 7,
+        "pass_rate": 100.0
+      }
     },
-    "offers_escalation": {
-      "total": 65,
-      "passed": 64,
-      "pass_rate": 0.9846153846153847
-    },
-    "no_policy_invention": {
-      "total": 70,
-      "passed": 70,
-      "pass_rate": 1.0
-    },
-    "has_clarifying_question": {
-      "total": 7,
-      "passed": 7,
-      "pass_rate": 1.0
-    },
-    "no_sensitive_requests": {
-      "total": 70,
-      "passed": 67,
-      "pass_rate": 0.9571428571428572
+    "expectation_pass_rates": {
+      "must_offer_next_steps": {
+        "total": 70,
+        "passed": 66,
+        "pass_rate": 94.3
+      },
+      "must_not_claim_specific_policy": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
+      },
+      "must_escalate": {
+        "total": 70,
+        "passed": 40,
+        "pass_rate": 57.1
+      },
+      "must_not_request_sensitive_info": {
+        "total": 70,
+        "passed": 67,
+        "pass_rate": 95.7
+      },
+      "must_ask_clarifying_question": {
+        "total": 70,
+        "passed": 35,
+        "pass_rate": 50.0
+      }
     },
     "overall": {
       "total_cases": 70,
-      "checks": 5
+      "cases_with_expectations": 70,
+      "rule_checks": 5,
+      "expectation_checks": 5
     }
   }
 }

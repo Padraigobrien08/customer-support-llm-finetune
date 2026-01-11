@@ -1,4 +1,4 @@
-.PHONY: all eval lint install install-deps build-data train-smoke eval-base eval-adapter diff score-adapter score-base export-review review-pack clean help
+.PHONY: all eval lint install install-deps build-data train-smoke eval-base eval-adapter diff score-adapter score-base score-expectations-adapter score-expectations-base export-review review-pack report clean help
 
 PYTHON := python3
 MODEL_ID := TinyLlama/TinyLlama-1.1B-Chat-v1.0
@@ -180,6 +180,55 @@ export-review:
 # Alias for export-review
 review-pack: export-review
 
+# Score adapter evaluation results (expectations)
+score-expectations-adapter: score-adapter
+	@echo ""
+	@echo "Note: Expectations are included in the scoring output above."
+	@echo "See 'Expectation Pass Rates' section in the summary."
+
+# Score base evaluation results (expectations)
+score-expectations-base: score-base
+	@echo ""
+	@echo "Note: Expectations are included in the scoring output above."
+	@echo "See 'Expectation Pass Rates' section in the summary."
+
+# Full evaluation and scoring report
+report:
+	@echo "=========================================="
+	@echo "Full Evaluation Report"
+	@echo "=========================================="
+	@echo ""
+	@echo "Running complete evaluation pipeline..."
+	@echo ""
+	@$(MAKE) eval-base
+	@echo ""
+	@$(MAKE) eval-adapter
+	@echo ""
+	@$(MAKE) diff
+	@echo ""
+	@$(MAKE) score-adapter
+	@echo ""
+	@$(MAKE) score-expectations-adapter
+	@echo ""
+	@$(MAKE) review-pack
+	@echo ""
+	@echo "=========================================="
+	@echo "Report Complete - Artifacts Generated"
+	@echo "=========================================="
+	@echo ""
+	@echo "Evaluation Results:"
+	@echo "  • Base: $(RESULTS_BASE)"
+	@echo "  • Adapter: $(RESULTS_ADAPTER)"
+	@echo ""
+	@echo "Scored Results:"
+	@echo "  • Base (with expectations): evaluation/results/scored_base.json"
+	@echo "  • Adapter (with expectations): evaluation/results/scored_adapter.json"
+	@echo ""
+	@echo "Review Artifacts:"
+	@echo "  • CSV for review: evaluation/results/scored_adapter.csv"
+	@echo ""
+	@echo "All artifacts are ready for analysis!"
+
 # Run golden evaluation and print summary (legacy)
 eval: install-deps
 	@echo "Running golden evaluation..."
@@ -212,10 +261,13 @@ help:
 	@echo "  make diff                 - Compare base vs adapter results"
 	@echo ""
 	@echo "Scoring & Review:"
-	@echo "  make score-base           - Score base evaluation results"
-	@echo "  make score-adapter        - Score adapter evaluation results"
-	@echo "  make export-review        - Export scored results to CSV for review"
-	@echo "  make review-pack          - Alias for export-review"
+	@echo "  make score-base                - Score base evaluation results"
+	@echo "  make score-adapter             - Score adapter evaluation results"
+	@echo "  make score-expectations-base   - Score base results (expectations included)"
+	@echo "  make score-expectations-adapter - Score adapter results (expectations included)"
+	@echo "  make export-review             - Export scored results to CSV for review"
+	@echo "  make review-pack               - Alias for export-review"
+	@echo "  make report                    - Run full evaluation pipeline and generate report"
 	@echo ""
 	@echo "Customization:"
 	@echo "  make train-smoke MODEL_ID=your-model ADAPTER_DIR=outputs/custom"

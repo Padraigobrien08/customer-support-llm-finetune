@@ -17,7 +17,14 @@
       }
     ],
     "ideal_response": "I understand you're having trouble accessing your account. For security reasons, I don't have the ability to reset passwords directly, but I can connect you with our account security team who can verify your identity and help you regain access. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_001"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_001",
+    "expectations": {
+      "must_ask_clarifying_question": false,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_002",
@@ -37,7 +44,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear your account is locked. For security and privacy reasons, I need to connect you with our account services team who can verify your identity and help unlock your account. Would you like me to transfer you now?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_002"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_002",
+    "expectations": {
+      "must_ask_clarifying_question": false,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_003",
@@ -57,7 +71,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear about the duplicate charge - that's definitely frustrating, and I want to help resolve this for you right away. To investigate and process a refund, I'll need to connect you with our billing team who can access your account details and handle this properly. Would you like me to transfer you now?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_003"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_003",
+    "expectations": {
+      "must_ask_clarifying_question": false,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_004",
@@ -77,7 +98,14 @@
       }
     ],
     "ideal_response": "I understand your payment was declined. To help diagnose the issue, could you tell me which payment method you were using? This will help me determine the best next steps or connect you with the right specialist.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_004"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_004",
+    "expectations": {
+      "must_ask_clarifying_question": false,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_005",
@@ -97,7 +125,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you cancel your order. To process the cancellation, I'll need to connect you with our order services team who can access your order details and handle this for you. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_005"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_005",
+    "expectations": {
+      "must_ask_clarifying_question": true,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_006",
@@ -117,7 +152,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with your refund request. To provide you with the most accurate steps for your specific situation, could you tell me when you made the purchase? This will help determine the best process or connect you with the right specialist.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_006"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_006",
+    "expectations": {
+      "must_ask_clarifying_question": true,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_007",
@@ -137,7 +179,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you track your order. To look up your order status, I'll need your order number. Do you have it available? If not, I can connect you with our order support team who can locate it using other information.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_007"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_007",
+    "expectations": {
+      "must_ask_clarifying_question": true,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_008",
@@ -157,7 +206,14 @@
       }
     ],
     "ideal_response": "I understand you need to update your shipping address. This requires access to your order details, so I'll need to connect you with our order support team who can verify your identity and make that change. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_008"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_008",
+    "expectations": {
+      "must_ask_clarifying_question": true,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_009",
@@ -177,7 +233,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you set up your product. To provide you with the most accurate setup instructions, could you tell me which product model you have? This will help me guide you through the right steps or connect you with our product support team.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_009"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_009",
+    "expectations": {
+      "must_ask_clarifying_question": false,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_010",
@@ -197,7 +260,14 @@
       }
     ],
     "ideal_response": "I'd like to help you understand how that feature works. To provide you with accurate and complete information, could you tell me which specific feature you're asking about? This will help me connect you with the right resources or specialist who can explain it in detail.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_010"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_010",
+    "expectations": {
+      "must_ask_clarifying_question": false,
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_011",
@@ -217,7 +287,14 @@
       }
     ],
     "ideal_response": "I'm sorry you're experiencing issues with the website. To better diagnose the problem, could you tell me what happens when you try to access it? For example, do you see an error message, or does the page not load at all?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_011"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_011",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_012",
@@ -237,7 +314,14 @@
       }
     ],
     "ideal_response": "I'm sorry the app is crashing. This sounds like a technical issue that may require specialized troubleshooting. Let me connect you with our technical support team who can help diagnose and resolve this. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 3, Original ID: manual_012"
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_012",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_013",
@@ -257,7 +341,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you upgrade your subscription. To process the upgrade and ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the process. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_013"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_013",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_014",
@@ -277,7 +368,14 @@
       }
     ],
     "ideal_response": "I'd like to help you understand what's included in your subscription. To provide you with accurate details about your specific plan, I'll need to connect you with our subscription team who can access your account information. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_014"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_014",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_015",
@@ -297,7 +395,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear about this security concern. This is a serious matter that requires immediate attention from our security team. Let me connect you with them right away so they can help secure your account and investigate the issue.",
-    "notes": "Source: manual, Difficulty: 3, Original ID: manual_015"
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_015",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_016",
@@ -317,7 +422,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you set up two-factor authentication. To guide you through the process securely, I'll need to connect you with our security team who can verify your identity and walk you through the setup steps. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_016"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_016",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_017",
@@ -337,7 +449,14 @@
       }
     ],
     "ideal_response": "I completely understand your frustration, and I'm sorry you've had to deal with this multiple times. That's not the experience we want for you. To properly address this recurring issue, I'd like to connect you with a specialist who can review your account history and work on a lasting solution. Would that be helpful?",
-    "notes": "Source: manual, Difficulty: 3, Original ID: manual_017"
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_017",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_018",
@@ -357,7 +476,14 @@
       }
     ],
     "ideal_response": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_018"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_018",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_019",
@@ -377,7 +503,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you with our business hours. However, I don't have access to that specific information in my system, as hours can vary by location. Could you tell me which location you're asking about? Alternatively, I can connect you with someone who can provide you with accurate hours for your area.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_019"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_019",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_020",
@@ -397,7 +530,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you get in touch with customer service. To provide you with the most relevant contact information, could you tell me what you need help with? This will help me direct you to the right department or specialist.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_020"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_020",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_021",
@@ -417,7 +557,14 @@
       }
     ],
     "ideal_response": "I can help you reset your password. To ensure your account security, I'll need to connect you with our account services team who can verify your identity and guide you through the password reset process. Shall I transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_021"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_021",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_022",
@@ -437,7 +584,14 @@
       }
     ],
     "ideal_response": "I understand your concern about the unexpected charge. To properly investigate this, I need to connect you with our billing department who can review your account and help resolve this. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_022"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_022",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_023",
@@ -457,7 +611,14 @@
       }
     ],
     "ideal_response": "I understand you'd like to cancel your subscription. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_023"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_023",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_024",
@@ -477,7 +638,14 @@
       }
     ],
     "ideal_response": "I understand your concern about your package not arriving. To help track this down, I'll need your order number. If you don't have it, I can connect you with our shipping support team who can locate it using other information and check the delivery status.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_024"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_024",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_025",
@@ -497,7 +665,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you with that feature. To provide you with the most accurate guidance, could you tell me which specific feature you're trying to use? This will help me connect you with the right resources or specialist.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_025"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_025",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_026",
@@ -517,7 +692,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with that error. To better assist you, could you share the specific error code or message you're seeing? This will help me determine the best next steps or connect you with the right technical specialist.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_026"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_026",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_027",
@@ -537,7 +719,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you change your subscription plan. To ensure you get the right plan for your needs, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_027"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_027",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_028",
@@ -557,7 +746,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear you received a suspicious email. This is important to address. To help investigate this security concern, I'll need to connect you with our security team who can review the email and provide guidance. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_028"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_028",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_029",
@@ -577,7 +773,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear about your disappointment. I want to help make this right. To better understand how we can address your concerns, could you share more details about what happened? This will help me connect you with the right person who can help resolve this.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_029"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_029",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_030",
@@ -597,7 +800,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with international shipping information. Shipping options and policies can vary by destination and product type. To provide you with accurate details, could you tell me which country you're shipping to?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_030"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_030",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_031",
@@ -617,7 +827,14 @@
       }
     ],
     "ideal_response": "I can help you recover your username. To ensure we're helping the right person, could you tell me which email address you used when creating your account? This will help me connect you with our account services team who can verify your identity and help you recover your username.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_031"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_031",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_032",
@@ -637,7 +854,14 @@
       }
     ],
     "ideal_response": "I understand the password reset link isn't working. To help troubleshoot this, could you tell me how long ago you requested the reset? Also, are you clicking the link from the same device where you received the email? This information will help me determine the best next steps or connect you with our account security team.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_032"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_032",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_033",
@@ -657,7 +881,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear your account has been suspended. To help resolve this, I'll need to connect you with our account services team who can review your account status and explain the reason for the suspension. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_033"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_033",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_034",
@@ -677,7 +908,14 @@
       }
     ],
     "ideal_response": "I'd like to help you check your account status. For security reasons, I don't have access to your account information directly. I can connect you with our account services team who can verify your identity and provide you with your account status. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_034"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_034",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_035",
@@ -697,7 +935,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you update your payment method. To ensure this is done securely and correctly, I'll need to connect you with our billing team who can access your account and guide you through updating your payment information. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_035"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_035",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_036",
@@ -717,7 +962,14 @@
       }
     ],
     "ideal_response": "I understand your concern about an unauthorized charge. This requires immediate attention from our billing team who can investigate and resolve this. Let me connect you with them now.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_036"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_036",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_037",
@@ -737,7 +989,14 @@
       }
     ],
     "ideal_response": "I understand you're concerned about your subscription renewal with an expired card. To provide you with accurate information about your subscription status and help update your payment method, I'll need to connect you with our billing team who can access your account details. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_037"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_037",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_038",
@@ -757,7 +1016,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you set up a different payment method. To ensure this is configured correctly for your account, I'll need to connect you with our billing team who can access your account and help you add or update your payment method. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_038"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_038",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_039",
@@ -777,7 +1043,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with your return request. Return policies can vary based on several factors, and I want to make sure you get accurate information for your specific situation. Let me connect you with our returns team who can review your case and provide the most current policy details.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_039"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_039",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_040",
@@ -797,7 +1070,14 @@
       }
     ],
     "ideal_response": "I understand you need to cancel due to your move. To process the cancellation and ensure everything is handled correctly, I'll need to connect you with our subscription services team who can access your account and complete the cancellation. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_040"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_040",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_041",
@@ -817,7 +1097,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear that your item arrived damaged. That's frustrating, and I want to help resolve this for you. To process a replacement or refund, I'll need to connect you with our returns team who can access your order details and handle this properly. Would you like me to transfer you now?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_041"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_041",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_042",
@@ -837,7 +1124,14 @@
       }
     ],
     "ideal_response": "I understand you're waiting for a refund. To provide you with accurate timing information, I'll need to connect you with our billing team who can check your specific refund status and processing details. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_042"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_042",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_043",
@@ -857,7 +1151,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with shipping information. Shipping times can vary based on your location, the shipping method selected, and the product type. To provide you with the most accurate estimate, could you tell me which shipping option you're considering or which product you're ordering?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_043"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_043",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_044",
@@ -877,7 +1178,14 @@
       }
     ],
     "ideal_response": "I understand your concern about the package showing as delivered when you haven't received it. To help investigate this, I'll need your order number. I can then connect you with our shipping support team who can check the delivery details and help locate your package. Do you have your order number available?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_044"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_044",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_045",
@@ -897,7 +1205,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you with expedited shipping options. To provide you with accurate shipping options and rates for your order, I'll need to connect you with our order support team who can access your order details and available shipping methods. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_045"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_045",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_046",
@@ -917,7 +1232,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear your package was delivered to the wrong address. To help resolve this, I'll need your order number so I can connect you with our shipping support team who can investigate the delivery and help retrieve or redirect your package. Do you have your order number?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_046"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_046",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_047",
@@ -937,7 +1259,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you activate your service. To provide you with the most accurate activation steps, could you tell me which service you're trying to activate? This will help me connect you with the right specialist who can guide you through the activation process.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_047"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_047",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_048",
@@ -957,7 +1286,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with that tool. To provide you with the most accurate guidance, could you tell me which specific tool you're working with and what you're trying to accomplish? This will help me connect you with the right resources or specialist.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_048"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_048",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_049",
@@ -977,7 +1313,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you find resources for that feature. To direct you to the most relevant tutorial or guide, could you tell me which specific feature you're interested in learning about? This will help me connect you with the right resources or specialist.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_049"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_049",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_050",
@@ -997,7 +1340,14 @@
       }
     ],
     "ideal_response": "I'd like to help you configure that setting. To provide you with accurate configuration steps, could you tell me which setting you're trying to configure and what you're hoping to achieve? This will help me connect you with the right guidance or specialist.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_050"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_050",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_051",
@@ -1017,7 +1367,14 @@
       }
     ],
     "ideal_response": "I understand you're having trouble completing checkout. To help diagnose the issue, could you tell me at what point it's failing? For example, is it when entering payment information, or does an error appear?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_051"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_051",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_052",
@@ -1037,7 +1394,14 @@
       }
     ],
     "ideal_response": "I'm sorry something isn't working correctly. To better diagnose the problem, could you describe what's happening? For example, what were you trying to do, and what error or unexpected behavior are you seeing? This will help me determine the best next steps or connect you with the right technical specialist.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_052"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_052",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_053",
@@ -1057,7 +1421,14 @@
       }
     ],
     "ideal_response": "I'm sorry the page keeps freezing. To help troubleshoot this, could you tell me which browser you're using and whether this happens on a specific page or across the site? This information will help me determine if there are any quick fixes to try or if I should connect you with our technical support team.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_053"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_053",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_054",
@@ -1077,7 +1448,14 @@
       }
     ],
     "ideal_response": "I'm sorry you're seeing a blank screen when trying to log in. To help diagnose this, could you tell me if this happens immediately after clicking the login button, or does the page start to load first? Also, are you using a mobile device or computer? This will help me determine the best troubleshooting steps or connect you with technical support.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_054"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_054",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_055",
@@ -1097,7 +1475,14 @@
       }
     ],
     "ideal_response": "I'd like to help you find out when your subscription renews. To provide you with accurate renewal information, I'll need to connect you with our subscription team who can access your account and tell you your specific renewal date. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_055"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_055",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_056",
@@ -1117,7 +1502,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you with downgrading your plan. To ensure you understand how the change will affect your account and to process it correctly, I'll need to connect you with our subscription services team who can access your account and guide you through the options. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_056"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_056",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_057",
@@ -1137,7 +1529,14 @@
       }
     ],
     "ideal_response": "I'd like to help you understand the differences between plans. To provide you with accurate and current information about available plans and their features, I'll need to connect you with our subscription team who can access the latest plan details. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_057"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_057",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_058",
@@ -1157,7 +1556,14 @@
       }
     ],
     "ideal_response": "I understand you'd like to pause your subscription temporarily. To see if this option is available and to process it correctly, I'll need to connect you with our subscription services team who can access your account and explain the available options. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_058"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_058",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_059",
@@ -1177,7 +1583,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you understand our privacy policy. To provide you with the most accurate and current information, I can direct you to our official privacy policy page, or I can connect you with our privacy team who can answer specific questions. Which would you prefer?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_059"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_059",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_060",
@@ -1197,7 +1610,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear about the unusual activity. This is important to address right away. To help investigate and secure your account, I'll need to connect you with our security team who can review the activity and take appropriate action. Would you like me to transfer you now?",
-    "notes": "Source: manual, Difficulty: 3, Original ID: manual_060"
+    "notes": "Source: manual, Difficulty: 3, Original ID: manual_060",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_061",
@@ -1217,7 +1637,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you improve your account security. To provide you with personalized security recommendations based on your current account settings, I'll need to connect you with our security team who can review your account and suggest the best security options for you. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_061"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_061",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_062",
@@ -1237,7 +1664,14 @@
       }
     ],
     "ideal_response": "I understand you'd like to delete your account and data. This is an important decision that requires careful handling. To ensure this is processed correctly and securely, I'll need to connect you with our account services team who can verify your identity and guide you through the account deletion process. Would you like me to transfer you?",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_062"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_062",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_063",
@@ -1257,7 +1691,14 @@
       }
     ],
     "ideal_response": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_063"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_063",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_064",
@@ -1277,7 +1718,14 @@
       }
     ],
     "ideal_response": "I'm sorry you've been waiting for a response. That's frustrating, and I want to help address this. To better understand the situation and ensure you get a timely resolution, could you tell me what you were waiting for a response about? This will help me connect you with the right person who can follow up immediately.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_064"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_064",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_065",
@@ -1297,7 +1745,14 @@
       }
     ],
     "ideal_response": "I'm sorry to hear you feel the quality of service has declined. I want to understand your concerns better so we can address them. Could you tell me more about the specific issues you've experienced? This will help me connect you with the right specialist who can work on improving your experience.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_065"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_065",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_066",
@@ -1317,7 +1772,14 @@
       }
     ],
     "ideal_response": "I'm sorry you're not satisfied with how your issue was handled. I want to help make this right. To better understand what happened and ensure it's properly addressed, could you share more details about the issue and how it was handled? This will help me connect you with the right person who can review the situation and work on a resolution.",
-    "notes": "Source: manual, Difficulty: 2, Original ID: manual_066"
+    "notes": "Source: manual, Difficulty: 2, Original ID: manual_066",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": false,
+      "must_escalate": true
+    }
   },
   {
     "id": "tc_067",
@@ -1337,7 +1799,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you with payment options. Payment methods can vary depending on the type of purchase and your location. To ensure you get the most accurate and current information, let me connect you with our billing team who can provide complete details.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_067"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_067",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_068",
@@ -1357,7 +1826,14 @@
       }
     ],
     "ideal_response": "I'd like to help you with our holiday hours. Operating hours can vary by location and specific holidays. To provide you with accurate information, could you tell me which holiday you're asking about, or would you prefer I connect you with someone who has access to our complete holiday schedule?",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_068"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_068",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_069",
@@ -1377,7 +1853,14 @@
       }
     ],
     "ideal_response": "I'd be happy to help you learn about our services. Our service offerings can vary, and I want to make sure you get complete and current information. Let me connect you with our information team who can provide you with a comprehensive overview of all available services.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_069"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_069",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   },
   {
     "id": "tc_070",
@@ -1397,6 +1880,13 @@
       }
     ],
     "ideal_response": "I'd be happy to help you understand our warranty coverage. Warranty terms can vary by product, and I want to make sure you get accurate information for your specific item. Let me connect you with our warranty team who can provide complete details.",
-    "notes": "Source: manual, Difficulty: 1, Original ID: manual_070"
+    "notes": "Source: manual, Difficulty: 1, Original ID: manual_070",
+    "expectations": {
+      "must_not_claim_specific_policy": true,
+      "must_not_request_sensitive_info": true,
+      "must_offer_next_steps": true,
+      "must_ask_clarifying_question": true,
+      "must_escalate": false
+    }
   }
 ]

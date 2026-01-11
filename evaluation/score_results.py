@@ -26,31 +26,58 @@ def print_summary_table(summary: dict[str, Any]) -> None:
     print("=" * 60)
     print()
     
-    # Print check-by-check summary
-    print("Check Pass Rates:")
-    print("-" * 60)
-    print(f"{'Check':<30} {'Passed':<10} {'Total':<10} {'Rate':<10}")
-    print("-" * 60)
-    
-    for check_name in sorted(summary.keys()):
-        if check_name == "overall":
-            continue
+    # Print rule-based check pass rates
+    rule_pass_rates = summary.get("rule_pass_rates", {})
+    if rule_pass_rates:
+        print("Rule Pass Rates (Generic Heuristics):")
+        print("-" * 60)
+        print(f"{'Check':<30} {'Passed':<10} {'Total':<10} {'Rate':<10}")
+        print("-" * 60)
         
-        check_data = summary[check_name]
-        passed = check_data["passed"]
-        total = check_data["total"]
-        rate = check_data["pass_rate"]
+        for check_name in sorted(rule_pass_rates.keys()):
+            check_data = rule_pass_rates[check_name]
+            passed = check_data["passed"]
+            total = check_data["total"]
+            rate = check_data["pass_rate"]
+            
+            rate_str = f"{rate:.1f}%"
+            print(f"{check_name:<30} {passed:<10} {total:<10} {rate_str:<10}")
         
-        rate_str = f"{rate:.1%}"
-        print(f"{check_name:<30} {passed:<10} {total:<10} {rate_str:<10}")
+        print("-" * 60)
+        print()
     
-    print("-" * 60)
-    print()
+    # Print expectation pass rates
+    expectation_pass_rates = summary.get("expectation_pass_rates", {})
+    if expectation_pass_rates:
+        print("Expectation Pass Rates (More Meaningful):")
+        print("-" * 60)
+        print(f"{'Expectation':<30} {'Passed':<10} {'Total':<10} {'Rate':<10}")
+        print("-" * 60)
+        
+        for expectation_name in sorted(expectation_pass_rates.keys()):
+            expectation_data = expectation_pass_rates[expectation_name]
+            passed = expectation_data["passed"]
+            total = expectation_data["total"]
+            rate = expectation_data["pass_rate"]
+            
+            rate_str = f"{rate:.1f}%"
+            print(f"{expectation_name:<30} {passed:<10} {total:<10} {rate_str:<10}")
+        
+        print("-" * 60)
+        print()
+    else:
+        print("No expectations found in test cases.")
+        print("Add 'expectations' objects to test cases to enable expectation scoring.")
+        print()
     
     # Print overall summary
     overall = summary.get("overall", {})
     print(f"Total test cases: {overall.get('total_cases', 0)}")
-    print(f"Total checks: {overall.get('checks', 0)}")
+    if overall.get('cases_with_expectations', 0) > 0:
+        print(f"Cases with expectations: {overall.get('cases_with_expectations', 0)}")
+    print(f"Rule checks: {overall.get('rule_checks', 0)}")
+    if overall.get('expectation_checks', 0) > 0:
+        print(f"Expectation checks: {overall.get('expectation_checks', 0)}")
     print()
 
 

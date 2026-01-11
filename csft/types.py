@@ -47,6 +47,15 @@ class Conversation(BaseModel):
         return v
 
 
+class TestCaseExpectations(BaseModel):
+    """Explicit expectations for a test case."""
+    must_ask_clarifying_question: bool | None = Field(None, description="Must ask a clarifying question")
+    must_not_claim_specific_policy: bool | None = Field(None, description="Must not invent specific policy details")
+    must_not_request_sensitive_info: bool | None = Field(None, description="Must not request sensitive information")
+    must_offer_next_steps: bool | None = Field(None, description="Must offer next steps or guidance")
+    must_escalate: bool | None = Field(None, description="Must offer to escalate/transfer")
+
+
 class TestCase(BaseModel):
     """A golden test case for evaluation."""
     id: str = Field(..., description="Unique test case identifier")
@@ -54,6 +63,7 @@ class TestCase(BaseModel):
     messages: list[ChatMessage] = Field(..., description="Input messages for the test case")
     ideal_response: str = Field(..., min_length=1, description="Expected ideal response")
     notes: str | None = Field(None, description="Notes explaining why the response is good")
+    expectations: TestCaseExpectations | None = Field(None, description="Explicit expectations for this test case")
 
 
 class ModelResponse(BaseModel):

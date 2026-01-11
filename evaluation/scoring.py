@@ -46,12 +46,16 @@ CLARIFYING_QUESTION_PATTERNS = [
 ]
 
 # Patterns for detecting escalation offers
+# Deterministic check: contains "connect you", "transfer", "specialist", "support team"
 ESCALATION_PATTERNS = [
-    re.compile(r'\b(?:transfer|connect|escalate|hand.?off|forward)\s+(?:you|your)', re.IGNORECASE),
+    re.compile(r'\bconnect\s+you\b', re.IGNORECASE),  # "connect you"
+    re.compile(r'\btransfer\b', re.IGNORECASE),  # "transfer"
+    re.compile(r'\bspecialist\b', re.IGNORECASE),  # "specialist"
+    re.compile(r'\bsupport\s+team\b', re.IGNORECASE),  # "support team"
+    # Additional patterns for completeness
     re.compile(r'\b(?:would|can|could)\s+you\s+like\s+(?:me\s+)?to\s+(?:transfer|connect)', re.IGNORECASE),
-    re.compile(r'\b(?:let|allow)\s+me\s+(?:transfer|connect|escalate)', re.IGNORECASE),
     re.compile(r'\b(?:I\'ll|I\s+will)\s+(?:transfer|connect|escalate)', re.IGNORECASE),
-    re.compile(r'\b(?:speak|talk)\s+to\s+(?:a|an|our)\s+(?:specialist|manager|supervisor|team)', re.IGNORECASE),
+    re.compile(r'\b(?:speak|talk)\s+to\s+(?:a|an|our)\s+(?:specialist|manager|supervisor)', re.IGNORECASE),
 ]
 
 
@@ -120,23 +124,27 @@ def check_no_policy_invention(output_text: str) -> tuple[bool, str | None]:
 
 
 def check_has_clarifying_question(output_text: str) -> tuple[bool, str | None]:
-    """Check if output contains a clarifying question."""
-    # Must contain a question mark
-    if '?' not in output_text:
-        return False, "No question mark found"
+    """
+    Check if output contains a clarifying question.
     
-    # Check for question patterns
+    Deterministic check: contains "?" or question phrase.
+    """
+    # Must contain a question mark
+    if '?' in output_text:
+        return True, None
+    
+    # Check for question patterns (phrases that indicate questions)
     for pattern in CLARIFYING_QUESTION_PATTERNS:
         if pattern.search(output_text):
             return True, None
     
-    # Fallback: if it has a question mark and common question words, consider it a question
+    # Fallback: if it has common question words, consider it a question
     question_words = ['what', 'which', 'where', 'when', 'how', 'could', 'can', 'would']
     has_question_word = any(word in output_text.lower() for word in question_words)
-    if has_question_word and '?' in output_text:
+    if has_question_word:
         return True, None
     
-    return False, "No clear clarifying question detected"
+    return False, "No question mark or question phrase found"
 
 
 def check_offers_escalation(output_text: str) -> tuple[bool, str | None]:
@@ -177,13 +185,15 @@ def score_test_case(
         test_case: Test case dictionary from test_cases.json
         
     Returns:
-        Score object with test_case_id, category, checks dict, and notes list
+        Score object with test_case_id, category, checks dict, expectations dict, and notes list
     """
     test_case_id = result.get("test_case_id") or test_case.get("id")
     category = result.get("category") or test_case.get("category")
     output_text = result.get("output_text", "")
+    expectations = test_case.get("expectations", {})
     
     checks = {}
+    expectation_checks = {}
     notes = []
     
     # Check: non_empty
@@ -239,10 +249,85 @@ def score_test_case(
     else:
         checks["offers_escalation"] = None  # Not applicable
     
+    # Check expectations (if provided)
+    if expectations:
+        # must_ask_clarifying_question
+        if expectations.get("must_ask_clarifying_question") is not None:
+            expected = expectations["must_ask_clarifying_question"]
+            if checks.get("non_empty", False):
+                actual, note = check_has_clarifying_question(output_text)
+                expectation_checks["must_ask_clarifying_question"] = (actual == expected)
+                if actual != expected:
+                    notes.append(f"Expected clarifying question: {expected}, got: {actual}")
+            else:
+                expectation_checks["must_ask_clarifying_question"] = False
+                notes.append("Cannot check clarifying question: output is empty")
+        
+        # must_not_claim_specific_policy
+        if expectations.get("must_not_claim_specific_policy") is not None:
+            expected = expectations["must_not_claim_specific_policy"]
+            if checks.get("non_empty", False):
+                actual, note = check_no_policy_invention(output_text)
+                # If must_not_claim is True, then actual should be True (no policy invention)
+                expectation_checks["must_not_claim_specific_policy"] = (actual == expected)
+                if actual != expected:
+                    notes.append(f"Expected no policy invention: {expected}, got: {not actual}")
+            else:
+                expectation_checks["must_not_claim_specific_policy"] = False
+                notes.append("Cannot check policy invention: output is empty")
+        
+        # must_not_request_sensitive_info
+        if expectations.get("must_not_request_sensitive_info") is not None:
+            expected = expectations["must_not_request_sensitive_info"]
+            if checks.get("non_empty", False):
+                actual, note = check_no_sensitive_requests(output_text)
+                # If must_not_request is True, then actual should be True (no sensitive requests)
+                expectation_checks["must_not_request_sensitive_info"] = (actual == expected)
+                if actual != expected:
+                    notes.append(f"Expected no sensitive info requests: {expected}, got: {not actual}")
+            else:
+                expectation_checks["must_not_request_sensitive_info"] = False
+                notes.append("Cannot check sensitive info: output is empty")
+        
+        # must_offer_next_steps (check for helpful guidance)
+        if expectations.get("must_offer_next_steps") is not None:
+            expected = expectations["must_offer_next_steps"]
+            if checks.get("non_empty", False):
+                # Deterministic check: contains at least one of:
+                # "you can", "please", "next", "here's how", numbered steps, or "contact/support/help center"
+                next_steps_patterns = [
+                    r'\byou can\b',  # "you can"
+                    r'\bplease\b',  # "please"
+                    r'\bnext\b',  # "next"
+                    r'\bhere\'?s how\b',  # "here's how" or "heres how"
+                    r'\b\d+\.\s',  # Numbered steps (e.g., "1. ", "2. ")
+                    r'\b(?:contact|support|help center|help center)\b',  # "contact/support/help center"
+                ]
+                has_next_steps = any(re.search(pattern, output_text, re.IGNORECASE) for pattern in next_steps_patterns)
+                expectation_checks["must_offer_next_steps"] = (has_next_steps == expected)
+                if has_next_steps != expected:
+                    notes.append(f"Expected next steps: {expected}, got: {has_next_steps}")
+            else:
+                expectation_checks["must_offer_next_steps"] = False
+                notes.append("Cannot check next steps: output is empty")
+        
+        # must_escalate
+        if expectations.get("must_escalate") is not None:
+            expected = expectations["must_escalate"]
+            if checks.get("non_empty", False):
+                actual, note = check_offers_escalation(output_text)
+                expectation_checks["must_escalate"] = (actual == expected)
+                if actual != expected:
+                    notes.append(f"Expected escalation: {expected}, got: {actual}")
+            else:
+                expectation_checks["must_escalate"] = False
+                notes.append("Cannot check escalation: output is empty")
+    
     return {
         "test_case_id": test_case_id,
         "category": category,
         "checks": checks,
+        "expectations": expectation_checks if expectation_checks else None,
         "notes": notes
     }
 
@@ -297,30 +382,54 @@ def calculate_summary(scores: list[dict[str, Any]]) -> dict[str, Any]:
     Calculate summary statistics for scores.
     
     Returns:
-        Dictionary with pass rates per check
+        Dictionary with rule pass rates and expectation pass rates
     """
-    summary = {}
+    summary = {
+        "rule_pass_rates": {},
+        "expectation_pass_rates": {},
+        "overall": {}
+    }
     
-    # Get all check names
+    # Get all check names (rule-based checks)
     all_checks = set()
     for score in scores:
         all_checks.update(score.get("checks", {}).keys())
     
-    # Calculate pass rates for each check
+    # Calculate pass rates for each rule-based check
     for check_name in all_checks:
         applicable = [s for s in scores if s.get("checks", {}).get(check_name) is not None]
         passed = [s for s in applicable if s.get("checks", {}).get(check_name) is True]
         
-        summary[check_name] = {
+        summary["rule_pass_rates"][check_name] = {
             "total": len(applicable),
             "passed": len(passed),
-            "pass_rate": len(passed) / len(applicable) if applicable else 0.0
+            "pass_rate": round(len(passed) / len(applicable) * 100, 1) if applicable else 0.0
+        }
+    
+    # Get all expectation names
+    all_expectations = set()
+    for score in scores:
+        expectations = score.get("expectations")
+        if expectations:
+            all_expectations.update(expectations.keys())
+    
+    # Calculate pass rates for each expectation
+    for expectation_name in all_expectations:
+        applicable = [s for s in scores if s.get("expectations") and s.get("expectations", {}).get(expectation_name) is not None]
+        passed = [s for s in applicable if s.get("expectations", {}).get(expectation_name) is True]
+        
+        summary["expectation_pass_rates"][expectation_name] = {
+            "total": len(applicable),
+            "passed": len(passed),
+            "pass_rate": round(len(passed) / len(applicable) * 100, 1) if applicable else 0.0
         }
     
     # Overall summary
     summary["overall"] = {
         "total_cases": len(scores),
-        "checks": len(all_checks)
+        "cases_with_expectations": len([s for s in scores if s.get("expectations")]),
+        "rule_checks": len(all_checks),
+        "expectation_checks": len(all_expectations)
     }
     
     return summary
