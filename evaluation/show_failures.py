@@ -36,11 +36,44 @@ def show_failures(scored_results_path: Path):
         checks = score.get('checks', {})
         failed_checks = [name for name, passed in checks.items() if passed is False]
         
-        # Check expectations
+        # Check expectations (tri-state semantics)
         expectations = score.get('expectations', {})
         failed_expectations = []
+        failed_expectation_details = []
+        
         if expectations:
-            failed_expectations = [name for name, passed in expectations.items() if passed is False]
+            details = expectations.get('_details', {})
+            
+            # Process each expectation using tri-state logic
+            for exp_key, detail in details.items():
+                level = detail.get('level')
+                observed = detail.get('observed')
+                passed = detail.get('passed', True)
+                
+                # Skip optional expectations
+                if level == 'optional':
+                    continue
+                
+                # Only count as failure if:
+                # - level is "required" and observed is False
+                # - OR level is "forbidden" and observed is True
+                is_failure = False
+                if level == 'required' and observed is False:
+                    is_failure = True
+                elif level == 'forbidden' and observed is True:
+                    is_failure = True
+                
+                if is_failure:
+                    failed_expectations.append(exp_key)
+                    failed_expectation_details.append({
+                        'key': exp_key,
+                        'level': level,
+                        'observed': observed,
+                        'passed': passed
+                    })
+                    
+                    # Count failures with level info
+                    failure_counts[f"expectation:{exp_key}({level})"] += 1
         
         if failed_checks or failed_expectations:
             failed_cases.append({
@@ -48,14 +81,13 @@ def show_failures(scored_results_path: Path):
                 'category': score.get('category', 'unknown'),
                 'failed_checks': failed_checks,
                 'failed_expectations': failed_expectations,
+                'failed_expectation_details': failed_expectation_details,
                 'notes': score.get('notes', [])
             })
             
-            # Count failures
+            # Count rule-based failures
             for check in failed_checks:
                 failure_counts[f"rule:{check}"] += 1
-            for exp in failed_expectations:
-                failure_counts[f"expectation:{exp}"] += 1
     
     # Print summary
     print("=" * 70)
@@ -77,7 +109,17 @@ def show_failures(scored_results_path: Path):
         if f['failed_checks']:
             print(f"  ✗ Rule checks: {', '.join(f['failed_checks'])}")
         if f['failed_expectations']:
-            print(f"  ✗ Expectations: {', '.join(f['failed_expectations'])}")
+            print(f"  ✗ Expectations:")
+            for detail in f['failed_expectation_details']:
+                # Generate short reason
+                if detail['level'] == 'required':
+                    reason = "required but not observed"
+                elif detail['level'] == 'forbidden':
+                    reason = "forbidden but observed"
+                else:
+                    reason = f"unexpected level: {detail['level']}"
+                
+                print(f"    • {detail['key']}: level={detail['level']}, observed={detail['observed']}, {reason}")
         if f['notes']:
             # Show relevant notes (filter out redundant ones)
             relevant_notes = [n for n in f['notes'] if any(

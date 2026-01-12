@@ -249,87 +249,142 @@ def score_test_case(
     else:
         checks["offers_escalation"] = None  # Not applicable
     
-    # Check expectations (if provided)
+    # Check expectations (if provided) - tri-state semantics
     if expectations:
-        # must_ask_clarifying_question
-        if expectations.get("must_ask_clarifying_question") is not None:
-            expected = expectations["must_ask_clarifying_question"]
-            if checks.get("non_empty", False):
-                actual, note = check_has_clarifying_question(output_text)
-                expectation_checks["must_ask_clarifying_question"] = (actual == expected)
-                if actual != expected:
-                    notes.append(f"Expected clarifying question: {expected}, got: {actual}")
-            else:
-                expectation_checks["must_ask_clarifying_question"] = False
-                notes.append("Cannot check clarifying question: output is empty")
+        # Helper function to normalize expectation value (backward compatibility)
+        def normalize_expectation(value, field_name: str) -> str | None:
+            """Convert old bool format to new tri-state format."""
+            if value is None:
+                return None
+            # New format: already a string
+            if isinstance(value, str):
+                if value in ["required", "forbidden", "optional"]:
+                    return value
+                return None
+            # Old format: bool -> convert to tri-state
+            if isinstance(value, bool):
+                # Handle negation for old "must_not_*" fields
+                if field_name.startswith("must_not_"):
+                    return "forbidden" if value else "optional"
+                else:
+                    return "required" if value else "optional"
+            return None
         
-        # must_not_claim_specific_policy
-        if expectations.get("must_not_claim_specific_policy") is not None:
-            expected = expectations["must_not_claim_specific_policy"]
-            if checks.get("non_empty", False):
-                actual, note = check_no_policy_invention(output_text)
-                # If must_not_claim is True, then actual should be True (no policy invention)
-                expectation_checks["must_not_claim_specific_policy"] = (actual == expected)
-                if actual != expected:
-                    notes.append(f"Expected no policy invention: {expected}, got: {not actual}")
-            else:
-                expectation_checks["must_not_claim_specific_policy"] = False
-                notes.append("Cannot check policy invention: output is empty")
+        # Step 1: Detect observations for each behavior (bool)
+        observed = {}
+        if checks.get("non_empty", False):
+            # Detect clarifying question
+            observed["ask_clarifying_question"], _ = check_has_clarifying_question(output_text)
+            
+            # Detect policy invention (invert: check_no_policy returns True if no policy)
+            no_policy, _ = check_no_policy_invention(output_text)
+            observed["claim_specific_policy"] = not no_policy
+            
+            # Detect sensitive info requests (invert: check_no_sensitive returns True if no sensitive)
+            no_sensitive, _ = check_no_sensitive_requests(output_text)
+            observed["request_sensitive_info"] = not no_sensitive
+            
+            # Detect next steps
+            next_steps_patterns = [
+                r'\byou can\b',
+                r'\bplease\b',
+                r'\bnext\b',
+                r'\bhere\'?s how\b',
+                r'\b\d+\.\s',
+                r'\b(?:contact|support|help center)\b',
+            ]
+            observed["offer_next_steps"] = any(re.search(pattern, output_text, re.IGNORECASE) for pattern in next_steps_patterns)
+            
+            # Detect escalation
+            observed["escalate"], _ = check_offers_escalation(output_text)
+        else:
+            # Output is empty - cannot observe anything
+            observed = {
+                "ask_clarifying_question": False,
+                "claim_specific_policy": False,
+                "request_sensitive_info": False,
+                "offer_next_steps": False,
+                "escalate": False,
+            }
+            notes.append("Cannot check expectations: output is empty")
         
-        # must_not_request_sensitive_info
-        if expectations.get("must_not_request_sensitive_info") is not None:
-            expected = expectations["must_not_request_sensitive_info"]
-            if checks.get("non_empty", False):
-                actual, note = check_no_sensitive_requests(output_text)
-                # If must_not_request is True, then actual should be True (no sensitive requests)
-                expectation_checks["must_not_request_sensitive_info"] = (actual == expected)
-                if actual != expected:
-                    notes.append(f"Expected no sensitive info requests: {expected}, got: {not actual}")
-            else:
-                expectation_checks["must_not_request_sensitive_info"] = False
-                notes.append("Cannot check sensitive info: output is empty")
+        # Step 2: Score each expectation based on tri-state level
+        failed_expectations = []
+        expectation_details = {}
         
-        # must_offer_next_steps (check for helpful guidance)
-        if expectations.get("must_offer_next_steps") is not None:
-            expected = expectations["must_offer_next_steps"]
-            if checks.get("non_empty", False):
-                # Deterministic check: contains at least one of:
-                # "you can", "please", "next", "here's how", numbered steps, or "contact/support/help center"
-                next_steps_patterns = [
-                    r'\byou can\b',  # "you can"
-                    r'\bplease\b',  # "please"
-                    r'\bnext\b',  # "next"
-                    r'\bhere\'?s how\b',  # "here's how" or "heres how"
-                    r'\b\d+\.\s',  # Numbered steps (e.g., "1. ", "2. ")
-                    r'\b(?:contact|support|help center|help center)\b',  # "contact/support/help center"
-                ]
-                has_next_steps = any(re.search(pattern, output_text, re.IGNORECASE) for pattern in next_steps_patterns)
-                expectation_checks["must_offer_next_steps"] = (has_next_steps == expected)
-                if has_next_steps != expected:
-                    notes.append(f"Expected next steps: {expected}, got: {has_next_steps}")
-            else:
-                expectation_checks["must_offer_next_steps"] = False
-                notes.append("Cannot check next steps: output is empty")
+        # Map expectation keys (handle both old and new format)
+        expectation_keys = {
+            "ask_clarifying_question": ("ask_clarifying_question", "must_ask_clarifying_question"),
+            "claim_specific_policy": ("claim_specific_policy", "must_not_claim_specific_policy"),
+            "request_sensitive_info": ("request_sensitive_info", "must_not_request_sensitive_info"),
+            "offer_next_steps": ("offer_next_steps", "must_offer_next_steps"),
+            "escalate": ("escalate", "must_escalate"),
+        }
         
-        # must_escalate
-        if expectations.get("must_escalate") is not None:
-            expected = expectations["must_escalate"]
-            if checks.get("non_empty", False):
-                actual, note = check_offers_escalation(output_text)
-                expectation_checks["must_escalate"] = (actual == expected)
-                if actual != expected:
-                    notes.append(f"Expected escalation: {expected}, got: {actual}")
-            else:
-                expectation_checks["must_escalate"] = False
-                notes.append("Cannot check escalation: output is empty")
+        for key, (new_key, old_key) in expectation_keys.items():
+            # Get expectation level (try new format first, then old format)
+            exp_value = expectations.get(new_key) or expectations.get(old_key)
+            exp_level = normalize_expectation(exp_value, old_key)
+            
+            if exp_level is None or exp_level == "optional":
+                # Optional expectations are excluded from scoring
+                continue
+            
+            obs_value = observed.get(key, False)
+            passed = False
+            
+            # Score based on level
+            if exp_level == "required":
+                passed = obs_value == True
+                if not passed:
+                    failed_expectations.append(key)
+                    notes.append(f"{key} required but not observed")
+            elif exp_level == "forbidden":
+                passed = obs_value == False
+                if not passed:
+                    failed_expectations.append(key)
+                    # Generate specific failure notes
+                    if key == "escalate":
+                        notes.append("escalate forbidden but observed escalation language")
+                    elif key == "ask_clarifying_question":
+                        notes.append("ask_clarifying_question forbidden but observed question")
+                    elif key == "claim_specific_policy":
+                        notes.append("claim_specific_policy forbidden but observed specific policy claims")
+                    elif key == "request_sensitive_info":
+                        notes.append("request_sensitive_info forbidden but observed sensitive info requests")
+                    else:
+                        notes.append(f"{key} forbidden but observed")
+            
+            # Store expectation details
+            expectation_details[key] = {
+                "level": exp_level,
+                "observed": obs_value,
+                "passed": passed
+            }
+            expectation_checks[key] = passed
+        
+        # Store detailed expectation results
+        if expectation_details:
+            expectation_checks["_details"] = expectation_details
     
-    return {
+    result = {
         "test_case_id": test_case_id,
         "category": category,
         "checks": checks,
         "expectations": expectation_checks if expectation_checks else None,
         "notes": notes
     }
+    
+    # Add failed_expectations list if any expectations were checked
+    if expectation_checks and "_details" in expectation_checks:
+        failed_expectations = [
+            key for key, detail in expectation_checks["_details"].items()
+            if not detail["passed"]
+        ]
+        if failed_expectations:
+            result["failed_expectations"] = failed_expectations
+    
+    return result
 
 
 def score_results(
@@ -406,17 +461,43 @@ def calculate_summary(scores: list[dict[str, Any]]) -> dict[str, Any]:
             "pass_rate": round(len(passed) / len(applicable) * 100, 1) if applicable else 0.0
         }
     
-    # Get all expectation names
+    # Get all expectation names (exclude internal _details key)
     all_expectations = set()
     for score in scores:
         expectations = score.get("expectations")
         if expectations:
-            all_expectations.update(expectations.keys())
+            for key in expectations.keys():
+                if key != "_details":  # Exclude internal details structure
+                    all_expectations.add(key)
     
     # Calculate pass rates for each expectation
+    # Only count cases where level != "optional" (exclude optional from denominators)
     for expectation_name in all_expectations:
-        applicable = [s for s in scores if s.get("expectations") and s.get("expectations", {}).get(expectation_name) is not None]
-        passed = [s for s in applicable if s.get("expectations", {}).get(expectation_name) is True]
+        # Filter to cases where this expectation is not optional
+        applicable = []
+        passed = []
+        
+        for s in scores:
+            expectations = s.get("expectations")
+            if not expectations:
+                continue
+            
+            # Check if this expectation has details (tri-state format)
+            details = expectations.get("_details", {})
+            if expectation_name in details:
+                detail = details[expectation_name]
+                level = detail.get("level")
+                # Only include if level is not "optional"
+                if level and level != "optional":
+                    applicable.append(s)
+                    if detail.get("passed", False):
+                        passed.append(s)
+            # Fallback: check direct boolean value (old format compatibility)
+            elif expectation_name in expectations and expectations[expectation_name] is not None:
+                # For old format, we can't determine if it was optional, so include it
+                applicable.append(s)
+                if expectations[expectation_name] is True:
+                    passed.append(s)
         
         summary["expectation_pass_rates"][expectation_name] = {
             "total": len(applicable),

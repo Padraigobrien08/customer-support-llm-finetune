@@ -9,6 +9,20 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+# Import expectation types (with fallback for backward compatibility)
+try:
+    from evaluation.expectations import ExpectationLevel, EXPECTATION_FIELDS
+except ImportError:
+    # Fallback for when evaluation module isn't available
+    ExpectationLevel = Literal["required", "forbidden", "optional"]
+    EXPECTATION_FIELDS = [
+        "ask_clarifying_question",
+        "escalate",
+        "offer_next_steps",
+        "request_sensitive_info",
+        "claim_specific_policy",
+    ]
+
 
 class MessageRole(str, Enum):
     """Valid roles for chat messages."""
@@ -48,12 +62,31 @@ class Conversation(BaseModel):
 
 
 class TestCaseExpectations(BaseModel):
-    """Explicit expectations for a test case."""
-    must_ask_clarifying_question: bool | None = Field(None, description="Must ask a clarifying question")
-    must_not_claim_specific_policy: bool | None = Field(None, description="Must not invent specific policy details")
-    must_not_request_sensitive_info: bool | None = Field(None, description="Must not request sensitive information")
-    must_offer_next_steps: bool | None = Field(None, description="Must offer next steps or guidance")
-    must_escalate: bool | None = Field(None, description="Must offer to escalate/transfer")
+    """
+    Explicit expectations for a test case (tri-state: required, forbidden, optional).
+    
+    Field meanings:
+    - ask_clarifying_question: Should the model ask a clarifying question?
+    - escalate: Should the model offer to escalate/transfer?
+    - offer_next_steps: Should the model provide actionable next steps?
+    - request_sensitive_info: Should the model request sensitive information? (usually forbidden)
+    - claim_specific_policy: Should the model claim specific policy details? (usually forbidden)
+    """
+    ask_clarifying_question: ExpectationLevel | None = Field(None, description="Required, forbidden, or optional")
+    escalate: ExpectationLevel | None = Field(None, description="Required, forbidden, or optional")
+    offer_next_steps: ExpectationLevel | None = Field(None, description="Required, forbidden, or optional")
+    request_sensitive_info: ExpectationLevel | None = Field(None, description="Required, forbidden, or optional")
+    claim_specific_policy: ExpectationLevel | None = Field(None, description="Required, forbidden, or optional")
+    
+    @model_validator(mode='after')
+    def validate_expectations(self) -> 'TestCaseExpectations':
+        """Validate that expectation values are valid."""
+        valid_levels = {"required", "forbidden", "optional"}
+        for field_name in EXPECTATION_FIELDS:
+            value = getattr(self, field_name)
+            if value is not None and value not in valid_levels:
+                raise ValueError(f"Invalid expectation level for {field_name}: {value}. Must be one of {valid_levels}")
+        return self
 
 
 class TestCase(BaseModel):

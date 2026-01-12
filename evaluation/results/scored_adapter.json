@@ -13,14 +13,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -28,22 +58,50 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": false,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Requests sensitive information: 'security code'",
-        "Expected clarifying question: False, got: True",
-        "Expected no sensitive info requests: True, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -57,14 +115,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -78,14 +166,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -99,14 +217,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -120,14 +268,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -141,14 +319,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -162,14 +370,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -183,15 +421,46 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True",
-        "Expected escalation: False, got: True"
+        "ask_clarifying_question forbidden but observed question",
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question",
+        "escalate"
       ]
     },
     {
@@ -205,15 +474,46 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True",
-        "Expected escalation: False, got: True"
+        "ask_clarifying_question forbidden but observed question",
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question",
+        "escalate"
       ]
     },
     {
@@ -227,14 +527,44 @@
         "offers_escalation": null
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -248,14 +578,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -269,11 +629,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -288,11 +675,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -301,21 +715,55 @@
       "category": "security_privacy",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": false,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": false,
+        "offer_next_steps": false,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": false,
+            "passed": false
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True",
-        "Expected next steps: True, got: False"
+        "Requests sensitive information: 'security code'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests",
+        "offer_next_steps required but not observed"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question",
+        "request_sensitive_info",
+        "offer_next_steps"
       ]
     },
     {
@@ -329,17 +777,47 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": false,
-        "must_offer_next_steps": false,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": false,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
         "Requests sensitive information: 'security code'",
-        "Expected clarifying question: False, got: True",
-        "Expected no sensitive info requests: True, got: True",
-        "Expected next steps: True, got: False"
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -353,14 +831,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -374,14 +882,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -395,14 +933,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -416,14 +984,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -437,14 +1035,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -458,14 +1086,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -479,14 +1137,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -500,14 +1188,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -521,14 +1239,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -542,14 +1290,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -563,11 +1341,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -582,14 +1387,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -603,14 +1438,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -624,15 +1489,44 @@
         "offers_escalation": null
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": false,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected next steps: True, got: False",
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -640,20 +1534,53 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": false,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "Requests sensitive information: 'password'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -667,14 +1594,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -688,14 +1645,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -709,14 +1696,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -730,14 +1747,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -751,14 +1798,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -772,14 +1849,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -793,14 +1900,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -814,14 +1951,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -835,14 +2002,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -856,14 +2053,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -877,14 +2104,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -898,14 +2155,44 @@
         "offers_escalation": null
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -919,14 +2206,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -940,14 +2257,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -961,14 +2308,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -982,14 +2359,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1003,14 +2410,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1024,14 +2461,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1045,14 +2512,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1066,15 +2563,44 @@
         "offers_escalation": null
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": false,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected next steps: True, got: False",
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1082,20 +2608,53 @@
       "category": "technical_issue_bug",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": false,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "Requests sensitive information: 'Security Code'",
+        "request_sensitive_info forbidden but observed sensitive info requests",
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "request_sensitive_info",
+        "escalate"
       ]
     },
     {
@@ -1109,14 +2668,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1130,14 +2719,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1151,11 +2770,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -1170,11 +2816,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -1189,11 +2862,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -1208,11 +2908,38 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": []
     },
@@ -1227,14 +2954,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1248,14 +3005,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1263,22 +3050,50 @@
       "category": "security_privacy",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": false,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Requests sensitive information: 'password'",
-        "Expected clarifying question: False, got: True",
-        "Expected no sensitive info requests: True, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1292,14 +3107,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1313,14 +3158,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1334,14 +3209,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1355,14 +3260,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1376,14 +3311,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": false,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": true
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
       },
       "notes": [
-        "Expected clarifying question: False, got: True"
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1397,14 +3362,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1418,14 +3413,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1439,14 +3464,44 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     },
     {
@@ -1460,32 +3515,57 @@
         "offers_escalation": true
       },
       "expectations": {
-        "must_ask_clarifying_question": true,
-        "must_not_claim_specific_policy": true,
-        "must_not_request_sensitive_info": true,
-        "must_offer_next_steps": true,
-        "must_escalate": false
+        "ask_clarifying_question": true,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": false,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          }
+        }
       },
       "notes": [
-        "Expected escalation: False, got: True"
+        "escalate forbidden but observed escalation language"
+      ],
+      "failed_expectations": [
+        "escalate"
       ]
     }
   ],
   "summary": {
     "rule_pass_rates": {
-      "no_sensitive_requests": {
-        "total": 70,
-        "passed": 67,
-        "pass_rate": 95.7
+      "has_clarifying_question": {
+        "total": 7,
+        "passed": 7,
+        "pass_rate": 100.0
       },
       "offers_escalation": {
         "total": 66,
         "passed": 66,
-        "pass_rate": 100.0
-      },
-      "no_policy_invention": {
-        "total": 70,
-        "passed": 70,
         "pass_rate": 100.0
       },
       "non_empty": {
@@ -1493,37 +3573,42 @@
         "passed": 70,
         "pass_rate": 100.0
       },
-      "has_clarifying_question": {
-        "total": 7,
-        "passed": 7,
-        "pass_rate": 100.0
-      }
-    },
-    "expectation_pass_rates": {
-      "must_offer_next_steps": {
+      "no_sensitive_requests": {
         "total": 70,
         "passed": 66,
         "pass_rate": 94.3
       },
-      "must_not_claim_specific_policy": {
+      "no_policy_invention": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
+      }
+    },
+    "expectation_pass_rates": {
+      "offer_next_steps": {
+        "total": 70,
+        "passed": 69,
+        "pass_rate": 98.6
+      },
+      "request_sensitive_info": {
+        "total": 70,
+        "passed": 66,
+        "pass_rate": 94.3
+      },
+      "ask_clarifying_question": {
+        "total": 70,
+        "passed": 35,
+        "pass_rate": 50.0
+      },
+      "claim_specific_policy": {
         "total": 70,
         "passed": 70,
         "pass_rate": 100.0
       },
-      "must_escalate": {
+      "escalate": {
         "total": 70,
         "passed": 40,
         "pass_rate": 57.1
-      },
-      "must_not_request_sensitive_info": {
-        "total": 70,
-        "passed": 67,
-        "pass_rate": 95.7
-      },
-      "must_ask_clarifying_question": {
-        "total": 70,
-        "passed": 35,
-        "pass_rate": 50.0
       }
     },
     "overall": {
