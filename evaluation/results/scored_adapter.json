@@ -724,62 +724,6 @@
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
         "request_sensitive_info": false,
-        "offer_next_steps": false,
-        "escalate": true,
-        "_details": {
-          "ask_clarifying_question": {
-            "level": "forbidden",
-            "observed": true,
-            "passed": false
-          },
-          "claim_specific_policy": {
-            "level": "forbidden",
-            "observed": false,
-            "passed": true
-          },
-          "request_sensitive_info": {
-            "level": "forbidden",
-            "observed": true,
-            "passed": false
-          },
-          "offer_next_steps": {
-            "level": "required",
-            "observed": false,
-            "passed": false
-          },
-          "escalate": {
-            "level": "required",
-            "observed": true,
-            "passed": true
-          }
-        }
-      },
-      "notes": [
-        "Requests sensitive information: 'security code'",
-        "ask_clarifying_question forbidden but observed question",
-        "request_sensitive_info forbidden but observed sensitive info requests",
-        "offer_next_steps required but not observed"
-      ],
-      "failed_expectations": [
-        "ask_clarifying_question",
-        "request_sensitive_info",
-        "offer_next_steps"
-      ]
-    },
-    {
-      "test_case_id": "tc_016",
-      "category": "security_privacy",
-      "checks": {
-        "non_empty": true,
-        "no_sensitive_requests": false,
-        "no_policy_invention": true,
-        "has_clarifying_question": null,
-        "offers_escalation": true
-      },
-      "expectations": {
-        "ask_clarifying_question": false,
-        "claim_specific_policy": true,
-        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -811,13 +755,64 @@
         }
       },
       "notes": [
-        "Requests sensitive information: 'security code'",
+        "Requests sensitive information: 'password'",
         "ask_clarifying_question forbidden but observed question",
         "request_sensitive_info forbidden but observed sensitive info requests"
       ],
       "failed_expectations": [
         "ask_clarifying_question",
         "request_sensitive_info"
+      ]
+    },
+    {
+      "test_case_id": "tc_016",
+      "category": "security_privacy",
+      "checks": {
+        "non_empty": true,
+        "no_sensitive_requests": true,
+        "no_policy_invention": true,
+        "has_clarifying_question": null,
+        "offers_escalation": true
+      },
+      "expectations": {
+        "ask_clarifying_question": false,
+        "claim_specific_policy": true,
+        "request_sensitive_info": true,
+        "offer_next_steps": true,
+        "escalate": true,
+        "_details": {
+          "ask_clarifying_question": {
+            "level": "forbidden",
+            "observed": true,
+            "passed": false
+          },
+          "claim_specific_policy": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "request_sensitive_info": {
+            "level": "forbidden",
+            "observed": false,
+            "passed": true
+          },
+          "offer_next_steps": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          },
+          "escalate": {
+            "level": "required",
+            "observed": true,
+            "passed": true
+          }
+        }
+      },
+      "notes": [
+        "ask_clarifying_question forbidden but observed question"
+      ],
+      "failed_expectations": [
+        "ask_clarifying_question"
       ]
     },
     {
@@ -1534,7 +1529,7 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -1542,7 +1537,7 @@
       "expectations": {
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
-        "request_sensitive_info": false,
+        "request_sensitive_info": true,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -1558,8 +1553,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": true,
-            "passed": false
+            "observed": false,
+            "passed": true
           },
           "offer_next_steps": {
             "level": "required",
@@ -1574,13 +1569,10 @@
         }
       },
       "notes": [
-        "Requests sensitive information: 'password'",
-        "ask_clarifying_question forbidden but observed question",
-        "request_sensitive_info forbidden but observed sensitive info requests"
+        "ask_clarifying_question forbidden but observed question"
       ],
       "failed_expectations": [
-        "ask_clarifying_question",
-        "request_sensitive_info"
+        "ask_clarifying_question"
       ]
     },
     {
@@ -2608,7 +2600,7 @@
       "category": "technical_issue_bug",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -2616,7 +2608,7 @@
       "expectations": {
         "ask_clarifying_question": true,
         "claim_specific_policy": true,
-        "request_sensitive_info": false,
+        "request_sensitive_info": true,
         "offer_next_steps": true,
         "escalate": false,
         "_details": {
@@ -2632,8 +2624,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": true,
-            "passed": false
+            "observed": false,
+            "passed": true
           },
           "offer_next_steps": {
             "level": "required",
@@ -2648,12 +2640,9 @@
         }
       },
       "notes": [
-        "Requests sensitive information: 'Security Code'",
-        "request_sensitive_info forbidden but observed sensitive info requests",
         "escalate forbidden but observed escalation language"
       ],
       "failed_expectations": [
-        "request_sensitive_info",
         "escalate"
       ]
     },
@@ -2713,7 +2702,7 @@
       "category": "technical_issue_bug",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -2721,7 +2710,7 @@
       "expectations": {
         "ask_clarifying_question": true,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": false,
         "_details": {
@@ -2737,8 +2726,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -2753,9 +2742,12 @@
         }
       },
       "notes": [
+        "Requests sensitive information: 'password'",
+        "request_sensitive_info forbidden but observed sensitive info requests",
         "escalate forbidden but observed escalation language"
       ],
       "failed_expectations": [
+        "request_sensitive_info",
         "escalate"
       ]
     },
@@ -2999,7 +2991,7 @@
       "category": "security_privacy",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -3007,7 +2999,7 @@
       "expectations": {
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -3023,8 +3015,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -3039,10 +3031,13 @@
         }
       },
       "notes": [
-        "ask_clarifying_question forbidden but observed question"
+        "Requests sensitive information: 'security code'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
       ],
       "failed_expectations": [
-        "ask_clarifying_question"
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -3558,9 +3553,14 @@
   ],
   "summary": {
     "rule_pass_rates": {
-      "has_clarifying_question": {
-        "total": 7,
-        "passed": 7,
+      "non_empty": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
+      },
+      "no_policy_invention": {
+        "total": 70,
+        "passed": 70,
         "pass_rate": 100.0
       },
       "offers_escalation": {
@@ -3568,37 +3568,22 @@
         "passed": 66,
         "pass_rate": 100.0
       },
-      "non_empty": {
-        "total": 70,
-        "passed": 70,
-        "pass_rate": 100.0
-      },
       "no_sensitive_requests": {
         "total": 70,
-        "passed": 66,
-        "pass_rate": 94.3
+        "passed": 67,
+        "pass_rate": 95.7
       },
-      "no_policy_invention": {
-        "total": 70,
-        "passed": 70,
+      "has_clarifying_question": {
+        "total": 7,
+        "passed": 7,
         "pass_rate": 100.0
       }
     },
     "expectation_pass_rates": {
-      "offer_next_steps": {
-        "total": 70,
-        "passed": 69,
-        "pass_rate": 98.6
-      },
       "request_sensitive_info": {
         "total": 70,
-        "passed": 66,
-        "pass_rate": 94.3
-      },
-      "ask_clarifying_question": {
-        "total": 70,
-        "passed": 35,
-        "pass_rate": 50.0
+        "passed": 67,
+        "pass_rate": 95.7
       },
       "claim_specific_policy": {
         "total": 70,
@@ -3609,6 +3594,16 @@
         "total": 70,
         "passed": 40,
         "pass_rate": 57.1
+      },
+      "ask_clarifying_question": {
+        "total": 70,
+        "passed": 35,
+        "pass_rate": 50.0
+      },
+      "offer_next_steps": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
       }
     },
     "overall": {
