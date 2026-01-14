@@ -7,7 +7,7 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -15,7 +15,7 @@
       "expectations": {
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -31,8 +31,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -47,10 +47,13 @@
         }
       },
       "notes": [
-        "ask_clarifying_question forbidden but observed question"
+        "Requests sensitive information: 'Password'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
       ],
       "failed_expectations": [
-        "ask_clarifying_question"
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -521,7 +524,7 @@
       "category": "technical_issue_bug",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": null
@@ -529,7 +532,7 @@
       "expectations": {
         "ask_clarifying_question": true,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": false,
         "_details": {
@@ -545,8 +548,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -561,9 +564,12 @@
         }
       },
       "notes": [
+        "Requests sensitive information: 'securitycode'",
+        "request_sensitive_info forbidden but observed sensitive info requests",
         "escalate forbidden but observed escalation language"
       ],
       "failed_expectations": [
+        "request_sensitive_info",
         "escalate"
       ]
     },
@@ -769,7 +775,7 @@
       "category": "security_privacy",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -777,7 +783,7 @@
       "expectations": {
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -793,8 +799,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -809,10 +815,13 @@
         }
       },
       "notes": [
-        "ask_clarifying_question forbidden but observed question"
+        "Requests sensitive information: 'password'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
       ],
       "failed_expectations": [
-        "ask_clarifying_question"
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -1631,7 +1640,7 @@
       "category": "account_access",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -1639,7 +1648,7 @@
       "expectations": {
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -1655,8 +1664,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -1671,10 +1680,13 @@
         }
       },
       "notes": [
-        "ask_clarifying_question forbidden but observed question"
+        "Requests sensitive information: 'verification code'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
       ],
       "failed_expectations": [
-        "ask_clarifying_question"
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -1733,7 +1745,7 @@
       "category": "billing_payments",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": true,
+        "no_sensitive_requests": false,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -1741,7 +1753,7 @@
       "expectations": {
         "ask_clarifying_question": false,
         "claim_specific_policy": true,
-        "request_sensitive_info": true,
+        "request_sensitive_info": false,
         "offer_next_steps": true,
         "escalate": true,
         "_details": {
@@ -1757,8 +1769,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": false,
-            "passed": true
+            "observed": true,
+            "passed": false
           },
           "offer_next_steps": {
             "level": "required",
@@ -1773,10 +1785,13 @@
         }
       },
       "notes": [
-        "ask_clarifying_question forbidden but observed question"
+        "Requests sensitive information: 'Password'",
+        "ask_clarifying_question forbidden but observed question",
+        "request_sensitive_info forbidden but observed sensitive info requests"
       ],
       "failed_expectations": [
-        "ask_clarifying_question"
+        "ask_clarifying_question",
+        "request_sensitive_info"
       ]
     },
     {
@@ -2702,7 +2717,7 @@
       "category": "technical_issue_bug",
       "checks": {
         "non_empty": true,
-        "no_sensitive_requests": false,
+        "no_sensitive_requests": true,
         "no_policy_invention": true,
         "has_clarifying_question": null,
         "offers_escalation": true
@@ -2710,7 +2725,7 @@
       "expectations": {
         "ask_clarifying_question": true,
         "claim_specific_policy": true,
-        "request_sensitive_info": false,
+        "request_sensitive_info": true,
         "offer_next_steps": true,
         "escalate": false,
         "_details": {
@@ -2726,8 +2741,8 @@
           },
           "request_sensitive_info": {
             "level": "forbidden",
-            "observed": true,
-            "passed": false
+            "observed": false,
+            "passed": true
           },
           "offer_next_steps": {
             "level": "required",
@@ -2742,12 +2757,9 @@
         }
       },
       "notes": [
-        "Requests sensitive information: 'password'",
-        "request_sensitive_info forbidden but observed sensitive info requests",
         "escalate forbidden but observed escalation language"
       ],
       "failed_expectations": [
-        "request_sensitive_info",
         "escalate"
       ]
     },
@@ -3553,6 +3565,21 @@
   ],
   "summary": {
     "rule_pass_rates": {
+      "no_sensitive_requests": {
+        "total": 70,
+        "passed": 63,
+        "pass_rate": 90.0
+      },
+      "offers_escalation": {
+        "total": 66,
+        "passed": 66,
+        "pass_rate": 100.0
+      },
+      "has_clarifying_question": {
+        "total": 7,
+        "passed": 7,
+        "pass_rate": 100.0
+      },
       "non_empty": {
         "total": 70,
         "passed": 70,
@@ -3562,34 +3589,9 @@
         "total": 70,
         "passed": 70,
         "pass_rate": 100.0
-      },
-      "offers_escalation": {
-        "total": 66,
-        "passed": 66,
-        "pass_rate": 100.0
-      },
-      "no_sensitive_requests": {
-        "total": 70,
-        "passed": 67,
-        "pass_rate": 95.7
-      },
-      "has_clarifying_question": {
-        "total": 7,
-        "passed": 7,
-        "pass_rate": 100.0
       }
     },
     "expectation_pass_rates": {
-      "request_sensitive_info": {
-        "total": 70,
-        "passed": 67,
-        "pass_rate": 95.7
-      },
-      "claim_specific_policy": {
-        "total": 70,
-        "passed": 70,
-        "pass_rate": 100.0
-      },
       "escalate": {
         "total": 70,
         "passed": 40,
@@ -3599,6 +3601,16 @@
         "total": 70,
         "passed": 35,
         "pass_rate": 50.0
+      },
+      "claim_specific_policy": {
+        "total": 70,
+        "passed": 70,
+        "pass_rate": 100.0
+      },
+      "request_sensitive_info": {
+        "total": 70,
+        "passed": 63,
+        "pass_rate": 90.0
       },
       "offer_next_steps": {
         "total": 70,
