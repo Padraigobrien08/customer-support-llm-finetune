@@ -1,0 +1,416 @@
+[
+  {
+    "id": "manual_v2_060",
+    "title": "Where are your store locations?",
+    "messages": [
+      {
+        "id": "manual_v2_060-m1",
+        "role": "user",
+        "content": "Where are your store locations?",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_060-m2",
+        "role": "assistant",
+        "content": "I'd like to help you find our store locations. To give you the most relevant information, could you tell me which city or region you're looking for? Store locations and hours can vary by area. You can check our website's store locator page for current locations and hours, or visit our help center which has location-specific information. If you need details about a specific store's services or inventory, I can connect you with that location directly.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_138",
+    "title": "I need to update my phone number to 555-123-4567",
+    "messages": [
+      {
+        "id": "manual_v2_138-m1",
+        "role": "user",
+        "content": "I need to update my phone number to 555-123-4567",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_138-m2",
+        "role": "assistant",
+        "content": "To update your phone number to 555-123-4567, go to your account settings and select 'Profile' or 'Personal Information'. Find the phone number field and enter 555-123-4567. Click 'Save' to update. You may receive a verification code via text message to confirm the new number. Enter the code when prompted to complete the update.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_037",
+    "title": "My credit card expired, will my subscription ren...",
+    "messages": [
+      {
+        "id": "manual_037-m1",
+        "role": "user",
+        "content": "My credit card expired, will my subscription renew?",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_037-m2",
+        "role": "assistant",
+        "content": "I understand you're concerned about your subscription renewal with an expired card. To provide you with accurate information about your subscription status and help update your payment method, I'll need to connect you with our billing team who can access your account details. Would you like me to transfer you?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_076",
+    "title": "What are your shipping options?",
+    "messages": [
+      {
+        "id": "manual_v2_076-m1",
+        "role": "user",
+        "content": "What are your shipping options?",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_076-m2",
+        "role": "assistant",
+        "content": "I'd be happy to help you with shipping options. To provide you with the most accurate information, could you tell me what you're looking to ship? Shipping options and costs can vary by product type, size, and destination. You can check our website's shipping page for current options and rates, or review shipping information during checkout. If you have a specific order, I can connect you with our shipping team for detailed options. Would you like me to transfer you?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_137",
+    "title": "My payment method was declined for insufficient ...",
+    "messages": [
+      {
+        "id": "manual_v2_137-m1",
+        "role": "user",
+        "content": "My payment method was declined for insufficient funds",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_137-m2",
+        "role": "assistant",
+        "content": "The insufficient funds error means your account doesn't have enough money. Check your account balance and ensure you have sufficient funds. If using a debit card, verify your checking account has enough money. If using a credit card, check your available credit limit. You can try a different payment method if available. Once you have sufficient funds, try the purchase again.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_038",
+    "title": "I want to use a different payment method for my ...",
+    "messages": [
+      {
+        "id": "manual_038-m1",
+        "role": "user",
+        "content": "I want to use a different payment method for my next purchase",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_038-m2",
+        "role": "assistant",
+        "content": "I'd be happy to help you set up a different payment method. To ensure this is configured correctly for your account, I'll need to connect you with our billing team who can access your account and help you add or update your payment method. Would you like me to transfer you?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "synthetic_complaints_feedback_0068",
+    "title": "I'm very upset",
+    "messages": [
+      {
+        "id": "synthetic_complaints_feedback_0068-m1",
+        "role": "user",
+        "content": "I'm very upset",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_complaints_feedback_0068-m2",
+        "role": "assistant",
+        "content": "I understand your frustration, and I'm sorry this has happened. I want to help make this right and ensure your concerns are properly addressed. To properly address your concerns and work on a resolution, I'd like to connect you with someone who can review your situation, understand all the details of what occurred, help resolve this, and work with you to find a solution that addresses your specific concerns. They'll be able to ensure your voice is heard and help prevent similar issues in the future. Would that be helpful?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_065",
+    "title": "The quality of service has really declined",
+    "messages": [
+      {
+        "id": "manual_065-m1",
+        "role": "user",
+        "content": "The quality of service has really declined",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_065-m2",
+        "role": "assistant",
+        "content": "I'm sorry to hear you feel the quality of service has declined. I want to understand your concerns better so we can address them. Could you tell me more about the specific issues you've experienced? This will help me connect you with the right specialist who can work on improving your experience.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "synthetic_shipping_delivery_0213",
+    "title": "My order is late",
+    "messages": [
+      {
+        "id": "synthetic_shipping_delivery_0213-m1",
+        "role": "user",
+        "content": "My order is late",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_shipping_delivery_0213-m2",
+        "role": "assistant",
+        "content": "I'd like to help you with your order inquiry. To provide accurate tracking details, I'll need your order number. If you don't have it available, I can connect you with our order team who can find it using your email address or phone number. They'll be able to check the shipping status, provide tracking updates, help with any delivery questions or concerns you have, assist with tracking or address modifications if needed, and answer questions about shipping methods or delivery windows. Would that be helpful?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "synthetic_product_usage_howto_0125",
+    "title": "I don't understand how this works",
+    "messages": [
+      {
+        "id": "synthetic_product_usage_howto_0125-m1",
+        "role": "user",
+        "content": "I don't understand how this works",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_product_usage_howto_0125-m2",
+        "role": "assistant",
+        "content": "I'd like to help you understand how to use that. Try these steps: start by checking the help documentation in your account, look for video tutorials if available, and review any setup guides that might be provided. Navigate through the settings menu to see if there are any configuration options related to what you're trying to do. Check the frequently asked questions section for common setup issues. If these steps don't resolve your issue, could you share which device or app version you're using? This will help me direct you to the right support resources or connect you with a specialist who can provide device-specific guidance.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "synthetic_product_usage_howto_0124",
+    "title": "How do I get started?",
+    "messages": [
+      {
+        "id": "synthetic_product_usage_howto_0124-m1",
+        "role": "user",
+        "content": "How do I get started?",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_product_usage_howto_0124-m2",
+        "role": "assistant",
+        "content": "I'd like to help you understand how to use that. Try these steps: start by checking the help documentation in your account, look for video tutorials if available, and review any setup guides that might be provided. Navigate through the settings menu to see if there are any configuration options related to what you're trying to do. Check the frequently asked questions section for common setup issues. If these steps don't resolve your issue, could you share which device or app version you're using? This will help me direct you to the right support resources or connect you with a specialist who can provide device-specific guidance.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_128",
+    "title": "I want to return my order #55555 that arrived da...",
+    "messages": [
+      {
+        "id": "manual_v2_128-m1",
+        "role": "user",
+        "content": "I want to return my order #55555 that arrived damaged",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_128-m2",
+        "role": "assistant",
+        "content": "To return your damaged order #55555, go to your order details page and select 'Return Item'. Choose 'Item damaged' as the reason. We'll send you a prepaid return label. Package the damaged item securely and return it. Once we receive it, we'll process a full refund or send a replacement. Upload photos of the damage when starting the return to help us process it faster.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_129",
+    "title": "My order #66666 hasn't arrived and it's been 2 w...",
+    "messages": [
+      {
+        "id": "manual_v2_129-m1",
+        "role": "user",
+        "content": "My order #66666 hasn't arrived and it's been 2 weeks",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_129-m2",
+        "role": "assistant",
+        "content": "If your order #66666 hasn't arrived after 2 weeks, first check the tracking information in your order details. If tracking shows it's still in transit, wait a few more days as delays can occur. If tracking shows delivered but you haven't received it, check around your property and with neighbors, then contact the carrier using the tracking number. If there's no tracking update, check your spam folder for shipping notifications or contact us through the help center.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_018",
+    "title": "Your service has been terrible",
+    "messages": [
+      {
+        "id": "manual_018-m1",
+        "role": "user",
+        "content": "Your service has been terrible",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_018-m2",
+        "role": "assistant",
+        "content": "I'm truly sorry to hear about your negative experience. I want to help address your concerns. To better understand what's been happening, could you tell me more about the specific issues you've encountered? This will help me connect you with the right specialist who can work on resolving this.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_004",
+    "title": "What's your return policy?",
+    "messages": [
+      {
+        "id": "manual_v2_004-m1",
+        "role": "user",
+        "content": "What's your return policy?",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_004-m2",
+        "role": "assistant",
+        "content": "I'd be happy to help you understand our return policy. Return policies can vary based on the type of product and when it was purchased. To provide you with the most accurate information, could you tell me what type of item you're looking to return? You can also check our website's returns page for general guidelines. If you need specific details for your situation, I can connect you with our returns team.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_133",
+    "title": "I want to change my password from Password123 to...",
+    "messages": [
+      {
+        "id": "manual_v2_133-m1",
+        "role": "user",
+        "content": "I want to change my password from Password123 to NewPass456",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_133-m2",
+        "role": "assistant",
+        "content": "To change your password, log into your account and go to account settings. Select 'Security' or 'Password'. Enter your current password, then enter 'NewPass456' twice to confirm. Make sure the new password is at least 8 characters and includes a mix of letters, numbers, and special characters. Click 'Save' to update. You'll need to use your new password for future logins.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_063",
+    "title": "I want to speak to a manager",
+    "messages": [
+      {
+        "id": "manual_063-m1",
+        "role": "user",
+        "content": "I want to speak to a manager",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_063-m2",
+        "role": "assistant",
+        "content": "I understand you'd like to speak with a manager. I'd be happy to connect you with a supervisor who can address your concerns. Let me transfer you now.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_010",
+    "title": "Can you explain how this feature works?",
+    "messages": [
+      {
+        "id": "manual_010-m1",
+        "role": "user",
+        "content": "Can you explain how this feature works?",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_010-m2",
+        "role": "assistant",
+        "content": "I'd like to help you understand how that feature works. To provide you with accurate and complete information, could you tell me which specific feature you're asking about? This will help me connect you with the right resources or specialist who can explain it in detail.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_117",
+    "title": "I want to add a second shipping address to my ac...",
+    "messages": [
+      {
+        "id": "manual_v2_117-m1",
+        "role": "user",
+        "content": "I want to add a second shipping address to my account",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_117-m2",
+        "role": "assistant",
+        "content": "To add a second shipping address, go to your account settings and select 'Addresses' or 'Shipping Addresses'. Click 'Add New Address' and fill in the details for your second address. You can save multiple addresses and choose which one to use at checkout. You can set one as your default address, or select a different address for each order.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_025",
+    "title": "Can you check my account? My password is passwor...",
+    "messages": [
+      {
+        "id": "manual_v2_025-m1",
+        "role": "user",
+        "content": "Can you check my account? My password is password123.",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_025-m2",
+        "role": "assistant",
+        "content": "I understand you'd like help with your account. For your security, I cannot and will not accept passwords - please never share your password with anyone. To help you access your account, I can connect you with our account services team who can verify your identity using safe methods like email verification. They can help you reset your password if needed through the standard secure process. Would you like me to transfer you?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_109",
+    "title": "How do I enable push notifications on my iPhone?",
+    "messages": [
+      {
+        "id": "manual_v2_109-m1",
+        "role": "user",
+        "content": "How do I enable push notifications on my iPhone?",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_109-m2",
+        "role": "assistant",
+        "content": "To enable push notifications on iPhone, first make sure notifications are enabled in your iPhone settings under Notifications. Then, log into your account on our mobile app. Go to account settings within the app and find 'Notification Preferences'. Toggle on push notifications for the types you want to receive. You may need to allow notifications when the app prompts you.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_v2_037",
+    "title": "The website isn't working. Can you check my acco...",
+    "messages": [
+      {
+        "id": "manual_v2_037-m1",
+        "role": "user",
+        "content": "The website isn't working. Can you check my account? My password is secret123.",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_v2_037-m2",
+        "role": "assistant",
+        "content": "I'm sorry you're experiencing technical issues. For security reasons, I cannot and will not accept passwords - please never share your password with anyone. To help troubleshoot the website issue, could you tell me which device or browser you're using? You can also try refreshing the page or clearing your browser cache. If the issue persists, I can connect you with our technical support team who can help diagnose the problem. Would you like me to transfer you?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "manual_048",
+    "title": "I can't figure out how to use this tool",
+    "messages": [
+      {
+        "id": "manual_048-m1",
+        "role": "user",
+        "content": "I can't figure out how to use this tool",
+        "timestamp": ""
+      },
+      {
+        "id": "manual_048-m2",
+        "role": "assistant",
+        "content": "I'd like to help you with that tool. To provide you with the most accurate guidance, could you tell me which specific tool you're working with and what you're trying to accomplish? This will help me connect you with the right resources or specialist.",
+        "timestamp": ""
+      }
+    ]
+  }
+]

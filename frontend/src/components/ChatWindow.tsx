@@ -15,9 +15,15 @@ export function ChatWindow({ thread }: ChatWindowProps) {
         </p>
       </div>
       <div className="flex flex-col gap-4">
-        {thread.messages.map((message) => (
-          <MessageBubble key={message.id} message={message} />
-        ))}
+        {thread.messages.length === 0 ? (
+          <div className="rounded-2xl border border-slate-800/60 bg-slate-900/50 px-4 py-6 text-sm text-slate-400">
+            Start by typing a prompt below. This thread will show the full conversation once you send a message.
+          </div>
+        ) : (
+          thread.messages.map((message) => (
+            <MessageBubble key={message.id} message={message} />
+          ))
+        )}
       </div>
     </div>
   );

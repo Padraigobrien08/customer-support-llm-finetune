@@ -3,6 +3,7 @@ import { ThreadList } from "@/components/ThreadList";
 import { ChatWindow } from "@/components/ChatWindow";
 import { PromptComposer } from "@/components/PromptComposer";
 import { examplePrompts, initialThreads, Thread } from "@/data/threads";
+import { generateMockReply } from "@/lib/mockModel";
 
 const randomPrompt = () => {
   return examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
@@ -32,8 +33,7 @@ export default function App() {
     const placeholderResponse = {
       id: `m-${Date.now() + 1}`,
       role: "assistant" as const,
-      content:
-        "Thanks for the prompt. The UI is ready, but the model response pipeline isn't connected yet.",
+      content: generateMockReply(input.trim(), activeThread),
       timestamp: "Just now"
     };
 
@@ -42,7 +42,8 @@ export default function App() {
         thread.id === activeThread.id
           ? {
               ...thread,
-              messages: [...thread.messages, newMessage, placeholderResponse]
+              messages: [...thread.messages, newMessage, placeholderResponse],
+              scriptedReplies: thread.scriptedReplies?.slice(1)
             }
           : thread
       )
@@ -64,15 +65,7 @@ export default function App() {
     const newThread: Thread = {
       id: `thread-${nextIndex}`,
       title: `New Thread ${nextIndex}`,
-      messages: [
-        {
-          id: `m-${Date.now()}`,
-          role: "assistant",
-          content:
-            "Start a new conversation to showcase a capability or test a prompt.",
-          timestamp: "Just now"
-        }
-      ]
+      messages: []
     };
 
     setThreads((prev) => [newThread, ...prev]);
