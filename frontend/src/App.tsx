@@ -16,6 +16,7 @@ export default function App() {
   const [input, setInput] = useState("");
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const modelStatus: "connected" | "disconnected" = "disconnected";
 
   const activeThread = useMemo(
@@ -33,24 +34,40 @@ export default function App() {
       timestamp: "Just now"
     };
 
-    const placeholderResponse = {
-      id: `m-${Date.now() + 1}`,
-      role: "assistant" as const,
-      content: generateMockReply(input.trim(), activeThread),
-      timestamp: "Just now"
-    };
-
     setThreads((prev) =>
       prev.map((thread) =>
         thread.id === activeThread.id
           ? {
               ...thread,
-              messages: [...thread.messages, newMessage, placeholderResponse],
-              scriptedReplies: thread.scriptedReplies?.slice(1)
+              messages: [...thread.messages, newMessage]
             }
           : thread
       )
     );
+
+    setIsTyping(true);
+    const replyContent = generateMockReply(input.trim(), activeThread);
+    setTimeout(() => {
+      const placeholderResponse = {
+        id: `m-${Date.now() + 1}`,
+        role: "assistant" as const,
+        content: replyContent,
+        timestamp: "Just now"
+      };
+
+      setThreads((prev) =>
+        prev.map((thread) =>
+          thread.id === activeThread.id
+            ? {
+                ...thread,
+                messages: [...thread.messages, placeholderResponse],
+                scriptedReplies: thread.scriptedReplies?.slice(1)
+              }
+            : thread
+        )
+      );
+      setIsTyping(false);
+    }, 600);
 
     setInput("");
   };
@@ -95,7 +112,7 @@ export default function App() {
           status={modelStatus}
           environment="Local Demo"
         />
-        <ChatWindow thread={activeThread} />
+        <ChatWindow thread={activeThread} isTyping={isTyping} />
         <PromptComposer
           value={input}
           onChange={setInput}
