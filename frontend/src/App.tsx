@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { ThreadList } from "@/components/ThreadList";
 import { ChatWindow } from "@/components/ChatWindow";
 import { PromptComposer } from "@/components/PromptComposer";
+import { HeaderBar } from "@/components/HeaderBar";
 import { examplePrompts, initialThreads, Thread } from "@/data/threads";
 import { generateMockReply } from "@/lib/mockModel";
 
@@ -14,6 +15,7 @@ export default function App() {
   const [activeId, setActiveId] = useState(initialThreads[0]?.id ?? "");
   const [input, setInput] = useState("");
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
+  const modelStatus: "connected" | "disconnected" = "disconnected";
 
   const activeThread = useMemo(
     () => threads.find((thread) => thread.id === activeId) || threads[0],
@@ -85,6 +87,11 @@ export default function App() {
         onNewThread={handleNewThread}
       />
       <div className="flex flex-1 flex-col">
+        <HeaderBar
+          modelName="TinyLlama + LoRA Adapter"
+          status={modelStatus}
+          environment="Local Demo"
+        />
         <ChatWindow thread={activeThread} />
         <PromptComposer
           value={input}
