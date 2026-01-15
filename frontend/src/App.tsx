@@ -17,6 +17,19 @@ export default function App() {
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [threadSearch, setThreadSearch] = useState("");
+
+  const filteredThreads = useMemo(() => {
+    if (!threadSearch.trim()) return threads;
+    const query = threadSearch.toLowerCase();
+    return threads.filter((thread) => {
+      const lastMessage = thread.messages[thread.messages.length - 1]?.content || "";
+      return (
+        thread.title.toLowerCase().includes(query) ||
+        lastMessage.toLowerCase().includes(query)
+      );
+    });
+  }, [threads, threadSearch]);
   const modelStatus: "connected" | "disconnected" = "disconnected";
 
   const activeThread = useMemo(
@@ -99,12 +112,14 @@ export default function App() {
   return (
     <div className="flex h-screen w-full bg-background text-foreground">
       <ThreadList
-        threads={threads}
+        threads={filteredThreads}
         activeId={activeId}
         onSelect={setActiveId}
         onNewThread={handleNewThread}
         collapsed={sidebarCollapsed}
         onToggleCollapse={() => setSidebarCollapsed((prev) => !prev)}
+        searchValue={threadSearch}
+        onSearchChange={setThreadSearch}
       />
       <div className="flex flex-1 flex-col">
         <HeaderBar

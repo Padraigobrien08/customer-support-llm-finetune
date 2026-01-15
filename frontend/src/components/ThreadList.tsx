@@ -1,7 +1,8 @@
-import { MessageSquarePlus, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { MessageSquarePlus, PanelLeftClose, PanelLeftOpen, Search } from "lucide-react";
 import { Thread } from "@/data/threads";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 interface ThreadListProps {
   threads: Thread[];
@@ -10,6 +11,8 @@ interface ThreadListProps {
   onNewThread: () => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
+  searchValue: string;
+  onSearchChange: (value: string) => void;
 }
 
 export function ThreadList({
@@ -18,7 +21,9 @@ export function ThreadList({
   onSelect,
   onNewThread,
   collapsed,
-  onToggleCollapse
+  onToggleCollapse,
+  searchValue,
+  onSearchChange
 }: ThreadListProps) {
   return (
     <aside
@@ -55,6 +60,17 @@ export function ThreadList({
         )}
       </div>
 
+      {!collapsed && (
+        <div className="mb-4 flex items-center gap-2 rounded-lg border border-slate-800/70 bg-slate-900/50 px-3 py-2">
+          <Search className="h-4 w-4 text-slate-500" />
+          <Input
+            value={searchValue}
+            onChange={(event) => onSearchChange(event.target.value)}
+            placeholder="Search threads..."
+            className="h-8 border-0 bg-transparent px-0 py-0 text-xs focus-visible:ring-0"
+          />
+        </div>
+      )}
       <div className="space-y-2 overflow-y-auto pb-4">
         {threads.map((thread) => (
           <button
@@ -82,6 +98,11 @@ export function ThreadList({
             )}
           </button>
         ))}
+        {!threads.length && (
+          <div className="rounded-lg border border-slate-800/60 bg-slate-900/40 px-3 py-2 text-xs text-slate-500">
+            No threads match your search.
+          </div>
+        )}
       </div>
     </aside>
   );
