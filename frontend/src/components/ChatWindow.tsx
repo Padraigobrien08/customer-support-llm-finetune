@@ -6,13 +6,17 @@ interface ChatWindowProps {
   isTyping?: boolean;
   onClearThread: () => void;
   onRenameThread: (title: string) => void;
+  examplePrompts: string[];
+  onSelectPrompt: (prompt: string) => void;
 }
 
 export function ChatWindow({
   thread,
   isTyping = false,
   onClearThread,
-  onRenameThread
+  onRenameThread,
+  examplePrompts,
+  onSelectPrompt
 }: ChatWindowProps) {
   return (
     <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-6 py-6">
@@ -46,7 +50,20 @@ export function ChatWindow({
       <div className="flex flex-col gap-4">
         {thread.messages.length === 0 ? (
           <div className="rounded-2xl border border-slate-800/60 bg-slate-900/50 px-4 py-6 text-sm text-slate-400">
-            Start by typing a prompt below. This thread will show the full conversation once you send a message.
+            <div className="mb-3 text-sm font-medium text-slate-300">
+              Start by typing a prompt below or try one of these:
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {examplePrompts.map((prompt) => (
+                <button
+                  key={prompt}
+                  className="rounded-full border border-slate-800/70 bg-slate-950/70 px-3 py-1 text-xs text-slate-300 hover:text-slate-100"
+                  onClick={() => onSelectPrompt(prompt)}
+                >
+                  {prompt}
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           thread.messages.map((message) => (

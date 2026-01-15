@@ -148,6 +148,8 @@ export default function App() {
           isTyping={isTyping}
           onClearThread={handleClearThread}
           onRenameThread={handleRenameThread}
+          examplePrompts={examplePrompts}
+          onSelectPrompt={(prompt) => setInput(prompt)}
         />
         <PromptComposer
           value={input}
