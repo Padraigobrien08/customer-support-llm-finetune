@@ -15,6 +15,7 @@ export default function App() {
   const [activeId, setActiveId] = useState(initialThreads[0]?.id ?? "");
   const [input, setInput] = useState("");
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const modelStatus: "connected" | "disconnected" = "disconnected";
 
   const activeThread = useMemo(
@@ -85,6 +86,8 @@ export default function App() {
         activeId={activeId}
         onSelect={setActiveId}
         onNewThread={handleNewThread}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed((prev) => !prev)}
       />
       <div className="flex flex-1 flex-col">
         <HeaderBar
