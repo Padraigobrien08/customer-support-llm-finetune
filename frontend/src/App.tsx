@@ -109,6 +109,22 @@ export default function App() {
     return null;
   }
 
+  const handleClearThread = () => {
+    setThreads((prev) =>
+      prev.map((thread) =>
+        thread.id === activeThread.id ? { ...thread, messages: [] } : thread
+      )
+    );
+  };
+
+  const handleRenameThread = (title: string) => {
+    setThreads((prev) =>
+      prev.map((thread) =>
+        thread.id === activeThread.id ? { ...thread, title } : thread
+      )
+    );
+  };
+
   return (
     <div className="flex h-screen w-full bg-background text-foreground">
       <ThreadList
@@ -127,7 +143,12 @@ export default function App() {
           status={modelStatus}
           environment="Local Demo"
         />
-        <ChatWindow thread={activeThread} isTyping={isTyping} />
+        <ChatWindow
+          thread={activeThread}
+          isTyping={isTyping}
+          onClearThread={handleClearThread}
+          onRenameThread={handleRenameThread}
+        />
         <PromptComposer
           value={input}
           onChange={setInput}
