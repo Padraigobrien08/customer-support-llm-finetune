@@ -35,11 +35,9 @@ export function MessageBubble({ message }: MessageBubbleProps) {
             ? "bg-sky-400/20 text-sky-100"
             : "bg-slate-900/70 text-slate-100"
         )}
+        title={message.timestamp ? `Sent ${message.timestamp}` : undefined}
       >
         <p>{message.content}</p>
-        <span className="mt-2 block text-[10px] uppercase tracking-wide text-slate-500">
-          {message.timestamp}
-        </span>
       </div>
       <div
         className={cn(
