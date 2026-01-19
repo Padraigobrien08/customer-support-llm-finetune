@@ -18,6 +18,7 @@ export function ChatWindow({
   examplePrompts,
   onSelectPrompt
 }: ChatWindowProps) {
+  const lastMessage = thread.messages[thread.messages.length - 1];
   return (
     <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-6 py-6">
       <div className="flex items-center justify-between">
@@ -26,6 +27,14 @@ export function ChatWindow({
           <p className="text-xs text-slate-500">
             Demo thread showing model capability
           </p>
+        </div>
+        <div className="flex items-center gap-2 text-[10px] text-slate-500">
+          <span className="rounded-full border border-slate-800/70 bg-slate-900/60 px-2 py-1 text-slate-300">
+            {thread.messages.length} messages
+          </span>
+          <span>
+            Last activity: {lastMessage?.timestamp || "—"}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <button
