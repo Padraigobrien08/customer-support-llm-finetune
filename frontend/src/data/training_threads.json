@@ -412,5 +412,59 @@
         "timestamp": ""
       }
     ]
+  },
+  {
+    "id": "synthetic_account_access_0001",
+    "title": "I changed phones and can't get the 2FA code",
+    "messages": [
+      {
+        "id": "synthetic_account_access_0001-m1",
+        "role": "user",
+        "content": "I changed phones and can't get the 2FA code.",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_account_access_0001-m2",
+        "role": "assistant",
+        "content": "I can help with that. If you still have access to your old phone or authenticator app, open your account security settings and update your two-factor method to the new device. If you don't, use a backup code if you saved one during setup. If neither is available, I can connect you with our account security team to verify your identity and restore access. Do you still have access to any backup codes?",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "synthetic_billing_refund_0002",
+    "title": "I was charged twice for my order",
+    "messages": [
+      {
+        "id": "synthetic_billing_refund_0002-m1",
+        "role": "user",
+        "content": "I was charged twice for my order 7843.",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_billing_refund_0002-m2",
+        "role": "assistant",
+        "content": "I'm sorry about that. Sometimes one of the charges is a temporary authorization that drops off within a few business days. To confirm, check if both charges are finalized (not pending). If they are, I can open a billing review to refund the duplicate charge. Please confirm whether both charges are posted and the date of the charges so I can help next.",
+        "timestamp": ""
+      }
+    ]
+  },
+  {
+    "id": "synthetic_shipping_address_0003",
+    "title": "Can I change the delivery address after ordering?",
+    "messages": [
+      {
+        "id": "synthetic_shipping_address_0003-m1",
+        "role": "user",
+        "content": "Can I change the delivery address after ordering?",
+        "timestamp": ""
+      },
+      {
+        "id": "synthetic_shipping_address_0003-m2",
+        "role": "assistant",
+        "content": "If the order hasn't shipped yet, you can update the delivery address from your order details page. If it has shipped, we can request an address change with the carrier, though not all carriers allow it. Share your order number and I can check the status and next steps.",
+        "timestamp": ""
+      }
+    ]
   }
 ]

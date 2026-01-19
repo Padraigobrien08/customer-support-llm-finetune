@@ -83,6 +83,7 @@ export function ThreadList({
                 ? "border-slate-700/80 bg-slate-900/70 text-slate-100"
                 : "text-slate-400 hover:bg-slate-900/50"
             )}
+            title={thread.title}
           >
             {collapsed ? (
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900/60 text-xs font-semibold uppercase text-slate-200">
@@ -90,9 +91,19 @@ export function ThreadList({
               </div>
             ) : (
               <>
-                <div className="font-medium text-slate-200">{thread.title}</div>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="font-medium text-slate-200">{thread.title}</div>
+                    <span className="rounded-full border border-slate-800/70 bg-slate-900/60 px-2 py-0.5 text-[10px] text-slate-300">
+                      {thread.messages.length}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-slate-500">
+                    {thread.messages[thread.messages.length - 1]?.timestamp || "—"}
+                  </span>
+                </div>
                 <div className="mt-1 line-clamp-1 text-xs text-slate-500">
-                  {thread.messages[thread.messages.length - 1]?.content}
+                  {thread.messages[thread.messages.length - 1]?.content || "No messages yet."}
                 </div>
               </>
             )}

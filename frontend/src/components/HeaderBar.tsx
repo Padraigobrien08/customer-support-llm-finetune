@@ -45,7 +45,7 @@ export function HeaderBar({ modelName, status, environment }: HeaderBarProps) {
             )}
           />
           <Plug className="h-3 w-3" />
-          {isConnected ? "Connected" : "Disconnected"}
+          {isConnected ? "Connected" : "Demo mode (not connected)"}
         </span>
       </div>
     </header>
