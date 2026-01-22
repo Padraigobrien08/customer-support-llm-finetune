@@ -40,7 +40,7 @@ tokenizer = None
 device = "cpu"
 supports_chat_template = False
 system_prompt = None
-default_max_new_tokens = 160
+default_max_new_tokens = 512
 
 
 def format_messages_simple(
@@ -75,7 +75,7 @@ def load_model() -> None:
     model_id = os.getenv("MODEL_ID", "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
     adapter_dir_env = os.getenv("ADAPTER_DIR", "outputs/smoke_001")
     device_env = os.getenv("DEVICE", "auto")
-    default_max_new_tokens = int(os.getenv("MAX_NEW_TOKENS", "160"))
+    default_max_new_tokens = int(os.getenv("MAX_NEW_TOKENS", "512"))
 
     project_root = Path(__file__).parent.parent
     adapter_dir = Path(adapter_dir_env)
