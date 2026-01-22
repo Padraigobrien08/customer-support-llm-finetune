@@ -6,6 +6,8 @@
 
 # Core dependencies
 pydantic>=2.0.0
+fastapi>=0.110.0
+uvicorn>=0.23.0
 
 # ML/AI framework dependencies
 # torch: CPU/MPS builds (no CUDA extras) - works on Apple Silicon and CPU

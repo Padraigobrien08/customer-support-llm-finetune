@@ -1,10 +1,11 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ThreadList } from "@/components/ThreadList";
 import { ChatWindow } from "@/components/ChatWindow";
 import { PromptComposer } from "@/components/PromptComposer";
 import { HeaderBar } from "@/components/HeaderBar";
 import { examplePrompts, initialThreads, Thread } from "@/data/threads";
 import { generateMockReply } from "@/lib/mockModel";
+import { checkModelHealth, generateModelReply } from "@/lib/modelApi";
 
 const randomPrompt = () => {
   return examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
@@ -18,6 +19,9 @@ export default function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [threadSearch, setThreadSearch] = useState("");
+  const [modelStatus, setModelStatus] = useState<"connected" | "disconnected">(
+    "disconnected"
+  );
 
   const filteredThreads = useMemo(() => {
     if (!threadSearch.trim()) return threads;
@@ -30,14 +34,30 @@ export default function App() {
       );
     });
   }, [threads, threadSearch]);
-  const modelStatus: "connected" | "disconnected" = "disconnected";
+  useEffect(() => {
+    let isMounted = true;
+    checkModelHealth()
+      .then((isHealthy) => {
+        if (isMounted) {
+          setModelStatus(isHealthy ? "connected" : "disconnected");
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setModelStatus("disconnected");
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const activeThread = useMemo(
     () => threads.find((thread) => thread.id === activeId) || threads[0],
     [threads, activeId]
   );
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim() || !activeThread) return;
 
     const newMessage = {
@@ -59,28 +79,36 @@ export default function App() {
     );
 
     setIsTyping(true);
-    const replyContent = generateMockReply(input.trim(), activeThread);
-    setTimeout(() => {
-      const placeholderResponse = {
-        id: `m-${Date.now() + 1}`,
-        role: "assistant" as const,
-        content: replyContent,
-        timestamp: "Just now"
-      };
+    const messagesForModel = [...activeThread.messages, newMessage];
+    let replyContent = "";
 
-      setThreads((prev) =>
-        prev.map((thread) =>
-          thread.id === activeThread.id
-            ? {
-                ...thread,
-                messages: [...thread.messages, placeholderResponse],
-                scriptedReplies: thread.scriptedReplies?.slice(1)
-              }
-            : thread
-        )
-      );
-      setIsTyping(false);
-    }, 600);
+    try {
+      replyContent = await generateModelReply(messagesForModel);
+      setModelStatus("connected");
+    } catch {
+      replyContent = generateMockReply(input.trim(), activeThread);
+      setModelStatus("disconnected");
+    }
+
+    const placeholderResponse = {
+      id: `m-${Date.now() + 1}`,
+      role: "assistant" as const,
+      content: replyContent,
+      timestamp: "Just now"
+    };
+
+    setThreads((prev) =>
+      prev.map((thread) =>
+        thread.id === activeThread.id
+          ? {
+              ...thread,
+              messages: [...thread.messages, placeholderResponse],
+              scriptedReplies: thread.scriptedReplies?.slice(1)
+            }
+          : thread
+      )
+    );
+    setIsTyping(false);
 
     setInput("");
   };
