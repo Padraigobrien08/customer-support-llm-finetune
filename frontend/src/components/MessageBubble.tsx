@@ -1,7 +1,7 @@
 import { Copy, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useState } from "react";
 import { Message } from "@/data/threads";
-import { cn } from "@/lib/utils";
+import { cn, linkifyText } from "@/lib/utils";
 
 interface MessageBubbleProps {
   message: Message;
@@ -37,7 +37,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         )}
         title={message.timestamp ? `Sent ${message.timestamp}` : undefined}
       >
-        <p>{message.content}</p>
+        <p className="whitespace-pre-wrap break-words">{linkifyText(message.content)}</p>
       </div>
       <div
         className={cn(
