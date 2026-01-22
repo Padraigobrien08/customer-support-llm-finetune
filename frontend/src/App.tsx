@@ -11,6 +11,19 @@ const randomPrompt = () => {
   return examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
 };
 
+const generateThreadTitle = (firstMessage: string): string => {
+  // Clean up the message and truncate to a reasonable length
+  const cleaned = firstMessage.trim();
+  const maxLength = 60;
+  if (cleaned.length <= maxLength) {
+    return cleaned;
+  }
+  // Truncate at the last space before maxLength to avoid cutting words
+  const truncated = cleaned.substring(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(" ");
+  return lastSpace > 0 ? truncated.substring(0, lastSpace) + "..." : truncated + "...";
+};
+
 export default function App() {
   const [threads, setThreads] = useState<Thread[]>(initialThreads);
   const [activeId, setActiveId] = useState(initialThreads[0]?.id ?? "");
@@ -67,12 +80,17 @@ export default function App() {
       timestamp: "Just now"
     };
 
+    // Auto-rename thread if this is the first message
+    const isFirstMessage = activeThread.messages.length === 0;
+    const shouldAutoRename = isFirstMessage && activeThread.title.startsWith("New Thread");
+
     setThreads((prev) =>
       prev.map((thread) =>
         thread.id === activeThread.id
           ? {
               ...thread,
-              messages: [...thread.messages, newMessage]
+              messages: [...thread.messages, newMessage],
+              ...(shouldAutoRename && { title: generateThreadTitle(input.trim()) })
             }
           : thread
       )
