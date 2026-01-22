@@ -29,7 +29,7 @@ export function ThreadList({
     <aside
       className={cn(
         "flex h-full flex-col border-r border-slate-800/70 bg-slate-950/80 py-6 transition-all duration-200",
-        collapsed ? "w-16 px-2" : "w-72 px-4"
+        collapsed ? "w-16 px-2" : "w-80 px-4"
       )}
     >
       <div className={cn("mb-6 flex items-center", collapsed ? "flex-col gap-3" : "justify-between")}>
