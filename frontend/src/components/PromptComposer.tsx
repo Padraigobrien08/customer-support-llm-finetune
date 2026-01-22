@@ -40,9 +40,6 @@ export function PromptComposer({
           </Button>
         </div>
       </div>
-      <p className="mt-2 text-xs text-slate-500">
-        Model backend connection is not wired yet. This UI is ready for integration.
-      </p>
     </div>
   );
 }
