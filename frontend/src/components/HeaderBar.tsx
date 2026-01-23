@@ -1,13 +1,15 @@
 import { Cpu, Plug } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
 interface HeaderBarProps {
   modelName: string;
   status: "connected" | "disconnected";
   environment?: string;
+  settingsButton?: ReactNode;
 }
 
-export function HeaderBar({ modelName, status, environment }: HeaderBarProps) {
+export function HeaderBar({ modelName, status, environment, settingsButton }: HeaderBarProps) {
   const isConnected = status === "connected";
 
   return (
@@ -30,6 +32,7 @@ export function HeaderBar({ modelName, status, environment }: HeaderBarProps) {
             {environment}
           </span>
         )}
+        {settingsButton}
         <span
           className={cn(
             "flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium",

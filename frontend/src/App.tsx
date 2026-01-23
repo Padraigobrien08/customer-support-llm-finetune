@@ -3,6 +3,7 @@ import { ThreadList } from "@/components/ThreadList";
 import { ChatWindow } from "@/components/ChatWindow";
 import { PromptComposer } from "@/components/PromptComposer";
 import { HeaderBar } from "@/components/HeaderBar";
+import { SettingsPanel, type GenerationSettings } from "@/components/SettingsPanel";
 import { examplePrompts, initialThreads, Thread } from "@/data/threads";
 import { generateMockReply } from "@/lib/mockModel";
 import { checkModelHealth, generateModelReply } from "@/lib/modelApi";
@@ -35,6 +36,13 @@ export default function App() {
   const [modelStatus, setModelStatus] = useState<"connected" | "disconnected">(
     "disconnected"
   );
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [generationSettings, setGenerationSettings] = useState<GenerationSettings>({
+    maxNewTokens: 250,
+    temperature: 0.6,
+    topP: 0.85,
+    repetitionPenalty: 1.5
+  });
 
   const filteredThreads = useMemo(() => {
     if (!threadSearch.trim()) return threads;
@@ -101,7 +109,7 @@ export default function App() {
     let replyContent = "";
 
     try {
-      replyContent = await generateModelReply(messagesForModel);
+      replyContent = await generateModelReply(messagesForModel, generationSettings);
       setModelStatus("connected");
     } catch {
       replyContent = generateMockReply(input.trim(), activeThread);
@@ -188,6 +196,14 @@ export default function App() {
           modelName="TinyLlama + LoRA Adapter"
           status={modelStatus}
           environment="Local Demo"
+          settingsButton={
+            <SettingsPanel
+              settings={generationSettings}
+              onSettingsChange={setGenerationSettings}
+              isOpen={settingsOpen}
+              onToggle={() => setSettingsOpen((prev) => !prev)}
+            />
+          }
         />
         <ChatWindow
           thread={activeThread}

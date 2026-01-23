@@ -1,7 +1,7 @@
-import { Copy, ThumbsDown, ThumbsUp, UserPlus, HelpCircle } from "lucide-react";
+import { Copy, ThumbsDown, ThumbsUp, UserPlus, HelpCircle, ListOrdered, Info, CheckCircle2, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { Message } from "@/data/threads";
-import { cn, linkifyText, detectAction } from "@/lib/utils";
+import { cn, linkifyText, detectAction, assessResponseQuality } from "@/lib/utils";
 
 interface MessageBubbleProps {
   message: Message;
@@ -11,6 +11,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.role === "user";
   const [copied, setCopied] = useState(false);
   const detectedAction = !isUser ? detectAction(message.content) : null;
+  const quality = !isUser ? assessResponseQuality(message.content) : null;
 
   const handleCopy = async () => {
     try {
@@ -39,23 +40,56 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         title={message.timestamp ? `Sent ${message.timestamp}` : undefined}
       >
         <p className="whitespace-pre-wrap break-words">{linkifyText(message.content)}</p>
-        {detectedAction && (
-          <div
-            className={cn(
-              "mt-2 flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
-              detectedAction.type === "escalation"
-                ? "bg-amber-500/20 text-amber-300"
-                : "bg-blue-500/20 text-blue-300"
-            )}
-          >
-            {detectedAction.type === "escalation" ? (
-              <UserPlus className="h-3 w-3" />
-            ) : (
-              <HelpCircle className="h-3 w-3" />
-            )}
-            <span>{detectedAction.label}</span>
-          </div>
-        )}
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {quality && quality.score < 70 && (
+            <div
+              className={cn(
+                "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
+                quality.score >= 50
+                  ? "bg-yellow-500/20 text-yellow-300"
+                  : "bg-red-500/20 text-red-300"
+              )}
+              title={quality.issues.join(", ")}
+            >
+              <AlertCircle className="h-3 w-3" />
+              <span>Quality: {quality.score}%</span>
+            </div>
+          )}
+          {quality && quality.score >= 70 && quality.strengths.length > 0 && (
+            <div
+              className="flex items-center gap-1.5 rounded-full bg-green-500/20 px-2.5 py-1 text-xs font-medium text-green-300"
+              title={quality.strengths.join(", ")}
+            >
+              <CheckCircle2 className="h-3 w-3" />
+              <span>Good quality</span>
+            </div>
+          )}
+          {detectedAction && (
+            <div
+              className={cn(
+                "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
+                detectedAction.type === "escalation"
+                  ? "bg-amber-500/20 text-amber-300"
+                  : detectedAction.type === "clarification"
+                  ? "bg-blue-500/20 text-blue-300"
+                  : detectedAction.type === "instructions"
+                  ? "bg-green-500/20 text-green-300"
+                  : "bg-purple-500/20 text-purple-300"
+              )}
+            >
+              {detectedAction.type === "escalation" ? (
+                <UserPlus className="h-3 w-3" />
+              ) : detectedAction.type === "clarification" ? (
+                <HelpCircle className="h-3 w-3" />
+              ) : detectedAction.type === "instructions" ? (
+                <ListOrdered className="h-3 w-3" />
+              ) : (
+                <Info className="h-3 w-3" />
+              )}
+              <span>{detectedAction.label}</span>
+            </div>
+          )}
+        </div>
       </div>
       <div
         className={cn(

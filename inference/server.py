@@ -20,6 +20,9 @@ class Message(BaseModel):
 class GenerateRequest(BaseModel):
     messages: list[Message]
     max_new_tokens: int | None = None
+    temperature: float | None = None
+    top_p: float | None = None
+    repetition_penalty: float | None = None
 
 
 class GenerateResponse(BaseModel):
@@ -287,15 +290,18 @@ def generate_reply(payload: GenerateRequest) -> GenerateResponse:
 
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
     max_new_tokens = payload.max_new_tokens or default_max_new_tokens
+    temperature = payload.temperature if payload.temperature is not None else 0.6
+    top_p = payload.top_p if payload.top_p is not None else 0.85
+    repetition_penalty = payload.repetition_penalty if payload.repetition_penalty is not None else 1.5
 
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,
             do_sample=True,
-            temperature=0.6,
-            top_p=0.85,
-            repetition_penalty=1.5,
+            temperature=temperature,
+            top_p=top_p,
+            repetition_penalty=repetition_penalty,
             pad_token_id=tokenizer.pad_token_id,
             eos_token_id=tokenizer.eos_token_id,
             no_repeat_ngram_size=4,
