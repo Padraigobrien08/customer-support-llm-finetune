@@ -81,6 +81,93 @@ def _clean_response(text: str) -> str:
     
     import re
     
+    # Common typos dictionary - fix common misspellings
+    common_typos = {
+        'privaccy': 'privacy',
+        'privicy': 'privacy',
+        'privacey': 'privacy',
+        'securtiy': 'security',
+        'securty': 'security',
+        'acount': 'account',
+        'acccount': 'account',
+        'acounts': 'accounts',
+        'setings': 'settings',
+        'seting': 'setting',
+        'notifcations': 'notifications',
+        'notificatons': 'notifications',
+        'preferances': 'preferences',
+        'preferneces': 'preferences',
+        'passowrd': 'password',
+        'passwrod': 'password',
+        'passord': 'password',
+        'passwords': 'passwords',  # Keep plural
+        'verificaton': 'verification',
+        'verifictaion': 'verification',
+        'authenitcation': 'authentication',
+        'authenication': 'authentication',
+        'subscritpion': 'subscription',
+        'subscripion': 'subscription',
+        'subscritption': 'subscription',
+        'cancellaton': 'cancellation',
+        'cancelation': 'cancellation',
+        'cancelltion': 'cancellation',
+        'refund': 'refund',  # Keep correct
+        'refunds': 'refunds',
+        'shiping': 'shipping',
+        'shippng': 'shipping',
+        'delivry': 'delivery',
+        'deliverey': 'delivery',
+        'trackng': 'tracking',
+        'trakcing': 'tracking',
+        'paymnet': 'payment',
+        'paymet': 'payment',
+        'paymnt': 'payment',
+        'billng': 'billing',
+        'bililng': 'billing',
+        'infromation': 'information',
+        'informtaion': 'information',
+        'infromtaion': 'information',
+        'questoin': 'question',
+        'quesiton': 'question',
+        'questons': 'questions',
+        'quesitons': 'questions',
+        'assistnat': 'assistant',
+        'assitant': 'assistant',
+        'asssistant': 'assistant',
+        'suport': 'support',
+        'supprot': 'support',
+        'suuport': 'support',
+        'troubleshootng': 'troubleshooting',
+        'troubleshoting': 'troubleshooting',
+        'troubleshootin': 'troubleshooting',
+        'feautre': 'feature',
+        'featue': 'feature',
+        'feauture': 'feature',
+        'feautres': 'features',
+        'featues': 'features',
+        'feautures': 'features',
+    }
+    
+    # Fix common typos (case-insensitive word boundary matching)
+    words = text.split()
+    fixed_words = []
+    for word in words:
+        # Remove punctuation temporarily for checking
+        word_lower = word.lower().rstrip('.,!?;:')
+        punctuation = word[len(word_lower):] if len(word) > len(word_lower) else ''
+        
+        if word_lower in common_typos:
+            # Preserve original capitalization pattern
+            if word[0].isupper():
+                fixed = common_typos[word_lower].capitalize()
+            else:
+                fixed = common_typos[word_lower]
+            fixed_words.append(fixed + punctuation)
+        else:
+            fixed_words.append(word)
+    
+    text = ' '.join(fixed_words)
+    
     # Normalize whitespace (multiple spaces, tabs, newlines)
     text = re.sub(r'\s+', ' ', text).strip()
     
@@ -165,6 +252,21 @@ def _clean_response(text: str) -> str:
                                 break
                 if found_repetition:
                     break
+    
+    # Remove nonsensical phrases that don't make sense in context
+    nonsensical_phrases = [
+        r'\bboth\s+fingers\b',  # "both fingers" doesn't make sense for passwords
+        r'\busing\s+both\s+fingers\b',
+        r'\bwith\s+both\s+fingers\b',
+        r'\benter\s+.*\s+twice\s+using\s+both\s+fingers\b',
+        r'\bclick\s+.*\s+with\s+both\s+fingers\b',
+    ]
+    
+    for pattern in nonsensical_phrases:
+        text = re.sub(pattern, '', text, flags=re.IGNORECASE)
+    
+    # Clean up any double spaces created by removals
+    text = re.sub(r'\s+', ' ', text).strip()
     
     # Remove common rambling patterns
     # Look for phrases that suggest the response is going off-topic
