@@ -81,92 +81,66 @@ def _clean_response(text: str) -> str:
     
     import re
     
-    # Common typos dictionary - fix common misspellings
-    common_typos = {
-        'privaccy': 'privacy',
-        'privicy': 'privacy',
-        'privacey': 'privacy',
-        'securtiy': 'security',
-        'securty': 'security',
-        'acount': 'account',
-        'acccount': 'account',
-        'acounts': 'accounts',
-        'setings': 'settings',
-        'seting': 'setting',
-        'notifcations': 'notifications',
-        'notificatons': 'notifications',
-        'preferances': 'preferences',
-        'preferneces': 'preferences',
-        'passowrd': 'password',
-        'passwrod': 'password',
-        'passord': 'password',
-        'passwords': 'passwords',  # Keep plural
-        'verificaton': 'verification',
-        'verifictaion': 'verification',
-        'authenitcation': 'authentication',
-        'authenication': 'authentication',
-        'subscritpion': 'subscription',
-        'subscripion': 'subscription',
-        'subscritption': 'subscription',
-        'cancellaton': 'cancellation',
-        'cancelation': 'cancellation',
-        'cancelltion': 'cancellation',
-        'refund': 'refund',  # Keep correct
-        'refunds': 'refunds',
-        'shiping': 'shipping',
-        'shippng': 'shipping',
-        'delivry': 'delivery',
-        'deliverey': 'delivery',
-        'trackng': 'tracking',
-        'trakcing': 'tracking',
-        'paymnet': 'payment',
-        'paymet': 'payment',
-        'paymnt': 'payment',
-        'billng': 'billing',
-        'bililng': 'billing',
-        'infromation': 'information',
-        'informtaion': 'information',
-        'infromtaion': 'information',
-        'questoin': 'question',
-        'quesiton': 'question',
-        'questons': 'questions',
-        'quesitons': 'questions',
-        'assistnat': 'assistant',
-        'assitant': 'assistant',
-        'asssistant': 'assistant',
-        'suport': 'support',
-        'supprot': 'support',
-        'suuport': 'support',
-        'troubleshootng': 'troubleshooting',
-        'troubleshoting': 'troubleshooting',
-        'troubleshootin': 'troubleshooting',
-        'feautre': 'feature',
-        'featue': 'feature',
-        'feauture': 'feature',
-        'feautres': 'features',
-        'featues': 'features',
-        'feautures': 'features',
-    }
+    # Use spell checker for automatic typo correction
+    try:
+        from spellchecker import SpellChecker
+        spell = SpellChecker()
+        # Add domain-specific words to dictionary to avoid false positives
+        domain_words = [
+            'password', 'passwords', 'account', 'accounts', 'settings', 'privacy', 'security',
+            'verification', 'authentication', 'subscription', 'cancellation', 'refund', 'refunds',
+            'shipping', 'delivery', 'tracking', 'payment', 'billing', 'information', 'question',
+            'questions', 'assistant', 'support', 'troubleshooting', 'feature', 'features',
+            'notifications', 'preferences', 'order', 'orders', 'email', 'phone', 'address',
+            'manager', 'supervisor', 'specialist', 'team', 'technical', 'billing', 'account',
+            'reset', 'update', 'change', 'cancel', 'return', 'track', 'check', 'verify',
+            'connect', 'transfer', 'escalate', 'help', 'assist', 'resolve', 'issue', 'problem'
+        ]
+        for word in domain_words:
+            spell.word_frequency.load_words([word])
+    except ImportError:
+        # Fallback: if spellchecker not available, use minimal correction
+        spell = None
     
-    # Fix common typos (case-insensitive word boundary matching)
-    words = text.split()
-    fixed_words = []
-    for word in words:
-        # Remove punctuation temporarily for checking
-        word_lower = word.lower().rstrip('.,!?;:')
-        punctuation = word[len(word_lower):] if len(word) > len(word_lower) else ''
-        
-        if word_lower in common_typos:
-            # Preserve original capitalization pattern
-            if word[0].isupper():
-                fixed = common_typos[word_lower].capitalize()
+    # Fix typos using spell checker (only for words that are clearly misspelled)
+    if spell:
+        words = text.split()
+        fixed_words = []
+        for word in words:
+            # Extract word without punctuation
+            word_match = re.match(r'([\w\']+)([^\w\']*)', word)
+            if word_match:
+                word_part = word_match.group(1)
+                punctuation = word_match.group(2) if word_match.group(2) else ''
+                
+                # Skip very short words, numbers, and URLs
+                if len(word_part) <= 2 or word_part.isdigit() or 'http' in word_part.lower():
+                    fixed_words.append(word)
+                    continue
+                
+                # Check if word is misspelled
+                word_lower = word_part.lower()
+                if word_lower not in spell:
+                    # Get correction candidates
+                    candidates = spell.candidates(word_lower)
+                    if candidates:
+                        # Use the most likely correction
+                        correction = spell.correction(word_lower)
+                        if correction and correction != word_lower:
+                            # Preserve original capitalization
+                            if word_part[0].isupper():
+                                correction = correction.capitalize()
+                            fixed_words.append(correction + punctuation)
+                        else:
+                            fixed_words.append(word)
+                    else:
+                        fixed_words.append(word)
+                else:
+                    fixed_words.append(word)
             else:
-                fixed = common_typos[word_lower]
-            fixed_words.append(fixed + punctuation)
-        else:
-            fixed_words.append(word)
-    
-    text = ' '.join(fixed_words)
+                fixed_words.append(word)
+        
+        text = ' '.join(fixed_words)
     
     # Normalize whitespace (multiple spaces, tabs, newlines)
     text = re.sub(r'\s+', ' ', text).strip()

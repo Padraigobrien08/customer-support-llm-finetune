@@ -28,3 +28,5 @@ sentencepiece>=0.1.99  # Required by some tokenizers (e.g., LLaMA, T5)
 # Optional quantization (not needed for basic training)
 # bitsandbytes>=0.41.0   # For 4-bit/8-bit quantized training (requires CUDA)
 
+# Text processing
+pyspellchecker>=0.7.0  # For spell checking and typo correction
