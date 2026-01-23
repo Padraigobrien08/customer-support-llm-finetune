@@ -1,7 +1,7 @@
-import { Copy, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Copy, ThumbsDown, ThumbsUp, UserPlus, HelpCircle } from "lucide-react";
 import { useState } from "react";
 import { Message } from "@/data/threads";
-import { cn, linkifyText } from "@/lib/utils";
+import { cn, linkifyText, detectAction } from "@/lib/utils";
 
 interface MessageBubbleProps {
   message: Message;
@@ -10,6 +10,7 @@ interface MessageBubbleProps {
 export function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.role === "user";
   const [copied, setCopied] = useState(false);
+  const detectedAction = !isUser ? detectAction(message.content) : null;
 
   const handleCopy = async () => {
     try {
@@ -38,6 +39,23 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         title={message.timestamp ? `Sent ${message.timestamp}` : undefined}
       >
         <p className="whitespace-pre-wrap break-words">{linkifyText(message.content)}</p>
+        {detectedAction && (
+          <div
+            className={cn(
+              "mt-2 flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
+              detectedAction.type === "escalation"
+                ? "bg-amber-500/20 text-amber-300"
+                : "bg-blue-500/20 text-blue-300"
+            )}
+          >
+            {detectedAction.type === "escalation" ? (
+              <UserPlus className="h-3 w-3" />
+            ) : (
+              <HelpCircle className="h-3 w-3" />
+            )}
+            <span>{detectedAction.label}</span>
+          </div>
+        )}
       </div>
       <div
         className={cn(
