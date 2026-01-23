@@ -74,41 +74,97 @@ def format_messages_with_template(tokenizer_obj, messages: list[dict[str, Any]],
 def _clean_response(text: str) -> str:
     """
     Clean and truncate the response to ensure it's concise and on-topic.
+    Handles various edge cases including incomplete sentences, URLs, repetition, etc.
     """
-    if not text:
-        return text
+    if not text or not text.strip():
+        return text.strip()
     
-    # Split into sentences (handle multiple sentence endings)
     import re
-    sentences = re.split(r'[.!?]+\s+', text)
-    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    # Normalize whitespace (multiple spaces, tabs, newlines)
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Remove common markdown artifacts that might appear
+    text = re.sub(r'\*\*([^*]+)\*\*', r'\1', text)  # Bold
+    text = re.sub(r'\*([^*]+)\*', r'\1', text)  # Italic
+    text = re.sub(r'#+\s*', '', text)  # Headers
+    text = re.sub(r'```[^`]*```', '', text)  # Code blocks
+    text = re.sub(r'`([^`]+)`', r'\1', text)  # Inline code
+    
+    # Remove trailing incomplete words (common generation artifacts)
+    text = re.sub(r'\s+\w{1,2}$', '', text)  # Remove 1-2 letter words at end
+    
+    # Detect and handle incomplete sentences at the end
+    incomplete_patterns = [
+        r'\b(?:based|according|depending|relying|accordingly)\s*$',
+        r'\b(?:and|or|but|so|then|also|however|therefore|moreover)\s*$',
+        r'\b(?:if|when|where|while|because|since|although|unless)\s*$',
+        r'\b(?:the|a|an|this|that|these|those)\s*$',
+        r'\b(?:to|for|with|from|by|at|in|on|of)\s*$',
+    ]
+    for pattern in incomplete_patterns:
+        if re.search(pattern, text, re.IGNORECASE):
+            # Find the last complete sentence before this incomplete fragment
+            # Look for sentence endings before the last 20 characters
+            truncate_point = max(
+                text.rfind('.', 0, len(text) - 20),
+                text.rfind('!', 0, len(text) - 20),
+                text.rfind('?', 0, len(text) - 20)
+            )
+            if truncate_point > 50:
+                text = text[:truncate_point + 1].strip()
+                break
+    
+    # Split into sentences (handle multiple sentence endings, but preserve abbreviations)
+    # Use a more sophisticated sentence splitter that handles common abbreviations
+    sentence_endings = re.compile(r'([.!?]+)\s+')
+    sentences = sentence_endings.split(text)
+    # Reconstruct sentences properly
+    reconstructed = []
+    for i in range(0, len(sentences) - 1, 2):
+        if i + 1 < len(sentences):
+            reconstructed.append(sentences[i] + sentences[i + 1])
+        else:
+            reconstructed.append(sentences[i])
+    if len(sentences) % 2 == 1:
+        reconstructed.append(sentences[-1])
+    
+    sentences = [s.strip() for s in reconstructed if s.strip()]
     
     # Limit to reasonable number of sentences for customer support (4-5 max)
     max_sentences = 5
     if len(sentences) > max_sentences:
         sentences = sentences[:max_sentences]
-        # Rejoin with periods
-        text = '. '.join(sentences) + '.'
+        # Rejoin with proper spacing
+        text = ' '.join(sentences).strip()
     
-    # Check for repetitive content
+    # Check for repetitive content (improved detection)
     if len(text) > 200:
-        # Look for repeated phrases
         words = text.lower().split()
         if len(words) > 50:
-            # Check for repeated 10-word sequences
-            for i in range(len(words) - 20):
-                seq = ' '.join(words[i:i+10])
-                # Check if this sequence appears later
-                later_text = ' '.join(words[i+10:])
-                if seq in later_text:
-                    # Found repetition - truncate at the first occurrence
-                    word_index = text.lower().find(seq, i + 10)
-                    if word_index != -1:
-                        # Find the sentence boundary before this point
-                        truncate_point = text.rfind('.', 0, word_index)
-                        if truncate_point > 50:  # Only truncate if we have enough content
-                            text = text[:truncate_point + 1].strip()
-                            break
+            # Check for repeated 8-word sequences (more sensitive)
+            for window_size in [8, 10, 12]:
+                found_repetition = False
+                for i in range(len(words) - window_size * 2):
+                    seq = ' '.join(words[i:i+window_size])
+                    # Check if this sequence appears later (with some tolerance)
+                    later_text = ' '.join(words[i+window_size:])
+                    if seq in later_text:
+                        # Found repetition - truncate at the first occurrence
+                        word_index = text.lower().find(seq, i + window_size * 5)  # Allow some overlap
+                        if word_index != -1:
+                            # Find the sentence boundary before this point
+                            truncate_point = max(
+                                text.rfind('.', 0, word_index),
+                                text.rfind('!', 0, word_index),
+                                text.rfind('?', 0, word_index)
+                            )
+                            if truncate_point > 50:  # Only truncate if we have enough content
+                                text = text[:truncate_point + 1].strip()
+                                found_repetition = True
+                                break
+                if found_repetition:
+                    break
     
     # Remove common rambling patterns
     # Look for phrases that suggest the response is going off-topic
@@ -145,62 +201,104 @@ def _clean_response(text: str) -> str:
     # Final length check - customer support responses shouldn't be too long
     max_chars = 500
     if len(text) > max_chars:
-        # Check if we're in a numbered list - don't cut off mid-list
-        import re
-        # Look for numbered list patterns like "1.)", "2.)", "3.)" or "1.", "2.", "3."
-        numbered_list_pattern = r'\d+[.)]\s'
-        matches = list(re.finditer(numbered_list_pattern, text[:max_chars + 50]))
-        
-        if matches:
-            # Find the last complete numbered item before max_chars
-            last_complete_item = None
-            for match in reversed(matches):
-                item_end = match.end()
-                # Find the end of this item (next number or end of text)
-                next_match = None
-                for next_match_obj in matches:
-                    if next_match_obj.start() > match.start():
-                        next_match = next_match_obj
+        # First, check if we're cutting through a URL - preserve URLs
+        url_pattern = r'https?://[^\s]+|www\.[^\s]+'
+        urls = list(re.finditer(url_pattern, text))
+        if urls:
+            # Find the last complete URL before max_chars
+            for url_match in reversed(urls):
+                if url_match.end() <= max_chars + 20:  # Allow some buffer
+                    # URL is complete, truncate after it
+                    truncate_point = url_match.end()
+                    # Find next sentence boundary after URL
+                    next_sentence = text.find('.', truncate_point, truncate_point + 50)
+                    if next_sentence != -1:
+                        text = text[:next_sentence + 1].strip()
                         break
-                
-                if next_match:
-                    # Check if this item is complete (ends before next item or max_chars)
-                    item_text = text[match.start():next_match.start()]
-                    if len(item_text) > 10 and match.end() < max_chars:
-                        # This item is complete
-                        last_complete_item = next_match.start()
-                        break
-                elif item_end < max_chars:
-                    # Last item, check if it's reasonably complete
-                    item_text = text[match.start():]
-                    if len(item_text) > 10:
-                        # Keep the whole last item if it's not too long
-                        if len(text[match.start():]) < max_chars + 100:
-                            last_complete_item = len(text)
+                    elif truncate_point < max_chars + 50:
+                        # Keep URL and truncate at next sentence
+                        truncate_point = max(
+                            text.rfind('.', truncate_point, max_chars + 50),
+                            text.rfind('!', truncate_point, max_chars + 50),
+                            text.rfind('?', truncate_point, max_chars + 50)
+                        )
+                        if truncate_point > truncate_point - 20:
+                            text = text[:truncate_point + 1].strip()
                             break
+        
+        # Check if we're in a numbered list - don't cut off mid-list
+        if len(text) > max_chars:
+            numbered_list_pattern = r'\d+[.)]\s'
+            matches = list(re.finditer(numbered_list_pattern, text[:max_chars + 50]))
             
-            if last_complete_item and last_complete_item > 100:
-                text = text[:last_complete_item].strip()
+            if matches:
+                # Find the last complete numbered item before max_chars
+                last_complete_item = None
+                for match in reversed(matches):
+                    item_end = match.end()
+                    # Find the end of this item (next number or end of text)
+                    next_match = None
+                    for next_match_obj in matches:
+                        if next_match_obj.start() > match.start():
+                            next_match = next_match_obj
+                            break
+                    
+                    if next_match:
+                        # Check if this item is complete (ends before next item or max_chars)
+                        item_text = text[match.start():next_match.start()]
+                        if len(item_text) > 10 and match.end() < max_chars:
+                            # This item is complete
+                            last_complete_item = next_match.start()
+                            break
+                    elif item_end < max_chars:
+                        # Last item, check if it's reasonably complete
+                        item_text = text[match.start():]
+                        if len(item_text) > 10:
+                            # Keep the whole last item if it's not too long
+                            if len(text[match.start():]) < max_chars + 100:
+                                last_complete_item = len(text)
+                                break
+                
+                if last_complete_item and last_complete_item > 100:
+                    text = text[:last_complete_item].strip()
+                else:
+                    # Fallback: truncate at sentence boundary
+                    truncate_point = max(
+                        text.rfind('.', 0, max_chars),
+                        text.rfind('!', 0, max_chars),
+                        text.rfind('?', 0, max_chars)
+                    )
+                    if truncate_point > 50:
+                        text = text[:truncate_point + 1].strip()
+                    else:
+                        # Last resort: just truncate
+                        text = text[:max_chars].strip()
+                        if not text.endswith(('.', '!', '?')):
+                            text += '.'
             else:
-                # Fallback: truncate at sentence boundary
-                truncate_point = text.rfind('.', 0, max_chars)
+                # No numbered list, truncate at sentence boundary
+                truncate_point = max(
+                    text.rfind('.', 0, max_chars),
+                    text.rfind('!', 0, max_chars),
+                    text.rfind('?', 0, max_chars)
+                )
                 if truncate_point > 50:
                     text = text[:truncate_point + 1].strip()
                 else:
-                    # Last resort: just truncate
+                    # Fallback: just truncate
                     text = text[:max_chars].strip()
                     if not text.endswith(('.', '!', '?')):
                         text += '.'
-        else:
-            # No numbered list, truncate at sentence boundary
-            truncate_point = text.rfind('.', 0, max_chars)
-            if truncate_point > 50:
-                text = text[:truncate_point + 1].strip()
-            else:
-                # Fallback: just truncate
-                text = text[:max_chars].strip()
-                if not text.endswith(('.', '!', '?')):
-                    text += '.'
+    
+    # Final cleanup: ensure proper sentence ending
+    text = text.strip()
+    if text and not text.endswith(('.', '!', '?', ':', ';')):
+        # Only add period if the last character is a letter or number
+        if text and text[-1].isalnum():
+            text += '.'
+    
+    # Remove any trailing incomplete fragments
+    text = re.sub(r'\s+\w{1,2}\.$', '.', text)  # Remove 1-2 letter words before period
     
     return text.strip()
 
