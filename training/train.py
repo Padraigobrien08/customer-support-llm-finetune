@@ -339,7 +339,14 @@ Examples:
     print(f"Output directory: {output_dir}")
     
     # Detect device (prefer MPS for Apple Silicon)
-    if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+    # For large models (7B+), automatically use CPU to avoid memory issues
+    model_size_estimate = None
+    if "7b" in args.model_id.lower() or "8b" in args.model_id.lower() or "13b" in args.model_id.lower():
+        print("⚠️  Large model detected. Using CPU to avoid memory issues.")
+        print("   (7B+ models in fp32 need ~28GB, exceeding MPS limits)")
+        device = "cpu"
+        mps_supports_fp16 = False
+    elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
         device = "mps"
         print("Using device: MPS (Apple Silicon)")
         # Check if MPS supports fp16
@@ -367,23 +374,67 @@ Examples:
     # Load model
     print("Loading model...")
     # Determine dtype: force float32 for MPS to avoid generation degeneracy
+    # For large models on MPS, we may need to fall back to CPU
     if device == "cpu":
         model_dtype = torch.float32
+        use_device_map = False
     elif device == "mps":
+        # Try to estimate if model will fit in MPS memory
+        # 7B model in fp32 = ~28GB, which may exceed MPS limits
         model_dtype = torch.float32  # Force float32 for MPS (fp16 causes NaN logits with adapters)
         print("Using fp32 on MPS (required for adapter compatibility)")
+        # Try device_map="auto" first - if it fails, we'll catch and fall back to CPU
+        use_device_map = False  # MPS doesn't support device_map well, will use .to(device) with try/except
     else:  # CUDA
         model_dtype = torch.float16
+        use_device_map = True
     
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model_id,
-        dtype=model_dtype,
-        device_map="auto" if device == "cuda" else None,
-        trust_remote_code=True
-    )
-    
-    if device != "cuda":
-        model = model.to(device)
+    try:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model_id,
+            dtype=model_dtype,
+            device_map="auto" if use_device_map else None,
+            trust_remote_code=True,
+            low_cpu_mem_usage=True,  # More memory efficient loading
+        )
+        
+        if device != "cuda" and not use_device_map:
+            # Try to move to device, but catch memory errors
+            try:
+                model = model.to(device)
+            except RuntimeError as e:
+                if "out of memory" in str(e) or "MPS" in str(e):
+                    print(f"\n⚠️  Warning: {device} ran out of memory. Falling back to CPU.")
+                    print("   CPU training will be slower but will work.")
+                    # Clear MPS cache before moving to CPU
+                    if device == "mps":
+                        torch.mps.empty_cache()
+                    device = "cpu"
+                    # Move model to CPU and clear any remaining MPS references
+                    model = model.cpu()
+                    if hasattr(torch, "mps"):
+                        torch.mps.empty_cache()
+                else:
+                    raise
+    except RuntimeError as e:
+        if "out of memory" in str(e) or "MPS" in str(e):
+            print(f"\n⚠️  Warning: {device} ran out of memory during model loading.")
+            print("   Falling back to CPU. CPU training will be slower but will work.")
+            # Clear MPS cache
+            if device == "mps" and hasattr(torch, "mps"):
+                torch.mps.empty_cache()
+            device = "cpu"
+            model_dtype = torch.float32
+            model = AutoModelForCausalLM.from_pretrained(
+                args.model_id,
+                dtype=model_dtype,
+                device_map=None,
+                trust_remote_code=True,
+                low_cpu_mem_usage=True,
+            )
+            model = model.cpu()  # Explicitly use .cpu() instead of .to(device)
+        else:
+            raise
     
     # Configure LoRA
     print("\nConfiguring LoRA...")
@@ -475,6 +526,8 @@ Examples:
         eval_strategy="steps" if tokenized_eval_dataset is not None else "no",
         eval_steps=eval_steps,
         per_device_eval_batch_size=args.batch_size,  # Use same batch size for eval
+        # Force CPU device if we fell back to CPU
+        no_cuda=(device == "cpu"),  # Disable CUDA if using CPU
     )
     
     # Data collator

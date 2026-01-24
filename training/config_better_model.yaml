@@ -1,0 +1,63 @@
+# Training Configuration for Better Model
+# This config uses a larger base model for better quality
+
+# Model Configuration
+model:
+  # Using Qwen2.5-7B-Instruct - much better than TinyLlama
+  # Alternatives: "mistralai/Mistral-7B-Instruct-v0.2", "meta-llama/Llama-3-8B-Instruct"
+  model_id: "Qwen/Qwen2.5-7B-Instruct"
+
+# Data Configuration
+data:
+  # Use the full training split
+  train_file: "data/splits/train.jsonl"
+  
+  # Use validation split for monitoring
+  val_file: "data/splits/val.jsonl"
+  
+  # Maximum sequence length for tokenization
+  max_seq_length: 1024  # Increased for better context
+
+# LoRA Configuration (PEFT)
+lora:
+  # Higher rank for better adaptation (was 8, now 16)
+  r: 16
+  
+  # LoRA alpha (scaling factor) - typically 2x rank
+  alpha: 32
+  
+  # LoRA dropout rate
+  dropout: 0.05  # Lower dropout for more capacity
+
+# Training Hyperparameters
+training:
+  # Per-device batch size (adjust based on GPU memory)
+  batch_size: 1  # Start with 1 for 7B model on Apple Silicon
+  
+  # Gradient accumulation steps (effective batch size = batch_size * gradient_accumulation_steps)
+  gradient_accumulation_steps: 8  # Effective batch size of 8
+  
+  # Number of training epochs - more for better convergence
+  num_epochs: 5
+  
+  # Learning rate - slightly lower for larger model
+  learning_rate: 1e-4
+  
+  # Save checkpoint every N steps
+  save_steps: 25  # More frequent checkpoints
+  
+  # Warmup steps
+  warmup_steps: 50
+
+# Output Configuration
+output:
+  # Directory for saving model checkpoints
+  output_dir: "outputs/run_002_qwen7b"
+  
+  # Number of checkpoints to keep (oldest are deleted)
+  save_total_limit: 5  # Keep more checkpoints to find best one
+
+# Framework Options
+framework:
+  # Use TRL SFTTrainer instead of standard Trainer (requires trl package)
+  use_trl: false

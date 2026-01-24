@@ -4,6 +4,7 @@ Minimal model server for the customer-support fine-tuned adapter.
 """
 
 import os
+import re
 from pathlib import Path
 from typing import Any, Literal
 
@@ -44,6 +45,218 @@ device = "cpu"
 supports_chat_template = False
 system_prompt = None
 default_max_new_tokens = 250
+
+# Semantic coherence checker (lazy-loaded)
+_semantic_checker = None
+_semantic_reference_phrases = [
+    "enter your password",
+    "click the button",
+    "reset your password",
+    "check your email",
+    "contact support",
+    "update your account",
+    "verify your identity",
+    "access your account",
+    "change your settings",
+    "track your order",
+    "cancel your subscription",
+    "request a refund",
+    "submit a ticket",
+    "speak with a representative",
+    "follow these steps",
+    "navigate to the settings page",
+    "confirm your email address",
+    "select an option",
+    "enter your information",
+    "complete the form",
+]
+
+
+def _check_semantic_coherence(text: str) -> str:
+    """
+    Check semantic coherence of phrases in the text using embeddings.
+    Rewrites incoherent phrases to make sense instead of removing them.
+    """
+    global _semantic_checker
+    
+    try:
+        from sentence_transformers import SentenceTransformer
+        import numpy as np
+    except ImportError:
+        # If sentence-transformers not available, skip semantic checking
+        return text
+    
+    # Lazy-load the semantic checker (use a lightweight model)
+    if _semantic_checker is None:
+        try:
+            # Use a small, fast model for semantic similarity
+            _semantic_checker = SentenceTransformer('all-MiniLM-L6-v2')
+        except Exception:
+            # If model loading fails, disable semantic checking
+            return text
+    
+    # Pre-compute reference embeddings once
+    try:
+        reference_embeddings = _semantic_checker.encode(
+            _semantic_reference_phrases, 
+            convert_to_numpy=True
+        )
+    except Exception:
+        return text
+    
+    # Process the text sentence by sentence
+    sentences = re.split(r'([.!?]+)', text)
+    # Recombine sentences with their punctuation
+    sentence_parts = []
+    for i in range(0, len(sentences) - 1, 2):
+        if i + 1 < len(sentences):
+            sentence_parts.append((sentences[i].strip(), sentences[i + 1]))
+        else:
+            sentence_parts.append((sentences[i].strip(), ''))
+    
+    corrected_sentences = []
+    
+    for sentence, punctuation in sentence_parts:
+        if not sentence or len(sentence) < 10:
+            if sentence:
+                corrected_sentences.append(sentence + punctuation)
+            continue
+        
+        original_sentence = sentence
+        words = sentence.split()
+        if len(words) < 3:
+            corrected_sentences.append(sentence + punctuation)
+            continue
+        
+        # Check phrases of different lengths and find suspicious ones
+        phrase_replacements = []  # (original_phrase, corrected_phrase, start_idx, end_idx)
+        
+        for phrase_len in [4, 5, 6]:  # Focus on longer phrases that are more likely to be weird
+            for i in range(len(words) - phrase_len + 1):
+                phrase_words = words[i:i+phrase_len]
+                phrase = ' '.join(phrase_words).lower()
+                
+                # Skip if phrase contains URLs/numbers or is too short
+                if re.search(r'http|www|https://', phrase, re.IGNORECASE):
+                    continue
+                
+                # Get embedding for this phrase
+                try:
+                    phrase_embedding = _semantic_checker.encode(phrase, convert_to_numpy=True)
+                    
+                    # Calculate cosine similarity with all reference phrases
+                    similarities = np.dot(reference_embeddings, phrase_embedding) / (
+                        np.linalg.norm(reference_embeddings, axis=1) * np.linalg.norm(phrase_embedding)
+                    )
+                    max_similarity = np.max(similarities)
+                    best_match_idx = np.argmax(similarities)
+                    
+                    # If similarity is very low (< 0.3), the phrase is likely nonsensical
+                    if max_similarity < 0.3:
+                        # Find the best matching reference phrase
+                        best_reference = _semantic_reference_phrases[best_match_idx]
+                        
+                        # Try to adapt the reference phrase to fit the context
+                        # Extract key action words from the reference
+                        reference_words = best_reference.split()
+                        
+                        # If the suspicious phrase has similar structure, try to preserve it
+                        # Otherwise, use a simplified version of the reference
+                        if len(phrase_words) >= 4:
+                            # Try to create a corrected phrase that fits the sentence structure
+                            # Use the action from the reference but keep the sentence flow
+                            corrected_phrase = _adapt_phrase_to_context(
+                                phrase_words, reference_words, words, i
+                            )
+                        else:
+                            corrected_phrase = best_reference
+                        
+                        phrase_replacements.append((
+                            ' '.join(phrase_words),
+                            corrected_phrase,
+                            i,
+                            i + phrase_len
+                        ))
+                except Exception:
+                    continue
+        
+        # Apply replacements (process from end to start to preserve indices)
+        if phrase_replacements:
+            # Sort by start index (descending) to replace from end
+            phrase_replacements.sort(key=lambda x: x[2], reverse=True)
+            
+            # Only apply the most suspicious replacement per sentence to avoid over-correction
+            worst_replacement = phrase_replacements[0]
+            original_phrase, corrected_phrase, start_idx, end_idx = worst_replacement
+            
+            # Preserve capitalization of the first word if needed
+            if words[start_idx][0].isupper():
+                corrected_words = corrected_phrase.split()
+                if corrected_words:
+                    corrected_words[0] = corrected_words[0].capitalize()
+                corrected_phrase = ' '.join(corrected_words)
+            
+            # Replace in the sentence
+            new_words = words[:start_idx] + corrected_phrase.split() + words[end_idx:]
+            sentence = ' '.join(new_words)
+        
+        # Clean up any double spaces
+        sentence = re.sub(r'\s+', ' ', sentence).strip()
+        corrected_sentences.append(sentence + punctuation)
+    
+    return ''.join(corrected_sentences).strip()
+
+
+def _adapt_phrase_to_context(
+    suspicious_words: list[str],
+    reference_words: list[str],
+    sentence_words: list[str],
+    phrase_start_idx: int
+) -> str:
+    """
+    Adapt a reference phrase to fit the context of the sentence.
+    Tries to preserve sentence structure while using the correct semantic meaning.
+    """
+    # Extract the main action/verb from the reference
+    # Common customer support actions: enter, click, check, verify, access, etc.
+    action_verbs = ['enter', 'click', 'check', 'verify', 'access', 'update', 'change', 
+                    'reset', 'track', 'cancel', 'contact', 'follow', 'navigate', 
+                    'select', 'complete', 'submit', 'request', 'speak']
+    
+    # Find action verb in reference
+    reference_action = None
+    for word in reference_words:
+        if word.lower() in action_verbs:
+            reference_action = word.lower()
+            break
+    
+    # If we found an action, try to construct a sensible phrase
+    if reference_action:
+        # Look at words before the suspicious phrase for context
+        context_before = sentence_words[max(0, phrase_start_idx - 2):phrase_start_idx]
+        
+        # Build a corrected phrase using the action and context
+        if context_before:
+            # Try to preserve some context
+            corrected = ' '.join(context_before[-1:]) + ' ' + reference_action
+            # Add common object if available
+            if 'password' in ' '.join(suspicious_words).lower():
+                corrected += ' your password'
+            elif 'button' in ' '.join(suspicious_words).lower() or 'click' in reference_action:
+                corrected += ' the button'
+            elif 'email' in ' '.join(suspicious_words).lower():
+                corrected += ' your email'
+            else:
+                # Use a generic object from the reference
+                if len(reference_words) > 1:
+                    corrected += ' ' + ' '.join(reference_words[1:])
+            return corrected.strip()
+        else:
+            # No context, just use the reference phrase
+            return ' '.join(reference_words)
+    else:
+        # No clear action found, use the reference as-is
+        return ' '.join(reference_words)
 
 
 def format_messages_simple(
@@ -227,17 +440,22 @@ def _clean_response(text: str) -> str:
                 if found_repetition:
                     break
     
-    # Remove nonsensical phrases that don't make sense in context
-    nonsensical_phrases = [
-        r'\bboth\s+fingers\b',  # "both fingers" doesn't make sense for passwords
-        r'\busing\s+both\s+fingers\b',
-        r'\bwith\s+both\s+fingers\b',
-        r'\benter\s+.*\s+twice\s+using\s+both\s+fingers\b',
-        r'\bclick\s+.*\s+with\s+both\s+fingers\b',
+    # Fix nonsensical phrases using pattern matching and semantic coherence
+    # First, use pattern matching for known weird phrases - replace with sensible alternatives
+    nonsensical_replacements = [
+        # "both fingers" patterns - replace with appropriate actions
+        (r'\benter\s+([^\.]+?)\s+twice\s+using\s+both\s+fingers\b', r'enter \1 twice'),
+        (r'\busing\s+both\s+fingers\s+to\s+([^\.]+?)\b', r'to \1'),
+        (r'\bwith\s+both\s+fingers\b', ''),
+        (r'\bboth\s+fingers\b', ''),
+        (r'\bclick\s+([^\.]+?)\s+with\s+both\s+fingers\b', r'click \1'),
     ]
     
-    for pattern in nonsensical_phrases:
-        text = re.sub(pattern, '', text, flags=re.IGNORECASE)
+    for pattern, replacement in nonsensical_replacements:
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    
+    # Then use semantic coherence checking for other weird phrases
+    text = _check_semantic_coherence(text)
     
     # Clean up any double spaces created by removals
     text = re.sub(r'\s+', ' ', text).strip()
