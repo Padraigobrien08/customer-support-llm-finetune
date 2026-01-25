@@ -355,15 +355,146 @@ def _clean_response(text: str) -> str:
         
         text = ' '.join(fixed_words)
     
-    # Fix spacing issues - add spaces between words that are stuck together
-    # This handles cases like "youresetyourpassword" -> "you reset your password"
-    # Look for lowercase letter followed by uppercase (word boundary)
+    # Fix spacing issues - ULTRA AGGRESSIVE approach for stuck-together words
+    # This is a critical fix - the model sometimes generates text without spaces
+    
+    # Step 1: Fix common stuck-together phrases FIRST (before general patterns)
+    # These are high-frequency patterns that need special handling
+    common_phrases = [
+        (r'cancelyour', 'cancel your'),
+        (r'beforetherenews', 'before it renews'),
+        (r'youllneed', "you'll need"),
+        (r'youshould', 'you should'),
+        (r'youshouldsee', 'you should see'),
+        (r'afterselecting', 'after selecting'),
+        (r'aftercancellation', 'after cancellation'),
+        (r'likewhen', 'like when'),
+        (r'seethat', 'see that'),
+        (r'seethis', 'see this'),
+        (r'gointo', 'go into'),
+        (r'lookfor', 'look for'),
+        (r'clickto', 'click to'),
+        (r'findyour', 'find your'),
+        (r'selectyour', 'select your'),
+        (r'updateyour', 'update your'),
+        (r'accessyour', 'access your'),
+        (r'checkyour', 'check your'),
+        (r'verifyyour', 'verify your'),
+        (r'enteryour', 'enter your'),
+        (r'createyour', 'create your'),
+        (r'changeyour', 'change your'),
+        (r'deleteyour', 'delete your'),
+        (r'cancelthe', 'cancel the'),
+        (r'selectthe', 'select the'),
+        (r'clickthe', 'click the'),
+        (r'openthe', 'open the'),
+        (r'closethe', 'close the'),
+        (r'checkthe', 'check the'),
+        (r'verifythe', 'verify the'),
+        (r'updatethe', 'update the'),
+        (r'changethe', 'change the'),
+        (r'ofthe', 'of the'),
+        (r'tothe', 'to the'),
+        (r'forthe', 'for the'),
+        (r'withthe', 'with the'),
+        (r'fromthe', 'from the'),
+        (r'andthe', 'and the'),
+        (r'orthe', 'or the'),
+        (r'youand', 'you and'),
+        (r'youor', 'you or'),
+        (r'youwill', 'you will'),
+        (r'youcan', 'you can'),
+        (r'youmay', 'you may'),
+        (r'youmust', 'you must'),
+        (r'youneed', 'you need'),
+        (r'youwant', 'you want'),
+        (r'youhave', 'you have'),
+        (r'youare', 'you are'),
+        (r'youwere', 'you were'),
+        (r'itis', 'it is'),
+        (r'itisnt', "it isn't"),
+        (r'itwill', 'it will'),
+        (r'itcan', 'it can'),
+        (r'itmay', 'it may'),
+        (r'itmust', 'it must'),
+        (r'itneed', 'it need'),
+        (r'thatis', 'that is'),
+        (r'thatwill', 'that will'),
+        (r'thatcan', 'that can'),
+        (r'thisis', 'this is'),
+        (r'thiswill', 'this will'),
+        (r'thiscan', 'this can'),
+        (r'whatis', 'what is'),
+        (r'whatwill', 'what will'),
+        (r'whatcan', 'what can'),
+        (r'whereis', 'where is'),
+        (r'wherewill', 'where will'),
+        (r'wherecan', 'where can'),
+        (r'whenis', 'when is'),
+        (r'whenwill', 'when will'),
+        (r'whencan', 'when can'),
+        (r'howis', 'how is'),
+        (r'howwill', 'how will'),
+        (r'howcan', 'how can'),
+        (r'whowill', 'who will'),
+        (r'whocan', 'who can'),
+        (r'whyis', 'why is'),
+        (r'whywill', 'why will'),
+        (r'whycan', 'why can'),
+    ]
+    
+    for pattern, replacement in common_phrases:
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    
+    # Step 2: Fix general patterns - lowercase letter followed by uppercase
     text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
-    # Look for digit followed by letter or vice versa
+    
+    # Step 3: Fix digit-letter boundaries
     text = re.sub(r'(\d)([a-zA-Z])', r'\1 \2', text)
     text = re.sub(r'([a-zA-Z])(\d)', r'\1 \2', text)
     
-    # Normalize whitespace (multiple spaces, tabs, newlines)
+    # Step 4: Fix common word boundaries - BUT be more careful
+    # Only fix if the word before/after is a known common word
+    # This prevents breaking valid compound words
+    word_boundaries = [
+        # Only fix if preceded by a word ending and followed by a word starting
+        (r'([a-z]{2,})(to)([a-z]{2,})', r'\1 \2 \3'),  # "wantto" -> "want to" but not "auto"
+        (r'([a-z]{2,})(for)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(the)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(and)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(or)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(with)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(from)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(into)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(after)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(before)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(will)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(should)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(would)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(could)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(can)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(that)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(this)([a-z]{2,})', r'\1 \2 \3'),
+        (r'([a-z]{2,})(when)([a-z]{2,})', r'\1 \2 \3'),
+    ]
+    
+    # Apply word boundaries more carefully - only if it makes sense
+    for pattern, replacement in word_boundaries:
+        # Only apply if the match doesn't create obviously broken words
+        matches = list(re.finditer(pattern, text, re.IGNORECASE))
+        for match in reversed(matches):  # Process from end to start
+            before = match.group(1).lower()
+            middle = match.group(2).lower()
+            after = match.group(3).lower()
+            # Only fix if before and after are reasonable word lengths (2-15 chars)
+            if 2 <= len(before) <= 15 and 2 <= len(after) <= 15:
+                text = text[:match.start()] + replacement.replace(r'\1', before).replace(r'\2', middle).replace(r'\3', after) + text[match.end():]
+    
+    # Step 5: Fix punctuation spacing
+    text = re.sub(r'([a-z])([.,!?;:])', r'\1 \2', text)
+    text = re.sub(r'([.,!?;:])([a-zA-Z])', r'\1 \2', text)
+    
+    # Step 6: Normalize whitespace
     text = re.sub(r'\s+', ' ', text).strip()
     
     # Remove common markdown artifacts that might appear
@@ -374,7 +505,8 @@ def _clean_response(text: str) -> str:
     text = re.sub(r'`([^`]+)`', r'\1', text)  # Inline code
     
     # Remove trailing incomplete words (common generation artifacts)
-    text = re.sub(r'\s+\w{1,2}$', '', text)  # Remove 1-2 letter words at end
+    # But do this after we've fixed spacing, so we can properly identify words
+    # This will be done later after sentence splitting
     
     # Detect and handle incomplete sentences at the end
     incomplete_patterns = [
@@ -397,8 +529,16 @@ def _clean_response(text: str) -> str:
                 text = text[:truncate_point + 1].strip()
                 break
     
-    # Split into sentences (handle multiple sentence endings, but preserve abbreviations)
-    # Use a more sophisticated sentence splitter that handles common abbreviations
+    # Split into sentences - IMPROVED to handle missing spaces before periods
+    # First, ensure periods have spaces before them if they're missing
+    text = re.sub(r'([a-z])(\.)', r'\1 \2', text)
+    text = re.sub(r'([a-z])(!)', r'\1 \2', text)
+    text = re.sub(r'([a-z])(\?)', r'\1 \2', text)
+    
+    # Normalize whitespace again after adding spaces
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Now split sentences properly
     sentence_endings = re.compile(r'([.!?]+)\s+')
     sentences = sentence_endings.split(text)
     # Reconstruct sentences properly
@@ -413,46 +553,102 @@ def _clean_response(text: str) -> str:
     
     sentences = [s.strip() for s in reconstructed if s.strip()]
     
-    # Limit to reasonable number of sentences for customer support (6-7 max for longer responses)
-    # But be smarter about it - keep complete thoughts
-    max_sentences = 7
+    # Clean up each sentence - fix any remaining spacing issues
+    cleaned_sentences = []
+    for sent in sentences:
+        # Fix any remaining stuck words in each sentence
+        # Look for patterns like "gointo" -> "go into"
+        sent = re.sub(r'([a-z]{2,})(into|onto|upon|over|under|after|before|during|within|without)([a-z])', r'\1 \2 \3', sent, flags=re.IGNORECASE)
+        # Fix "seeyou" -> "see you", "tellyou" -> "tell you"
+        sent = re.sub(r'([a-z]{2,})(you|your|yours)([a-z])', r'\1 \2 \3', sent, flags=re.IGNORECASE)
+        # Fix "shouldsee" -> "should see"
+        sent = re.sub(r'(should|would|could|will|can|may|must)([a-z]{2,})', r'\1 \2', sent, flags=re.IGNORECASE)
+        # Normalize spaces
+        sent = re.sub(r'\s+', ' ', sent).strip()
+        if sent:
+            cleaned_sentences.append(sent)
+    
+    sentences = cleaned_sentences
+    
+    # Limit to reasonable number of sentences for customer support (4-5 max to prevent rambling)
+    # Be more aggressive about limiting length
+    max_sentences = 5
     if len(sentences) > max_sentences:
-        # Try to keep complete paragraphs/thoughts rather than just cutting
-        # Look for natural break points (questions, transitions)
+        # Look for natural stopping points before the limit
+        # Prefer stopping after questions, clear instructions, or complete thoughts
         keep_sentences = []
-        for i, sent in enumerate(sentences[:max_sentences + 2]):
+        for i, sent in enumerate(sentences):
             if i < max_sentences:
                 keep_sentences.append(sent)
-            elif sent.strip().endswith('?'):
-                # Keep questions even if over limit
+                # If we hit a good stopping point (question or clear instruction), stop early
+                if i >= 3 and (sent.strip().endswith('?') or 
+                               any(word in sent.lower() for word in ['would', 'can', 'should', 'need', 'help'])):
+                    break
+            elif sent.strip().endswith('?') and i < max_sentences + 1:
+                # Keep one question if it's right after the limit
                 keep_sentences.append(sent)
                 break
-        sentences = keep_sentences[:max_sentences + 1]  # Allow one extra for questions
+        
+        sentences = keep_sentences[:max_sentences]  # Strict limit
         # Rejoin with proper spacing
         text = ' '.join(sentences).strip()
     
-    # Check for repetitive content (improved detection)
-    if len(text) > 200:
+    # Check for repetitive content and gibberish (very aggressive)
+    if len(text) > 100:
         words = text.lower().split()
-        if len(words) > 50:
-            # Check for repeated 8-word sequences (more sensitive)
-            for window_size in [8, 10, 12]:
+        
+        # First, check for obvious repetition of single words (gibberish like "Renumbers Renumbers")
+        word_counts = {}
+        for word in words:
+            if len(word) > 3:  # Only count longer words
+                word_counts[word] = word_counts.get(word, 0) + 1
+        
+        # If any word appears 3+ times in a short span, it's likely gibberish
+        for word, count in word_counts.items():
+            if count >= 3:
+                # Find all occurrences
+                word_positions = []
+                search_text = text.lower()
+                start = 0
+                while True:
+                    pos = search_text.find(f' {word} ', start)
+                    if pos == -1:
+                        break
+                    word_positions.append(pos)
+                    start = pos + 1
+                
+                # If words appear close together (within 50 chars), it's repetition
+                if len(word_positions) >= 2:
+                    for i in range(len(word_positions) - 1):
+                        if word_positions[i+1] - word_positions[i] < 50:
+                            # Found close repetition - truncate before the second occurrence
+                            truncate_point = max(
+                                text.rfind('.', 0, word_positions[i+1]),
+                                text.rfind('!', 0, word_positions[i+1]),
+                                text.rfind('?', 0, word_positions[i+1])
+                            )
+                            if truncate_point > 20:
+                                text = text[:truncate_point + 1].strip()
+                                break
+        
+        # Check for repeated sequences
+        if len(words) > 20:
+            for window_size in [3, 4, 5]:  # Smaller windows to catch repetition
                 found_repetition = False
                 for i in range(len(words) - window_size * 2):
                     seq = ' '.join(words[i:i+window_size])
-                    # Check if this sequence appears later (with some tolerance)
+                    # Check if this sequence appears later
                     later_text = ' '.join(words[i+window_size:])
                     if seq in later_text:
-                        # Found repetition - truncate at the first occurrence
-                        word_index = text.lower().find(seq, i + window_size * 5)  # Allow some overlap
+                        # Found repetition - truncate
+                        word_index = text.lower().find(seq, i + window_size * 2)
                         if word_index != -1:
-                            # Find the sentence boundary before this point
                             truncate_point = max(
                                 text.rfind('.', 0, word_index),
                                 text.rfind('!', 0, word_index),
                                 text.rfind('?', 0, word_index)
                             )
-                            if truncate_point > 50:  # Only truncate if we have enough content
+                            if truncate_point > 20:
                                 text = text[:truncate_point + 1].strip()
                                 found_repetition = True
                                 break
@@ -501,6 +697,16 @@ def _clean_response(text: str) -> str:
         "i don't have access to",
         "i'm sorry but i",
         "unfortunately i cannot",
+        "going forward",
+        "in the future",
+        "as mentioned",
+        "as stated",
+        "as previously mentioned",
+        "to summarize",
+        "in summary",
+        "in conclusion",
+        "all in all",
+        "at the end of the day",
     ]
     
     # Enhanced rambling detection - look for repetitive sentence structures
@@ -514,12 +720,12 @@ def _clean_response(text: str) -> str:
         if word in sentence_starters and (i == 0 or words[i-1] in ['.', '!', '?'] or i < 3):
             starter_counts[word] = starter_counts.get(word, 0) + 1
     
-    # If any starter appears too many times, it might be rambling
-    if starter_counts and max(starter_counts.values()) > 8:
+    # If any starter appears too many times, it might be rambling (lower threshold)
+    if starter_counts and max(starter_counts.values()) > 6:  # Reduced from 8 to 6
         # Find where excessive repetition starts
         for indicator in rambling_indicators:
             idx = text_lower.find(indicator)
-            if idx > 200:  # Only if it's later in the response
+            if idx > 150:  # Lower threshold - catch rambling earlier
                 # Truncate at the sentence before this indicator
                 truncate_point = max(
                     text.rfind('.', 0, idx),
@@ -530,17 +736,55 @@ def _clean_response(text: str) -> str:
                     text = text[:truncate_point + 1].strip()
                     break
     
-    # Additional check: if response is very long and has many "I" statements, it might be rambling
-    if len(text) > 600 and text_lower.count(" i ") > 10:
-        # Find a good stopping point (after a question or clear instruction)
-        for punct in ['?', '!']:
-            last_punct = text.rfind(punct, 0, len(text) - 100)
-            if last_punct > 300:
-                text = text[:last_punct + 1].strip()
-                break
+    # More aggressive check: if response is long and has many "I" statements, it's likely rambling
+    if len(text) > 400:  # Lower threshold - catch rambling earlier
+        i_count = text_lower.count(" i ") + text_lower.count(" i'm ") + text_lower.count(" i'll ")
+        if i_count > 6:  # Lower threshold
+            # Find a good stopping point (after a question, instruction, or clear statement)
+            for punct in ['?', '!', '.']:
+                # Look for stopping point in the first 2/3 of the text
+                search_end = int(len(text) * 0.67)
+                last_punct = text.rfind(punct, 0, search_end)
+                if last_punct > 200:  # Lower threshold
+                    text = text[:last_punct + 1].strip()
+                    break
     
-    # Final length check - customer support responses can be longer now, but still reasonable
-    max_chars = 800  # Increased from 500 to allow more detailed responses
+    # Check for excessive word repetition (same word appearing too many times)
+    if len(text) > 300:
+        words = text_lower.split()
+        word_counts = {}
+        for word in words:
+            if len(word) > 3:  # Only count longer words
+                word_counts[word] = word_counts.get(word, 0) + 1
+        
+        # If any word appears more than 8 times in a 300+ char response, it's likely rambling
+        for word, count in word_counts.items():
+            if count > 8:
+                # Find where this word starts appearing excessively
+                word_occurrences = []
+                search_text = text_lower
+                start = 0
+                while True:
+                    idx = search_text.find(f' {word} ', start)
+                    if idx == -1:
+                        break
+                    word_occurrences.append(idx)
+                    start = idx + 1
+                
+                # If we have more than 6 occurrences, truncate after the 4th
+                if len(word_occurrences) > 6:
+                    truncate_idx = word_occurrences[4] if len(word_occurrences) > 4 else word_occurrences[-1]
+                    truncate_point = max(
+                        text.rfind('.', 0, truncate_idx + 50),
+                        text.rfind('!', 0, truncate_idx + 50),
+                        text.rfind('?', 0, truncate_idx + 50)
+                    )
+                    if truncate_point > 100:
+                        text = text[:truncate_point + 1].strip()
+                        break
+    
+    # Final length check - be more aggressive about limiting length to prevent rambling
+    max_chars = 600  # Reduced from 800 to prevent rambling responses
     if len(text) > max_chars:
         # First, check if we're cutting through a URL - preserve URLs
         url_pattern = r'https?://[^\s]+|www\.[^\s]+'
@@ -731,9 +975,10 @@ def generate_reply(payload: GenerateRequest) -> GenerateResponse:
     # Allow high token limits - only cap at reasonable maximum for safety
     max_new_tokens = payload.max_new_tokens or default_max_new_tokens
     max_new_tokens = min(max_new_tokens, 2000)  # Safety cap at 2000 tokens
-    temperature = payload.temperature if payload.temperature is not None else 0.6
-    top_p = payload.top_p if payload.top_p is not None else 0.85
-    repetition_penalty = payload.repetition_penalty if payload.repetition_penalty is not None else 1.5
+    # Adjusted generation parameters to reduce gibberish and repetition
+    temperature = payload.temperature if payload.temperature is not None else 0.4  # Lower temperature for more focused output
+    top_p = payload.top_p if payload.top_p is not None else 0.9  # Slightly higher for better quality
+    repetition_penalty = payload.repetition_penalty if payload.repetition_penalty is not None else 2.0  # Higher to prevent repetition
 
     with torch.no_grad():
         outputs = model.generate(
@@ -745,7 +990,7 @@ def generate_reply(payload: GenerateRequest) -> GenerateResponse:
             repetition_penalty=repetition_penalty,
             pad_token_id=tokenizer.pad_token_id,
             eos_token_id=tokenizer.eos_token_id,
-            no_repeat_ngram_size=4,
+            no_repeat_ngram_size=3,  # Prevent 3-gram repetition (was 4) - catches repetition earlier
             early_stopping=True,
         )
 
