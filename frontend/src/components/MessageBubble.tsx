@@ -32,14 +32,15 @@ export function MessageBubble({ message }: MessageBubbleProps) {
     >
       <div
         className={cn(
-          "max-w-[70%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
+          "max-w-[85%] sm:max-w-[75%] md:max-w-[65%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
+          "min-w-0 w-full", // Ensure it can shrink
           isUser
             ? "bg-sky-400/20 text-sky-100"
             : "bg-slate-900/70 text-slate-100"
         )}
         title={message.timestamp ? `Sent ${message.timestamp}` : undefined}
       >
-        <p className="whitespace-pre-wrap break-words">{linkifyText(message.content)}</p>
+        <p className="whitespace-pre-wrap break-words" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>{linkifyText(message.content)}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {quality && quality.score < 70 && (
             <div

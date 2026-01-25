@@ -29,3 +29,10 @@ body {
 ::-webkit-scrollbar-track {
   background: #0b0f14;
 }
+
+/* Force word breaking for long unbroken strings */
+.break-words {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}

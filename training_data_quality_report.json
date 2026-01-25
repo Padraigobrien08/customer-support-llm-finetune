@@ -1,0 +1,258 @@
+{
+  "total_examples": 2884,
+  "statistics": {
+    "avg_length": 405.6633148404993,
+    "avg_words": 68.79646324549238,
+    "avg_sentences": 4.968446601941747,
+    "avg_sentence_length": 14.026069529753638
+  },
+  "issues": {
+    "with_issues": 1574,
+    "with_repetition": 1295,
+    "with_spacing": 75,
+    "long": 752,
+    "very_long": 175
+  },
+  "worst_examples": [
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    },
+    {
+      "length": 710,
+      "word_count": 120,
+      "sentence_count": 7,
+      "issues": [
+        "Very long (710 chars)",
+        "Too many words (120)",
+        "Too many sentences (7)",
+        "Word repetition: ['your', 'email']"
+      ],
+      "preview": "I understand you're having trouble accessing your account. Here are the standard steps to reset your password: first, go to the login page and click 'Forgot Password', then enter the email address ass"
+    }
+  ]
+}

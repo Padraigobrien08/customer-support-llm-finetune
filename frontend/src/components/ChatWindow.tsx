@@ -20,7 +20,7 @@ export function ChatWindow({
 }: ChatWindowProps) {
   const lastMessage = thread.messages[thread.messages.length - 1];
   return (
-    <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-6 py-6">
+    <div className="flex flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden px-6 py-6 min-w-0">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-100">{thread.title}</h1>

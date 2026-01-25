@@ -191,7 +191,7 @@ export default function App() {
         searchValue={threadSearch}
         onSearchChange={setThreadSearch}
       />
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
         <HeaderBar
           modelName="TinyLlama + LoRA Adapter"
           status={modelStatus}

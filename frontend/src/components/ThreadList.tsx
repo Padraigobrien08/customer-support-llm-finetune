@@ -102,7 +102,7 @@ export function ThreadList({
                     {thread.messages[thread.messages.length - 1]?.timestamp || "—"}
                   </span>
                 </div>
-                <div className="mt-1 line-clamp-1 text-xs text-slate-500">
+                <div className="mt-1 line-clamp-1 text-xs text-slate-500 break-words overflow-hidden">
                   {thread.messages[thread.messages.length - 1]?.content || "No messages yet."}
                 </div>
               </>
