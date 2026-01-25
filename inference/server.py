@@ -355,6 +355,14 @@ def _clean_response(text: str) -> str:
         
         text = ' '.join(fixed_words)
     
+    # Fix spacing issues - add spaces between words that are stuck together
+    # This handles cases like "youresetyourpassword" -> "you reset your password"
+    # Look for lowercase letter followed by uppercase (word boundary)
+    text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
+    # Look for digit followed by letter or vice versa
+    text = re.sub(r'(\d)([a-zA-Z])', r'\1 \2', text)
+    text = re.sub(r'([a-zA-Z])(\d)', r'\1 \2', text)
+    
     # Normalize whitespace (multiple spaces, tabs, newlines)
     text = re.sub(r'\s+', ' ', text).strip()
     
