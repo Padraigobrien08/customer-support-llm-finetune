@@ -116,25 +116,25 @@ export default function App() {
       setModelStatus("disconnected");
     }
 
-    const placeholderResponse = {
-      id: `m-${Date.now() + 1}`,
-      role: "assistant" as const,
-      content: replyContent,
-      timestamp: "Just now"
-    };
+      const placeholderResponse = {
+        id: `m-${Date.now() + 1}`,
+        role: "assistant" as const,
+        content: replyContent,
+        timestamp: "Just now"
+      };
 
-    setThreads((prev) =>
-      prev.map((thread) =>
-        thread.id === activeThread.id
-          ? {
-              ...thread,
-              messages: [...thread.messages, placeholderResponse],
-              scriptedReplies: thread.scriptedReplies?.slice(1)
-            }
-          : thread
-      )
-    );
-    setIsTyping(false);
+      setThreads((prev) =>
+        prev.map((thread) =>
+          thread.id === activeThread.id
+            ? {
+                ...thread,
+                messages: [...thread.messages, placeholderResponse],
+                scriptedReplies: thread.scriptedReplies?.slice(1)
+              }
+            : thread
+        )
+      );
+      setIsTyping(false);
 
     setInput("");
   };

@@ -1,0 +1,147 @@
+[
+  {
+    "test": "Password Reset",
+    "response": "ERROR: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=60)",
+    "analysis": {
+      "length": 89,
+      "word_count": 8,
+      "has_expected_keywords": false,
+      "keyword_matches": [],
+      "is_complete": false,
+      "has_helpful_tone": false,
+      "issues": [
+        "Response appears incomplete",
+        "Missing expected keywords",
+        "Contains error language"
+      ]
+    },
+    "elapsed": 60.019930839538574
+  },
+  {
+    "test": "Account Access Issue",
+    "response": "ERROR: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=60)",
+    "analysis": {
+      "length": 89,
+      "word_count": 8,
+      "has_expected_keywords": false,
+      "keyword_matches": [],
+      "is_complete": false,
+      "has_helpful_tone": false,
+      "issues": [
+        "Response appears incomplete",
+        "Missing expected keywords",
+        "Contains error language"
+      ]
+    },
+    "elapsed": 60.029431104660034
+  },
+  {
+    "test": "Order Status Inquiry",
+    "response": "ERROR: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=60)",
+    "analysis": {
+      "length": 89,
+      "word_count": 8,
+      "has_expected_keywords": false,
+      "keyword_matches": [],
+      "is_complete": false,
+      "has_helpful_tone": false,
+      "issues": [
+        "Response appears incomplete",
+        "Missing expected keywords",
+        "Contains error language"
+      ]
+    },
+    "elapsed": 60.01456809043884
+  },
+  {
+    "test": "Refund Request",
+    "response": "If this was through an ape like our mobile checkout system - go back inside that same payment flow where it happened first because I can check there directly using standard verification methods we have set up specifically designed just between us without needing additional passwords which helps keep everything secure while allowing me access so i know exactly what transaction occurred then guide on how refunds typically process from within apes if available otherwise explain general return windo.",
+    "analysis": {
+      "length": 501,
+      "word_count": 79,
+      "has_expected_keywords": true,
+      "keyword_matches": [
+        "refund",
+        "return",
+        "process",
+        "help"
+      ],
+      "is_complete": true,
+      "has_helpful_tone": false,
+      "issues": [
+        "Response very long (may be rambling)"
+      ]
+    },
+    "elapsed": 53.565622091293335
+  },
+  {
+    "test": "Technical Issue",
+    "response": "ERROR: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=60)",
+    "analysis": {
+      "length": 89,
+      "word_count": 8,
+      "has_expected_keywords": false,
+      "keyword_matches": [],
+      "is_complete": false,
+      "has_helpful_tone": false,
+      "issues": [
+        "Response appears incomplete",
+        "Missing expected keywords",
+        "Contains error language"
+      ]
+    },
+    "elapsed": 60.0296151638031
+  },
+  {
+    "test": "Subscription Cancellation",
+    "response": "I'd like to assist you regarding this matter that appears unrelated directly related: if there was an issue affecting multiple accounts at around [specific date], it could explain why both of these situations occurred simultaneously instead of one causing another - which would be unusual since they're separate systems typically managed independently; however without specific technical expertise from our team who can review system logs dating back several months we cannot confirm whether such eve.",
+    "analysis": {
+      "length": 501,
+      "word_count": 75,
+      "has_expected_keywords": true,
+      "keyword_matches": [
+        "account"
+      ],
+      "is_complete": true,
+      "has_helpful_tone": false,
+      "issues": [
+        "Response very long (may be rambling)"
+      ]
+    },
+    "elapsed": 46.313884258270264
+  },
+  {
+    "test": "Multi-turn Conversation",
+    "response": "If this happened during checkout after entering valid billing info from an active credit/debit card on file that has enough funds available - it could indicate issues like insufficient balance due due cancel your subscription et., expiration date mismatch between our system record vs actual one stored at bank side , incorrect zip code entry which isn't strictly required unless address verification verification contact support...",
+    "analysis": {
+      "length": 432,
+      "word_count": 65,
+      "has_expected_keywords": true,
+      "keyword_matches": [
+        "card"
+      ],
+      "is_complete": true,
+      "has_helpful_tone": false,
+      "issues": []
+    },
+    "elapsed": 44.30727005004883
+  },
+  {
+    "test": "Privacy Concern",
+    "response": "I'd be happy to explain our privacy practices - here\u2019s what I can tell you: we always collect only necessary data through secure forms that use encryption encryption enter your information...All user accounts have unique passwords which must contain at least one uppercase letter, lowercase letters, numbers, special characters; they should also meet length requirements of of complete the form...\" Please note these general security measures measures contact support.",
+    "analysis": {
+      "length": 468,
+      "word_count": 69,
+      "has_expected_keywords": true,
+      "keyword_matches": [
+        "privacy",
+        "security",
+        "data"
+      ],
+      "is_complete": true,
+      "has_helpful_tone": true,
+      "issues": []
+    },
+    "elapsed": 36.26192808151245
+  }
+]

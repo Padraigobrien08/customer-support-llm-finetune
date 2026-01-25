@@ -390,18 +390,18 @@ Examples:
         use_device_map = True
     
     try:
-        model = AutoModelForCausalLM.from_pretrained(
-            args.model_id,
-            dtype=model_dtype,
+    model = AutoModelForCausalLM.from_pretrained(
+        args.model_id,
+        dtype=model_dtype,
             device_map="auto" if use_device_map else None,
             trust_remote_code=True,
             low_cpu_mem_usage=True,  # More memory efficient loading
-        )
-        
+    )
+    
         if device != "cuda" and not use_device_map:
             # Try to move to device, but catch memory errors
             try:
-                model = model.to(device)
+        model = model.to(device)
             except RuntimeError as e:
                 if "out of memory" in str(e) or "MPS" in str(e):
                     print(f"\n⚠️  Warning: {device} ran out of memory. Falling back to CPU.")

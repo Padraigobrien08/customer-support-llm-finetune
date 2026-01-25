@@ -44,7 +44,7 @@ tokenizer = None
 device = "cpu"
 supports_chat_template = False
 system_prompt = None
-default_max_new_tokens = 250
+default_max_new_tokens = 1000  # Increased default - can be overridden by request
 
 # Semantic coherence checker (lazy-loaded)
 _semantic_checker = None
@@ -405,10 +405,21 @@ def _clean_response(text: str) -> str:
     
     sentences = [s.strip() for s in reconstructed if s.strip()]
     
-    # Limit to reasonable number of sentences for customer support (4-5 max)
-    max_sentences = 5
+    # Limit to reasonable number of sentences for customer support (6-7 max for longer responses)
+    # But be smarter about it - keep complete thoughts
+    max_sentences = 7
     if len(sentences) > max_sentences:
-        sentences = sentences[:max_sentences]
+        # Try to keep complete paragraphs/thoughts rather than just cutting
+        # Look for natural break points (questions, transitions)
+        keep_sentences = []
+        for i, sent in enumerate(sentences[:max_sentences + 2]):
+            if i < max_sentences:
+                keep_sentences.append(sent)
+            elif sent.strip().endswith('?'):
+                # Keep questions even if over limit
+                keep_sentences.append(sent)
+                break
+        sentences = keep_sentences[:max_sentences + 1]  # Allow one extra for questions
         # Rejoin with proper spacing
         text = ' '.join(sentences).strip()
     
@@ -460,8 +471,8 @@ def _clean_response(text: str) -> str:
     # Clean up any double spaces created by removals
     text = re.sub(r'\s+', ' ', text).strip()
     
-    # Remove common rambling patterns
-    # Look for phrases that suggest the response is going off-topic
+    # Remove common rambling patterns and off-topic content
+    # Look for phrases that suggest the response is going off-topic or rambling
     rambling_indicators = [
         "based on",
         "based",
@@ -474,26 +485,54 @@ def _clean_response(text: str) -> str:
         "i never ask",
         "that's private",
         "i wouldn't share",
-        "phone number",
-        "credit card",
-        "social security",
         "are there any other ways",
         "you deserve the best",
+        "i can't help with that",
+        "that's not something i can",
+        "i'm not able to",
+        "i don't have access to",
+        "i'm sorry but i",
+        "unfortunately i cannot",
     ]
     
-    # Find where rambling might start
+    # Enhanced rambling detection - look for repetitive sentence structures
     text_lower = text.lower()
-    for indicator in rambling_indicators:
-        idx = text_lower.find(indicator)
-        if idx > 200:  # Only if it's later in the response
-            # Truncate at the sentence before this indicator
-            truncate_point = text.rfind('.', 0, idx)
-            if truncate_point > 50:  # Keep at least some content
-                text = text[:truncate_point + 1].strip()
+    words = text_lower.split()
+    
+    # Check for excessive repetition of sentence starters
+    sentence_starters = ["i", "you", "we", "they", "this", "that", "it", "if", "when", "to"]
+    starter_counts = {}
+    for i, word in enumerate(words):
+        if word in sentence_starters and (i == 0 or words[i-1] in ['.', '!', '?'] or i < 3):
+            starter_counts[word] = starter_counts.get(word, 0) + 1
+    
+    # If any starter appears too many times, it might be rambling
+    if starter_counts and max(starter_counts.values()) > 8:
+        # Find where excessive repetition starts
+        for indicator in rambling_indicators:
+            idx = text_lower.find(indicator)
+            if idx > 200:  # Only if it's later in the response
+                # Truncate at the sentence before this indicator
+                truncate_point = max(
+                    text.rfind('.', 0, idx),
+                    text.rfind('!', 0, idx),
+                    text.rfind('?', 0, idx)
+                )
+                if truncate_point > 50:  # Keep at least some content
+                    text = text[:truncate_point + 1].strip()
+                    break
+    
+    # Additional check: if response is very long and has many "I" statements, it might be rambling
+    if len(text) > 600 and text_lower.count(" i ") > 10:
+        # Find a good stopping point (after a question or clear instruction)
+        for punct in ['?', '!']:
+            last_punct = text.rfind(punct, 0, len(text) - 100)
+            if last_punct > 300:
+                text = text[:last_punct + 1].strip()
                 break
     
-    # Final length check - customer support responses shouldn't be too long
-    max_chars = 500
+    # Final length check - customer support responses can be longer now, but still reasonable
+    max_chars = 800  # Increased from 500 to allow more detailed responses
     if len(text) > max_chars:
         # First, check if we're cutting through a URL - preserve URLs
         url_pattern = r'https?://[^\s]+|www\.[^\s]+'
@@ -604,7 +643,7 @@ def load_model() -> None:
     model_id = os.getenv("MODEL_ID", "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
     adapter_dir_env = os.getenv("ADAPTER_DIR", "outputs/smoke_001")
     device_env = os.getenv("DEVICE", "auto")
-    default_max_new_tokens = int(os.getenv("MAX_NEW_TOKENS", "250"))
+    default_max_new_tokens = int(os.getenv("MAX_NEW_TOKENS", "1000"))  # High default, can be overridden
 
     project_root = Path(__file__).parent.parent
     adapter_dir = Path(adapter_dir_env)
@@ -681,7 +720,9 @@ def generate_reply(payload: GenerateRequest) -> GenerateResponse:
         prompt = format_messages_simple(messages, system_prompt)
 
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
+    # Allow high token limits - only cap at reasonable maximum for safety
     max_new_tokens = payload.max_new_tokens or default_max_new_tokens
+    max_new_tokens = min(max_new_tokens, 2000)  # Safety cap at 2000 tokens
     temperature = payload.temperature if payload.temperature is not None else 0.6
     top_p = payload.top_p if payload.top_p is not None else 0.85
     repetition_penalty = payload.repetition_penalty if payload.repetition_penalty is not None else 1.5

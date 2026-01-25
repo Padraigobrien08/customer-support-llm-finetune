@@ -93,7 +93,7 @@ export function ThreadList({
               <>
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <div className="font-medium text-slate-200">{thread.title}</div>
+                <div className="font-medium text-slate-200">{thread.title}</div>
                     <span className="rounded-full border border-slate-800/70 bg-slate-900/60 px-2 py-0.5 text-[10px] text-slate-300">
                       {thread.messages.length}
                     </span>
