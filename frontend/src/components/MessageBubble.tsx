@@ -1,17 +1,30 @@
-import { Copy, ThumbsDown, ThumbsUp, UserPlus, HelpCircle, ListOrdered, Info, CheckCircle2, AlertCircle } from "lucide-react";
+import { Copy, ThumbsDown, ThumbsUp, UserPlus, HelpCircle, ListOrdered, Info, Edit2 } from "lucide-react";
 import { useState } from "react";
 import { Message } from "@/data/threads";
 import { cn, linkifyText, detectAction, assessResponseQuality } from "@/lib/utils";
+import { MessageEditor } from "./MessageEditor";
+import { QualityScore, type QualityMetrics } from "./QualityScore";
 
 interface MessageBubbleProps {
   message: Message;
+  onEdit?: (messageId: string, newContent: string) => void;
 }
 
-export function MessageBubble({ message }: MessageBubbleProps) {
+export function MessageBubble({ message, onEdit }: MessageBubbleProps) {
   const isUser = message.role === "user";
   const [copied, setCopied] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const detectedAction = !isUser ? detectAction(message.content) : null;
-  const quality = !isUser ? assessResponseQuality(message.content) : null;
+  const qualityRaw = !isUser ? assessResponseQuality(message.content) : null;
+  
+  // Convert quality to QualityMetrics format
+  const quality: QualityMetrics | null = qualityRaw ? {
+    score: qualityRaw.score,
+    grade: qualityRaw.score >= 90 ? "A" : qualityRaw.score >= 80 ? "B" : qualityRaw.score >= 70 ? "C" : qualityRaw.score >= 60 ? "D" : "F",
+    issues: qualityRaw.issues || [],
+    strengths: qualityRaw.strengths || [],
+    details: qualityRaw.details
+  } : null;
 
   const handleCopy = async () => {
     try {
@@ -22,6 +35,24 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       // no-op
     }
   };
+
+  const handleEdit = (newContent: string) => {
+    onEdit?.(message.id, newContent);
+    setIsEditing(false);
+  };
+
+  if (isEditing) {
+    return (
+      <div className={cn("flex items-start gap-2", isUser ? "justify-end" : "justify-start")}>
+        <MessageEditor
+          initialContent={message.content}
+          onSave={handleEdit}
+          onCancel={() => setIsEditing(false)}
+          isUser={isUser}
+        />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -42,29 +73,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       >
         <p className="whitespace-pre-wrap break-words" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>{linkifyText(message.content)}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          {quality && quality.score < 70 && (
-            <div
-              className={cn(
-                "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
-                quality.score >= 50
-                  ? "bg-yellow-500/20 text-yellow-300"
-                  : "bg-red-500/20 text-red-300"
-              )}
-              title={quality.issues.join(", ")}
-            >
-              <AlertCircle className="h-3 w-3" />
-              <span>Quality: {quality.score}%</span>
-            </div>
-          )}
-          {quality && quality.score >= 70 && quality.strengths.length > 0 && (
-            <div
-              className="flex items-center gap-1.5 rounded-full bg-green-500/20 px-2.5 py-1 text-xs font-medium text-green-300"
-              title={quality.strengths.join(", ")}
-            >
-              <CheckCircle2 className="h-3 w-3" />
-              <span>Good quality</span>
-            </div>
-          )}
+          {quality && <QualityScore quality={quality} compact />}
           {detectedAction && (
             <div
               className={cn(
@@ -117,6 +126,15 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         >
           <ThumbsDown className="h-3.5 w-3.5" />
         </button>
+        {onEdit && (
+          <button
+            className="rounded-md border border-slate-800/70 bg-slate-900/70 p-1 text-slate-400 hover:text-slate-200"
+            onClick={() => setIsEditing(true)}
+            title="Edit message"
+          >
+            <Edit2 className="h-3.5 w-3.5" />
+          </button>
+        )}
         {copied && (
           <span className="text-[10px] text-slate-500">Copied</span>
         )}

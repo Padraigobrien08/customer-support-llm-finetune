@@ -9,8 +9,19 @@
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* Dark theme (default) */
+.dark body,
+body {
   background-color: #0b1020;
   color: #e6e9f2;
+}
+
+/* Light theme */
+.light body {
+  background-color: #ffffff;
+  color: #1f2937;
 }
 
 #root {
@@ -21,13 +32,24 @@ body {
   width: 8px;
 }
 
+.dark ::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb {
   background: #1f2937;
   border-radius: 999px;
 }
 
+.dark ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track {
   background: #0b0f14;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f3f4f6;
 }
 
 /* Force word breaking for long unbroken strings */

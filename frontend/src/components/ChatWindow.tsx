@@ -1,11 +1,13 @@
 import { Thread } from "@/data/threads";
 import { MessageBubble } from "@/components/MessageBubble";
+import { ExportButton } from "@/components/ExportButton";
 
 interface ChatWindowProps {
   thread: Thread;
   isTyping?: boolean;
   onClearThread: () => void;
   onRenameThread: (title: string) => void;
+  onEditMessage?: (messageId: string, newContent: string) => void;
   examplePrompts: string[];
   onSelectPrompt: (prompt: string) => void;
 }
@@ -15,6 +17,7 @@ export function ChatWindow({
   isTyping = false,
   onClearThread,
   onRenameThread,
+  onEditMessage,
   examplePrompts,
   onSelectPrompt
 }: ChatWindowProps) {
@@ -37,6 +40,7 @@ export function ChatWindow({
           </span>
         </div>
         <div className="flex items-center gap-2">
+          <ExportButton thread={thread} className="text-slate-400 hover:text-slate-200" />
           <button
             className="rounded-md border border-slate-800/70 bg-slate-900/60 px-3 py-1 text-xs text-slate-300 hover:text-slate-100"
             onClick={() => {
@@ -76,7 +80,11 @@ export function ChatWindow({
           </div>
         ) : (
           thread.messages.map((message) => (
-            <MessageBubble key={message.id} message={message} />
+            <MessageBubble 
+              key={message.id} 
+              message={message} 
+              onEdit={onEditMessage}
+            />
           ))
         )}
         {isTyping && (

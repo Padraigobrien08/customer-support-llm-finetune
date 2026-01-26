@@ -179,6 +179,28 @@ export default function App() {
     );
   };
 
+  const handleEditMessage = (messageId: string, newContent: string) => {
+    setThreads((prev) =>
+      prev.map((thread) =>
+        thread.id === activeThread.id
+          ? {
+              ...thread,
+              messages: thread.messages.map((msg) =>
+                msg.id === messageId ? { ...msg, content: newContent } : msg
+              )
+            }
+          : thread
+      )
+    );
+  };
+
+  const handleModelChange = (model: any) => {
+    // Model switching would require backend restart
+    // For now, just show a notification
+    console.log("Model change requested:", model);
+    alert(`To switch to ${model.name}, restart the backend with:\nMODEL_ID=${model.modelId}\nADAPTER_DIR=${model.adapterPath}`);
+  };
+
   return (
     <div className="flex h-screen w-full bg-background text-foreground">
       <ThreadList
@@ -196,6 +218,7 @@ export default function App() {
           modelName="TinyLlama + LoRA Adapter"
           status={modelStatus}
           environment="Local Demo"
+          onModelChange={handleModelChange}
           settingsButton={
             <SettingsPanel
               settings={generationSettings}
@@ -210,6 +233,7 @@ export default function App() {
           isTyping={isTyping}
           onClearThread={handleClearThread}
           onRenameThread={handleRenameThread}
+          onEditMessage={handleEditMessage}
           examplePrompts={examplePrompts}
           onSelectPrompt={(prompt) => setInput(prompt)}
         />

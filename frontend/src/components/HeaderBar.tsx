@@ -1,15 +1,18 @@
 import { Cpu, Plug } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { ModelSelector, type ModelInfo } from "./ModelSelector";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface HeaderBarProps {
   modelName: string;
   status: "connected" | "disconnected";
   environment?: string;
   settingsButton?: ReactNode;
+  onModelChange?: (model: ModelInfo) => void;
 }
 
-export function HeaderBar({ modelName, status, environment, settingsButton }: HeaderBarProps) {
+export function HeaderBar({ modelName, status, environment, settingsButton, onModelChange }: HeaderBarProps) {
   const isConnected = status === "connected";
 
   return (
@@ -27,11 +30,13 @@ export function HeaderBar({ modelName, status, environment, settingsButton }: He
       </div>
 
       <div className="flex items-center gap-3">
+        <ModelSelector currentModelId="qwen" onModelChange={onModelChange} />
         {environment && (
           <span className="rounded-full bg-slate-900/70 px-3 py-1 text-xs text-slate-400">
             {environment}
           </span>
         )}
+        <ThemeToggle />
         {settingsButton}
         <span
           className={cn(
